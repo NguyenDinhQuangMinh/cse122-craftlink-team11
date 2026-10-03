@@ -25,5 +25,5 @@ Tất cả tài liệu chi tiết của dự án được quản lý tập trung
 | STT | Sinh viên | Vai trò phụ trách | Số màn hình | Tích hợp AI |
 | :---: | :--- | :--- | :---: | :--- |
 | 1 | **SV1** | Khách hàng (Buyer) & Giao diện chung | 6 | Trợ lý AI gợi ý sản phẩm cá nhân hóa |
-| 2 | **SV2** | Thợ thủ công / Seller (Maker) | 3 | AI hỗ trợ viết mô tả sản phẩm & tối ưu SEO |
+| 2 | **SV2** | Thợ thủ công / Seller (Maker) | 4 | AI hỗ trợ viết mô tả sản phẩm & tối ưu SEO |
 | 3 | **SV3** | Kiểm duyệt viên (Mod) & Quản trị viên (Admin) | 9 | AI quét vi phạm tự động & Tự động dán nhãn |
