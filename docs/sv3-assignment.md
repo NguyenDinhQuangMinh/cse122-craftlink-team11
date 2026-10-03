@@ -78,7 +78,7 @@
 
 ## 📑 NHẬT KÝ TIẾN ĐỘ THỰC HIỆN (CHECKLIST WORKFLOW)
 
-- [x] Hoàn thành thiết kế Prototype 6 màn hình trên Canva
+- [x] Hoàn thành thiết kế  9 màn hình trên Canva
 - [x] Tích hợp liên kết Canva `https://canva.link/zqtyq0qivogb17s` vào hồ sơ dự án
 - [ ] Khởi tạo cấu trúc thư mục `pages/admin/` và `pages/moderator/`
 - [ ] Dựng khung HTML/CSS Bảng điều khiển dùng chung (`sidebar.css`, `admin.css`)
