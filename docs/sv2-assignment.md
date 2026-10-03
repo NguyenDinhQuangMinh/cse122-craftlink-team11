@@ -62,8 +62,8 @@
 
 ## 📑 NHẬT KÝ TIẾN ĐỘ THỰC HIỆN (CHECKLIST)
 
-- [ ] Thiết kế Prototype 6 màn hình trên Canva
-- [ ] Dán liên kết Canva vào tài liệu `docs/sv2-assignment.md` và `docs/team-assignment.md`
+- [ x ] Thiết kế Prototype  màn hình trên Canva
+- [ x ] Dán liên kết Canva vào tài liệu `docs/sv2-assignment.md` và `docs/team-assignment.md`
 - [ ] Tạo khung HTML/CSS cho phân hệ Maker (`maker.css`)
 - [ ] Hoàn thiện HTML/CSS cho 6 màn hình phụ trách
 - [ ] Viết mã mô phỏng tính năng AI Copywriter (`js/ai/`)
