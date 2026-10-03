@@ -62,9 +62,9 @@
 
 ## 📑 NHẬT KÝ TIẾN ĐỘ THỰC HIỆN (CHECKLIST)
 
-- [ x ] Thiết kế Prototype  màn hình trên Canva
-- [ x ] Dán liên kết Canva vào tài liệu `docs/sv2-assignment.md` và `docs/team-assignment.md`
-- [ ] Tạo khung HTML/CSS cho phân hệ Maker (`maker.css`)
-- [ ] Hoàn thiện HTML/CSS cho 6 màn hình phụ trách
-- [ ] Viết mã mô phỏng tính năng AI Copywriter (`js/ai/`)
-- [ ] Kiểm tra hiển thị Responsive trên các thiết bị
+- [x] Thiết kế Prototype  màn hình trên Canva
+- [x] Dán liên kết Canva vào tài liệu `docs/sv2-assignment.md` và `docs/team-assignment.md`
+- [x] Tạo khung HTML/CSS cho phân hệ Maker (`maker.css`)
+- [x] Hoàn thiện HTML/CSS cho 6 màn hình phụ trách
+- [x] Viết mã mô phỏng tính năng AI Copywriter (`js/ai/`)
+- [x] Kiểm tra hiển thị Responsive trên các thiết bị
