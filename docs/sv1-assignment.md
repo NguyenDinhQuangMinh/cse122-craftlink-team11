@@ -1,22 +1,23 @@
-# PHÂN CÔNG NHIỆM VỤ CHI TIẾT - SV1 (Buyer)
+# PHÂN CÔNG NHIỆM VỤ CHI TIẾT - SV1 (Buyer & General UI)
 
 > **Dự án:** CraftLink - Sàn thương mại điện tử sản phẩm thủ công nghệ thuật tùy biến  
 > **Học phần:** Phát triển Ứng dụng Web Cơ bản (CSE122) - Nhóm 11  
-> **Sinh viên phụ trách:** SV2 (Người sáng tạo / Thợ thủ công)
+> **Sinh viên phụ trách:** SV1 (khách hàng/giao diện chung)
 
 ---
 
 ## 🎨 BẢN THIẾT KẾ GIAO DIỆN CANVA (UI/UX PROTOTYPE)
 
-👉 **Link thiết kế Canva của SV2:** [Link Canva SV2](https://canva.link/sv9bdllvfe97z7k)
+👉 **Link thiết kế Canva của SV1:** [Link Canva SV1](https://www.canva.com/design/DAHWyBVvS6U/eyYrsvv49jN-26FeiXk-Aw/edit)
 
 ---
 
 ## 📋 VAI TRÒ & TRÁCH NHIỆM CHÍNH
 
-- **Vai trò nghiệp vụ:** Người sáng tạo / Thợ thủ công (Maker / Artisan / Seller).
+- **Vai trò nghiệp vụ:** khách hàng/giao diện chung(Buyer/General UI).
 - **Trách nhiệm hệ thống:**
-  - Xây dựng toàn bộ phân hệ quản lý gian hàng dành cho Nghệ nhân / Thợ thủ công.
+  - Xây dựng toàn bộ phân hệ quản lý giao diện cho khách hàng.
+  - xây dựng giao diện chung như trang đăng nhập,trang 404 khi tải trang bị lỗi,...
   - Quản lý danh sách bài đăng sản phẩm thủ công, Trình tạo/chỉnh sửa sản phẩm nâng cao.
   - Xử lý các yêu cầu đặt hàng tùy biến (Custom Order Requests) gửi từ khách hàng và Báo cáo quản lý doanh thu.
   - Tích hợp công cụ AI hỗ trợ sáng tạo nội dung mô tả sản phẩm và tự động tối ưu hóa từ khóa SEO.
