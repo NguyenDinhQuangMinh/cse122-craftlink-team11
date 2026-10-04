@@ -2,7 +2,7 @@
 
 ## 🎨 BẢN THIẾT KẾ GIAO DIỆN UI/UX (CANVA PROTOTYPE)
 
-* 🛒 **SV1 (Khách hàng & Giao diện chung):** [Link Canva SV1]()
+* 🛒 **SV1 (Khách hàng & Giao diện chung):** [Link Canva SV1](https://www.canva.com/design/DAHWyBVvS6U/eyYrsvv49jN-26FeiXk-Aw/edit)
 * 🎨 **SV2 (Người sáng tạo / Thợ thủ công):** [Link Canva SV2](https://canva.link/sv9bdllvfe97z7k)
 * 🛡️ **SV3 (Kiểm duyệt viên & Quản trị viên):** [Link Canva SV3](https://canva.link/zqtyq0qivogb17s)
 
