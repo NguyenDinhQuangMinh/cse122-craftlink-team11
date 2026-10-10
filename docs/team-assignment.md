@@ -5,6 +5,7 @@
 * 🛒 **SV1 (Khách hàng & Giao diện chung):** [Link Canva SV1](https://www.canva.com/design/DAHWyBVvS6U/eyYrsvv49jN-26FeiXk-Aw/edit)
 * 🎨 **SV2 (Người sáng tạo / Thợ thủ công):** [Link Canva SV2](https://canva.link/rvxflfz5kgg0rg1)
 * 🛡️ **SV3 (Kiểm duyệt viên & Quản trị viên):** [Link Canva SV3](https://canva.link/zqtyq0qivogb17s)
+*  Tổng Hợp bài của nhóm: [Link Canva ](https://canva.link/10ir1xtkau6li7b)
 
 ---
 
