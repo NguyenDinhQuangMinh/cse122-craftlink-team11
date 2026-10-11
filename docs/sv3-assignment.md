@@ -80,9 +80,9 @@
 
 - [x] Hoàn thành thiết kế  9 màn hình trên Canva
 - [x] Tích hợp liên kết Canva `https://canva.link/zqtyq0qivogb17s` vào hồ sơ dự án
-- [ ] Khởi tạo cấu trúc thư mục `pages/admin/` và `pages/moderator/`
-- [ ] Dựng khung HTML/CSS Bảng điều khiển dùng chung (`sidebar.css`, `admin.css`)
-- [ ] Cắt file HTML cho 3 màn hình Quản trị viên (Admin)
-- [ ] Cắt file HTML cho 3 màn hình Kiểm duyệt viên (Moderator)
+- [x] Khởi tạo cấu trúc thư mục `pages/admin/` và `pages/moderator/`
+- [x] Dựng khung HTML/CSS Bảng điều khiển dùng chung (`sidebar.css`, `admin.css`)
+- [x] Cắt file HTML cho 3 màn hình Quản trị viên (Admin)
+- [x] Cắt file HTML cho 3 màn hình Kiểm duyệt viên (Moderator)
 - [ ] Viết mã mô phỏng tính năng AI kiểm duyệt trong `js/ai/`
 - [ ] Kiểm tra hiển thị Responsive trên các kích thước màn hình
