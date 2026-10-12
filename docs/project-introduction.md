@@ -55,16 +55,16 @@ Hệ thống **CraftLink** được phân chia rõ ràng thành 3 phân hệ ch�
 
 #### 🔹 Phân hệ 2: Thợ thủ công / Nghệ nhân (Maker) – SV2
 * **Quản lý Listing sản phẩm (`maker-listing-management.html`):** Xem danh sách sản phẩm đăng bán, lọc trạng thái (Đang bán, Chờ duyệt, Bản nháp) và chuyển đổi giao diện bảng/lưới[cite: 8].
-* **Tạo & Cập nhật Listing (`maker-listing-editor.html`):** Nhập thông tin sản phẩm, thiết lập giá, tồn kho và sử dụng công cụ AI hỗ trợ viết mô tả SEO[cite: 8].
-* **Hòm thư Brief / Yêu cầu tùy biến (`maker-brief-inbox.html`):** Lọc và tiếp nhận các yêu cầu đặt làm riêng từ khách hàng, xem bản tóm tắt Brief do AI hỗ trợ[cite: 9].
-* **Chỉnh sửa Proposal báo giá (`maker-proposal-editor.html`):** Xây dựng báo giá chi tiết, mốc thời gian hoàn thành, các khoản chi phí và điều khoản giao dịch[cite: 10].
-* **Xem trước Proposal (`maker-proposal-preview.html`):** Kiểm tra lại toàn bộ giao diện đề xuất báo giá trước khi gửi chính thức tới khách hàng[cite: 10].
-* **Quản lý Gian hàng & Hồ sơ (`maker-shop-profile.html`):** Cập nhật thông tin xưởng sản xuất, câu chuyện thương hiệu và địa chỉ liên hệ[cite: 8, 9, 10].
+* **Tạo & Cập nhật Listing (`maker-listing-editor.html`):** Nhập thông tin sản phẩm, thiết lập giá, tồn kho và sử dụng công cụ AI hỗ trợ viết mô tả SEO.
+* **Hòm thư Brief / Yêu cầu tùy biến (`maker-brief-inbox.html`):** Lọc và tiếp nhận các yêu cầu đặt làm riêng từ khách hàng, xem bản tóm tắt Brief do AI hỗ trợ.
+* **Chỉnh sửa Proposal báo giá (`maker-proposal-editor.html`):** Xây dựng báo giá chi tiết, mốc thời gian hoàn thành, các khoản chi phí và điều khoản giao dịch.
+* **Xem trước Proposal (`maker-proposal-preview.html`):** Kiểm tra lại toàn bộ giao diện đề xuất báo giá trước khi gửi chính thức tới khách hàng.
+* **Quản lý Gian hàng & Hồ sơ (`maker-shop-profile.html`):** Cập nhật thông tin xưởng sản xuất, câu chuyện thương hiệu và địa chỉ liên hệ.
 
 #### 🔹 Phân hệ 3: Quản trị viên & Kiểm duyệt viên (Admin & Moderator) – SV3
-* **Bảng điều khiển tổng quan (`admin-dashboard-overview.html`):** Giám sát các chỉ số doanh thu sàn, biểu đồ ngành hàng, hoạt động nghệ nhân và nhận cảnh báo bất thường từ AI[cite: 12, 14].
-* **Hàng đợi kiểm duyệt sản phẩm (`admin-moderation-queue.html`):** Duyệt hoặc từ chối các bài đăng sản phẩm mới, tích hợp AI tự động quét nội dung/hình ảnh vi phạm[cite: 15].
-* **Trung tâm xử lý báo cáo & khiếu nại (`admin-reports-center.html`):** Tiếp nhận, phân loại và xử lý các báo cáo vi phạm/khiếu nại tranh chấp từ người dùng[cite: 16].
-* **Quản lý danh mục ngành hàng (`admin-category-management.html`):** Thêm mới, chỉnh sửa, ẩn/hiển thị các danh mục và ngành hàng thủ công[cite: 13, 17].
-* **Quản lý tài khoản người dùng (`admin-user-management.html`):** Lọc danh sách người dùng theo vai trò, theo dõi trạng thái và thực hiện Khóa/Mở khóa tài khoản[cite: 13, 18].
-* **Quản lý quy định & Tiêu chuẩn (`admin-content-policy.html`):** Soạn thảo, quản lý lịch sử phiên bản và xuất bản các chính sách, quy định của nền tảng[cite: 19].
+* **Bảng điều khiển tổng quan (`admin-dashboard-overview.html`):** Giám sát các chỉ số doanh thu sàn, biểu đồ ngành hàng, hoạt động nghệ nhân và nhận cảnh báo bất thường từ AI.
+* **Hàng đợi kiểm duyệt sản phẩm (`admin-moderation-queue.html`):** Duyệt hoặc từ chối các bài đăng sản phẩm mới, tích hợp AI tự động quét nội dung/hình ảnh vi phạm.
+* **Trung tâm xử lý báo cáo & khiếu nại (`admin-reports-center.html`):** Tiếp nhận, phân loại và xử lý các báo cáo vi phạm/khiếu nại tranh chấp từ người dùng.
+* **Quản lý danh mục ngành hàng (`admin-category-management.html`):** Thêm mới, chỉnh sửa, ẩn/hiển thị các danh mục và ngành hàng thủ công.
+* **Quản lý tài khoản người dùng (`admin-user-management.html`):** Lọc danh sách người dùng theo vai trò, theo dõi trạng thái và thực hiện Khóa/Mở khóa tài khoản.
+* **Quản lý quy định & Tiêu chuẩn (`admin-content-policy.html`):** Soạn thảo, quản lý lịch sử phiên bản và xuất bản các chính sách, quy định của nền tảng.
