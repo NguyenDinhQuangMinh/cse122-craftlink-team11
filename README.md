@@ -61,5 +61,6 @@ Khai báo chi tiết, prompt và giới hạn dữ liệu: [`KiemDuyetVaQuanTri/
 
 ## 7. 🔗 LIÊN KẾT
 
-- **Thiết kế Canva SV3:** [canva.link/zqtyq0qivogb17s](https://canva.link/zqtyq0qivogb17s)
+- **Thiết kế Canva của nhóm:** [CraftLink trên Canva](https://www.canva.com/design/DAHXD2jg9HU/7Q4trg1HDT246iMdGVyUXw/edit)
+- **Thiết kế Canva SV3 (sáu màn hình quản trị và kiểm duyệt):** [canva.link/zqtyq0qivogb17s](https://canva.link/zqtyq0qivogb17s)
 - **Video OBS SV3:** chưa cập nhật.
