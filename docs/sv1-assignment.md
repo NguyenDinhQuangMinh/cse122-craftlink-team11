@@ -25,22 +25,19 @@
 
 ## 🖥️ CẤU TRÚC & PHÂN TÍCH CHI TIẾT 6 MÀN HÌNH HTML
 
-### 1. `pages/common/index.html` (Trang chủ Landing Page)
-- **Mục đích:** Giới thiệu thương hiệu CraftLink, thu hút người dùng và định hướng luồng khám phá các sản phẩm thủ công độc bản.
-- **Thành phần giao diện:** 
-  - Banner Hero chính kèm câu khẩu hiệu (Slogan) và nút kêu gọi hành động (CTA "Khám phá ngay").
-  - Khối sản phẩm xu hướng, danh mục nổi bật (Gốm sứ, Đồ gỗ, Thêu dệt, Trang sức...).
-  - Khối bài viết giới thiệu câu chuyện nghệ nhân (Artisan Stories).
-  - Khối gợi ý sản phẩm thông minh tích hợp AI.
-- **Thao tác CRUD:** `Read` (Truy xuất và hiển thị dữ liệu danh mục, sản phẩm nổi bật và thông tin trang).
+### 1. index.HTML
+-Mục đích : trang chủ/danh mục xem các sản phẩm, tìm kiếm , lọc xắp sếp.
+-Thành phần chính : form tìm kiếm #search-input . bộ lọc (danh sách radio, giá range 100k-1000k,phong cách , thời gian hoàn thành) ; sort 4 kiểu ,8 thẻ .product-card mang data-id
 
-### 2. `pages/common/login.html` (Trang Đăng nhập / Đăng ký)
-- **Mục đích:** Cho phép người dùng xác thực tài khoản để truy cập các tính năng cá nhân hóa và đặt hàng trên sàn.
-- **Thành phần giao diện:** Form đăng nhập (Email/Mật khẩu), Form đăng ký tài khoản mới (Họ tên, Email, SĐT, Chọn vai trò Khách hàng/Maker), nút đăng nhập nhanh qua Google/Facebook.
-- **Thao tác CRUD:** `Create` (Đăng ký tài khoản người dùng mới), `Read` (Xác thực thông tin tài khoản khi đăng nhập).
-
-### 3. `pages/buyer/marketplace.html` (Trang Danh sách sản phẩm & Chi tiết tùy biến)
-- **Mục đích:** Hiển thị chi tiết tác phẩm thủ công và cung cấp bộ công cụ cho phép khách hàng đưa ra yêu cầu tùy biến riêng với nghệ nhân.
+### 2. product-detail.html Chi tiết sản phẩm
+- **Mục đích : Xem chi tiết "Cốc gốm lá nâu", chọn số lượng, thêm giỏ, yêu thích
+- **Thành phần giao diện : Gallery 1 ảnh lớn + 5 thumb; stepper 1–99; nút #add-to-cart-btn; nút tim #favorite-btn; panel nghệ nhân + "Báo cáo listing"; 3 đánh giá mẫu
+- **Thao tác CRUD: ✓ thêm món mới vào giỏ, thêm id yêu thích
+✓ đọc giỏ + yêu thích để kiểm tra/đồng bộ
+✓ cộng dồn số lượng nếu trùng, toggle tim
+✓ bỏ yêu thích
+### 3. cart.html Giỏ hàng
+- **Mục đích: Xem giỏ, đổi số lượng, xóa món, tính tổng tiền
 - **Thành phần giao diện:** 
   - Gallery hình ảnh/video sản phẩm đa góc nhìn.
   - Thông tin tác giả (Nghệ nhân/Xưởng sản xuất) và giá bán niêm yết.
