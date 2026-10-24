@@ -28,7 +28,7 @@ Tất cả tài liệu chi tiết của dự án được quản lý tập trung
 | Bonus | **SV1+SV2+SV3** | | | Giao diện đăng nhập, đăng ký | **6** | |
 | 1 | **SV1** | Nguyễn Xuân Hưng | 2551060622 | Khách hàng (Buyer) & Giao diện chung | **6** | AI Personalization & Visual Matcher |
 | 2 | **SV2** | Dương Vũ Quân Minh | 2551060650 | Thợ thủ công / Nghệ nhân (Maker) | **3** | AI Copywriter, SEO & Brief Summarizer |
-| 3 | **SV3** | Nguyễn Đình Quang Minh | 2551060651 | Kiểm duyệt viên (Mod) & Quản trị viên (Admin) | **6** | AI Content Moderation, Risk Triage AI Content Moderation & Anomaly Detection Policy Copilot |
+| 3 | **SV3** | Nguyễn Đình Quang Minh | 2551060651 | Kiểm duyệt viên (Mod) & Quản trị viên (Admin) | **6** | AI Content Moderation, Risk Triage & Policy Copilot |
 
 ---
 
