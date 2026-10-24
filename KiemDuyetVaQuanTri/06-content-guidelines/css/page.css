@@ -17,7 +17,7 @@
 }
 .description {
   margin: 8px 0 0;
-  color: #7d8790;
+  color: var(--muted);
   font-size: 12px;
   line-height: 1.5;
 }
@@ -32,7 +32,7 @@
   max-width: 500px;
 }
 .result-count {
-  color: #7d8790;
+  color: var(--muted);
   font-size: 12px;
 }
 .rules-grid {
@@ -78,7 +78,7 @@
 }
 .rule-card p {
   margin: 0;
-  color: #718089;
+  color: var(--muted);
   font-size: 12px;
   line-height: 1.6;
   white-space: pre-wrap;
@@ -88,7 +88,7 @@
   padding: 28px;
   border: 1px dashed #d8dddc;
   border-radius: 12px;
-  color: #7d8790;
+  color: var(--muted);
   text-align: center;
   background: #fff;
 }
@@ -97,13 +97,16 @@
     grid-template-columns: 1fr;
   }
 }
+@media(max-width:850px) {
+  .toolbar { display: flex; flex-wrap: wrap; gap: 8px; }
+  .toolbar .search-box { flex: 1 1 100%; max-width: none; }
+  #groupFilter, #ruleSort { flex: 1 1 145px; max-width: 100%; }
+  .result-count { flex: 1 1 100%; }
+}
 @media(max-width:680px) {
   .page-heading {
     align-items: flex-start;
     flex-direction: column;
-  }
-  .toolbar .search-box {
-    max-width: none;
   }
   .rule-card {
     padding: 14px;
