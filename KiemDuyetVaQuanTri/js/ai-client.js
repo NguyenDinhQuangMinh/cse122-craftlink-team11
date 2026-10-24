@@ -44,6 +44,8 @@
     const result = el("section", "ai-result");
     result.hidden = true;
     const resultHeading = el("h3", "ai-result-title");
+    const source = el("p", "ai-source");
+    source.setAttribute("aria-live", "polite");
     const confidence = el("span", "ai-confidence");
     const summary = el("p", "ai-summary");
     const recommendation = el("p", "ai-recommendation");
@@ -70,7 +72,7 @@
     const reject = el("button", "ai-reject", "Từ chối");
     reject.type = "button";
     controls.append(accept, edit, regenerate, reject);
-    result.append(resultHeading, confidence, summary, recommendation, factorsTitle, factors, actionLabel, action, draftLabel, draft, controls);
+    result.append(resultHeading, source, confidence, summary, recommendation, factorsTitle, factors, actionLabel, action, draftLabel, draft, controls);
 
     const examples = el("div", "ai-examples");
     examples.setAttribute("aria-label", "Gợi ý dữ liệu đầu vào");
@@ -90,7 +92,7 @@
     dialog.addEventListener("click", event => {
       if (event.target === dialog) dialog.close();
     });
-    return { dialog, input, run, status, result, resultHeading, confidence, summary, recommendation, factors, actionLabel, action, draft, accept, edit, regenerate, reject, examples };
+    return { dialog, input, run, status, result, resultHeading, source, confidence, summary, recommendation, factors, actionLabel, action, draft, accept, edit, regenerate, reject, examples };
   }
 
   function bind(config) {
@@ -98,6 +100,43 @@
     let context = {};
     let result = null;
     let runCount = 0;
+
+    async function requestServer(note, regenerate) {
+      const configuredEndpoint = document.querySelector('meta[name="craftlink-ai-endpoint"]')?.content.trim() || window.CRAFTLINK_AI_ENDPOINT;
+      const endpoint = configuredEndpoint || new URL("/api/ai", window.location.origin).href;
+      const response = await fetch(endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({ feature: config.feature, context, input: note, regenerate: regenerate || runCount > 0 })
+      });
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        if (response.status === 404) {
+          throw new Error("không tìm thấy /api/ai trên máy chủ tĩnh");
+        }
+        if (response.status === 503) {
+          throw new Error("máy chủ chưa cấu hình AI_API_URL, AI_API_KEY, AI_MODEL");
+        }
+        throw new Error(payload.error || "AI chưa phản hồi");
+      }
+      if (!payload.result || typeof payload.result !== "object") {
+        throw new Error("AI trả về dữ liệu không hợp lệ");
+      }
+      return { result: payload.result, source: "model" };
+    }
+
+    async function analyze(note, regenerate) {
+      const fallback = window.CraftLinkAIFallback;
+      if (!fallback || !fallback.available(config.feature)) {
+        return requestServer(note, regenerate);
+      }
+      try {
+        return await requestServer(note, regenerate);
+      } catch (error) {
+        ui.status.textContent = "Chưa gọi được AI máy chủ (" + (error.message || "lỗi mạng") + "). Trang chuyển sang bộ phân tích cục bộ.";
+        return { result: fallback.analyze(config.feature, context, note), source: "fallback" };
+      }
+    }
 
     async function execute(regenerate = false) {
       const note = ui.input.value.trim();
@@ -115,25 +154,14 @@
       ui.result.hidden = true;
       ui.examples.hidden = true;
       ui.dialog.setAttribute("aria-busy", "true");
+      result = null;
 
       try {
-        const configuredEndpoint = document.querySelector('meta[name="craftlink-ai-endpoint"]')?.content.trim() || window.CRAFTLINK_AI_ENDPOINT;
-        const endpoint = configuredEndpoint || new URL("/api/ai", window.location.origin).href;
-        const response = await fetch(endpoint, {
-          method: "POST",
-          headers: { "Content-Type": "application/json", Accept: "application/json" },
-          body: JSON.stringify({ feature: config.feature, context, input: note, regenerate: regenerate || runCount > 0 })
-        });
-        const payload = await response.json().catch(() => ({}));
-        if (!response.ok) {
-          if (response.status === 404) {
-            throw new Error("Không tìm thấy API AI. GitHub Pages chỉ chạy giao diện tĩnh; hãy triển khai dự án cùng /api/ai.js trên Vercel.");
-          }
-          throw new Error(payload.error || "AI chưa phản hồi. Hãy thử lại hoặc xử lý thủ công.");
-        }
-        result = payload.result;
-        if (!result || typeof result !== "object") throw new Error("AI trả về dữ liệu không hợp lệ.");
-
+        const analysed = await analyze(note, regenerate);
+        result = analysed.result;
+        ui.source.textContent = analysed.source === "model"
+          ? "Nguồn: mô hình AI gọi qua serverless proxy /api/ai."
+          : "Nguồn: bộ quy tắc phân tích cục bộ, chạy trên đúng dữ liệu của bản ghi đang mở. Dùng khi máy chủ chưa cấu hình API AI.";
         ui.resultHeading.textContent = result.title || labels[config.feature] || "Kết quả phân tích";
         ui.confidence.textContent = "Độ tin cậy: " + Math.round(Number(result.confidence || 0) * 100) + "%";
         ui.summary.textContent = result.summary || "";
@@ -162,13 +190,12 @@
         ui.examples.hidden = Number(result.confidence || 0) >= 0.55;
         runCount++;
       } catch (error) {
-        ui.status.textContent = error instanceof TypeError
-          ? "Không kết nối được máy chủ AI. GitHub Pages chỉ chạy giao diện tĩnh; hãy triển khai API trên Vercel rồi cấu hình AI_API_URL, AI_API_KEY và AI_MODEL."
-          : error.message || "Không thể kết nối AI. Hãy thử lại hoặc chuyển sang xử lý thủ công.";
+        ui.status.textContent = (error.message || "Không thể kết nối AI") + ". Hãy thử lại hoặc chuyển sang xử lý thủ công.";
         ui.examples.hidden = false;
       } finally {
         ui.run.disabled = false;
         ui.regenerate.disabled = false;
+        ui.accept.disabled = result === null;
         ui.dialog.removeAttribute("aria-busy");
       }
     }
@@ -179,6 +206,7 @@
       context = typeof config.getContext === "function" ? config.getContext(trigger) : {};
       ui.input.value = "";
       ui.status.textContent = "Nhập thêm thông tin nếu cần, sau đó chọn Phân tích bằng AI.";
+      ui.source.textContent = "";
       ui.result.hidden = true;
       ui.examples.hidden = false;
       runCount = 0;
