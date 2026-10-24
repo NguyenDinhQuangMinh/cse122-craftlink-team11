@@ -41,6 +41,8 @@ Một API server-side tại api/ai.js dùng chung một nhà cung cấp/mô hìn
 
 Để gọi AI thật, triển khai dự án trên Vercel hoặc nền tảng chạy được serverless function, rồi cấu hình AI_API_URL, AI_API_KEY, AI_MODEL trong biến môi trường của máy chủ. Có thể tham khảo .env.example; không đưa khóa thật vào Git. GitHub Pages chỉ phục vụ tệp tĩnh, nên endpoint AI sẽ không chạy nếu chỉ triển khai trên GitHub Pages. Hướng dẫn chi tiết và giới hạn dữ liệu gửi đến AI ở [KiemDuyetVaQuanTri/docs/ai-usage-report.md](KiemDuyetVaQuanTri/docs/ai-usage-report.md).
 
+Khi máy chủ chưa có khóa hoặc trang chạy ở chế độ tĩnh, js/ai-fallback.js phân tích bằng bộ quy tắc trên đúng dữ liệu của bản ghi đang mở để luồng AI vẫn demo được. Giao diện luôn hiển thị dòng "Nguồn:" ghi rõ kết quả đến từ mô hình AI hay từ bộ quy tắc cục bộ; đây là hỗ trợ ra quyết định, không phải kết quả của mô hình ngôn ngữ.
+
 > Đây là demo phía trình duyệt, chưa có cơ sở dữ liệu hoặc đăng nhập/phân quyền thật. Dữ liệu chỉ lưu trong trình duyệt hiện tại; không đồng bộ giữa máy hoặc người dùng.
 
 ## Công nghệ

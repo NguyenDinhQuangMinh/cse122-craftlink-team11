@@ -22,18 +22,19 @@ Giữ GopTrang.html làm điểm trình diễn/tích hợp cho sáu trang. Khôn
 | # | Vai trò / màn hình | Mục tiêu và tác vụ chính | Dữ liệu và liên kết | Trạng thái giao diện | AI |
 |---|---|---|---|---|---|
 | 1 | Quản trị viên – Bảng điều khiển | Xem doanh thu mẫu, số thợ hoạt động, cảnh báo và nhật ký; tìm trong nhật ký | Đọc users, products, reports; KPI hoạt động cập nhật từ các bộ sưu tập dùng chung | KPI đang tải/lỗi; nhật ký có nội dung hoặc trạng thái không tìm thấy | Không gọi AI |
-| 2 | Quản trị viên – Quản lý danh mục | Tìm, thêm, sửa, xóa, bật/tắt hiển thị; chặn tên trùng; tải ảnh nền khi tạo | categories.json: 15 mục mẫu; ảnh được nén và lưu cùng bản ghi qua CraftLinkAPI | Đang tải, lỗi có nút thử lại, rỗng có nút xóa lọc, toast thành công/lỗi | Không gọi AI |
+| 2 | Quản trị viên – Quản lý danh mục | Tìm, lọc theo trạng thái hiển thị, sắp xếp theo tên hoặc số sản phẩm, thêm, sửa, xóa, bật/tắt; chặn tên trùng; chặn giá trị ngoài khoảng; tải ảnh nền khi tạo | categories.json: 15 mục mẫu; ảnh được nén và lưu cùng bản ghi qua CraftLinkAPI | Đang tải, lỗi có nút thử lại, rỗng có nút xóa lọc, lỗi trường ngay dưới ô nhập, toast thành công/lỗi | Không gọi AI |
 | 3 | Quản trị viên – Quản lý tài khoản | Tìm, lọc buyer/maker/moderator; thêm, sửa, xóa, khóa/mở khóa; tải ảnh đại diện khi tạo | users.json: 20 mục mẫu; ảnh và trạng thái dùng chung với dashboard | Đang tải, lỗi có thử lại, rỗng có xóa lọc, xác nhận xóa và toast | Không gọi AI |
-| 4 | Kiểm duyệt viên – Hàng đợi kiểm duyệt | Lọc trạng thái, tìm sản phẩm, xem chi tiết, duyệt, yêu cầu sửa, từ chối, khôi phục dữ liệu mẫu | products.json: 20 mục mẫu; gửi kèm thông tin sản phẩm và hướng dẫn hiện hành cho AI | Đang tải, lỗi có thử lại, danh sách rỗng, xác nhận và toast; quyết định được lưu | AI-2: phân tích rủi ro, trả độ tin cậy/yếu tố/đề xuất; kiểm duyệt viên xác nhận |
+| 4 | Kiểm duyệt viên – Hàng đợi kiểm duyệt | Lọc trạng thái, tìm sản phẩm, sắp xếp theo thời gian gửi hoặc tên, xem chi tiết, duyệt, yêu cầu sửa, từ chối, khôi phục dữ liệu mẫu | products.json: 20 mục mẫu; gửi kèm thông tin sản phẩm và toàn bộ hướng dẫn hiện hành cho AI | Đang tải, lỗi có thử lại, danh sách rỗng, xác nhận và toast; quyết định được lưu | AI-2: phân tích rủi ro, trả độ tin cậy/yếu tố/đề xuất; kiểm duyệt viên xác nhận |
 | 5 | Kiểm duyệt viên – Trung tâm báo cáo | Tìm; lọc trạng thái, lý do, thời gian; sắp xếp cột; phân trang; xem, xác minh, bỏ qua, xử lý | reports.json: 20 mục mẫu; KPI dashboard đọc trạng thái báo cáo | Đang tải/lỗi/rỗng; số dòng mỗi trang 5/10/20; quyết định có hoàn tác nếu lưu thất bại | Hỗ trợ phân loại và ưu tiên báo cáo; lưu kết quả cùng quyết định người dùng |
-| 6 | Kiểm duyệt viên – Hướng dẫn nội dung | Tìm, thêm, sửa, xóa; kiểm tra trùng tên; xem và áp dụng bản nháp AI | guidelines.json: 15 mục mẫu; quy định cung cấp bối cảnh cho trang 4 | Đang tải/lỗi/rỗng; form có validation; xác nhận xóa; toast | AI-3: copilot soạn nháp; người dùng sửa, chấp nhận hoặc từ chối |
+| 6 | Kiểm duyệt viên – Hướng dẫn nội dung | Tìm, lọc theo nhóm quy định, sắp xếp theo tên, thêm, sửa, xóa; kiểm tra trùng tên; xem và áp dụng bản nháp AI | guidelines.json: 15 mục mẫu; quy định cung cấp bối cảnh cho trang 4 và cho chính copilot | Đang tải/lỗi/rỗng; form có validation từng trường; xác nhận xóa; toast | AI-3: copilot soạn nháp; người dùng sửa, chấp nhận hoặc từ chối |
 
 ### Responsive và lưu trữ ảnh
 
 - Sáu trang dùng menu dạng drawer ở màn hình hẹp; ô tìm kiếm trên thanh đầu trang co lại theo chiều rộng còn lại.
 - Bảng có nhiều cột cuộn bên trong vùng bảng thay vì làm rộng toàn bộ trang.
 - Khi thêm danh mục/tài khoản, ảnh là trường bắt buộc; khi sửa, có thể giữ ảnh cũ hoặc chọn ảnh mới. Ảnh JPG/PNG/WebP tối đa 5 MB được thu nhỏ/nén phía trình duyệt và lưu trong localStorage.
-- Nên mở DevTools ở chiều rộng 320 px, 375 px và 768 px để xác nhận lại trước khi nộp; mã CSS không thay cho kiểm tra trên thiết bị/trình duyệt thực tế.
+- Ngày 25-10-2026 đã đo lại trên Chromium ở 320, 375, 768 và 1280 px cho trang 2, 4, 6: scrollWidth của tài liệu đúng bằng chiều rộng cửa sổ, không có cuộn ngang ngoài ý muốn; hộp thoại AI cũng không tràn ở 320 px. Vẫn nên kiểm tra lại trên thiết bị thật trước khi nộp.
+- Toàn bộ chữ màu phụ dùng chung biến --muted (#5a6472, tương phản 6.0:1 trên nền trắng) thay vì các mã xám lẻ trước đó; viền focus là màu đặc, không còn trong suốt.
 
 ### AI theo barem 6.1–6.3
 
@@ -41,6 +42,7 @@ Giữ GopTrang.html làm điểm trình diễn/tích hợp cho sáu trang. Khôn
 - 6.2 – Phân loại rủi ro: trang 4 phân tích nội dung sản phẩm theo các quy định từ trang 6. Trang 5 có thêm ưu tiên báo cáo nhưng không thay cho phần tích hợp 6.1.
 - 6.3 – Copilot nghiệp vụ: trang 6 soạn quy định CraftLink; bản nháp chưa được xuất bản cho đến khi người quản trị xác nhận.
 - Cả ba loại tác vụ dùng cùng API server và cấu hình mô hình. Khóa nằm ở biến môi trường máy chủ, không trong trình duyệt.
+- Khi máy chủ chưa có khóa hoặc trang chạy ở chế độ tĩnh, js/ai-fallback.js phân tích bằng bộ quy tắc trên đúng dữ liệu bản ghi đang mở; giao diện ghi rõ nguồn kết quả. Chi tiết ở docs/ai-usage-report.md.
 
 ### Tiêu chí phía repo cần hoàn thành ngoài mã nguồn
 
