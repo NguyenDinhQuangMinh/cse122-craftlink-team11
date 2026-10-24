@@ -17,7 +17,9 @@
 
   toggle?.addEventListener("click", () => setMenu(toggle.getAttribute("aria-expanded") !== "true"));
   document.addEventListener("keydown", event => {
-    if (event.key === "Escape") setMenu(false);
+    if (event.key !== "Escape") return;
+    setMenu(false);
+    document.querySelectorAll(".popover:not([hidden])").forEach(popover => { popover.hidden = true; });
   });
   document.addEventListener("click", event => {
     if (document.body.classList.contains("menu-open") &&

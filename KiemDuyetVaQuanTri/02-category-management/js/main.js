@@ -39,9 +39,9 @@ function wireHeader(searchHandler) {
     });
   });
 
-  $("#globalSearch").addEventListener("input", e => {
+  $("#globalSearch").addEventListener("input", CraftLinkAPI.debounce(e => {
     if (searchHandler) searchHandler(e.target.value);
-  });
+  }));
 }
 
 function esc(value) {
@@ -97,16 +97,27 @@ function render() {
   if (loadError) return CraftLinkAPI.showState($("#rows"), "error", loadError, {
     colSpan: 5, actionLabel: "Thử lại", onAction: loadData
   });
-  const q = ($("#search").value || query).toLocaleLowerCase("vi");
+  const q = ($("#search").value || query).trim().toLocaleLowerCase("vi");
+  const visibility = $("#visibilityFilter").value;
+  const sort = $("#categorySort").value;
+  const shown = items.filter(item =>
+    item.name.toLocaleLowerCase("vi").includes(q) &&
+    (visibility === "all" || (visibility === "active" ? item.active : !item.active))
+  );
+  shown.sort((a, b) => {
+    if (sort === "products-desc") return Number(b.products || 0) - Number(a.products || 0);
+    const order = a.name.localeCompare(b.name, "vi");
+    return sort === "name-desc" ? -order : order;
+  });
+  $("#categoryCount").textContent = shown.length + " / " + items.length + " danh mục";
 
-  $("#rows").innerHTML = items
-    .filter(item => item.name.toLocaleLowerCase("vi").includes(q))
+  $("#rows").innerHTML = shown
     .map(item =>
       '<tr class="category-row">' +
         '<td><div class="category-name">' +
           '<img class="category-thumb" src="' + esc(item.coverData || ("../assets/category-" +
           (Math.min(5, Math.max(1, Number(item.image) || 1))) + ".png")) +
-          '" alt=""><span>' + esc(item.name) + '</span>' +
+          '" alt="Ảnh bìa danh mục ' + esc(item.name) + '"><span>' + esc(item.name) + '</span>' +
         '</div></td>' +
         '<td>' + Number(item.children || 0) + '</td>' +
         '<td>' + Number(item.products || 0) + '</td>' +
@@ -129,13 +140,39 @@ function render() {
     '<tr><td colspan="5" class="empty">Không tìm thấy danh mục. <button type="button" data-reset-filter>Xóa bộ lọc</button></td></tr>';
 }
 
+function clearFieldError(input, error) {
+  input.removeAttribute("aria-invalid");
+  error.textContent = "";
+}
+function setFieldError(input, error, message) {
+  input.setAttribute("aria-invalid", "true");
+  error.textContent = message;
+}
+function clearFormErrors() {
+  clearFieldError(form.elements.name, $("#nameError"));
+  clearFieldError(form.elements.children, $("#childrenError"));
+  clearFieldError(form.elements.products, $("#productsError"));
+  clearFieldError(form.elements.cover, $("#coverError"));
+}
+
+function readCount(input, error, label, max) {
+  const raw = input.value.trim();
+  const value = Number(raw);
+  if (!raw || !Number.isInteger(value) || value < 0 || value > max) {
+    setFieldError(input, error, label + " phải là số nguyên từ 0 đến " + max + ".");
+    return null;
+  }
+  return value;
+}
+
 function edit(item) {
   form.reset();
+  clearFormErrors();
   form.elements.id.value = item?.id || "";
   form.elements.name.value = item?.name || "";
   form.elements.children.value = item?.children || 0;
   form.elements.products.value = item?.products || 0;
-  form.elements.cover.required = !item;
+  form.elements.cover.required = false;
   const preview = $("#coverPreview");
   preview.src = item?.coverData || ("../assets/category-" + (Math.min(5, Math.max(1, Number(item?.image) || 1))) + ".png");
   preview.hidden = !item?.coverData && !item;
@@ -146,6 +183,7 @@ function edit(item) {
 }
 
 form.elements.cover.addEventListener("change", async () => {
+  clearFieldError(form.elements.cover, $("#coverError"));
   const file = form.elements.cover.files[0];
   if (!file) return;
   try {
@@ -153,7 +191,7 @@ form.elements.cover.addEventListener("change", async () => {
     $("#coverPreview").hidden = false;
   } catch (error) {
     form.elements.cover.value = "";
-    notify(error.message);
+    setFieldError(form.elements.cover, $("#coverError"), error.message || "Ảnh không hợp lệ.");
   }
 });
 
@@ -165,7 +203,12 @@ dialog.addEventListener("click", e => {
   if (e.target === dialog) dialog.close();
 });
 
-$("#search").addEventListener("input", () => render());
+$("#search").addEventListener("input", CraftLinkAPI.debounce(() => render()));
+$("#visibilityFilter").addEventListener("change", render);
+$("#categorySort").addEventListener("change", render);
+form.elements.name.addEventListener("input", () => clearFieldError(form.elements.name, $("#nameError")));
+form.elements.children.addEventListener("input", () => clearFieldError(form.elements.children, $("#childrenError")));
+form.elements.products.addEventListener("input", () => clearFieldError(form.elements.products, $("#productsError")));
 
 wireHeader(value => {
   query = value;
@@ -177,6 +220,8 @@ $("#rows").addEventListener("click", e => {
   if (e.target.closest("[data-reset-filter]")) {
     $("#search").value = "";
     query = "";
+    $("#visibilityFilter").value = "all";
+    $("#categorySort").value = "name-asc";
     return render();
   }
   const button = e.target.closest("[data-act]");
@@ -213,14 +258,36 @@ $("#rows").addEventListener("click", e => {
 
 form.addEventListener("submit", async e => {
   e.preventDefault();
-  if (!form.reportValidity()) return;
-
   const id = form.elements.id.value;
   const old = items.find(x => x.id === id);
   const name = form.elements.name.value.trim();
-  if (items.some(item => item.id !== id && item.name.toLocaleLowerCase("vi") === name.toLocaleLowerCase("vi"))) {
-    return notify("Tên danh mục này đã tồn tại.");
+  if (name.length < 2) {
+    setFieldError(form.elements.name, $("#nameError"), "Tên danh mục cần có ít nhất 2 ký tự không tính khoảng trắng.");
+    form.elements.name.focus();
+    return;
   }
+  const children = readCount(form.elements.children, $("#childrenError"), "Số danh mục con", 50);
+  if (children === null) {
+    form.elements.children.focus();
+    return;
+  }
+  const productCount = readCount(form.elements.products, $("#productsError"), "Tổng số sản phẩm", 9999);
+  if (productCount === null) {
+    form.elements.products.focus();
+    return;
+  }
+  if (!old && !form.elements.cover.files[0]) {
+    setFieldError(form.elements.cover, $("#coverError"), "Vui lòng chọn ảnh nền cho danh mục.");
+    form.elements.cover.focus();
+    return;
+  }
+  if (items.some(item => item.id !== id && item.name.trim().toLocaleLowerCase("vi") === name.toLocaleLowerCase("vi"))) {
+    setFieldError(form.elements.name, $("#nameError"), "Tên danh mục này đã tồn tại.");
+    form.elements.name.focus();
+    return;
+  }
+  if (!form.reportValidity()) return;
+  clearFormErrors();
   const previous = items;
   const submit = form.querySelector('[type="submit"]');
   submit.disabled = true;
@@ -229,13 +296,14 @@ form.addEventListener("submit", async e => {
     if (form.elements.cover.files[0]) coverData = await CraftLinkAPI.encodeImage(form.elements.cover.files[0], 1000);
   } catch (error) {
     submit.disabled = false;
-    return notify(error.message);
+    setFieldError(form.elements.cover, $("#coverError"), error.message || "Không thể xử lý ảnh này.");
+    return;
   }
   const item = {
     id: id || "c" + Date.now(),
     name,
-    children: Number(form.elements.children.value) || 0,
-    products: Number(form.elements.products.value) || 0,
+    children,
+    products: productCount,
     active: old?.active ?? true,
     image: old?.image || 1,
     coverData

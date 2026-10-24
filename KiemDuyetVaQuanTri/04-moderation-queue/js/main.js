@@ -39,9 +39,9 @@ function wireHeader(searchHandler) {
     });
   });
 
-  $("#globalSearch").addEventListener("input", e => {
+  $("#globalSearch").addEventListener("input", CraftLinkAPI.debounce(e => {
     if (searchHandler) searchHandler(e.target.value);
-  });
+  }));
 }
 
 function esc(value) {
@@ -172,6 +172,13 @@ const form = $("#decisionForm");
 let selected = 0;
 let query = "";
 let statusFilter = "pending";
+let queueSort = "newest";
+
+const ageMinutes = value => {
+  const units = { "giây": 1 / 60, "phút": 1, "giờ": 60, "ngày": 1440, "tuần": 10080, "tháng": 43200, "năm": 525600 };
+  const match = String(value || "").toLocaleLowerCase("vi").match(/(\d+)\s*(giây|phút|giờ|ngày|tuần|tháng|năm)/);
+  return match ? Number(match[1]) * units[match[2]] : 0;
+};
 
 function render() {
   const container = $("#products");
@@ -181,8 +188,15 @@ function render() {
   });
   const shown = products.filter(item =>
     (statusFilter === "all" || item.status === statusFilter) &&
-    (item.name + " " + item.maker).toLocaleLowerCase("vi").includes(query.toLocaleLowerCase("vi"))
+    (item.name + " " + item.maker).toLocaleLowerCase("vi").includes(query.trim().toLocaleLowerCase("vi"))
   );
+  shown.sort((a, b) => {
+    if (queueSort === "name") return a.name.localeCompare(b.name, "vi");
+    const order = ageMinutes(a.age) - ageMinutes(b.age);
+    if (order) return queueSort === "oldest" ? -order : order;
+    return queueSort === "oldest" ? Number(a.id) - Number(b.id) : Number(b.id) - Number(a.id);
+  });
+  $("#queueCount").textContent = shown.length + " sản phẩm";
   const statusNames = {
     pending: "Đang chờ",
     approved: "Đã duyệt",
@@ -228,6 +242,7 @@ function showDecision(item) {
   $("#decisionPanel").hidden = false;
   form.elements.id.value = item.id;
   form.elements.note.value = item.note;
+  clearNoteError();
   dialog.showModal();
 }
 
@@ -253,6 +268,8 @@ $("#products").addEventListener("click", async e => {
     query = "";
     $("#statusFilter").value = "pending";
     statusFilter = "pending";
+    $("#queueSort").value = "newest";
+    queueSort = "newest";
     return render();
   }
   if (e.target.closest("[data-reset-data]")) {
@@ -289,6 +306,23 @@ $("#statusFilter").addEventListener("change", event => {
   statusFilter = event.target.value;
   render();
 });
+$("#queueSort").addEventListener("change", event => {
+  queueSort = event.target.value;
+  render();
+});
+
+const noteInput = form.elements.note;
+const noteError = $("#noteError");
+function clearNoteError() {
+  noteInput.removeAttribute("aria-invalid");
+  noteError.textContent = "";
+}
+function showNoteError(message) {
+  noteInput.setAttribute("aria-invalid", "true");
+  noteError.textContent = message;
+  noteInput.focus();
+}
+noteInput.addEventListener("input", clearNoteError);
 
 $("#detailApprove").addEventListener("click", () => {
   approve(products.find(x => x.id === selected));
@@ -312,7 +346,7 @@ CraftLinkAI.bind({
   getContext: trigger => {
     const card = trigger.closest(".product-card");
     const item = products.find(product => product.id === Number(card?.dataset.id));
-    return item ? { id: item.id, name: item.name, category: item.category, description: item.description, status: item.status, guidelines: guidelines.map(rule => ({ title: rule.title, group: rule.group, text: rule.text })) } : {};
+    return item ? { id: item.id, name: item.name, category: item.category, price: item.price, maker: item.maker, age: item.age, description: item.description, status: item.status, guidelines: guidelines.map(rule => ({ title: rule.title, group: rule.group, text: rule.text })) } : {};
   },
   prefill: context => context.description || "",
   apply: (result, draft, action, context) => {
@@ -346,9 +380,12 @@ form.addEventListener("submit", e => {
   const item = products.find(x => x.id === Number(form.elements.id.value));
   const note = form.elements.note.value.trim();
 
-  if (!item || note.length < 5) {
-    return notify("Vui lòng ghi phản hồi tối thiểu 5 ký tự.");
+  if (!item) return notify("Không tìm thấy sản phẩm cần xử lý.");
+  if (note.length < 5) {
+    showNoteError("Phản hồi cần có ít nhất 5 ký tự không tính khoảng trắng.");
+    return;
   }
+  clearNoteError();
 
   const previous = { note: item.note, status: item.status };
   item.note = note;

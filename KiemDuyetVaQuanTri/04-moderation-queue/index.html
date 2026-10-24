@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="../js/api.js" defer></script>
 <script src="../js/navigation.js" defer></script>
+<script src="../js/ai-fallback.js" defer></script>
 <script src="../js/ai-client.js" defer></script>
 <script src="js/main.js" defer></script>
   </head>
@@ -83,7 +84,7 @@
       </div>
 
       <button class="side-user" type="button" data-action="logout">
-        <img src="../assets/moderator-avatar.jpg" alt="">
+        <img src="../assets/moderator-avatar.jpg" alt="Ảnh đại diện tài khoản Kiểm duyệt viên">
         <span>
           <b>Kiểm duyệt viên</b>
           <small>Đăng xuất</small>
@@ -127,7 +128,7 @@
 
           <div class="popover-wrap">
             <button class="profile" id="profileButton" type="button">
-              <img src="../assets/moderator-avatar.jpg" alt="">
+              <img src="../assets/moderator-avatar.jpg" alt="Ảnh đại diện tài khoản Kiểm duyệt viên">
               <span>Kiểm duyệt viên</span>
               <span class="chevron">⌄</span>
             </button>
@@ -156,11 +157,18 @@
             <option value="revision">Cần chỉnh sửa</option>
             <option value="rejected">Đã từ chối</option>
           </select>
+          <label class="sr-only" for="queueSort">Sắp xếp hàng đợi</label>
+          <select id="queueSort" aria-label="Sắp xếp hàng đợi">
+            <option value="newest">Mới gửi trước</option>
+            <option value="oldest">Gửi lâu trước</option>
+            <option value="name">Tên sản phẩm A–Z</option>
+          </select>
+          <span class="result-count" id="queueCount" aria-live="polite"></span>
         </div>
         <div class="product-grid" id="products"></div>
 
         <dialog class="dialog" id="editor">
-          <form id="decisionForm">
+          <form id="decisionForm" novalidate>
             <header class="dialog-head">
               <h2 id="dialogTitle">Chi tiết sản phẩm</h2>
               <button
@@ -191,8 +199,10 @@
                   name="note"
                   required
                   minlength="5"
+                  aria-describedby="noteError"
                   placeholder="Nêu rõ nội dung cần chỉnh sửa hoặc lý do từ chối"
                 ></textarea>
+                <small class="field-error" id="noteError" aria-live="polite"></small>
               </label>
               <label>
                 Quyết định

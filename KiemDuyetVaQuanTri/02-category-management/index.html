@@ -82,7 +82,7 @@
       </div>
 
       <button class="side-user" type="button" data-action="logout">
-        <img src="../assets/admin-sidebar-avatar.png" alt="">
+        <img src="../assets/admin-sidebar-avatar.png" alt="Ảnh đại diện tài khoản Quản trị viên">
         <span>
           <b>Quản trị viên Admin</b>
           <small>Đăng xuất</small>
@@ -126,7 +126,7 @@
 
           <div class="popover-wrap">
             <button class="profile" id="profileButton" type="button">
-              <img src="../assets/admin-avatar.png" alt="">
+              <img src="../assets/admin-avatar.png" alt="Ảnh đại diện tài khoản Quản trị viên">
               <span>Quản trị viên Admin</span>
               <span class="chevron">⌄</span>
             </button>
@@ -143,7 +143,7 @@
       <div class="page">
         <h1>Quản lý danh mục ngành hàng thủ công</h1>
 
-        <div class="toolbar">
+        <div class="toolbar category-toolbar">
           <label class="search-box">
             <span>⌕</span>
             <input
@@ -153,6 +153,19 @@
               aria-label="Tìm kiếm danh mục"
             >
           </label>
+          <label class="sr-only" for="visibilityFilter">Lọc trạng thái danh mục</label>
+          <select id="visibilityFilter" aria-label="Lọc trạng thái danh mục">
+            <option value="all">Tất cả trạng thái</option>
+            <option value="active">Đang hiển thị</option>
+            <option value="inactive">Đang ẩn</option>
+          </select>
+          <label class="sr-only" for="categorySort">Sắp xếp danh mục</label>
+          <select id="categorySort" aria-label="Sắp xếp danh mục">
+            <option value="name-asc">Tên A–Z</option>
+            <option value="name-desc">Tên Z–A</option>
+            <option value="products-desc">Nhiều sản phẩm nhất</option>
+          </select>
+          <span class="result-count" id="categoryCount" aria-live="polite"></span>
           <button class="primary" id="add" type="button">＋ Thêm danh mục mới</button>
         </div>
 
@@ -172,7 +185,7 @@
         </section>
 
         <dialog class="dialog" id="editor">
-          <form id="form">
+          <form id="form" novalidate>
             <header class="dialog-head">
               <h2 id="dialogTitle">Thêm danh mục mới</h2>
               <button
@@ -190,25 +203,31 @@
               <input
                 name="name"
                 required
+                minlength="2"
                 maxlength="80"
+                aria-describedby="nameError"
                 placeholder="Ví dụ: Đồ gỗ nghệ thuật"
               >
+              <small class="field-error" id="nameError" aria-live="polite"></small>
             </label>
 
             <label>
               Số danh mục con
-              <input name="children" type="number" min="0" value="0">
+              <input name="children" type="number" min="0" max="50" step="1" value="0" aria-describedby="childrenError">
+              <small class="field-error" id="childrenError" aria-live="polite"></small>
             </label>
 
             <label>
               Tổng số sản phẩm
-              <input name="products" type="number" min="0" value="0">
+              <input name="products" type="number" min="0" max="9999" step="1" value="0" aria-describedby="productsError">
+              <small class="field-error" id="productsError" aria-live="polite"></small>
             </label>
 
             <label class="image-upload">
               Ảnh nền danh mục
-              <input name="cover" type="file" accept="image/jpeg,image/png,image/webp">
-              <small>JPG, PNG hoặc WebP; tối đa 5 MB. Ảnh được tự thu nhỏ để lưu trong trình duyệt.</small>
+              <input name="cover" type="file" accept="image/jpeg,image/png,image/webp" aria-describedby="coverHelp coverError">
+              <small id="coverHelp">JPG, PNG hoặc WebP; tối đa 5 MB. Ảnh được tự thu nhỏ để lưu trong trình duyệt.</small>
+              <small class="field-error" id="coverError" aria-live="polite"></small>
               <img class="upload-preview category-preview" id="coverPreview" alt="Ảnh xem trước danh mục" hidden>
             </label>
 

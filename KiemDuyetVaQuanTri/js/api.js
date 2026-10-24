@@ -121,5 +121,13 @@
     });
   }
 
-  window.CraftLinkAPI = { load, reset, save, showState, subscribe, encodeImage, key: name => PREFIX + name };
+  function debounce(handler, wait = 260) {
+    let timer;
+    return (...args) => {
+      clearTimeout(timer);
+      timer = setTimeout(() => handler(...args), wait);
+    };
+  }
+
+  window.CraftLinkAPI = { load, reset, save, showState, subscribe, encodeImage, debounce, key: name => PREFIX + name };
 })();

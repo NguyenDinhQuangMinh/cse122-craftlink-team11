@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="../js/api.js" defer></script>
 <script src="../js/navigation.js" defer></script>
+<script src="../js/ai-fallback.js" defer></script>
 <script src="../js/ai-client.js" defer></script>
 <script src="js/main.js" defer></script>
   </head>
@@ -83,7 +84,7 @@
       </div>
 
       <button class="side-user" type="button" data-action="logout">
-        <img src="../assets/moderator-avatar.jpg" alt="">
+        <img src="../assets/moderator-avatar.jpg" alt="Ảnh đại diện tài khoản Kiểm duyệt viên">
         <span>
           <b>Kiểm duyệt viên</b>
           <small>Đăng xuất</small>
@@ -125,7 +126,7 @@
 
           <div class="popover-wrap">
             <button class="profile" id="profileButton" type="button">
-              <img src="../assets/moderator-avatar.jpg" alt="">
+              <img src="../assets/moderator-avatar.jpg" alt="Ảnh đại diện tài khoản Kiểm duyệt viên">
               <span>Kiểm duyệt viên</span>
               <span class="chevron">⌄</span>
             </button>
@@ -163,7 +164,24 @@
               aria-label="Tìm quy định"
             >
           </label>
-          <span class="result-count" id="resultCount"></span>
+          <label class="sr-only" for="groupFilter">Lọc nhóm quy định</label>
+          <select id="groupFilter" aria-label="Lọc nhóm quy định">
+            <option value="all">Tất cả nhóm</option>
+            <option value="Thông tin sản phẩm">Thông tin sản phẩm</option>
+            <option value="An toàn cộng đồng">An toàn cộng đồng</option>
+            <option value="Quyền tác giả">Quyền tác giả</option>
+            <option value="Kiểm duyệt">Kiểm duyệt</option>
+            <option value="Quyền riêng tư">Quyền riêng tư</option>
+            <option value="Giao dịch">Giao dịch</option>
+            <option value="Đánh giá">Đánh giá</option>
+            <option value="Cộng đồng">Cộng đồng</option>
+          </select>
+          <label class="sr-only" for="ruleSort">Sắp xếp quy định</label>
+          <select id="ruleSort" aria-label="Sắp xếp quy định">
+            <option value="name-asc">Tên A–Z</option>
+            <option value="name-desc">Tên Z–A</option>
+          </select>
+          <span class="result-count" id="resultCount" aria-live="polite"></span>
         </div>
 
         <section class="rules-grid" id="rules" aria-live="polite"></section>
@@ -171,7 +189,7 @@
     </main>
 
     <dialog class="dialog" id="editor">
-      <form id="ruleForm">
+      <form id="ruleForm" novalidate>
         <header class="dialog-head">
           <h2 id="dialogTitle">Thêm quy định</h2>
           <button
@@ -190,6 +208,11 @@
             <option>Thông tin sản phẩm</option>
             <option>An toàn cộng đồng</option>
             <option>Quyền tác giả</option>
+            <option>Kiểm duyệt</option>
+            <option>Quyền riêng tư</option>
+            <option>Giao dịch</option>
+            <option>Đánh giá</option>
+            <option>Cộng đồng</option>
           </select>
         </label>
 
@@ -198,9 +221,12 @@
           <input
             name="title"
             required
+            minlength="2"
             maxlength="90"
+            aria-describedby="titleError"
             placeholder="Nhập tên quy định"
           >
+          <small class="field-error" id="titleError" aria-live="polite"></small>
         </label>
 
         <label>
@@ -210,8 +236,10 @@
             required
             minlength="8"
             maxlength="500"
+            aria-describedby="textError"
             placeholder="Mô tả tiêu chuẩn cần áp dụng"
           ></textarea>
+          <small class="field-error" id="textError" aria-live="polite"></small>
         </label>
 
         <div class="dialog-actions">
