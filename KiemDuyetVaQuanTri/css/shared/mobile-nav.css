@@ -1,0 +1,79 @@
+/* Accessible drawer navigation used by all six screens. */
+.menu-toggle {
+  display: none;
+  width: 40px;
+  height: 40px;
+  flex: 0 0 auto;
+  border: 1px solid #d8dee8;
+  border-radius: 10px;
+  color: #18232f;
+  background: #fff;
+  font-size: 21px;
+}
+@media (max-width: 680px) {
+  .menu-toggle {
+    position: fixed;
+    z-index: 1002;
+    top: 11px;
+    left: 10px;
+    display: grid;
+    place-items: center;
+  }
+  .sidebar {
+    position: fixed !important;
+    inset: 0 auto 0 0 !important;
+    width: min(300px, 86vw) !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    padding: 22px 12px 16px !important;
+    overflow-y: auto;
+    transform: translateX(-105%);
+    transition: transform .22s ease;
+    z-index: 1001 !important;
+  }
+  body.menu-open .sidebar { transform: translateX(0); }
+  body.menu-open::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: #10182088;
+  }
+  .sidebar .side-nav, .sidebar .nav {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 2px;
+  }
+  .sidebar .nav-link, .sidebar .nav button {
+    justify-content: flex-start !important;
+    min-height: 44px !important;
+    padding: 7px 12px !important;
+    font-size: 14px !important;
+    text-align: left !important;
+  }
+  .sidebar .nav-icon { display: block !important; }
+  .sidebar .side-user, .sidebar .sidebar-status, .sidebar .sidebar-spacer,
+  .sidebar .status, .sidebar .user, .sidebar .spacer { display: flex !important; }
+  .sidebar .sidebar-spacer, .sidebar .spacer { flex: 1; }
+  .app { margin-left: 0 !important; }
+  .topbar {
+    min-width: 0;
+    gap: 8px;
+    padding-left: 58px !important;
+    padding-right: 8px !important;
+  }
+  .topbar > *, .app, .page, .toolbar, .user-tools, .queue-tools { min-width: 0; }
+  .system-search {
+    flex: 1 1 0;
+    width: auto !important;
+    min-width: 0;
+  }
+  .system-search input { min-width: 0; }
+  .top-actions { flex: 0 0 auto; gap: 5px !important; }
+  .table-card, .table-scroll { max-width: 100%; overflow-x: auto; }
+  .page h1 { overflow-wrap: anywhere; }
+  #toast { right: 12px; bottom: 12px; left: 12px; text-align: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sidebar { transition: none; }
+}

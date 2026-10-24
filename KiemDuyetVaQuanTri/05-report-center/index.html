@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#18232f">
+    <title>Trung tâm báo cáo | CraftLink</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="../js/api.js" defer></script>
+<script src="../js/navigation.js" defer></script>
+<script src="../js/ai-fallback.js" defer></script>
+<script src="../js/ai-client.js" defer></script>
+<script src="js/main.js" defer></script>
+  </head>
+  <body class="moderator">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="../01-dashboard/index.html" data-page="dashboard" aria-label="CraftLink - Bảng điều khiển">
+        <span class="brand-mark">C</span>
+        <span>CraftLink</span>
+      </a>
+
+      <div class="area-label">KHU VỰC QUẢN TRỊ</div>
+
+      <nav class="side-nav" aria-label="Điều hướng">
+        <button class="nav-link" type="button" data-page="dashboard">
+          <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="3" y="3" width="7" height="7" rx="1.3"/>
+            <rect x="14" y="3" width="7" height="7" rx="1.3"/>
+            <rect x="3" y="14" width="7" height="7" rx="1.3"/>
+            <rect x="14" y="14" width="7" height="7" rx="1.3"/>
+          </svg>
+          Bảng điều khiển
+        </button>
+
+        <button class="nav-link" type="button" data-page="categories">
+          <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M3 7.5A2.5 2.5 0 0 1 5.5 5H10l2 2h6.5A2.5 2.5 0 0 1 21 9.5v8a2.5 2.5 0 0 1-2.5 2.5h-13A2.5 2.5 0 0 1 3 17.5z"/>
+            <path d="M3.5 9h17"/>
+          </svg>
+          Quản lý danh mục
+        </button>
+
+        <button class="nav-link" type="button" data-page="users">
+          <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M16 20v-1.5a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4V20"/>
+            <circle cx="9.5" cy="7.5" r="3.5"/>
+            <path d="M17 11a3.5 3.5 0 1 0-1.2-6.8M17 14.5h1a3 3 0 0 1 3 3V20"/>
+          </svg>
+          Quản lý tài khoản
+        </button>
+
+        <div class="sidebar-label nav-section-label">KIỂM DUYỆT</div>
+
+        <button class="nav-link" type="button" data-page="queue">
+          <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="m12 3 9 5-9 5-9-5z"/>
+            <path d="M3 8v9l9 5 9-5V8M12 13v9"/>
+          </svg>
+          Hàng đợi kiểm duyệt
+        </button>
+
+        <button class="nav-link active" type="button" aria-current="page" data-page="reports">
+          <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M10.3 4.2 2.6 18a2 2 0 0 0 1.7 3h15.4a2 2 0 0 0 1.7-3L13.7 4.2a2 2 0 0 0-3.4 0Z"/>
+            <path d="M12 9v4m0 4h.01"/>
+          </svg>
+          Trung tâm báo cáo
+        </button>
+
+        <button class="nav-link" type="button" data-page="rules">
+          <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11Z"/>
+            <path d="m9 12 2 2 4-4"/>
+          </svg>
+          Quy định nội dung
+        </button>
+      </nav>
+
+      <div class="sidebar-spacer"></div>
+
+      <div class="sidebar-status">
+        <span class="status-dot"></span>
+        <span>Hệ thống đang ổn định</span>
+      </div>
+
+      <button class="side-user" type="button" data-action="logout">
+        <img src="../assets/moderator-avatar.jpg" alt="Ảnh đại diện tài khoản Kiểm duyệt viên">
+        <span>
+          <b>Kiểm duyệt viên</b>
+          <small>Đăng xuất</small>
+        </span>
+      </button>
+    </aside>
+
+    <main class="app">
+      <header class="topbar">
+        <button class="menu-toggle" id="menuToggle" type="button" aria-controls="sidebar" aria-expanded="false" aria-label="Mở menu">☰</button>
+        <label class="system-search">
+          <span aria-hidden="true">⌕</span>
+          <input
+            id="globalSearch"
+            type="search"
+            placeholder="Tìm kiếm hệ thống, danh mục, tài khoản..."
+            aria-label="Tìm kiếm hệ thống"
+          >
+        </label>
+
+        <div class="top-actions">
+          <div class="popover-wrap">
+            <button
+              class="icon-btn"
+              id="noticeButton"
+              type="button"
+              aria-label="Thông báo"
+            >
+              <svg class="bell" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/>
+              </svg>
+              <i></i>
+            </button>
+
+            <section class="popover" id="noticeMenu" hidden>
+              <b>Thông báo gần đây</b>
+              <p>Có cập nhật mới trong hệ thống.</p>
+              <p>Phiên demo đang hoạt động.</p>
+            </section>
+          </div>
+
+          <div class="popover-wrap">
+            <button class="profile" id="profileButton" type="button">
+              <img src="../assets/moderator-avatar.jpg" alt="Ảnh đại diện tài khoản Kiểm duyệt viên">
+              <span>Kiểm duyệt viên</span>
+              <span class="chevron">⌄</span>
+            </button>
+
+            <section class="popover profile-menu" id="profileMenu" hidden>
+              <b>Kiểm duyệt viên</b>
+              <small>moderator@craftlink.vn</small>
+              <button type="button" data-action="logout">Đăng xuất</button>
+            </section>
+          </div>
+        </div>
+      </header>
+
+      <div class="page">
+        <h1>Trung tâm xử lý báo cáo &amp; khiếu nại</h1>
+        <p class="description">
+          Tiếp nhận, xem xét và xử lý các báo cáo, khiếu nại từ người dùng.
+        </p>
+
+        <div class="toolbar report-tools">
+          <label class="search-box">
+            <span>⌕</span>
+            <input
+              id="search"
+              type="search"
+              placeholder="Tìm theo mã báo cáo hoặc người gửi..."
+              aria-label="Tìm báo cáo"
+            >
+          </label>
+
+          <select id="status">
+            <option value="all">Trạng thái: Tất cả</option>
+            <option value="pending">Đang chờ</option>
+            <option value="verifying">Đang xác minh</option>
+            <option value="handled">Đã xử lý</option>
+            <option value="dismissed">Đã bỏ qua</option>
+          </select>
+
+          <select id="reason">
+            <option value="all">Lý do: Tất cả</option>
+            <option value="Nội dung vi phạm">Nội dung vi phạm</option>
+            <option value="Gian lận">Gian lận</option>
+            <option value="SP không đúng mô tả">SP không đúng mô tả</option>
+          </select>
+
+          <select id="period">
+            <option value="all">◷ Thời gian: Tất cả</option>
+            <option value="7">7 ngày</option>
+            <option value="30">30 ngày</option>
+          </select>
+        </div>
+
+        <section class="table-card card">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th data-sort="id"><button type="button" data-sort="id">Mã báo cáo</button></th>
+                <th data-sort="sender"><button type="button" data-sort="sender">Người gửi</button></th>
+                <th data-sort="target"><button type="button" data-sort="target">Đối tượng bị báo cáo</button></th>
+                <th data-sort="reason"><button type="button" data-sort="reason">Lý do</button></th>
+                <th data-sort="date" aria-sort="descending"><button type="button" data-sort="date">Ngày gửi ↓</button></th>
+                <th>Trạng thái</th>
+                <th>Hành động</th>
+              </tr>
+            </thead>
+            <tbody id="rows"></tbody>
+          </table>
+          <div class="pagination" id="pagination"></div>
+        </section>
+
+        <dialog class="dialog" id="detailDialog">
+          <header class="dialog-head">
+            <h2 id="detailTitle">Chi tiết báo cáo</h2>
+            <button
+              class="close"
+              id="close"
+              type="button"
+              aria-label="Đóng"
+            >×</button>
+          </header>
+          <p id="detailText"></p>
+          <p id="detailEffect"></p>
+          <div class="dialog-actions">
+            <button class="secondary" id="cancel" type="button">Đóng</button>
+            <button class="secondary" id="verify" type="button">Xác minh</button>
+            <button class="secondary" id="ignore" type="button">Bỏ qua</button>
+            <button class="primary" id="process" type="button">Xử lý vi phạm</button>
+          </div>
+        </dialog>
+      </div>
+    </main>
+
+    <div id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
+
+
+

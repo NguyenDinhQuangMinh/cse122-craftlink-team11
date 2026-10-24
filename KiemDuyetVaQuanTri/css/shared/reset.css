@@ -1,0 +1,35 @@
+/* Browser reset and shared control defaults */
+
+html {
+  overflow-x: clip;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  max-width: 100%;
+  overflow-x: clip;
+  background: #faf8f5;
+}
+img, video, canvas { max-width: 100%; }
+button,input,select,textarea {
+  font: inherit;
+}
+button {
+  cursor: pointer;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+}
+

@@ -147,3 +147,11 @@ vite.config.ts.timestamp-*
 
 # Turbo Repo
 .turbo
+
+# Vercel local state
+.vercel/
+
+# OS and editor noise
+.DS_Store
+Thumbs.db
+.idea/
