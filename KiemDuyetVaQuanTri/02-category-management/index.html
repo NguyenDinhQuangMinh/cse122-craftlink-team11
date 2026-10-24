@@ -6,11 +6,13 @@
     <meta name="theme-color" content="#18232f">
     <title>Quản lý danh mục | CraftLink</title>
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/main.js" defer></script>
+    <script src="../js/api.js" defer></script>
+<script src="../js/navigation.js" defer></script>
+<script src="js/main.js" defer></script>
   </head>
   <body class="admin">
-    <aside class="sidebar">
-      <a class="brand" href="#" aria-label="CraftLink">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="../01-dashboard/index.html" data-page="dashboard" aria-label="CraftLink - Bảng điều khiển">
         <span class="brand-mark">C</span>
         <span>CraftLink</span>
       </a>
@@ -28,7 +30,7 @@
           Bảng điều khiển
         </button>
 
-        <button class="nav-link active" type="button" data-page="categories">
+        <button class="nav-link active" type="button" aria-current="page" data-page="categories">
           <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
             <path d="M3 7.5A2.5 2.5 0 0 1 5.5 5H10l2 2h6.5A2.5 2.5 0 0 1 21 9.5v8a2.5 2.5 0 0 1-2.5 2.5h-13A2.5 2.5 0 0 1 3 17.5z"/>
             <path d="M3.5 9h17"/>
@@ -90,6 +92,7 @@
 
     <main class="app">
       <header class="topbar">
+        <button class="menu-toggle" id="menuToggle" type="button" aria-controls="sidebar" aria-expanded="false" aria-label="Mở menu">☰</button>
         <label class="system-search">
           <span aria-hidden="true">⌕</span>
           <input
@@ -150,7 +153,7 @@
               aria-label="Tìm kiếm danh mục"
             >
           </label>
-          <button class="primary" id="add">＋ Thêm danh mục mới</button>
+          <button class="primary" id="add" type="button">＋ Thêm danh mục mới</button>
         </div>
 
         <section class="table-card card">
@@ -202,6 +205,13 @@
               <input name="products" type="number" min="0" value="0">
             </label>
 
+            <label class="image-upload">
+              Ảnh nền danh mục
+              <input name="cover" type="file" accept="image/jpeg,image/png,image/webp">
+              <small>JPG, PNG hoặc WebP; tối đa 5 MB. Ảnh được tự thu nhỏ để lưu trong trình duyệt.</small>
+              <img class="upload-preview category-preview" id="coverPreview" alt="Ảnh xem trước danh mục" hidden>
+            </label>
+
             <div class="dialog-actions">
               <button class="secondary" type="button" id="cancel">Hủy</button>
               <button class="primary" type="submit">Lưu danh mục</button>
@@ -214,3 +224,6 @@
     <div id="toast" role="status" aria-live="polite"></div>
   </body>
 </html>
+
+
+

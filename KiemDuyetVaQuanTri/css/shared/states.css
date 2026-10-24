@@ -1,0 +1,30 @@
+.state-message {
+  padding: 22px 16px;
+  color: var(--muted, #667085);
+  text-align: center;
+  background: var(--surface, #fff);
+}
+.state-message p { margin: 0 0 10px; }
+.state-error { color: #9f2d2d; background: #fff5f4; }
+.state-empty { color: var(--muted, #667085); }
+.state-action {
+  min-height: 38px;
+  padding: 8px 14px;
+  border: 1px solid var(--line, #d8dee8);
+  border-radius: 9px;
+  color: var(--ink, #18232f);
+  background: var(--surface, #fff);
+  cursor: pointer;
+}
+.state-action:hover { border-color: var(--accent, #df7b36); }
+.state-spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin: 0 auto 8px;
+  border: 3px solid #e4e8ee;
+  border-top-color: var(--accent, #df7b36);
+  border-radius: 50%;
+  animation: craftlink-spin .8s linear infinite;
+}
+@keyframes craftlink-spin { to { transform: rotate(360deg); } }

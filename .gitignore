@@ -1,6 +1,6 @@
-/KiemDuyetVaQuanTri/01-dashboard/
-/KiemDuyetVaQuanTri/03-user-management/
-/KiemDuyetVaQuanTri/04-moderation-queue/
-/KiemDuyetVaQuanTri/05-report-center/
-/KiemDuyetVaQuanTri/06-content-guidelines/
-/KiemDuyetVaQuanTri/GopTrang.html
+.env
+.env.*
+!.env.example
+node_modules/
+.vercel/
+*.log
