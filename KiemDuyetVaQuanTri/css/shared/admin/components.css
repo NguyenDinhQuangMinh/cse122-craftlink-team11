@@ -41,7 +41,7 @@
   border: 1px solid #e7e6e3;
   border-radius: 9px;
   background: #fff;
-  color: #8b8f92;
+  color: var(--muted);
 }
 .search-box span {
   font-size: 24px;
@@ -139,7 +139,7 @@
 }
 .status.off {
   background: #eee;
-  color: #777;
+  color: var(--muted);
 }
 .status.paused {
   background: #fde8e2;

@@ -114,7 +114,7 @@
   border: 1px solid #e9e9e8;
   border-radius: 9px;
   background: #fff;
-  color: #777;
+  color: var(--muted);
 }
 .system-search>span {
   font-size: 27px;
@@ -186,12 +186,12 @@
 }
 .popover p {
   margin: 12px 0 0;
-  color: #71777c;
+  color: var(--muted);
 }
 .profile-menu small {
   display: block;
   margin: 5px 0 12px;
-  color: #81878b;
+  color: var(--muted);
 }
 .profile-menu button {
   padding: 7px 10px;
@@ -210,6 +210,6 @@
 }
 .description {
   margin: 4px 0 23px;
-  color: #777b7f;
+  color: var(--muted);
   font-size: 18px;
 }

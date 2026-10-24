@@ -28,3 +28,6 @@
   animation: craftlink-spin .8s linear infinite;
 }
 @keyframes craftlink-spin { to { transform: rotate(360deg); } }
+.field-error { display: block; color: #b42318; font-size: 12px; line-height: 1.4; }
+.field-error:empty { display: none; }
+[aria-invalid="true"] { border-color: #b42318 !important; outline-color: #b42318; }

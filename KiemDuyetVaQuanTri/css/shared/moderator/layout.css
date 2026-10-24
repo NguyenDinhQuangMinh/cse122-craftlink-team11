@@ -106,7 +106,7 @@
   gap: 10px;
   width: min(600px,58vw);
   height: 43px;
-  color: #999;
+  color: var(--muted);
 }
 .system-search>span {
   font: 28px Arial;
@@ -118,7 +118,7 @@
   font: 14px Inter,"Segoe UI",Arial,sans-serif;
 }
 .system-search input::placeholder {
-  color: #999;
+  color: var(--muted);
 }
 .top-actions {
   display: flex;
@@ -179,12 +179,12 @@
 }
 .popover p {
   margin: 12px 0 0;
-  color: #71777c;
+  color: var(--muted);
 }
 .profile-menu small {
   display: block;
   margin: 5px 0 12px;
-  color: #81878b;
+  color: var(--muted);
 }
 .profile-menu button {
   padding: 7px 10px;
@@ -203,7 +203,7 @@
 }
 .description {
   margin: 7px 0 24px;
-  color: #96979a;
+  color: var(--muted);
   font-size: 18px;
   font-weight: 700;
 }
