@@ -15,7 +15,7 @@ Tất cả tài liệu chi tiết của dự án được quản lý tập trung
 
 * 📑 **1.1 Giới thiệu dự án & Phạm vi hệ thống:** [`docs/project-introduction.md`](./docs/project-introduction.md)
 * 🎨 **Phân công nhiệm vụ & Link Canva UI:** [`docs/team-assignment.md`](./docs/team-assignment.md)
-* 📊 **Bảng kiểm kê 18 Màn hình HTML:** [`docs/screen-list.md`](./docs/screen-inventory.md)
+* 📊 **Bảng kiểm kê 21 Màn hình HTML:** [`docs/screen-list.md`](./docs/screen-inventory.md)
 * 📑 **Nhiệm vụ SV1 (Buyer & General UI):** [`docs/sv1-assignment.md`](./docs/sv1-assignment.md)
 * 📑 **Nhiệm vụ SV2 (Maker / Artisan):** [`docs/sv2-assignment.md`](./docs/sv2-assignment.md)
 * 🛡️ **Nhiệm vụ SV3 (Moderator & Admin):** [`docs/sv3-assignment.md`](./docs/sv3-assignment.md)
