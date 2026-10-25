@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Đăng nhập Khách hàng – CraftLink</title>
+    <meta name="description" content="CraftLink – Cổng đăng nhập dành cho khách hàng mua sắm và đặt làm sản phẩm thủ công." />
+    <link rel="stylesheet" href="css/khach-hang.css" />
+  </head>
+  <body class="page-login">
+    <header class="site-header">
+      <a class="brand" href="khach-hang.html" aria-label="CraftLink – Trang đăng nhập khách hàng">
+        <span class="brand-mark"><svg class="ic"><use href="#i-vase" /></svg></span>CraftLink
+      </a>
+      <nav class="main-nav" aria-label="Điều hướng chính">
+        <a href="#" data-soon>Trang chủ</a>
+        <a href="#" data-soon>Khám phá</a>
+        <a href="#" data-soon>Về chúng tôi</a>
+        <a href="#" data-soon>Trợ giúp</a>
+      </nav>
+      <div class="header-actions"></div>
+    </header>
+
+    <main class="auth-main">
+      <section class="auth-visual" aria-label="Giới thiệu">
+        <div class="role-panel hero-copy">
+          <h2>Kết nối giá trị<br /><span class="accent">Nâng tầm thủ công Việt</span></h2>
+          <p>CraftLink đồng hành cùng thợ thủ công và người yêu thủ công trên hành trình sáng tạo và lan tỏa giá trị Việt.</p>
+          <button class="ai-chip" type="button" data-open-assistant>
+            <span class="bubble"><svg class="ic"><use href="#i-sparkles" /></svg></span>
+            <span><strong>Trợ lý AI</strong><span class="brand-word">CraftLink</span></span>
+          </button>
+        </div>
+      </section>
+
+      <section class="auth-card" aria-labelledby="login-title">
+        <nav class="role-tabs" aria-label="Chọn vai đăng nhập">
+          <a class="role-tab" data-role="customer" href="khach-hang.html" aria-current="page">Khách Hàng</a>
+          <a class="role-tab" data-role="artisan" href="nghe-nhan.html">Thợ Thủ Công / Nghệ Nhân</a>
+          <a class="role-tab" data-role="admin" href="quan-tri.html">Quản Trị Viên &amp; Kiểm Duyệt</a>
+        </nav>
+
+        <p class="eyebrow">Chào mừng bạn trở lại</p>
+        <h1 id="login-title">Đăng nhập vào CraftLink</h1>
+        <p class="subtitle">Khám phá sản phẩm thủ công và theo dõi các yêu cầu đặt làm của bạn</p>
+
+        <form class="form" id="loginForm" novalidate>
+          <div class="form-alert" id="loginAlert" role="alert" hidden></div>
+
+          <div class="field">
+            <label for="identifier">Email hoặc Tên đăng nhập</label>
+            <div class="control">
+              <svg class="ic lead"><use href="#i-user" /></svg>
+              <input class="input" id="identifier" name="identifier" type="text" autocomplete="username" placeholder="nhap@email.com" required />
+            </div>
+            <p class="error-text" id="identifier-error"></p>
+          </div>
+
+          <div class="field">
+            <label for="password">Mật khẩu</label>
+            <div class="control">
+              <svg class="ic lead"><use href="#i-lock" /></svg>
+              <input class="input" id="password" name="password" type="password" autocomplete="current-password" placeholder="••••••••" required />
+              <button class="pw-toggle" type="button" aria-label="Hiện mật khẩu" aria-pressed="false"><svg class="ic"><use href="#i-eye" /></svg></button>
+            </div>
+            <p class="error-text" id="password-error"></p>
+          </div>
+
+          <div class="form-inline">
+            <label class="checkbox"><input type="checkbox" id="remember" name="remember" />Ghi nhớ đăng nhập</label>
+            <a class="link" href="forgot-password.html?role=customer">Quên mật khẩu?</a>
+          </div>
+
+          <button class="btn btn-primary btn-block" id="loginBtn" type="submit">Đăng Nhập</button>
+        </form>
+
+        <p class="switch-line">Chưa có tài khoản? <a class="link" href="../02-dang-ky/index.html?role=customer">Tạo tài khoản</a></p>
+
+        <div class="note">
+          <span class="tile"><svg class="ic"><use href="#i-bag" /></svg></span>Dành cho khách hàng mua sắm và đặt làm sản phẩm thủ công
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a href="../../docs/project-introduction.md"><svg class="ic"><use href="#i-book" /></svg>Tài liệu BTL (docs/)</a>
+      <a href="../../docs/screen-inventory.md"><svg class="ic"><use href="#i-clipboard-list" /></svg>Bảng phân công 18 Tasks</a>
+      <a href="mailto:hotro@craftlink.vn"><svg class="ic"><use href="#i-headset" /></svg>Liên hệ hỗ trợ</a>
+    </footer>
+
+    <script src="js/khach-hang.js"></script>
+  </body>
+</html>

@@ -47,8 +47,13 @@ Nằm ở dòng "Giao diện đăng nhập, đăng ký (SV1+SV2+SV3)" của `doc
 
 | Màn hình | Tệp | Nội dung |
 | :--- | :--- | :--- |
-| Cổng đăng nhập ba vai trò | `DangNhapVaDangKy/01-dang-nhap/index.html` | Tab Khách hàng / Nghệ nhân / Quản trị, kiểm tra biểu mẫu, khoá tài khoản sau 5 lần sai, ghi nhớ đăng nhập, trợ lý AI dạng từ khoá |
+| Đăng nhập – Khách hàng | `DangNhapVaDangKy/01-dang-nhap/khach-hang.html` | Kiểm tra biểu mẫu, khoá tài khoản sau 5 lần sai, ghi nhớ đăng nhập, trợ lý AI dạng từ khoá |
+| Đăng nhập – Nghệ nhân | `DangNhapVaDangKy/01-dang-nhap/nghe-nhan.html` | Như trên, khung minh hoạ gian hàng người bán (sản phẩm, brief, proposal) |
+| Đăng nhập – Quản trị | `DangNhapVaDangKy/01-dang-nhap/quan-tri.html` | Bắt buộc đăng nhập bằng email, không có linked đăng ký, khung minh hoạ bảng điều khiển kiểm duyệt |
+| Điều hướng | `DangNhapVaDangKy/01-dang-nhap/index.html` | Trang trung gian, đọc `?role=` rồi chuyển sang đúng trang đăng nhập của vai đó (link từ trang đăng ký đi qua đây) |
 | Đăng ký | `DangNhapVaDangKy/02-dang-ky/index.html` | Kiểm tra từng luật bằng tiếng Việt, đếm độ mạnh mật khẩu, trường riêng cho nghệ nhân, chặn đăng ký tài khoản quản trị |
+
+Ba trang đăng nhập tách hẳn nhau: mỗi trang có `css/<vai>.css` và `js/<vai>.js` riêng, không dùng chung tệp nào với nhau hay với `02-dang-ky` (chung thư mục `assets/img/` để chứa ảnh). Ba tab chuyển vai ngày trước giờ là ba link thẳng sang ba trang.
 
 Mật khẩu được băm SHA-256 trước khi ghi `localStorage`, không lưu mật khẩu gốc. Đăng ký xong đăng nhập được ngay bằng chính tài khoản đó, kể cả tài khoản quản trị do nhóm cấp.
 
@@ -71,7 +76,7 @@ Mật khẩu được băm SHA-256 trước khi ghi `localStorage`, không lưu 
 
 ### Trợ lý AI ở cổng đăng nhập
 
-`DangNhapVaDangKy/assets/js/common.js` có bảng `BOT_RULES` khớp từ khoá tiếng Việt để trả lời câu hỏi về đăng ký, quên mật khẩu, vai trò tài khoản. Cũng là đối chiếu từ khoá, không phải mô hình ngôn ngữ.
+Bảng `BOT_RULES` khớp từ khoá tiếng Việt để trả lời câu hỏi về đăng ký, quên mật khẩu, vai trò tài khoản nằm trong `assets/js/common.js` (trang đăng ký) và được sao vào từng tệp `01-dang-nhap/js/<vai>.js` vì ba trang đăng nhập không dùng chung tệp nào. Cũng là đối chiếu từ khoá, không phải mô hình ngôn ngữ.
 
 ---
 
