@@ -1,0 +1,163 @@
+/* ==========================================================================
+   CraftLink — Trang Giỏ hàng
+   Bố cục 2 cột: danh sách sản phẩm | tóm tắt đơn hàng
+   ========================================================================== */
+
+.cart-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: 28px;
+  align-items: start;
+}
+
+
+/* ---------- Cột trái: danh sách sản phẩm trong giỏ ---------- */
+
+.cart-items ul {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Khi giỏ trống, JS gắn [hidden] vào danh sách — thuộc tính [hidden] cần
+   được nhắc lại ở đây vì quy tắc display: flex phía trên sẽ ghi đè nó */
+.cart-items ul[hidden] {
+  display: none;
+}
+
+/* Khi giỏ trống, JS thêm class này để lưới 2 cột thu về 1 cột */
+.cart-layout-empty {
+  grid-template-columns: 1fr;
+}
+
+.cart-item {
+  display: grid;
+  grid-template-columns: 120px minmax(0, 1fr) auto;
+  gap: 18px;
+  align-items: center;
+}
+
+.cart-item-media img {
+  width: 120px;
+  height: 120px;
+  border-radius: 14px;
+  object-fit: cover;
+}
+
+.cart-item-name {
+  margin: 0 0 2px;
+  font-size: 16px;
+}
+
+.cart-item-name a:hover {
+  color: var(--color-primary);
+}
+
+.cart-item-artisan {
+  margin: 0 0 8px;
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+.cart-item-price {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-price);
+}
+
+.cart-item-side {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.cart-item-subtotal {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+
+/* ---------- Cột phải: tóm tắt đơn hàng ---------- */
+
+.cart-summary {
+  position: sticky;
+  top: 20px;
+}
+
+.summary-list dt {
+  font-size: 14px;
+  color: var(--color-text-muted);
+}
+
+.summary-list dd {
+  margin: 2px 0 12px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.summary-total {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding-top: 14px;
+  margin-bottom: 18px;
+  border-top: 1px solid var(--color-border);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.summary-total-value {
+  font-size: 22px;
+  color: var(--color-price);
+}
+
+.cart-summary .btn-large {
+  width: 100%;
+}
+
+.summary-note {
+  margin: 12px 0 0;
+  font-size: 13px;
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+/* Máy tính bảng: tóm tắt xuống dưới danh sách */
+@media (max-width: 960px) {
+  .cart-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .cart-summary {
+    position: static;
+  }
+}
+
+/* Điện thoại: ảnh nhỏ lại, số lượng + nút xóa xuống hàng riêng */
+@media (max-width: 720px) {
+  .cart-item {
+    grid-template-columns: 90px minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  .cart-item-media img {
+    width: 90px;
+    height: 90px;
+  }
+
+  .cart-item-side {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+}

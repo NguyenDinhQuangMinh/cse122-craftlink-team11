@@ -1,0 +1,160 @@
+/* ==========================================================================
+   CraftLink — Trang Tạo brief thiết kế cùng AI
+   Bố cục 2 cột: form nhập yêu cầu | kết quả brief từ AI
+   ========================================================================== */
+
+.customize-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 28px;
+  align-items: start;
+}
+
+
+/* ---------- Cột trái: form nhập yêu cầu ---------- */
+
+/* Thẻ sản phẩm đang tùy biến — giữ ngữ cảnh khi người dùng chuyển bước */
+.customize-product {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-btn);
+  background-color: #fdfaf5;
+}
+
+.customize-product img {
+  width: 72px;
+  height: 72px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.customize-product-info {
+  min-width: 0;
+}
+
+.customize-product-label {
+  margin: 0 0 2px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.customize-product-name {
+  margin: 0 0 2px;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.customize-product-meta {
+  margin: 0 0 4px;
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+.customize-qty-group .quantity-stepper {
+  width: fit-content;
+}
+
+.customize-qty-note {
+  margin: 6px 0 0;
+  font-size: 12.5px;
+  color: var(--color-text-muted);
+}
+
+/* Ghi chú minh bạch về cách tạo bản tóm tắt cục bộ */
+.local-note {
+  margin: 16px 0 0;
+  padding: 12px 14px;
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-btn);
+  background-color: #fdfaf5;
+  color: #6b6055;
+  font-size: 13px;
+}
+
+.field-group {
+  margin-bottom: 22px;
+}
+
+.field-group .panel-title {
+  margin-bottom: 10px;
+}
+
+#brief-description {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-btn);
+  background-color: var(--color-surface);
+  font-size: 14px;
+  line-height: 1.6;
+  resize: vertical;
+}
+
+#brief-description::placeholder {
+  color: var(--color-text-muted);
+}
+
+.char-count {
+  margin: 6px 0 0;
+  text-align: right;
+  font-size: 12.5px;
+  color: var(--color-text-muted);
+}
+
+.customize-input-panel .btn-large {
+  width: 100%;
+}
+
+
+/* ---------- Cột phải: kết quả brief từ AI ---------- */
+
+.brief-result dd {
+  font-weight: 400;
+  font-size: 14.5px;
+  color: #5f564c;
+  margin-bottom: 12px;
+}
+
+.brief-budget {
+  color: var(--color-price);
+  font-weight: 700;
+}
+
+.brief-section-title {
+  margin: 22px 0 10px;
+  font-size: 17px;
+}
+
+.ai-explain {
+  margin: 0;
+  font-size: 14px;
+  color: #5f564c;
+}
+
+.brief-actions {
+  margin-top: 22px;
+}
+
+/* Khung kết quả có display riêng qua .panel nên cần khai báo hidden rõ ràng */
+.customize-result-panel[hidden] {
+  display: none;
+}
+
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+/* Máy tính bảng: 2 cột xếp thành 1 cột, form nhập lên trước */
+@media (max-width: 960px) {
+  .customize-layout {
+    grid-template-columns: 1fr;
+  }
+}
