@@ -64,6 +64,7 @@ Khai báo chi tiết, prompt và giới hạn dữ liệu: [`docs/ai-usage-repor
 - **Thiết kế Canva của nhóm:** [CraftLink trên Canva](https://www.canva.com/design/DAHXD2jg9HU/7Q4trg1HDT246iMdGVyUXw/edit)
 - **Thiết kế Canva SV3 (sáu màn hình quản trị và kiểm duyệt):** [canva.link/zqtyq0qivogb17s](https://canva.link/zqtyq0qivogb17s)
 - **Sơ đồ User Flow:** [`docs/user-flow.md`](./docs/user-flow.md)
+- **Component Guide (bảng màu/chữ/thành phần):** [`docs/component-guide.md`](./docs/component-guide.md)
 - **Kịch bản quay OBS SV3:** [`docs/sv3-recording-checklist.md`](./docs/sv3-recording-checklist.md)
 - **Video OBS SV3:** chưa cập nhật. Danh sách và liên kết nằm ở [`videos/README.md`](./videos/README.md).
 
@@ -78,6 +79,7 @@ Barem gọi tên đích danh một số đường dẫn làm minh chứng. Repo 
 | `assets/data/` | Tiêu chí 5, mục 5.1, checklist mục 9 (`assets/data/*.json`, 15–25 bản ghi) | khung chờ |
 | `docs/screen-inventory.md` | ĐK1, tiêu chí 1.2 | đã có — 18 màn hình |
 | `docs/user-flow.md` | ĐK1, tiêu chí 1.2 | đã có — sơ đồ kèm ảnh render trong `docs/diagrams/` |
+| `docs/component-guide.md` | ĐK1 ("bảng màu/chữ — Component Guide") | đã có — token và lớp CSS trích từ mã nguồn thật |
 | `docs/project-proposal.md` | Tiêu chí 1 | đã có — tóm tắt, trỏ tới `project-introduction.md` |
 | `docs/ai-usage-report.md` | ĐK5, VP-07 | đã có phần SV3; SV1 và SV2 chưa khai |
 | `videos/` | ĐK4, tiêu chí 8.1, "Tab 6" khi bảo vệ | bảng liên kết, không chứa tệp `.mp4` |
