@@ -9,6 +9,7 @@
 ## 🎨 BẢN THIẾT KẾ GIAO DIỆN CANVA (UI/UX PROTOTYPE)
 
 👉 **Link thiết kế Canva của SV2:** [Link Canva SV2](https://canva.link/rvxflfz5kgg0rg1)
+👉 **Link video OBS của SV2:** [Link Video SV2](https://www.youtube.com/@minhduong3801)
 
 ---
 
