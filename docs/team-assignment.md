@@ -15,5 +15,5 @@
 | :--- | :--- | :---: | :--- | :--- |
 | **SV1+SV2+SV3** | Giao diện đăng nhập, đăng ký | 6 |  | [Link Canva ](https://canva.link/10ir1xtkau6li7b) |
 | **SV1** | Khách hàng (Buyer) & Giao diện chung | 6 | Trợ lý AI gợi ý cá nhân hóa sản phẩm thủ công | [sv1-assignment.md](./sv1-assignment.md) |
-| **SV2** | Thợ thủ công / Seller (Maker) | 3 | Bộ quy tắc gợi ý giá và tiến độ cho Proposal (AI Cost & Timeline Advisor) | [sv2-assignment.md](./sv2-assignment.md) |
+| **SV2** | Thợ thủ công / Seller (Maker) | 4 | Bộ quy tắc gợi ý giá & tiến độ cho Proposal và bộ soạn mô tả + từ khoá SEO cho listing (không gọi mô hình) | [sv2-assignment.md](./sv2-assignment.md) |
 | **SV3** | Kiểm duyệt viên (Mod) & Quản trị viên (Admin) | 6 | AI phát hiện nội dung vi phạm & tự động phân loại | [sv3-assignment.md](./sv3-assignment.md) |

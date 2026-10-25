@@ -47,3 +47,42 @@ function luuTrangThai(maBrief, duLieuMoi) {
   }
   return tatCa[maBrief];
 }
+// ==================== HỒ SƠ GIAN HÀNG ====================
+// Hồ sơ dùng chung cho cả bốn màn hình người bán nên lưu ở localStorage,
+// khác với trạng thái proposal chỉ sống trong một phiên tab.
+const KHO_GIAN_HANG = 'craftlink:gian-hang';
+const GIAN_HANG_MAC_DINH = {
+  ten: 'Nhà Gốm An Nhiên', chuyenMon: 'Gốm sứ',
+  cauChuyen: 'Xưởng của chúng tôi làm việc với đất nung và men phủ tự nhiên. Mỗi sản phẩm qua tay khoảng ba ngày, từ công đoạn vuốt bàn xoay đến lần nung cuối, nên màu men có thể chênh nhẹ giữa các lô.',
+  diaChi: 'Thôn Giang Cao, Bát Tràng, Gia Lâm, Hà Nội', dienThoai: '0912345678', email: 'xuong@craftlink.vn',
+  avatar: '', anhBia: ''
+};
+// Đọc hồ sơ đã lưu, hợp nhất với giá trị mặc định cho các mục cũ chưa có.
+function docGianHang() {
+  try {
+    return Object.assign({}, GIAN_HANG_MAC_DINH, JSON.parse(localStorage.getItem(KHO_GIAN_HANG)) || {});
+  }
+  catch (loi) {
+    return Object.assign({}, GIAN_HANG_MAC_DINH);
+  }
+}
+// Ghi hồ sơ mới và trả về bản đã lưu.
+function luuGianHang(duLieuMoi) {
+  const moi = Object.assign({}, docGianHang(), duLieuMoi);
+  try {
+    localStorage.setItem(KHO_GIAN_HANG, JSON.stringify(moi));
+  }
+  catch (loi) {
+    notify('Trình duyệt không cho lưu hồ sơ gian hàng.');
+  }
+  hienThiTenGianHang();
+  return moi;
+}
+// Mọi trang đều có một nhãn .account trên thanh tiêu đề, cập nhật theo tên xưởng.
+function hienThiTenGianHang() {
+  const ten = docGianHang().ten;
+  document.querySelectorAll('.account').forEach(function (nhan) {
+    nhan.textContent = ten;
+  });
+}
+hienThiTenGianHang();

@@ -100,7 +100,7 @@
     if(e.key==='Escape')closeModals()
   });
   $('#create-listing').addEventListener('click', ()=> {
-    editing=null; $('#listing-modal-title').textContent='Tạo listing mới'; $('#listing-form').reset(); applyFormImage(''); $('#listing-modal').classList.remove('hidden-state'); $('#new-name').focus()
+    editing=null; $('#listing-modal-title').textContent='Tạo listing mới'; $('#listing-form').reset(); applyFormImage(''); resetWriter(false); $('#listing-modal').classList.remove('hidden-state'); $('#new-name').focus()
   });
   const statusNames= {
     live: 'Đang hoạt động', pending: 'Chờ duyệt', draft: 'Bản nháp'
@@ -110,9 +110,11 @@
       archiveTarget=row; $('#archive-modal').classList.remove('hidden-state'); $('#confirm-archive').focus()
     }
     else if(btn.classList.contains('edit-product')) {
-      editing=row; $('#listing-modal-title').textContent='Chỉnh sửa listing'; $('#new-name').value=row.dataset.name; $('#new-price').value=row.dataset.price; $('#new-stock').value=row.dataset.stock; $('#new-category').value=row.dataset.category; $('#new-image-file').value=''; $('#new-image-url').value=''; const currentImage=rowImageSrc(row); $('#new-image-url').value=currentImage; applyFormImage(currentImage, currentImage?'Listing này đã có ảnh. Chọn tệp khác để thay thế.':'Chưa có ảnh. Chọn tệp hoặc dán URL để gắn ảnh.'); $('#listing-modal').classList.remove('hidden-state'); $('#new-name').focus()
+      editing=row; $('#listing-modal-title').textContent='Chỉnh sửa listing'; $('#new-name').value=row.dataset.name; $('#new-price').value=row.dataset.price; $('#new-stock').value=row.dataset.stock; $('#new-category').value=row.dataset.category; $('#new-description').value=row.dataset.description||''; $('#new-keywords').value=row.dataset.keywords||''; resetWriter(false); $('#ai-keywords').value=row.dataset.keywords||''; $('#new-image-file').value=''; $('#new-image-url').value=''; const currentImage=rowImageSrc(row); $('#new-image-url').value=currentImage; applyFormImage(currentImage, currentImage?'Listing này đã có ảnh. Chọn tệp khác để thay thế.':'Chưa có ảnh. Chọn tệp hoặc dán URL để gắn ảnh.'); $('#listing-modal').classList.remove('hidden-state'); $('#new-name').focus()
     }
-    else if(btn.classList.contains('stats-product'))notify(row.dataset.name+' · '+statusNames[row.dataset.status]+' · Tồn kho '+row.dataset.stock+' sản phẩm. Đây là thống kê mẫu.')
+    else if(btn.classList.contains('stats-product')) {
+      const moTa=row.dataset.description, ngan=moTa&&moTa.length>110?moTa.slice(0, 110)+'…':moTa; notify(row.dataset.name+' · '+statusNames[row.dataset.status]+' · Tồn kho '+row.dataset.stock+' sản phẩm'+(ngan?' · Mô tả đã lưu: “'+ngan+'”':' · Chưa có mô tả.')+' Đây là thống kê mẫu.')
+    }
   });
   $('#confirm-archive').addEventListener('click', ()=> {
     if(archiveTarget) {
@@ -121,14 +123,14 @@
     closeModals()
   });
   $('#listing-form').addEventListener('submit', e=> {
-    e.preventDefault(); const name=$('#new-name').value.trim(), price=Number($('#new-price').value), stock=Number($('#new-stock').value), category=$('#new-category').value; if(!name||!Number.isFinite(price)||price<0||!Number.isInteger(stock)||stock<0)return; if(editing) {
+    e.preventDefault(); const name=$('#new-name').value.trim(), price=Number($('#new-price').value), stock=Number($('#new-stock').value), category=$('#new-category').value, moTaTuKhoa=readWriterFields(); if(!name||!Number.isFinite(price)||price<0||!Number.isInteger(stock)||stock<0)return; if(editing) {
       Object.assign(editing.dataset, {
-        name, price, stock, category, image: formImage
+        name, price, stock, category, image: formImage, description: moTaTuKhoa.description, keywords: moTaTuKhoa.keywords
       }); editing.querySelector('.product strong').textContent=name; editing.querySelector('.row-price').textContent=money(price); editing.querySelector('.row-category').textContent=category; editing.querySelector('.row-stock').textContent=stock; const oldThumb=editing.querySelector('.product img, .product .thumb-ph'), nextThumb=thumbFor(formImage, name); oldThumb?oldThumb.replaceWith(nextThumb):editing.querySelector('.product').prepend(nextThumb); notify(formImage?'Đã cập nhật listing kèm ảnh trong phiên này.':'Đã cập nhật listing trong phiên này.')
     }
     else {
       const row=document.createElement('article'); row.className='listing-row'; Object.assign(row.dataset, {
-        productId: 'new-'+Date.now(), name, price, stock, category, image: formImage, status: 'draft'
+        productId: 'new-'+Date.now(), name, price, stock, category, image: formImage, status: 'draft', description: moTaTuKhoa.description, keywords: moTaTuKhoa.keywords
       }); const product=document.createElement('div'); product.className='product'; const inner=document.createElement('div'); const title=document.createElement('strong'); title.textContent=name; const code=document.createElement('small'); code.textContent='Bản nháp mới'; inner.append(title, code); product.append(thumbFor(formImage, name), inner); row.append(product); for(const [value, cls] of [[money(price), 'row-price'], [category, 'row-category'], [String(stock), 'row-stock']]) {
         const cell=document.createElement('span'); cell.className=cls; cell.textContent=value; row.append(cell)
       }
@@ -139,6 +141,70 @@
     }
     demoEmpty=false; $('#listing-search').value=''; $('#listing-filter').value='all'; refreshListings(); closeModals()
   });
-  // ==================== PHẦN 2: HÒM THƯ BRIEF ====================
+  // ==================== PHAN 2: BO GOI Y MO TA SAN PHAM (AI COPYWRITER & SEO) ====================
+  // Nhap -> Dang xu ly -> Ket qua -> Giai thich -> chap nhan / sua / tao lai / bo -> Luu.
+  let kieuMoTa=0, ketQuaAI=null, dangSoan=false;
+  const NHAN_MUC={ ok:'Đã làm', tip:'Nên thêm', warn:'Cẩn trọng' };
+  const MO_TA_DAU='Nhập vài từ khoá ngắn về chất liệu và kỹ thuật, bộ quy tắc sẽ ghép thành mô tả kèm danh sách từ khoá gợi ý. Máy không gọi mô hình nào, mọi câu chữ đều tra được trong mã nguồn.';
+  // Doi nhan trang thai o goc hop goi y.
+  function writerStatus(text, cls) {
+    $('#writer-status').textContent=text; $('#writer-status').className='chip '+cls
+  }
+  // Ve ket qua + danh sach giai thich ra hop goi y.
+  function showWriterResult(ketQua, daUngDien) {
+    ketQuaAI=ketQua; $('#writer-result').classList.remove('hidden-state');
+    $('#writer-output').textContent=ketQua.moTa; $('#writer-keywords').textContent=ketQua.tuKhoa.join(' · ');
+    $('#writer-notes').replaceChildren(...ketQua.giaiThich.map(g=> {
+      const li=document.createElement('li'); li.className='advisor-'+g.level;
+      const chu=document.createElement('span'); chu.className='advisor-tag'; chu.textContent=NHAN_MUC[g.level];
+      const noiDung=document.createElement('span'); noiDung.className='advisor-text'; noiDung.textContent=g.text;
+      li.append(chu, noiDung); return li
+    }));
+    $('#use-writer').disabled=daUngDien; writerStatus(daUngDien?'Đã điền vào mẫu, bạn sửa tiếp được':'Kết quả đang chờ bạn quyết', daUngDien?'live':'draft')
+  }
+  // Dong hop ket qua va tra loi mo dau ve nguon cua bo goi y.
+  function resetWriter(keepKeywords) {
+    ketQuaAI=null; $('#writer-result').classList.add('hidden-state'); $('#writer-description').textContent=MO_TA_DAU;
+    if(!keepKeywords)$('#ai-keywords').value=''
+  }
+  // Goi bo quy tac, co mot khoang choi de trang thai "dang soan" nhin duoc thay.
+  function askWriter() {
+    if(dangSoan)return;
+    const tho=$('#ai-keywords').value; dangSoan=true; const nut=$('#ask-writer'); nut.disabled=true; nut.textContent='Đang soạn mô tả…';
+    setTimeout(()=> {
+      dangSoan=false; nut.disabled=false; nut.textContent='✦ Nhờ AI sáng tạo mô tả';
+      const ketQua=AIThuCong.viet(tho, $('#new-name').value, $('#new-category').value, kieuMoTa);
+      if(ketQua.loi) {
+        $('#writer-result').classList.add('hidden-state'); ketQuaAI=null; $('#writer-description').textContent=ketQua.loi; notify('Chưa có từ khoá nào để bộ gợi ý dùng.'); return
+      }
+      $('#writer-description').textContent='Bộ quy tắc đã dùng '+AIThuCong.tachTuKhoa(tho).length+' từ khoá bạn nhập để ghép '+ketQua.soTu+' từ. Đọc phần giải thích bên dưới trước khi quyết định.';
+      showWriterResult(ketQua, false); notify('Đã soạn mô tả và '+ketQua.tuKhoa.length+' từ khoá gợi ý.')
+    }, 700)
+  }
+  $('#ask-writer').addEventListener('click', ()=> {
+    kieuMoTa=0; askWriter()
+  });
+  $('#redo-writer').addEventListener('click', ()=> {
+    kieuMoTa++; askWriter()
+  });
+  $('#use-writer').addEventListener('click', ()=> {
+    if(!ketQuaAI)return; $('#new-description').value=ketQuaAI.moTa; $('#new-keywords').value=ketQuaAI.tuKhoa.join(', ');
+    showWriterResult(ketQuaAI, true); notify('Đã điền mô tả và từ khoá vào mẫu. Kiểm tra lại độ dài trước khi lưu.')
+  });
+  $('#reject-writer').addEventListener('click', ()=> {
+    resetWriter(true); notify('Đã bỏ kết quả. Mô tả trong mẫu giữ nguyên.')
+  });
+  //Nguoi dung sua tay thi nhan ngay de trang thai khong con bao "cho quyet dinh".
+  $('#new-description').addEventListener('input', ()=> {
+    if(ketQuaAI&&$('#new-description').value!==ketQuaAI.moTa)writerStatus('Bạn đã sửa bằng tay', 'pending')
+  });
+  // ==================== PHAN 3: LUU LISTING ====================
+  // Luu mo ta va tu khoa cua AI vao dataset cua dong san pham.
+  function readWriterFields() {
+    return {
+      description: $('#new-description').value.trim(), keywords: $('#new-keywords').value.trim()
+    }
+  }
+  // ==================== PHÀN 2: HÒM THƯ BRIEF ====================
   // Dữ liệu brief mẫu của các khách hàng.
 })();

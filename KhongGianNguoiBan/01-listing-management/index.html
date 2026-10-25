@@ -13,7 +13,7 @@
    <aside class="sidebar" aria-label="Điều hướng CraftLink">
     <div data-template-id="brand" class="brand canva-text" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 27px;">CraftLink</div>
     <div data-template-id="nav-caption" class="side-caption canva-text" style="color: rgb(215, 224, 237); font-weight: 400; font-style: normal; font-size: 10px;">KHÔNG GIAN NGƯỜI BÁN</div>
-    <nav aria-label="Màn hình"><a class="nav-btn active" href="../01-listing-management/index.html" aria-current="page"><span data-template-id="nav-listing" class="canva-text" style="color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 15px;">Quản lý listing</span></a> <a class="nav-btn" href="../02-brief-inbox/index.html"><span data-template-id="nav-brief" class="canva-text" style="color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 15px;">Hòm thư brief</span></a> <a class="nav-btn" href="../03-proposal-editor/index.html"><span data-template-id="nav-proposal" class="canva-text" style="color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 15px;">Proposal</span></a>
+    <nav aria-label="Màn hình"><a class="nav-btn active" href="../01-listing-management/index.html" aria-current="page"><span data-template-id="nav-listing" class="canva-text" style="color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 15px;">Quản lý listing</span></a> <a class="nav-btn" href="../02-brief-inbox/index.html"><span data-template-id="nav-brief" class="canva-text" style="color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 15px;">Hòm thư brief</span></a> <a class="nav-btn" href="../03-proposal-editor/index.html"><span data-template-id="nav-proposal" class="canva-text" style="color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 15px;">Proposal</span></a> <a class="nav-btn" href="../04-shop-profile/index.html"><span data-template-id="nav-profile" class="canva-text" style="color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 15px;">Hồ sơ gian hàng</span></a>
     </nav>
     <p data-template-id="side-note" class="side-note canva-text" style="color: rgb(217, 200, 180); font-weight: 400; font-style: normal; font-size: 15px;">CraftLink đồng hành cùng người làm thủ công trong mỗi cơ hội hợp tác.</p>
    </aside>
@@ -150,6 +150,33 @@
       </div>
       <p id="image-feedback" class="subtle mt-2">Chưa có ảnh. Chọn tệp hoặc dán URL để ảnh hiện trong danh sách.</p>
      </div>
+     <div class="form-group">
+      <label for="new-description" class="form-label">Mô tả sản phẩm</label><textarea id="new-description" class="field" rows="5" maxlength="900" placeholder="Viết tay hoặc nhập vài từ khoá rồi để bộ gợi ý bên dưới soạn giúp."></textarea>
+     </div>
+     <div class="form-group">
+      <label for="new-keywords" class="form-label">Từ khoá SEO</label><input id="new-keywords" class="field" type="text" spellcheck="false" placeholder="cốc gốm thủ công, quà tặng handmade">
+     </div>
+     <div class="ai-box">
+      <span class="chip ai">✦ AI</span>
+      <h3 class="mt-3">AI Artisan Copywriter &amp; SEO</h3>
+      <p id="writer-description" class="mt-2">Nhập vài từ khoá ngắn về chất liệu và kỹ thuật, bộ quy tắc sẽ ghép thành mô tả kèm danh sách từ khoá gợi ý. Máy không gọi mô hình nào, mọi câu chữ đều tra được trong mã nguồn.</p>
+      <div class="form-group mt-3">
+       <label for="ai-keywords" class="form-label">Từ khoá cho bộ gợi ý</label><input id="ai-keywords" class="field" type="text" spellcheck="false" placeholder="ví dụ: cốc gốm, vuốt tay, men hỏa biến, xanh ngọc">
+      </div><button id="ask-writer" type="button" class="btn terra">✦ Nhờ AI sáng tạo mô tả</button>
+      <div id="writer-result" class="hidden-state">
+       <div class="divider"></div>
+       <div class="detail-head">
+        <div>
+         <div class="eyebrow">KẾT QUẢ</div><span id="writer-status" class="chip draft">Chưa áp dụng</span>
+        </div>
+       </div>
+       <p id="writer-output" class="subtle mt-2"></p>
+       <h3 class="mt-3">Từ khoá gợi ý</h3>
+       <p id="writer-keywords" class="subtle mt-2"></p>
+       <ul id="writer-notes" class="advisor-list" aria-label="Giải thích của bộ gợi ý"></ul>
+       <div class="flex gap-2 mt-4 flex-wrap"><button id="use-writer" type="button" class="btn green">Dùng mô tả này</button><button id="redo-writer" type="button" class="btn">Tạo lại</button><button id="reject-writer" type="button" class="small-btn">Bỏ kết quả</button></div>
+      </div>
+     </div>
      <div class="flex justify-end gap-2 mt-5">
       <button data-template-id="listing-cancel" type="button" class="btn close-modal canva-button" style="background: rgb(238, 231, 221); color: rgb(57, 41, 31); font-weight: 400; font-style: normal; font-size: 15px;">Hủy</button><button data-template-id="listing-save" type="submit" class="btn terra canva-button" style="background: rgb(191, 98, 60); color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 15px;">Lưu listing</button>
      </div>
@@ -168,6 +195,7 @@
   </div>
   <div id="toast" class="toast hidden-state" role="status" aria-live="polite"></div>
   <script src="../js/chung.js"></script>
+  <script src="../js/ai/copywriter.js"></script>
   <script src="js/main.js"></script>
  </body>
 </html>
