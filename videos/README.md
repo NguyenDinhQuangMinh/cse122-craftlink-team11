@@ -10,15 +10,9 @@ GitHub chặn tệp lớn hơn 100 MB và lịch sử repo sẽ phình vĩnh vi�
 
 | STT kiểm kê | Người quay | Tên tệp bắt buộc | Link |
 |---|---|---|---|
-| 1 | SV1 | `SV1-01-home-explore.mp4` | chưa quay |
-| 2 | SV1 | `SV1-02-product-detail.mp4` | chưa quay |
-| 3 | SV1 | `SV1-03-custom-order-brief.mp4` | chưa quay |
-| 7 | SV2 | `SV2-01-maker-listings.mp4` | chưa quay |
-| 8 | SV2 | `SV2-02-maker-edit-listing.mp4` | chưa quay |
-| 9 | SV2 | `SV2-03-maker-brief-inbox.mp4` | chưa quay |
 | 14 | SV3 | `SV3-02-admin-moderation-queue.mp4` | https://youtu.be/LAlWYQg43LY |
 | 16 | SV3 | `SV3-04-admin-category-management.mp4` | https://youtu.be/imsnvGvIofQ |
-| 18 | SV3 | `SV3-06-admin-content-policy.mp4` | chưa quay |
+| 18 | SV3 | `SV3-06-admin-content-policy.mp4` | https://youtu.be/3dCK3uHpIcY |
 
 SV1 và SV2 tự xác nhận lại ba trang chính của mình với giảng viên; bảng trên lấy theo cột "OBS Video" của `../docs/screen-inventory.md`.
 
