@@ -65,8 +65,7 @@ Khai báo chi tiết, prompt và giới hạn dữ liệu: [`docs/ai-usage-repor
 - **Thiết kế Canva SV3 (sáu màn hình quản trị và kiểm duyệt):** [canva.link/zqtyq0qivogb17s](https://canva.link/zqtyq0qivogb17s)
 - **Sơ đồ User Flow:** [`docs/user-flow.md`](./docs/user-flow.md)
 - **Component Guide (bảng màu/chữ/thành phần):** [`docs/component-guide.md`](./docs/component-guide.md)
-- **Kịch bản quay OBS SV3:** [`docs/sv3-recording-checklist.md`](./docs/sv3-recording-checklist.md)
-- **Video OBS SV3:** chưa cập nhật. Danh sách và liên kết nằm ở [`videos/README.md`](./videos/README.md).
+- **Video OBS SV3:** đã cập nhật. Danh sách và liên kết nằm ở [`videos/README.md`](./videos/README.md).
 
 ## 8. 📁 CẤU TRÚC THƯ MỤC CHUẨN THEO BAREM
 
