@@ -53,7 +53,7 @@ Nằm ở dòng "Giao diện đăng nhập, đăng ký (SV1+SV2+SV3)" của `doc
 | Điều hướng | `DangNhapVaDangKy/01-dang-nhap/index.html` | Trang trung gian, đọc `?role=` rồi chuyển sang đúng trang đăng nhập của vai đó (link từ trang đăng ký đi qua đây) |
 | Đăng ký | `DangNhapVaDangKy/02-dang-ky/index.html` | Kiểm tra từng luật bằng tiếng Việt, đếm độ mạnh mật khẩu, trường riêng cho nghệ nhân, chặn đăng ký tài khoản quản trị |
 
-Ba trang đăng nhập tách hẳn nhau: mỗi trang là **một tệp HTML duy nhất** chứa luôn CSS trong `<style>` và JS trong `<script>`, không `<link>` hay `<script src>` nào, không dùng chung tệp nào với nhau hay với `02-dang-ky` (chung thư mục `assets/img/` để chứa ảnh). Ba tab chuyển vai ngày trước giờ là ba link thẳng sang ba trang.
+Ba trang đăng nhập tách hẳn nhau: mỗi trang có `css/<vai>.css` và `js/<vai>.js` riêng, không dùng chung tệp nào với nhau hay với `02-dang-ky` (chung thư mục `assets/img/` để chứa ảnh). Ba tab chuyển vai ngày trước giờ là ba link thẳng sang ba trang.
 
 Mật khẩu được băm SHA-256 trước khi ghi `localStorage`, không lưu mật khẩu gốc. Đăng ký xong đăng nhập được ngay bằng chính tài khoản đó, kể cả tài khoản quản trị do nhóm cấp.
 
