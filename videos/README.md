@@ -16,8 +16,8 @@ GitHub chặn tệp lớn hơn 100 MB và lịch sử repo sẽ phình vĩnh vi�
 | 7 | SV2 | `SV2-01-maker-listings.mp4` | chưa quay |
 | 8 | SV2 | `SV2-02-maker-edit-listing.mp4` | chưa quay |
 | 9 | SV2 | `SV2-03-maker-brief-inbox.mp4` | chưa quay |
-| 14 | SV3 | `SV3-02-admin-moderation-queue.mp4` | chưa quay |
-| 16 | SV3 | `SV3-04-admin-category-management.mp4` | chưa quay |
+| 14 | SV3 | `SV3-02-admin-moderation-queue.mp4` | https://youtu.be/LAlWYQg43LY |
+| 16 | SV3 | `SV3-04-admin-category-management.mp4` | https://youtu.be/imsnvGvIofQ |
 | 18 | SV3 | `SV3-06-admin-content-policy.mp4` | chưa quay |
 
 SV1 và SV2 tự xác nhận lại ba trang chính của mình với giảng viên; bảng trên lấy theo cột "OBS Video" của `../docs/screen-inventory.md`.
@@ -35,4 +35,3 @@ SV1 và SV2 tự xác nhận lại ba trang chính của mình với giảng vi�
 
 Thiếu bước 1 → video đó 0.00đ. Chỉ quay sản phẩm chạy được mà không giải thích code và không sửa trực tiếp → trừ 0.25đ.
 
-Kịch bản quay chi tiết của SV3 (đường dẫn tệp, số dòng, thay đổi live-edit đã kiểm chứng): [`../docs/sv3-recording-checklist.md`](../docs/sv3-recording-checklist.md).
