@@ -91,4 +91,4 @@ Bảng `BOT_RULES` khớp từ khoá tiếng Việt để trả lời câu hỏi
 - [x] Viết mã mô phỏng AI Copywriter / SEO (`KhongGianNguoiBan/js/ai/copywriter.js`, bộ quy tắc ghép câu, không gọi mô hình)
 - [x] Kiểm tra hiển thị Responsive trên các thiết bị (`@media` 1100px và 760px trong cả hai stylesheet)
 - [x] Màn hình STT 12 — thiết lập gian hàng (`KhongGianNguoiBan/04-shop-profile/index.html`)
-- [ ] Quay ba video OBS: `SV2-01-maker-listings.mp4`, `SV2-03-maker-brief-inbox.mp4`, `SV2-04-maker-proposal-editor.mp4`
+- [x] Quay ba video OBS: `SV2-01-dangnhap-khachhang.mp4`, `SV2-02-dangnhap-nghenhan.mp4`, `SV2-03-dangnhap-admin.mp4`
