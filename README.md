@@ -10,19 +10,7 @@
 
 ---
 
-## 2. 🗂️ CẤU TRÚC THƯ MỤC THEO VAI TRÒ
-Mỗi vai trò một thư mục, HTML/CSS/JS để riêng, không dùng chéo giữa các vai.
-
-| Vai trò | Thư mục | Trạng thái mã nguồn |
-| :--- | :--- | :--- |
-| Thợ thủ công / Nghệ nhân | `ThoThuCong/` | 4 màn hình đã có mã (`01-listing-management`, `02-brief-inbox`, `03-proposal-editor`, `04-shop-profile`), CSS riêng ở `css/style.css`, JS riêng ở `js/chung.js` |
-| Khách hàng | `KhachHang/` | Chưa có mã nguồn, xem `KhachHang/README.md` |
-| Quản trị viên / Kiểm duyệt viên | `QuanTriVaKiemDuyet/` | Mã đang ở nhánh `feature/sv3-admin-screens` (thư mục `KiemDuyetVaQuanTri/`), chờ merge PR #1 |
-| Cổng vào chung cho cả ba vai | `DangNhapVaDangKy/` | 2 màn đăng nhập / đăng ký, CSS-JS ở `assets/`, là bộ duy nhất dùng chung nên giữ ở gốc repo |
-
----
-
-## 3. 📂 HỒ SƠ & TÀI LIỆU NỘP BÀI (DOCUMENTATION)
+## 2. 📂 HỒ SƠ & TÀI LIỆU NỘP BÀI (DOCUMENTATION)
 Tất cả tài liệu chi tiết của dự án được quản lý tập trung trong thư mục [`docs/`](./docs/):
 
 * 📑 **1.1 Giới thiệu dự án & Phạm vi hệ thống:** [`docs/project-introduction.md`](./docs/project-introduction.md)
@@ -34,7 +22,7 @@ Tất cả tài liệu chi tiết của dự án được quản lý tập trung
 
 ---
 
-## 4. 👥 THÀNH VIÊN VÀ PHÂN CÔNG VAI TRÒ
+## 3. 👥 THÀNH VIÊN VÀ PHÂN CÔNG VAI TRÒ
 | STT | Thành viên | Họ và tên | Mã sinh viên | Vai trò phụ trách | Số màn hình | Tích hợp tính năng AI |
 | :---: | :---: | :--- | :---: | :--- | :---: | :--- |
 | Bonus | **SV1+SV2+SV3** | | | Giao diện đăng nhập, đăng ký | **6** | |

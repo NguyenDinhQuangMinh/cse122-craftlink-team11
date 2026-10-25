@@ -22,9 +22,7 @@
   - Tích hợp công cụ hỗ trợ Maker kiểm tra giá và tiến độ trước khi gửi báo giá.
   - Bàn giao phân hệ đăng nhập / đăng ký ba vai trò dùng chung cho cả nhóm.
 
-Mã nguồn của vai này nằm ở thư mục `ThoThuCong/` (tên cũ là `KhongGianNguoiBan/`, đổi ngày 25-10-2026 để mỗi vai trò một thư mục: `ThoThuCong/`, `KhachHang/`, `QuanTriVaKiemDuyet/`). CSS và JS trong ba thư mục vai trò để riêng, không dùng chéo; chỉ `DangNhapVaDangKy/` ở gốc repo là bộ chung cho cả ba vai.
-
-Những mục kế hoạch mà không làm thì đánh dấu rõ ở checklist cuối tệp, hiện chỉ còn phần quay video OBS.
+Phần kế hoạch chưa làm được đánh dấu rõ ở checklist cuối tệp: báo cáo doanh thu & rút tiền, thiết lập gian hàng, và AI viết mô tả SEO.
 
 ---
 
@@ -34,12 +32,12 @@ Bảng dưới đối chiếu 6 dòng được giao trong `docs/screen-inventory
 
 | STT | Màn hình theo kế hoạch | Mã nguồn thực tế | CRUD đạt được | Ghi chú |
 | :---: | :--- | :--- | :---: | :--- |
-| 7 | Quản lý danh sách bài đăng | `ThoThuCong/01-listing-management/index.html` | **C / R / U / D** | Tìm kiếm, lọc 4 trạng thái, chỉ số đếm theo trạng thái, chuyển Bảng/Lưới, nút demo trạng thái Rỗng và Đang tải |
+| 7 | Quản lý danh sách bài đăng | `KhongGianNguoiBan/01-listing-management/index.html` | **C / R / U / D** | Tìm kiếm, lọc 4 trạng thái, chỉ số đếm theo trạng thái, chuyển Bảng/Lưới, nút demo trạng thái Rỗng và Đang tải |
 | 8 | Trình tạo/sửa sản phẩm | form modal trong cùng trang STT 7 | **C / U** | Có chọn ảnh từ tệp hoặc dán URL, ô mô tả + từ khoá SEO, khung "Nhờ AI sáng tạo mô tả" ghép văn bản từ từ khoá người dùng nhập. Không tách trang riêng |
-| 9 | Hòm thư Brief từ khách | `ThoThuCong/02-brief-inbox/index.html` | **R / U** | Đọc brief, tìm kiếm, lọc theo trạng thái, đánh dấu đã đọc, ghi chú nội bộ, mở sang proposal theo `?brief=` |
-| 10 | Trình tạo Proposal | `ThoThuCong/03-proposal-editor/index.html` | **C / U** | Wizard 4 bước, bảng hạng mục thêm/xoá dòng, tự tính tổng, ba trạng thái nháp → xác nhận mẫu → đã gửi, lưu qua `sessionStorage` nên hòm thư cập nhật nhãn theo |
+| 9 | Hòm thư Brief từ khách | `KhongGianNguoiBan/02-brief-inbox/index.html` | **R / U** | Đọc brief, tìm kiếm, lọc theo trạng thái, đánh dấu đã đọc, ghi chú nội bộ, mở sang proposal theo `?brief=` |
+| 10 | Trình tạo Proposal | `KhongGianNguoiBan/03-proposal-editor/index.html` | **C / U** | Wizard 4 bước, bảng hạng mục thêm/xoá dòng, tự tính tổng, ba trạng thái nháp → xác nhận mẫu → đã gửi, lưu qua `sessionStorage` nên hòm thư cập nhật nhãn theo |
 | 11 | Xem trước Proposal | bước 4 của trang STT 10 | **R** | Không tách trang riêng |
-| 12 | Thiết lập gian hàng & hồ sơ nghệ nhân | `ThoThuCong/04-shop-profile/index.html` | **R / U** | Tên xưởng, chuyên môn, câu chuyện thương hiệu, địa chỉ, SĐT, email, ảnh đại diện và ảnh bìa; khung xem trước chạy theo từng phím gõ, kiểm tra dữ liệu từng trường, lưu vào `localStorage` nên nhãn gian hàng ở thanh trên của cả bốn màn hình đổi theo |
+| 12 | Thiết lập gian hàng & hồ sơ nghệ nhân | `KhongGianNguoiBan/04-shop-profile/index.html` | **R / U** | Tên xưởng, chuyên môn, câu chuyện thương hiệu, địa chỉ, SĐT, email, ảnh đại diện và ảnh bìa; khung xem trước chạy theo từng phím gõ, kiểm tra dữ liệu từng trường, lưu vào `localStorage` nên nhãn gian hàng ở thanh trên của cả bốn màn hình đổi theo |
 
 Hai dòng 8 và 11 gộp vào màn hình bên cạnh nên tổng số **tệp HTML** của phân hệ Maker là bốn, khớp cột "Số màn hình = 4" trong `README.md`.
 
@@ -62,14 +60,14 @@ Mật khẩu được băm SHA-256 trước khi ghi `localStorage`, không lưu 
 
 - **Mô tả:** Trong form tạo/sửa listing, Maker nhập vài từ khoá ngắn (ví dụ "bình gốm, vuốt tay, men hỏa biến, xanh ngọc") rồi bấm **Nhờ AI sáng tạo mô tả**. Bộ gợi ý trả về một đoạn mô tả, danh sách từ khoá SEO và phần giải thích vì sao viết như vậy, kèm nút **Dùng mô tả này / Tạo lại / Bỏ kết quả**; sau khi điền vào ô mô tả thì người dùng vẫn sửa tay bình thường.
 - **Kịch bản trải nghiệm:** từ khoá nhận diện được chất liệu và kỹ thuật → câu mở đầu dẫn đúng tên xưởng lấy từ hồ sơ gian hàng (STT 12); thiếu từ khoá màu hoặc kỹ thuật → dòng "Nên thêm" nói rõ đang thiếu gì; đổi wording một chút rồi bấm **Tạo lại** → ra văn phong khác vì có ba khuôn câu.
-- **Cách cài đặt:** `ThoThuCong/js/ai/copywriter.js`, khoảng 100 dòng JavaScript thuần chạy ở trình duyệt. Từ khoá được phân loại theo từ điển có sẵn (chất liệu / kỹ thuật / màu / công dụng) rồi ghép vào một trong ba khuôn câu. **Không gọi mô hình ngôn ngữ nào**, và bản thân giao diện in dòng "Đây là bộ quy tắc có sẵn trong js/ai/copywriter.js, không gọi mô hình nào" để người dùng không hiểu nhầm.
+- **Cách cài đặt:** `KhongGianNguoiBan/js/ai/copywriter.js`, khoảng 100 dòng JavaScript thuần chạy ở trình duyệt. Từ khoá được phân loại theo từ điển có sẵn (chất liệu / kỹ thuật / màu / công dụng) rồi ghép vào một trong ba khuôn câu. **Không gọi mô hình ngôn ngữ nào**, và bản thân giao diện in dòng "Đây là bộ quy tắc có sẵn trong js/ai/copywriter.js, không gọi mô hình nào" để người dùng không hiểu nhầm.
 - **Lưu kết quả:** mô tả và từ khoá lưu vào `dataset` của dòng listing trong phiên dùng thử, nút "Xem thống kê" đọc lại để chứng minh dữ liệu đã vào sản phẩm chứ không chỉ hiện khung.
 
 ### Đã làm — AI Cost & Timeline Advisor (STT 10)
 
 - **Mô tả:** Khi Maker nhập giá, ngày giao và bảng hạng mục, advisor đối chiếu với chính dữ liệu brief (khung ngân sách, deadline, danh sách tiêu chí) rồi liệt kê điểm cần sửa, điểm nên thêm và điểm ổn, mỗi dòng kèm nút **Áp dụng** để sửa trực tiếp vào form.
 - **Kịch bản trải nghiệm:** vào proposal của brief "Bộ quà tặng gốm", nhập giá thấp hơn tổng hạng mục → advisor báo "Bán dưới chi phí" và nêu con số cụ thể; chọn ngày giao sau deadline brief → báo chậm bao nhiêu ngày kèm nút "Đẩy giao về 30/10"; bỏ sót tiêu chí "Có hộp quà giấy và thiệp cảm ơn" → báo tiêu chí đó chưa xuất hiện ở hạng mục nào.
-- **Cách cài đặt:** bộ quy tắc thuần JavaScript trong `ThoThuCong/03-proposal-editor/js/main.js` (`phanTich()`), chạy hoàn toàn ở trình duyệt, **không gọi mô hình ngôn ngữ nào**. Giao diện nói rõ đây là "suy luận từ những gì bạn nhập, chưa phải báo giá cuối".
+- **Cách cài đặt:** bộ quy tắc thuần JavaScript trong `KhongGianNguoiBan/03-proposal-editor/js/main.js` (`phanTich()`), chạy hoàn toàn ở trình duyệt, **không gọi mô hình ngôn ngữ nào**. Giao diện nói rõ đây là "suy luận từ những gì bạn nhập, chưa phải báo giá cuối".
 
 ### Trợ lý AI ở cổng đăng nhập
 
@@ -81,11 +79,11 @@ Mật khẩu được băm SHA-256 trước khi ghi `localStorage`, không lưu 
 
 - [x] Thiết kế Prototype màn hình trên Canva
 - [x] Dán liên kết Canva vào tài liệu `docs/sv2-assignment.md` và `docs/team-assignment.md`
-- [x] Tạo khung HTML/CSS cho phân hệ Maker (`ThoThuCong/css/style.css`)
+- [x] Tạo khung HTML/CSS cho phân hệ Maker (`KhongGianNguoiBan/css/style.css`)
 - [x] Hoàn thiện HTML/CSS/JS cho bốn màn hình listing, hòm thư brief, proposal và hồ sơ gian hàng
 - [x] Phân hệ đăng nhập / đăng ký ba vai trò dùng chung cho cả nhóm
 - [x] Viết mã tính năng AI thật đã cam kết (advisor giá & tiến độ, STT 10)
-- [x] Viết mã mô phỏng AI Copywriter / SEO (`ThoThuCong/js/ai/copywriter.js`, bộ quy tắc ghép câu, không gọi mô hình)
+- [x] Viết mã mô phỏng AI Copywriter / SEO (`KhongGianNguoiBan/js/ai/copywriter.js`, bộ quy tắc ghép câu, không gọi mô hình)
 - [x] Kiểm tra hiển thị Responsive trên các thiết bị (`@media` 1100px và 760px trong cả hai stylesheet)
-- [x] Màn hình STT 12 — thiết lập gian hàng (`ThoThuCong/04-shop-profile/index.html`)
+- [x] Màn hình STT 12 — thiết lập gian hàng (`KhongGianNguoiBan/04-shop-profile/index.html`)
 - [ ] Quay ba video OBS: `SV2-01-maker-listings.mp4`, `SV2-03-maker-brief-inbox.mp4`, `SV2-04-maker-proposal-editor.mp4`
