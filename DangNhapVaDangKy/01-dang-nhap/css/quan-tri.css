@@ -1,8 +1,3 @@
-/* GIAO DIEN DANG NHAP RIENG CUA VAI QUẢN TRỊ VIÊN & KIỂM DUYỆT.
-   File nay tu chua, khong <link> css khac: copy tu assets/css/style.css,
-   cat bo rule cua hai vai khong va cat rule an/hien panel theo tab.
-   (cat ca ben trong hai khoi @media)
-*/
 
 @import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap");
 
@@ -1327,14 +1322,12 @@ button {
   }
 }
 
-/* Tab chuyen vai khong con la nut bam nua: giu nguyen mau, xu ly nhu lien ket. */
 .role-tab {
   display: block;
   text-align: center;
   text-decoration: none;
 }
 
-/* Tab quan tri dang o trang cua no thi toi mau theo bang mau bao mat. */
 .role-tab[data-role="admin"][aria-current="page"] {
   background: var(--ink);
   box-shadow: 0 4px 12px rgba(47, 49, 53, 0.3);
