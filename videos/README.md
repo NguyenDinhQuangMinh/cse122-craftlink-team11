@@ -1,4 +1,4 @@
-# videos/ — Minh chứng Video OBS của nhóm
+# videos/ — Minh chứng Video OBS 
 
 Barem yêu cầu ở đâu: ĐK4 — "Có danh sách Video OBS tương ứng 1:1 với toàn bộ màn hình độc lập trong `screen-inventory.md`, mỗi video có webcam rõ khuôn mặt sinh viên và giọng giải thích trực tiếp"; Tiêu chí 8.1 (0.50đ) đòi tên tệp theo chuẩn `SVx-XX-screen-name.mp4` và **8 bước bắt buộc trong mỗi video**; mục 2 của phần chuẩn bị bảo vệ liệt kê "Tab 6: Thư mục chứa toàn bộ Video OBS của nhóm".
 
