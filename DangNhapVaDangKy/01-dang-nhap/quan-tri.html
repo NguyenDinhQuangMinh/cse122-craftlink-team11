@@ -6,11 +6,6 @@
     <title>Đăng nhập Quản trị &amp; Kiểm duyệt – CraftLink</title>
     <meta name="description" content="CraftLink – Cổng truy cập bảo mật dành cho quản trị viên và kiểm duyệt viên được cấp quyền." />
 <style>
-/* GIAO DIEN DANG NHAP RIENG CUA VAI QUẢN TRỊ VIÊN & KIỂM DUYỆT.
-   File nay tu chua, khong <link> css khac: copy tu assets/css/style.css,
-   cat bo rule cua hai vai khong va cat rule an/hien panel theo tab.
-   (cat ca ben trong hai khoi @media)
-*/
 
 @import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap");
 
@@ -1335,14 +1330,12 @@ button {
   }
 }
 
-/* Tab chuyen vai khong con la nut bam nua: giu nguyen mau, xu ly nhu lien ket. */
 .role-tab {
   display: block;
   text-align: center;
   text-decoration: none;
 }
 
-/* Tab quan tri dang o trang cua no thi toi mau theo bang mau bao mat. */
 .role-tab[data-role="admin"][aria-current="page"] {
   background: var(--ink);
   box-shadow: 0 4px 12px rgba(47, 49, 53, 0.3);
@@ -1467,11 +1460,6 @@ button {
     </footer>
 
     <script>
-/* GIAO DIEN DANG NHAP RIENG CUA VAI QUẢN TRỊ VIÊN & KIỂM DUYỆT.
-   File nay tu chua, khong <script src> nao khac:
-   - phan dau: sprite icon, toast, modal, kiem tra bieu mau, localStorage tai khoan, tro ly AI
-     (copy tu assets/js/common.js, cat bo ham rieng trang dang ky/quen mat khau);
-   - phan cuoi: dang nhap cua dung vai nay, khong con chuyen tab vi moi vai mot trang. */
 
 (() => {
   const ICONS = {
@@ -2017,3 +2005,4 @@ button {
     </script>
   </body>
 </html>
+
