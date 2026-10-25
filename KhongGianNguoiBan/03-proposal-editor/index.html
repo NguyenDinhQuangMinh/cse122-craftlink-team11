@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="vi"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CraftLink — Proposal</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Fraunces:wght@600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="https://cdn.tailwindcss.com/3.4.17" type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.577.0/dist/umd/lucide.min.js" type="text/javascript"></script>
+ </head>
+ <body data-template-id="__page-root" style="background: rgb(247, 243, 237);">
+  <div class="shell">
+   <aside class="sidebar" aria-label="Điều hướng CraftLink">
+    <div data-template-id="brand" class="brand canva-text" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 27px;">CraftLink</div>
+    <div data-template-id="nav-caption" class="side-caption canva-text" style="color: rgb(215, 224, 237); font-weight: 400; font-style: normal; font-size: 10px;">KHÔNG GIAN NGƯỜI BÁN</div>
+    <nav aria-label="Màn hình"><a class="nav-btn" href="../01-listing-management/index.html"><span data-template-id="nav-listing" class="canva-text" style="color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 15px;">Quản lý listing</span></a> <a class="nav-btn" href="../02-brief-inbox/index.html"><span data-template-id="nav-brief" class="canva-text" style="color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 15px;">Hòm thư brief</span></a> <a class="nav-btn active" href="../03-proposal-editor/index.html" aria-current="page"><span data-template-id="nav-proposal" class="canva-text" style="color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 15px;">Proposal</span></a>
+    </nav>
+    <p data-template-id="side-note" class="side-note canva-text" style="color: rgb(217, 200, 180); font-weight: 400; font-style: normal; font-size: 15px;">CraftLink đồng hành cùng người làm thủ công trong mỗi cơ hội hợp tác.</p>
+   </aside>
+   <div class="workspace">
+    <div class="page">
+     <header class="topbar">
+      <div id="breadcrumb" class="breadcrumb" aria-live="polite">
+       Bảng điều khiển / Proposal / Chỉnh sửa
+      </div><span data-template-id="account" class="account canva-tag" style="background: rgb(255, 254, 250); color: rgb(57, 41, 31); font-weight: 400; font-style: normal; font-size: 15px;">Nhà Gốm An Nhiên</span>
+     </header>
+     <main>
+      <section id="proposal" class="view active" aria-labelledby="proposal-title">
+       <div class="heading-row">
+        <div>
+         <div data-template-id="proposal-eyebrow" class="eyebrow canva-text" style="color: rgb(191, 98, 60); font-weight: 400; font-style: normal; font-size: 15px;">ĐỀ XUẤT CHO KHÁCH HÀNG</div>
+         <h1 id="proposal-title" data-template-id="proposal-title-text" class="canva-text" style="color: rgb(57, 41, 31); font-weight: 700; font-style: normal; font-size: 30px;">Chỉnh sửa Proposal</h1>
+         <p data-template-id="proposal-description" class="subtle canva-text" style="color: rgb(121, 111, 100); font-weight: 400; font-style: normal; font-size: 15px;">Xây dựng báo giá và kế hoạch thực hiện rõ ràng cho khách hàng.</p>
+        </div>
+        <div class="heading-meta">
+         <span id="proposal-status" class="chip draft">Bản nháp</span>
+         <a id="back-to-brief" class="back-link" href="../02-brief-inbox/index.html">← Xem lại brief</a>
+        </div>
+       </div>
+       <div class="steps" aria-label="Tiến trình tạo proposal">
+        <button type="button" class="step current" data-step="1" aria-current="step">
+         <b>1</b><span data-template-id="step-one" class="canva-text">Thông tin cơ bản</span>
+        </button>
+        <button type="button" class="step" data-step="2" disabled>
+         <b>2</b><span data-template-id="step-two" class="canva-text">Phạm vi công việc</span>
+        </button>
+        <button type="button" class="step" data-step="3" disabled>
+         <b>3</b><span data-template-id="step-three" class="canva-text">Chi phí &amp; thời gian</span>
+        </button>
+        <button type="button" class="step" data-step="4" disabled>
+         <b>4</b><span data-template-id="step-four" class="canva-text">Xem trước &amp; gửi</span>
+        </button>
+       </div>
+       <form id="proposal-form" novalidate>
+        <div class="editor-layout">
+         <div class="editor-main">
+         <div id="editor-card" class="surface editor-card">
+          <section class="step-panel" data-buoc="1" aria-labelledby="buoc-1-title">
+           <div class="eyebrow">BƯỚC 1 · THÔNG TIN CƠ BẢN</div>
+           <h2 id="buoc-1-title" data-template-id="proposal-info-heading" class="canva-text mt-2" style="color: rgb(57, 41, 31); font-weight: 700; font-style: normal; font-size: 23px;">Thông tin đề xuất</h2>
+           <div class="brief-recap">
+            <div class="info-grid">
+             <div><small>KHÁCH HÀNG</small><strong id="recap-customer"></strong></div>
+             <div><small>NGÂN SÁCH DỰ KIẾN</small><strong id="recap-budget"></strong></div>
+             <div><small>HẠN MONG MUỐN</small><strong id="recap-deadline"></strong></div>
+             <div><small>TIÊU CHÍ CỦA KHÁCH</small><strong id="recap-criteria-count"></strong></div>
+            </div>
+            <ul id="recap-criteria" class="criteria"></ul>
+           </div>
+           <div class="form-group">
+            <label data-template-id="proposal-name-label" for="proposal-project" class="form-label canva-text" style="color: rgb(120, 106, 94); font-weight: 400; font-style: normal; font-size: 15px;">Tên proposal</label><input id="proposal-project" class="field" required="" value="Bộ quà tặng gốm cho doanh nghiệp">
+           </div>
+           <div class="form-group">
+            <label data-template-id="message-label" for="proposal-message" class="form-label canva-text" style="color: rgb(120, 106, 94); font-weight: 400; font-style: normal; font-size: 15px;">Lời nhắn cho khách hàng</label><textarea id="proposal-message" class="field" rows="4" required="" minlength="20">Chào bạn, CraftLink rất vui được đồng hành cùng dự án này. Mình đề xuất bộ quà gốm thủ công với tông men ấm và đóng gói phù hợp làm quà tặng.</textarea>
+           </div>
+          </section>
+          <section class="step-panel hidden-state" data-buoc="2" aria-labelledby="buoc-2-title">
+           <div class="eyebrow">BƯỚC 2 · PHẠM VI CÔNG VIỆC</div>
+           <div class="section-line">
+            <h2 id="buoc-2-title" data-template-id="scope-heading" class="canva-text" style="color: rgb(57, 41, 31); font-weight: 700; font-style: normal; font-size: 23px;">Phạm vi công việc</h2><button id="add-scope" data-template-id="add-scope-text" type="button" class="small-btn canva-button" style="color: rgb(168, 73, 41); font-weight: 400; font-style: normal; font-size: 15px;">+ Thêm hạng mục</button>
+           </div>
+           <p class="subtle mb-3">Liệt kê từng hạng mục khách sẽ nhận, kèm số lượng và đơn giá. Tổng các hạng mục là căn cứ để đặt giá ở bước 3.</p>
+           <div class="scope-wrap">
+            <table class="scope-table">
+             <thead>
+              <tr>
+               <th>HẠNG MỤC</th>
+               <th>SỐ LƯỢNG</th>
+               <th>ĐƠN GIÁ (Đ)</th>
+               <th>GHI CHÚ</th>
+               <th><span class="sr-only">Xóa</span></th>
+              </tr>
+             </thead>
+             <tbody id="scope-body"></tbody>
+            </table>
+           </div>
+           <p class="subtle mt-2">Tạm tính hạng mục: <strong id="scope-total">0 đ</strong></p>
+           <div class="divider"></div>
+           <div class="form-group">
+            <label data-template-id="attachment-label" for="proposal-files" class="form-label canva-text" style="color: rgb(120, 106, 94); font-weight: 400; font-style: normal; font-size: 15px;">Tệp đính kèm</label>
+            <div class="upload-box">
+             <p data-template-id="attachment-empty" class="subtle canva-text mb-3" style="color: rgb(121, 111, 100); font-weight: 400; font-style: normal; font-size: 15px;">Chưa có tệp. Chọn ảnh hoặc PDF để xem tên tệp trong bản nháp.</p><input id="proposal-files" type="file" multiple="" accept=".pdf,.png,.jpg,.jpeg">
+            </div>
+            <p id="file-feedback" class="subtle mt-2">Tệp không được tải lên hoặc gửi đi trong prototype.</p>
+           </div>
+          </section>
+          <section class="step-panel hidden-state" data-buoc="3" aria-labelledby="buoc-3-title">
+           <div class="eyebrow">BƯỚC 3 · CHI PHÍ &amp; THỜI GIAN</div>
+           <h2 id="buoc-3-title" class="mt-2">Giá và tiến độ</h2>
+           <p class="subtle mb-3">Tổng các hạng mục ở bước 2: <strong id="step3-scope-total">0 đ</strong></p>
+           <div class="form-grid">
+            <div class="form-group">
+             <label data-template-id="proposal-price-label" for="proposal-price" class="form-label canva-text" style="color: rgb(120, 106, 94); font-weight: 400; font-style: normal; font-size: 15px;">Giá ước tính (đ)</label><input id="proposal-price" class="field" type="number" min="0" step="1000" value="9600000" required="">
+            </div>
+            <div class="form-group">
+             <label data-template-id="proposal-days-label" for="proposal-days" class="form-label canva-text" style="color: rgb(120, 106, 94); font-weight: 400; font-style: normal; font-size: 15px;">Thời gian hoàn thành (ngày)</label><input id="proposal-days" class="field" type="number" min="1" step="1" value="21" required="">
+            </div>
+           </div>
+           <div class="form-group">
+            <label data-template-id="delivery-date-label" for="proposal-date" class="form-label canva-text" style="color: rgb(120, 106, 94); font-weight: 400; font-style: normal; font-size: 15px;">Ngày giao dự kiến</label><input id="proposal-date" class="field" type="date" value="2026-10-30" required="">
+           </div>
+           <div class="ai-box">
+            <span data-template-id="advisor-badge" class="chip ai canva-tag" style="background: rgb(233, 243, 232); color: rgb(63, 112, 73); font-weight: 400; font-style: normal; font-size: 15px;">✦ AI</span>
+            <h3 data-template-id="advisor-title" class="canva-text mt-3" style="color: rgb(57, 41, 31); font-weight: 700; font-style: normal; font-size: 18px;">AI Cost &amp; Timeline Advisor</h3>
+            <p id="advisor-description" class="mt-2"></p>
+            <ul id="advisor-list" class="advisor-list" aria-label="Các đề xuất của trợ lý chi phí và tiến độ"></ul><button id="apply-advice" data-template-id="apply-advice-text" type="button" class="btn terra canva-button mt-2" style="background: rgb(191, 98, 60); color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 15px;">Áp dụng tất cả đề xuất</button>
+           </div>
+          </section>
+         </div>
+         <div id="send-panel" class="surface send-panel hidden-state" aria-labelledby="send-title">
+          <div class="detail-head">
+           <div>
+            <div class="eyebrow">BƯỚC 4 · XEM TRƯỚC &amp; GỬI</div>
+            <h2 id="send-title" class="mt-2">Gửi proposal cho khách hàng</h2>
+            <p id="send-summary" class="subtle mt-2"></p>
+           </div><span id="send-status" class="chip pending">Chờ bạn gửi</span>
+          </div>
+          <p class="subtle mt-3">Bản xem trước bên cạnh là đúng nội dung khách sẽ nhận. Cần sửa thì bấm vào bước tương ứng ở thanh tiến trình hoặc “Quay lại chỉnh sửa”.</p>
+          <div class="flex justify-end gap-2 mt-4 flex-wrap">
+           <button id="back-to-edit" type="button" class="btn">Quay lại chỉnh sửa</button><button id="publish-proposal" type="button" class="btn green">Gửi proposal</button>
+          </div>
+          <p id="send-result" class="subtle mt-3" role="status"></p>
+         </div>
+         </div>
+         <aside class="surface preview" aria-label="Bản xem trước proposal">
+          <div data-template-id="preview-eyebrow" class="eyebrow canva-text" style="color: rgb(191, 98, 60); font-weight: 400; font-style: normal; font-size: 15px;">BẢN XEM TRƯỚC GỬI KHÁCH HÀNG</div><span id="preview-status" class="chip draft mt-3">Bản nháp</span>
+          <h2 id="preview-project" class="mt-4"></h2>
+          <p data-template-id="preview-from" class="subtle canva-text" style="color: rgb(121, 111, 100); font-weight: 400; font-style: normal; font-size: 15px;">Đề xuất từ Nhà Gốm An Nhiên · CraftLink</p>
+          <div class="divider"></div>
+          <p id="preview-greeting" class="subtle"></p>
+          <p id="preview-message" class="subtle whitespace-pre-wrap mt-3"></p>
+          <div class="divider"></div>
+          <h3 data-template-id="preview-scope-heading" class="canva-text" style="color: rgb(57, 41, 31); font-weight: 700; font-style: normal; font-size: 18px;">Phạm vi &amp; chi phí</h3>
+          <table class="preview-table">
+           <thead>
+            <tr>
+             <th>HẠNG MỤC</th>
+             <th>THÀNH TIỀN</th>
+            </tr>
+           </thead>
+           <tbody id="preview-scope"></tbody>
+          </table>
+          <div class="flex justify-between items-center gap-3 mt-4">
+           <strong data-template-id="preview-total-label" class="canva-text" style="color: rgb(57, 41, 31); font-weight: 700; font-style: normal; font-size: 15px;">Tổng dự kiến</strong><strong id="preview-price" class="preview-total"></strong>
+          </div>
+          <p id="preview-timeline" class="subtle mt-3"></p>
+          <p id="preview-date" class="subtle mt-1"></p>
+          <div class="divider"></div>
+          <h3 data-template-id="terms-heading" class="canva-text" style="color: rgb(57, 41, 31); font-weight: 700; font-style: normal; font-size: 18px;">Điều khoản ngắn</h3>
+          <p data-template-id="terms-copy" class="subtle canva-text" style="color: rgb(121, 111, 100); font-weight: 400; font-style: normal; font-size: 15px;">Giá và tiến độ có thể được điều chỉnh sau khi hai bên xác nhận mẫu, số lượng và lịch giao hàng.</p>
+          <div class="divider"></div>
+          <p data-template-id="maker-signature" class="subtle canva-text" style="color: rgb(121, 111, 100); font-weight: 400; font-style: normal; font-size: 15px;">Nhà Gốm An Nhiên · Người làm thủ công trên CraftLink</p>
+          <p id="preview-files" class="subtle mt-3"></p>
+         </aside>
+        </div>
+        <div id="proposal-actions" class="proposal-actions">
+         <button id="step-back" type="button" class="btn step-back hidden-state">← Quay lại</button><button id="save-draft" data-template-id="save-draft-text" type="button" class="btn canva-button" style="background: rgb(238, 231, 221); color: rgb(57, 41, 31); font-weight: 400; font-style: normal; font-size: 15px;">Lưu bản nháp</button><button id="ask-ai" data-template-id="ask-ai-text" type="button" class="btn terra canva-button hidden-state" style="background: rgb(191, 98, 60); color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 15px;">Gợi ý AI</button><button id="step-next" type="button" class="btn green">Tiếp tục: Phạm vi công việc →</button><button id="send-proposal" data-template-id="send-proposal-text" type="submit" class="btn green canva-button hidden-state" style="background: rgb(84, 132, 91); color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 15px;">Xác nhận proposal mẫu</button>
+        </div>
+        <p id="proposal-feedback" class="subtle mt-3" role="status">Prototype: bản nháp chỉ tồn tại trong phiên này; proposal và tệp chưa được gửi đến khách hàng.</p>
+       </form>
+      </section>
+     </main>
+    </div>
+   </div>
+  </div>
+  <div id="toast" class="toast hidden-state" role="status" aria-live="polite"></div>
+  <script src="../js/chung.js"></script>
+  <script src="js/main.js"></script>
+ </body>
+</html>
