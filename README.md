@@ -57,10 +57,29 @@ Một API server-side tại [`api/ai.js`](./api/ai.js) dùng chung một nhà cu
 
 GitHub Pages chỉ phục vụ tệp tĩnh nên endpoint AI không chạy trên Pages; cần Vercel hoặc nền tảng có serverless function. Khi máy chủ chưa có khóa, `KiemDuyetVaQuanTri/js/ai-fallback.js` phân tích bằng bộ quy tắc trên đúng dữ liệu của bản ghi đang mở, và giao diện luôn hiển thị dòng "Nguồn:" ghi rõ kết quả đến từ mô hình AI hay từ bộ quy tắc cục bộ.
 
-Khai báo chi tiết, prompt và giới hạn dữ liệu: [`KiemDuyetVaQuanTri/docs/ai-usage-report.md`](./KiemDuyetVaQuanTri/docs/ai-usage-report.md).
+Khai báo chi tiết, prompt và giới hạn dữ liệu: [`docs/ai-usage-report.md`](./docs/ai-usage-report.md) (cấp nhóm) và [`KiemDuyetVaQuanTri/docs/ai-usage-report.md`](./KiemDuyetVaQuanTri/docs/ai-usage-report.md) (phân hệ quản trị).
 
 ## 7. 🔗 LIÊN KẾT
 
 - **Thiết kế Canva của nhóm:** [CraftLink trên Canva](https://www.canva.com/design/DAHXD2jg9HU/7Q4trg1HDT246iMdGVyUXw/edit)
 - **Thiết kế Canva SV3 (sáu màn hình quản trị và kiểm duyệt):** [canva.link/zqtyq0qivogb17s](https://canva.link/zqtyq0qivogb17s)
-- **Video OBS SV3:** chưa cập nhật.
+- **Sơ đồ User Flow:** [`docs/user-flow.md`](./docs/user-flow.md)
+- **Kịch bản quay OBS SV3:** [`docs/sv3-recording-checklist.md`](./docs/sv3-recording-checklist.md)
+- **Video OBS SV3:** chưa cập nhật. Danh sách và liên kết nằm ở [`videos/README.md`](./videos/README.md).
+
+## 8. 📁 CẤU TRÚC THƯ MỤC CHUẨN THEO BAREM
+
+Barem gọi tên đích danh một số đường dẫn làm minh chứng. Repo đã có sẵn các thư mục này, mỗi thư mục kèm một tệp `README.md` ghi rõ dùng để làm gì và còn thiếu gì:
+
+| Đường dẫn | Barem viện dẫn | Trạng thái |
+| :--- | :--- | :--- |
+| `pages/` | Tiêu chí 2 (`pages/*.html`), checklist mục 1 và 3 | khung chờ — mã sáu trang quản trị còn ở `KiemDuyetVaQuanTri/` |
+| `css/` | Tiêu chí 4, mục 5.2, checklist mục 8 (`css/style.css` và `:root` dùng chung) | khung chờ |
+| `assets/data/` | Tiêu chí 5, mục 5.1, checklist mục 9 (`assets/data/*.json`, 15–25 bản ghi) | khung chờ |
+| `docs/screen-inventory.md` | ĐK1, tiêu chí 1.2 | đã có — 18 màn hình |
+| `docs/user-flow.md` | ĐK1, tiêu chí 1.2 | đã có — sơ đồ kèm ảnh render trong `docs/diagrams/` |
+| `docs/project-proposal.md` | Tiêu chí 1 | đã có — tóm tắt, trỏ tới `project-introduction.md` |
+| `docs/ai-usage-report.md` | ĐK5, VP-07 | đã có phần SV3; SV1 và SV2 chưa khai |
+| `videos/` | ĐK4, tiêu chí 8.1, "Tab 6" khi bảo vệ | bảng liên kết, không chứa tệp `.mp4` |
+| `docs/sv3-recording-checklist.md` | Tiêu chí 8.1, 8 bước bắt buộc | đã có — kịch bản 3 video của SV3 |
+| `api/ai.js` | Tiêu chí 6, mục 6.1–6.3 | đã có — bốn loại tác vụ AI |
