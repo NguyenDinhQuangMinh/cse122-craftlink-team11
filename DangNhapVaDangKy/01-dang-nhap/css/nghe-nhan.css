@@ -1,8 +1,4 @@
-/* GIAO DIEN DANG NHAP RIENG CUA VAI THỢ THỦ CÔNG / NGHỆ NHÂN.
-   File nay tu chua, khong <link> css khac: copy tu assets/css/style.css,
-   cat bo rule cua hai vai khong va cat rule an/hien panel theo tab.
-   (cat ca ben trong hai khoi @media)
-*/
+
 
 @import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap");
 
@@ -1261,7 +1257,7 @@ button {
   }
 }
 
-/* Tab chuyen vai khong con la nut bam nua: giu nguyen mau, xu ly nhu lien ket. */
+
 .role-tab {
   display: block;
   text-align: center;
