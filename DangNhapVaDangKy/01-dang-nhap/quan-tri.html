@@ -5,7 +5,1349 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Đăng nhập Quản trị &amp; Kiểm duyệt – CraftLink</title>
     <meta name="description" content="CraftLink – Cổng truy cập bảo mật dành cho quản trị viên và kiểm duyệt viên được cấp quyền." />
-    <link rel="stylesheet" href="css/quan-tri.css" />
+<style>
+/* GIAO DIEN DANG NHAP RIENG CUA VAI QUẢN TRỊ VIÊN & KIỂM DUYỆT.
+   File nay tu chua, khong <link> css khac: copy tu assets/css/style.css,
+   cat bo rule cua hai vai khong va cat rule an/hien panel theo tab.
+   (cat ca ben trong hai khoi @media)
+*/
+
+@import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap");
+
+:root {
+  --cream: #f7f1e8;
+  --paper: #fffcf7;
+  --ink: #2f3135;
+  --text: #393b3f;
+  --muted: #6b6b6b;
+  --soft: #9a958d;
+  --line: #e6ddd0;
+  --sage: #687a61;
+  --sage-2: #7d9271;
+  --sage-soft: #eaeee4;
+  --terra: #d1693c;
+  --terra-dark: #b9572d;
+  --terra-soft: #fbece3;
+  --danger: #c2412d;
+  --wood: #8a5a3b;
+  --radius: 10px;
+  --shadow: 0 24px 60px rgba(84, 62, 40, 0.14);
+  --header-h: 72px;
+  --footer-h: 58px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+}
+
+body {
+  font-family: "Be Vietnam Pro", "Segoe UI", system-ui, sans-serif;
+  color: var(--text);
+  background: var(--cream);
+  font-size: 15px;
+  line-height: 1.5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.ic {
+  width: 18px;
+  height: 18px;
+  flex: none;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+:focus-visible {
+  outline: 2px solid var(--sage);
+  outline-offset: 2px;
+}
+
+/* ---------- Header ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  height: var(--header-h);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 0 5vw;
+  background: rgba(255, 252, 247, 0.88);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(230, 221, 208, 0.8);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  justify-self: start;
+}
+
+.brand-mark {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--terra);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.35);
+}
+
+.brand-mark .ic {
+  width: 20px;
+  height: 20px;
+}
+
+.main-nav {
+  display: flex;
+  gap: clamp(20px, 4vw, 64px);
+}
+
+.main-nav a {
+  font-weight: 500;
+  color: var(--text);
+  padding: 6px 2px;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.main-nav a:hover {
+  color: var(--terra);
+  border-color: var(--terra);
+}
+
+.header-actions {
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 6px 4px 4px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #fff;
+  font-size: 13px;
+}
+
+.user-chip .avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--sage);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.icon-btn {
+  border: 0;
+  background: transparent;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+}
+
+.icon-btn:hover {
+  background: var(--cream);
+  color: var(--terra);
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  min-height: var(--footer-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 16px;
+  padding: 10px 5vw;
+  color: #f8f3ec;
+  background:
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.025) 0 2px, transparent 2px 9px),
+    linear-gradient(180deg, #96643f 0%, #7d4f30 100%);
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.site-footer a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  opacity: 0.95;
+}
+
+.site-footer a:hover {
+  opacity: 1;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.site-footer .divider {
+  width: 1px;
+  height: 22px;
+  background: rgba(248, 243, 236, 0.4);
+}
+
+/* ---------- Auth layout ---------- */
+.auth-main {
+  flex: 1;
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(400px, 500px);
+  gap: clamp(24px, 4vw, 64px);
+  align-items: center;
+  padding: 32px 5vw;
+  min-height: calc(100vh - var(--header-h) - var(--footer-h));
+  isolation: isolate;
+  --hero: url("../assets/img/hero-login.png");
+}
+
+.auth-main::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background: var(--hero, none) left bottom / cover no-repeat;
+}
+
+.auth-main::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(ellipse 42% 60% at 0% 0%, rgba(247, 241, 232, 0.85), rgba(247, 241, 232, 0) 75%),
+    linear-gradient(180deg, rgba(247, 241, 232, 0.92) 0%, rgba(247, 241, 232, 0.55) 28%, rgba(247, 241, 232, 0) 52%),
+    linear-gradient(90deg, rgba(247, 241, 232, 0) 45%, rgba(247, 241, 232, 0.5) 70%);
+}
+
+.auth-visual {
+  align-self: stretch;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 520px;
+}
+
+.role-panel {
+  display: flex;
+  animation: fadeUp 0.45s ease both;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---------- Auth card ---------- */
+.auth-card {
+  background: rgba(255, 252, 247, 0.97);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 22px;
+  box-shadow: var(--shadow);
+  padding: 26px 32px 24px;
+  width: 100%;
+  justify-self: end;
+}
+
+.role-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  padding: 5px;
+  background: #f1eadf;
+  border-radius: 12px;
+  margin-bottom: 22px;
+}
+
+.role-tab {
+  border: 0;
+  background: transparent;
+  border-radius: 9px;
+  padding: 9px 8px;
+  font-size: 12.5px;
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--text);
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+.role-tab:hover {
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.role-tab[aria-current="page"] {
+  background: var(--sage);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(104, 122, 97, 0.35);
+}
+
+.eyebrow {
+  margin: 0 0 4px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--sage-2);
+}
+
+.eyebrow.terra {
+  color: var(--terra);
+}
+
+.auth-card h1,
+.auth-card .card-title {
+  margin: 0;
+  font-size: clamp(24px, 2.2vw, 30px);
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.subtitle {
+  margin: 6px 0 20px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* ---------- Form ---------- */
+.form {
+  display: grid;
+  gap: 14px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.field {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+}
+
+.field > label,
+.field-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.control {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.control > .ic.lead {
+  position: absolute;
+  left: 13px;
+  color: var(--soft);
+  pointer-events: none;
+}
+
+.input {
+  width: 100%;
+  height: 44px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  padding: 0 14px;
+  font-size: 14px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.control > .ic.lead ~ .input {
+  padding-left: 40px;
+}
+
+.control .input:has(+ .pw-toggle) {
+  padding-right: 44px;
+}
+
+.input::placeholder {
+  color: #a9a49c;
+}
+
+.input:hover {
+  border-color: #d5cabb;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--sage);
+  box-shadow: 0 0 0 3px rgba(104, 122, 97, 0.18);
+}
+
+.input:disabled,
+.input[readonly] {
+  background: #f6f2ec;
+  color: var(--muted);
+}
+
+.input:disabled {
+  cursor: not-allowed;
+}
+
+.field.invalid .input {
+  border-color: var(--danger);
+  box-shadow: 0 0 0 3px rgba(194, 65, 45, 0.12);
+}
+
+.error-text {
+  min-height: 0;
+  font-size: 12px;
+  color: var(--danger);
+  margin: 0;
+}
+
+.error-text:empty {
+  display: none;
+}
+
+.hint {
+  font-size: 12px;
+  color: var(--soft);
+  margin: 0;
+}
+
+.pw-toggle {
+  position: absolute;
+  right: 6px;
+  border: 0;
+  background: transparent;
+  width: 34px;
+  height: 34px;
+  border-radius: 6px;
+  display: grid;
+  place-items: center;
+  color: var(--soft);
+}
+
+.pw-toggle:hover {
+  color: var(--text);
+  background: var(--cream);
+}
+
+.pw-toggle:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.form-inline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 13.5px;
+}
+
+.checkbox {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 9px;
+  cursor: pointer;
+  font-size: 13.5px;
+  user-select: none;
+}
+
+.checkbox input {
+  appearance: none;
+  width: 17px;
+  height: 17px;
+  margin: 1px 0 0;
+  flex: none;
+  border: 1.5px solid #c9bfb1;
+  border-radius: 4px;
+  background: #fff;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.checkbox input:checked {
+  background: var(--sage);
+  border-color: var(--sage);
+}
+
+.checkbox input:checked::after {
+  content: "";
+  width: 9px;
+  height: 5px;
+  border: 2px solid #fff;
+  border-top: 0;
+  border-right: 0;
+  transform: translateY(-1px) rotate(-45deg);
+}
+
+.field.invalid .checkbox input {
+  border-color: var(--danger);
+}
+
+.link {
+  color: var(--terra);
+  font-weight: 600;
+}
+
+.link:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.btn {
+  height: 46px;
+  border: 0;
+  border-radius: 9px;
+  padding: 0 20px;
+  font-weight: 600;
+  font-size: 15px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background 0.2s, transform 0.1s, box-shadow 0.2s, opacity 0.2s;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.btn-primary {
+  background: var(--terra);
+  color: #fff;
+  box-shadow: 0 8px 18px rgba(209, 105, 60, 0.28);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--terra-dark);
+}
+
+.btn-sage {
+  background: var(--sage);
+  color: #fff;
+  box-shadow: 0 8px 18px rgba(104, 122, 97, 0.28);
+}
+
+.btn-sage:hover:not(:disabled) {
+  background: #58694f;
+}
+
+.btn-ghost {
+  background: #fff;
+  border: 1px solid var(--line);
+  color: var(--text);
+}
+
+.btn-ghost:hover:not(:disabled) {
+  border-color: var(--sage);
+  color: var(--sage);
+}
+
+.btn-block {
+  width: 100%;
+}
+
+.btn .spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.45);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.form-alert {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  background: #fdecea;
+  color: #8f2d1f;
+  border: 1px solid #f5c8c0;
+}
+
+.form-alert.info {
+  background: var(--sage-soft);
+  color: #43523e;
+  border-color: #d5dece;
+}
+
+.form-alert button {
+  border: 0;
+  background: none;
+  padding: 0;
+  color: inherit;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.switch-line {
+  justify-content: center;
+  gap: 6px;
+  margin: 16px 0 0;
+  font-size: 14px;
+}
+
+.note {
+  align-items: center;
+  gap: 12px;
+  margin-top: 14px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: var(--sage-soft);
+  font-size: 12.5px;
+  font-weight: 500;
+}
+
+.note .tile {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: #fff;
+  color: var(--sage);
+  display: grid;
+  place-items: center;
+  flex: none;
+}
+
+.note.terra {
+  background: var(--terra-soft);
+  color: #8d4523;
+}
+
+.note.terra .tile {
+  color: var(--terra);
+}
+
+.note + .note {
+  margin-top: 8px;
+}
+
+/* ---------- Mock dashboards (login previews) ---------- */
+.mock {
+  flex-direction: column;
+  margin: auto 0;
+  max-width: 640px;
+  width: 100%;
+  gap: 14px;
+}
+
+.mock-window {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  background: rgba(255, 252, 247, 0.9);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  font-size: 12px;
+}
+
+.mock-side {
+  padding: 16px 10px;
+  border-right: 1px solid var(--line);
+  display: grid;
+  align-content: start;
+  gap: 4px;
+}
+
+.mock-side .item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  color: var(--muted);
+}
+
+.mock-side .item .ic {
+  width: 15px;
+  height: 15px;
+}
+
+.mock-side .item.active {
+  background: var(--terra-soft);
+  color: var(--terra-dark);
+  font-weight: 600;
+}
+
+.mock-body {
+  padding: 16px 18px;
+  display: grid;
+  gap: 14px;
+}
+
+.mock-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mock-head h3 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--sage-soft);
+  color: var(--sage);
+  font-weight: 600;
+}
+
+.mock-head .spacer {
+  flex: 1;
+}
+
+.bell {
+  position: relative;
+  color: var(--muted);
+}
+
+.bell .dot {
+  position: absolute;
+  top: -5px;
+  right: -6px;
+  min-width: 15px;
+  height: 15px;
+  padding: 0 4px;
+  border-radius: 999px;
+  background: var(--terra);
+  color: #fff;
+  font-size: 9px;
+  font-weight: 700;
+  display: grid;
+  place-items: center;
+}
+
+.mini-avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--terra);
+  color: #fff;
+  display: grid;
+  place-items: center;
+}
+
+.mini-avatar .ic {
+  width: 14px;
+  height: 14px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.product-card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
+}
+
+.product-card b {
+  display: block;
+  margin-top: 6px;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.product-card small {
+  color: var(--soft);
+}
+
+.brief {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+}
+
+.brief .tile {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--terra-soft);
+  color: var(--terra);
+  display: grid;
+  place-items: center;
+  flex: none;
+}
+
+.brief .tile::after {
+  content: "Mới";
+  position: absolute;
+  top: -7px;
+  right: -12px;
+  background: var(--terra);
+  color: #fff;
+  font-size: 8.5px;
+  font-weight: 700;
+  padding: 1px 5px;
+  border-radius: 5px;
+}
+
+.brief .meta {
+  flex: 1;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.brief .meta b {
+  color: var(--ink);
+  display: block;
+  font-weight: 600;
+}
+
+.brief .chip-link {
+  border: 1px solid #efc9b6;
+  color: var(--terra);
+  padding: 5px 10px;
+  border-radius: 7px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.section-label {
+  font-weight: 600;
+  color: var(--ink);
+  font-size: 13px;
+}
+
+.feature-strip {
+  background: rgba(255, 252, 247, 0.9);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
+  padding: 14px 18px;
+  box-shadow: 0 10px 30px rgba(84, 62, 40, 0.1);
+}
+
+.feature-strip h4 {
+  margin: 0 0 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.feature-strip ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.feature-strip li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12.5px;
+  font-weight: 500;
+}
+
+.feature-strip .tile {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--sage-soft);
+  color: var(--sage);
+  display: grid;
+  place-items: center;
+  flex: none;
+}
+
+.mock-window.admin {
+  grid-template-columns: 170px 1fr;
+}
+
+.mock-window.admin .mock-side .item.active {
+  background: var(--sage-soft);
+  color: var(--sage);
+}
+
+.chart-card {
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 12px;
+  padding: 12px 14px 6px;
+}
+
+.chart-card svg {
+  width: 100%;
+  height: 120px;
+  display: block;
+}
+
+.admin-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.admin-card {
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 12px;
+  padding: 12px;
+  display: grid;
+  gap: 8px;
+  align-content: start;
+}
+
+.admin-card b {
+  font-weight: 600;
+  color: var(--ink);
+  font-size: 12.5px;
+}
+
+.admin-card .tile {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: var(--sage-soft);
+  color: var(--sage);
+  display: grid;
+  place-items: center;
+}
+
+.admin-card.terra .tile {
+  background: var(--terra-soft);
+  color: var(--terra);
+}
+
+.admin-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 11.5px;
+  line-height: 1.45;
+}
+
+.card-head {
+  flex-direction: column;
+}
+
+@keyframes shake {
+  25% {
+    transform: translateX(-3px);
+  }
+
+  75% {
+    transform: translateX(3px);
+  }
+}
+
+/* ---------- Toast ---------- */
+.toast-stack {
+  position: fixed;
+  top: calc(var(--header-h) + 14px);
+  right: 18px;
+  z-index: 100;
+  display: grid;
+  gap: 10px;
+  width: min(360px, calc(100vw - 36px));
+}
+
+.toast {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--sage);
+  box-shadow: 0 14px 34px rgba(84, 62, 40, 0.16);
+  font-size: 13.5px;
+  animation: toastIn 0.3s ease both;
+}
+
+.toast.error {
+  border-left-color: var(--danger);
+}
+
+.toast.info {
+  border-left-color: var(--terra);
+}
+
+.toast .ic {
+  margin-top: 1px;
+  color: var(--sage);
+}
+
+.toast.error .ic {
+  color: var(--danger);
+}
+
+.toast.info .ic {
+  color: var(--terra);
+}
+
+.toast p {
+  margin: 0;
+  flex: 1;
+}
+
+.toast.leaving {
+  animation: toastOut 0.25s ease both;
+}
+
+@keyframes toastIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+}
+
+@keyframes toastOut {
+  to {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+}
+
+/* ---------- Modal ---------- */
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(47, 49, 53, 0.4);
+  backdrop-filter: blur(3px);
+  animation: fadeIn 0.2s ease both;
+}
+
+.modal-card {
+  width: min(420px, 100%);
+  background: var(--paper);
+  border-radius: 18px;
+  padding: 28px;
+  box-shadow: var(--shadow);
+  text-align: center;
+  display: grid;
+  gap: 10px;
+  justify-items: center;
+}
+
+.modal-card .badge {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: var(--sage-soft);
+  color: var(--sage);
+  display: grid;
+  place-items: center;
+}
+
+.modal-card .badge .ic {
+  width: 28px;
+  height: 28px;
+}
+
+.modal-card h2 {
+  margin: 4px 0 0;
+  font-size: 21px;
+  color: var(--ink);
+}
+
+.modal-card p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+  width: 100%;
+}
+
+.modal-actions .btn {
+  flex: 1;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+}
+
+/* ---------- AI assistant ---------- */
+.assistant {
+  position: fixed;
+  left: 24px;
+  bottom: calc(var(--footer-h) + 18px);
+  z-index: 80;
+  width: min(360px, calc(100vw - 48px));
+  height: 460px;
+  max-height: calc(100vh - var(--header-h) - var(--footer-h) - 40px);
+  display: flex;
+  flex-direction: column;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  animation: fadeUp 0.3s ease both;
+}
+
+.assistant-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  background: var(--sage);
+  color: #fff;
+}
+
+.assistant-head b {
+  flex: 1;
+  font-weight: 600;
+}
+
+.assistant-head .icon-btn {
+  color: #fff;
+}
+
+.assistant-head .icon-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+}
+
+.assistant-log {
+  flex: 1;
+  overflow-y: auto;
+  padding: 14px;
+  display: grid;
+  align-content: start;
+  gap: 10px;
+}
+
+.msg {
+  max-width: 85%;
+  padding: 9px 12px;
+  border-radius: 12px;
+  font-size: 13.5px;
+  line-height: 1.45;
+  white-space: pre-line;
+}
+
+.msg.bot {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-bottom-left-radius: 4px;
+}
+
+.msg.user {
+  justify-self: end;
+  background: var(--sage);
+  color: #fff;
+  border-bottom-right-radius: 4px;
+}
+
+.quick-replies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 0 14px 10px;
+}
+
+.quick-replies button {
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 999px;
+  padding: 5px 10px;
+  font-size: 12px;
+}
+
+.quick-replies button:hover {
+  border-color: var(--sage);
+  color: var(--sage);
+}
+
+.assistant-form {
+  display: flex;
+  gap: 8px;
+  padding: 10px;
+  border-top: 1px solid var(--line);
+}
+
+.assistant-form .input {
+  height: 40px;
+}
+
+.assistant-form .btn {
+  height: 40px;
+  width: 44px;
+  padding: 0;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1100px) {
+  .auth-main {
+    grid-template-columns: 1fr;
+  }
+
+  .auth-card {
+    justify-self: center;
+    max-width: 560px;
+  }
+
+  .auth-visual {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 760px) {
+  .site-header {
+    grid-template-columns: auto 1fr;
+    gap: 12px;
+  }
+
+  .main-nav {
+    display: none;
+  }
+
+  .auth-main {
+    padding: 20px 16px;
+  }
+
+  .auth-card {
+    padding: 22px 18px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .mock {
+    display: none !important;
+  }
+
+  .site-footer {
+    flex-wrap: wrap;
+    justify-content: center;
+    font-size: 13px;
+  }
+
+  .site-footer .divider {
+    display: none;
+  }
+}
+
+/* Tab chuyen vai khong con la nut bam nua: giu nguyen mau, xu ly nhu lien ket. */
+.role-tab {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* Tab quan tri dang o trang cua no thi toi mau theo bang mau bao mat. */
+.role-tab[data-role="admin"][aria-current="page"] {
+  background: var(--ink);
+  box-shadow: 0 4px 12px rgba(47, 49, 53, 0.3);
+}
+    </style>
   </head>
   <body class="page-login">
     <header class="site-header">
@@ -124,6 +1466,554 @@
       <a href="mailto:hotro@craftlink.vn"><svg class="ic"><use href="#i-headset" /></svg>Liên hệ hỗ trợ</a>
     </footer>
 
-    <script src="js/quan-tri.js"></script>
+    <script>
+/* GIAO DIEN DANG NHAP RIENG CUA VAI QUẢN TRỊ VIÊN & KIỂM DUYỆT.
+   File nay tu chua, khong <script src> nao khac:
+   - phan dau: sprite icon, toast, modal, kiem tra bieu mau, localStorage tai khoan, tro ly AI
+     (copy tu assets/js/common.js, cat bo ham rieng trang dang ky/quen mat khau);
+   - phan cuoi: dang nhap cua dung vai nay, khong con chuyen tab vi moi vai mot trang. */
+
+(() => {
+  const ICONS = {
+    vase: '<path d="M9 3h6"/><path d="M10 3v3.2c0 1-3.5 2.6-3.5 7.3a5.5 5.5 0 0 0 11 0c0-4.7-3.5-6.3-3.5-7.3V3"/><path d="M7.2 13h9.6"/>',
+    mail: '<rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>',
+    lock: '<rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>',
+    eye: '<path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/>',
+    "eye-off": '<path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/><path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/><path d="M6.61 6.61A13.53 13.53 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/><path d="M2 2l20 20"/>',
+    user: '<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>',
+    phone: '<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/>',
+    store: '<path d="M3 9l1.5-5h15L21 9"/><path d="M3 9h18v1.5a3 3 0 0 1-6 0 3 3 0 0 1-6 0 3 3 0 0 1-6 0z"/><path d="M5 13v8h14v-8"/><path d="M10 21v-5h4v5"/>',
+    home: '<path d="m3 10 9-7 9 7v10a2 2 0 0 1-2 2h-4v-7H9v7H5a2 2 0 0 1-2-2z"/>',
+    bell: '<path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/>',
+    box: '<path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="m3 8 9 5 9-5"/><path d="M12 13v8"/>',
+    file: '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h5"/>',
+    message: '<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>',
+    star: '<path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/>',
+    settings: '<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>',
+    pie: '<path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/>',
+    shield: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
+    "shield-check": '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/>',
+    users: '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>',
+    "clipboard-check": '<rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/>',
+    "clipboard-list": '<rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4M12 16h4M8 11h.01M8 16h.01"/>',
+    sparkles: '<path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M19 3v4M17 5h4M5 17v4M3 19h4"/>',
+    book: '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V2H6.5A2.5 2.5 0 0 0 4 4.5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/>',
+    headset: '<path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3"/>',
+    "arrow-left": '<path d="M19 12H5M12 19l-7-7 7-7"/>',
+    info: '<circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/>',
+    alert: '<circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/>',
+    check: '<path d="M20 6 9 17l-5-5"/>',
+    "check-circle": '<circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/>',
+    "chevron-down": '<path d="m6 9 6 6 6-6"/>',
+    x: '<path d="M18 6 6 18M6 6l12 12"/>',
+    logout: '<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5M21 12H9"/>',
+    send: '<path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/>',
+    tag: '<path d="M20.59 13.41 13.42 20.58a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><circle cx="7" cy="7" r="1.5"/>',
+    bag: '<path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18M16 10a4 4 0 0 1-8 0"/>',
+    palette: '<circle cx="13.5" cy="6.5" r="1"/><circle cx="17.5" cy="10.5" r="1"/><circle cx="8.5" cy="7.5" r="1"/><circle cx="6.5" cy="12.5" r="1"/><path d="M12 2a10 10 0 0 0 0 20c.93 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99a1.5 1.5 0 0 1 1.5-1.5H16a6 6 0 0 0 6-6c0-4.96-4.48-9-10-9z"/>',
+    grid: '<rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/>',
+    flag: '<path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><path d="M4 22v-7"/>',
+    refresh: '<path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/>',
+    key: '<circle cx="7.5" cy="15.5" r="5.5"/><path d="m21 2-9.6 9.6M15.5 7.5l3 3L22 7l-3-3"/>',
+  };
+
+  const sprite = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  sprite.setAttribute("aria-hidden", "true");
+  sprite.style.display = "none";
+  sprite.innerHTML = Object.entries(ICONS)
+    .map(
+      ([id, body]) =>
+        `<symbol id="i-${id}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${body}</symbol>`
+    )
+    .join("");
+  document.body.prepend(sprite);
+
+  const icon = (name, cls = "ic") => `<svg class="${cls}" aria-hidden="true"><use href="#i-${name}"/></svg>`;
+
+  const escapeHtml = (s) =>
+    String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+
+  // ---------- Toast ----------
+  let stack;
+  function toast(message, type = "success", duration = 3800) {
+    if (!stack) {
+      stack = document.createElement("div");
+      stack.className = "toast-stack";
+      stack.setAttribute("role", "status");
+      stack.setAttribute("aria-live", "polite");
+      document.body.append(stack);
+    }
+    const el = document.createElement("div");
+    el.className = `toast ${type}`;
+    const ic = type === "error" ? "alert" : type === "info" ? "info" : "check-circle";
+    el.innerHTML = `${icon(ic)}<p>${escapeHtml(message)}</p><button class="icon-btn" type="button" aria-label="Đóng thông báo">${icon("x")}</button>`;
+    const close = () => {
+      el.classList.add("leaving");
+      setTimeout(() => el.remove(), 250);
+    };
+    el.querySelector("button").addEventListener("click", close);
+    stack.append(el);
+    setTimeout(close, duration);
+  }
+
+  // ---------- Validation ----------
+  const validators = {
+    email: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()),
+  };
+
+  function setFieldError(field, message) {
+    const wrap = field.closest(".field");
+    if (!wrap) return;
+    const err = wrap.querySelector(".error-text");
+    wrap.classList.toggle("invalid", Boolean(message));
+    if (err) err.textContent = message || "";
+    field.setAttribute("aria-invalid", message ? "true" : "false");
+  }
+
+  // ---------- Storage / Auth ----------
+  const USERS_KEY = "cl_users";
+  const SESSION_KEY = "cl_session";
+  const ATTEMPT_KEY = "cl_login_attempts";
+
+  const ROLE_LABELS = {
+    customer: "Khách hàng",
+    artisan: "Thợ thủ công / Nghệ nhân",
+    admin: "Quản trị viên & Kiểm duyệt",
+  };
+
+  const SEED_USERS = [
+    { name: "Nguyễn Minh Anh", username: "khachhang", email: "khachhang@craftlink.vn", phone: "0901234567", role: "customer", password: "Khach@123" },
+    { name: "Trần Văn Gốm", username: "nghenhan", email: "nghenhan@craftlink.vn", phone: "0912345678", role: "artisan", password: "Nghenhan@123", shop: "Xưởng Gốm Bát Tràng", specialty: "Gốm sứ" },
+    { name: "Quản Trị CraftLink", username: "admin", email: "admin@craftlink.vn", phone: "0987654321", role: "admin", password: "Admin@123" },
+  ];
+
+  async function hash(text) {
+    const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(`craftlink:${text}`));
+    return [...new Uint8Array(buf)].map((b) => b.toString(16).padStart(2, "0")).join("");
+  }
+
+  const readJSON = (store, key, fallback) => {
+    try {
+      return JSON.parse(store.getItem(key)) ?? fallback;
+    } catch {
+      return fallback;
+    }
+  };
+
+  async function getUsers() {
+    let users = readJSON(localStorage, USERS_KEY, null);
+    if (!Array.isArray(users)) {
+      users = await Promise.all(
+        SEED_USERS.map(async ({ password, ...u }) => ({ ...u, passwordHash: await hash(password), createdAt: new Date().toISOString() }))
+      );
+      localStorage.setItem(USERS_KEY, JSON.stringify(users));
+    }
+    return users;
+  }
+
+  const saveUsers = (users) => localStorage.setItem(USERS_KEY, JSON.stringify(users));
+
+  async function findUser(identifier) {
+    const id = identifier.trim().toLowerCase();
+    return (await getUsers()).find((u) => u.email.toLowerCase() === id || u.username.toLowerCase() === id) || null;
+  }
+
+  async function verifyPassword(user, password) {
+    return user.passwordHash === (await hash(password));
+  }
+
+  function getAttempts(key) {
+    const all = readJSON(localStorage, ATTEMPT_KEY, {});
+    return all[key] || { count: 0, until: 0 };
+  }
+
+  function setAttempts(key, value) {
+    const all = readJSON(localStorage, ATTEMPT_KEY, {});
+    if (value) all[key] = value;
+    else delete all[key];
+    localStorage.setItem(ATTEMPT_KEY, JSON.stringify(all));
+  }
+
+  function getSession() {
+    return readJSON(localStorage, SESSION_KEY, null) || readJSON(sessionStorage, SESSION_KEY, null);
+  }
+
+  function setSession(user, remember) {
+    const session = { name: user.name, email: user.email, role: user.role, at: new Date().toISOString() };
+    (remember ? localStorage : sessionStorage).setItem(SESSION_KEY, JSON.stringify(session));
+    (remember ? sessionStorage : localStorage).removeItem(SESSION_KEY);
+    renderUserChip();
+    return session;
+  }
+
+  function clearSession() {
+    localStorage.removeItem(SESSION_KEY);
+    sessionStorage.removeItem(SESSION_KEY);
+    renderUserChip();
+  }
+
+  const initials = (name) =>
+    name
+      .trim()
+      .split(/\s+/)
+      .slice(-2)
+      .map((w) => w[0])
+      .join("")
+      .toUpperCase();
+
+  function renderUserChip() {
+    const slot = document.querySelector(".header-actions");
+    if (!slot) return;
+    const s = getSession();
+    if (!s) {
+      slot.innerHTML = "";
+      return;
+    }
+    slot.innerHTML = `<div class="user-chip" title="${escapeHtml(ROLE_LABELS[s.role])}">
+        <span class="avatar">${escapeHtml(initials(s.name))}</span>
+        <span>${escapeHtml(s.name)}</span>
+        <button class="icon-btn" type="button" data-logout aria-label="Đăng xuất">${icon("logout")}</button>
+      </div>`;
+    slot.querySelector("[data-logout]").addEventListener("click", () => {
+      clearSession();
+      toast("Bạn đã đăng xuất khỏi CraftLink.", "info");
+    });
+  }
+
+  // ---------- Modal ----------
+  function modal({ iconName = "check-circle", title, body, actions }) {
+    const wrap = document.createElement("div");
+    wrap.className = "modal";
+    wrap.innerHTML = `<div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <span class="badge">${icon(iconName)}</span>
+        <h2 id="modal-title">${escapeHtml(title)}</h2>
+        <p>${escapeHtml(body)}</p>
+        <div class="modal-actions"></div>
+      </div>`;
+    const prevFocus = document.activeElement;
+    const close = () => {
+      wrap.remove();
+      document.removeEventListener("keydown", onKey);
+      prevFocus?.focus?.();
+    };
+    const onKey = (e) => e.key === "Escape" && close();
+    const bar = wrap.querySelector(".modal-actions");
+    actions.forEach(({ label, cls = "btn-ghost", onClick }) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = `btn ${cls}`;
+      b.textContent = label;
+      b.addEventListener("click", () => {
+        close();
+        onClick?.();
+      });
+      bar.append(b);
+    });
+    wrap.addEventListener("click", (e) => e.target === wrap && close());
+    document.addEventListener("keydown", onKey);
+    document.body.append(wrap);
+    bar.lastElementChild?.focus();
+  }
+
+  // ---------- UI helpers ----------
+  function setLoading(btn, loading, label) {
+    if (loading) {
+      btn.dataset.label = btn.innerHTML;
+      btn.disabled = true;
+      btn.innerHTML = `<span class="spinner" aria-hidden="true"></span>${escapeHtml(label || "Đang xử lý...")}`;
+    } else {
+      btn.disabled = false;
+      if (btn.dataset.label) btn.innerHTML = btn.dataset.label;
+    }
+  }
+
+  const wait = (ms) => new Promise((r) => setTimeout(r, ms));
+
+  function initPasswordToggles(root = document) {
+    root.querySelectorAll(".pw-toggle").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const input = btn.parentElement.querySelector("input");
+        const show = input.type === "password";
+        input.type = show ? "text" : "password";
+        btn.setAttribute("aria-pressed", String(show));
+        btn.setAttribute("aria-label", show ? "Ẩn mật khẩu" : "Hiện mật khẩu");
+        btn.querySelector("use").setAttribute("href", show ? "#i-eye-off" : "#i-eye");
+      });
+    });
+  }
+
+  function initSoonLinks() {
+    document.querySelectorAll("[data-soon]").forEach((a) =>
+      a.addEventListener("click", (e) => {
+        e.preventDefault();
+        toast(`Trang “${a.textContent.trim()}” đang được phát triển.`, "info");
+      })
+    );
+  }
+
+  // ---------- AI assistant ----------
+  const BOT_RULES = [
+    { k: ["đăng ký", "dang ky", "tạo tài khoản", "tao tai khoan"], a: "Bạn có thể tạo tài khoản tại trang Đăng ký. Chọn “Tôi muốn Mua hàng” nếu là khách hàng hoặc “Tôi là Thợ thủ công” để mở gian hàng." },
+    { k: ["quên", "mật khẩu", "mat khau", "otp"], a: "Chọn “Quên mật khẩu?” trên form đăng nhập, nhập email đã đăng ký, sau đó nhập mã OTP 6 số và tạo mật khẩu mới." },
+    { k: ["nghệ nhân", "gian hàng", "bán", "thợ"], a: "Nghệ nhân có thể đăng sản phẩm, nhận brief tùy biến từ khách hàng và gửi proposal báo giá ngay trên CraftLink." },
+    { k: ["đặt làm", "brief", "tùy biến", "theo yêu cầu"], a: "Để đặt làm riêng, hãy gửi brief mô tả mong muốn, ngân sách và thời gian. Nghệ nhân phù hợp sẽ gửi proposal cho bạn." },
+    { k: ["admin", "quản trị", "kiểm duyệt"], a: "Tài khoản Quản trị viên & Kiểm duyệt do CraftLink cấp, không hỗ trợ đăng ký công khai." },
+    { k: ["xin chào", "hello", "hi", "chào"], a: "Xin chào! Mình là Trợ lý AI CraftLink. Mình có thể giúp gì cho bạn?" },
+  ];
+
+  function botReply(text) {
+    const t = text.toLowerCase();
+    const rule = BOT_RULES.find((r) => r.k.some((k) => t.includes(k)));
+    return rule ? rule.a : "Mình chưa hiểu rõ câu hỏi. Bạn có thể hỏi về đăng ký, đăng nhập, quên mật khẩu, đặt làm riêng hoặc mở gian hàng nhé.";
+  }
+
+  function initAssistant() {
+    const triggers = document.querySelectorAll("[data-open-assistant]");
+    if (!triggers.length) return;
+    let panel;
+    const open = () => {
+      if (panel) {
+        panel.querySelector("input").focus();
+        return;
+      }
+      panel = document.createElement("section");
+      panel.className = "assistant";
+      panel.setAttribute("aria-label", "Trợ lý AI CraftLink");
+      panel.innerHTML = `
+        <header class="assistant-head">${icon("sparkles")}<b>Trợ lý AI CraftLink</b>
+          <button class="icon-btn" type="button" aria-label="Đóng trợ lý">${icon("x")}</button></header>
+        <div class="assistant-log" aria-live="polite"></div>
+        <div class="quick-replies">
+          <button type="button">Cách đăng ký?</button>
+          <button type="button">Quên mật khẩu</button>
+          <button type="button">Đặt làm theo yêu cầu</button>
+        </div>
+        <form class="assistant-form"><input class="input" name="q" placeholder="Nhập câu hỏi..." autocomplete="off" aria-label="Câu hỏi"/>
+          <button class="btn btn-sage" type="submit" aria-label="Gửi">${icon("send")}</button></form>`;
+      const log = panel.querySelector(".assistant-log");
+      const add = (text, who) => {
+        const m = document.createElement("div");
+        m.className = `msg ${who}`;
+        m.textContent = text;
+        log.append(m);
+        log.scrollTop = log.scrollHeight;
+      };
+      const ask = async (q) => {
+        if (!q.trim()) return;
+        add(q, "user");
+        await wait(450);
+        add(botReply(q), "bot");
+      };
+      add("Xin chào! Mình là Trợ lý AI CraftLink. Bạn cần hỗ trợ gì về tài khoản hoặc sản phẩm thủ công?", "bot");
+      panel.querySelector(".assistant-head button").addEventListener("click", () => {
+        panel.remove();
+        panel = null;
+      });
+      panel.querySelectorAll(".quick-replies button").forEach((b) => b.addEventListener("click", () => ask(b.textContent)));
+      panel.querySelector("form").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const input = e.target.q;
+        ask(input.value);
+        input.value = "";
+      });
+      document.body.append(panel);
+      panel.querySelector("input").focus();
+    };
+    triggers.forEach((t) => t.addEventListener("click", open));
+  }
+
+  const params = new URLSearchParams(location.search);
+
+  window.CL = {
+    icon,
+    toast,
+    modal,
+    validators,
+    setFieldError,
+    getUsers,
+    findUser,
+    verifyPassword,
+    getAttempts,
+    setAttempts,
+    getSession,
+    setSession,
+    clearSession,
+    setLoading,
+    wait,
+    initPasswordToggles,
+    ROLE_LABELS,
+    params,
+  };
+
+  getUsers();
+  renderUserChip();
+  initPasswordToggles();
+  initSoonLinks();
+  initAssistant();
+})();
+
+(() => {
+  const { toast, modal, validators, setFieldError, findUser, verifyPassword, getAttempts, setAttempts, setSession, clearSession, setLoading, wait, ROLE_LABELS, params } = window.CL;
+
+  const ROLE = "admin";
+  const TRANG_THEO_VAI = { customer: "khach-hang.html", artisan: "nghe-nhan.html", admin: "quan-tri.html" };
+  const MAX_ATTEMPTS = 5;
+  const LOCK_MS = 60000;
+  const LAST_ID_KEY = "cl_last_identifier_admin";
+
+  const form = document.getElementById("loginForm");
+  const idInput = form.identifier;
+  const pwInput = form.password;
+  const remember = form.remember;
+  const btn = document.getElementById("loginBtn");
+  const alertBox = document.getElementById("loginAlert");
+
+  let lockTimer;
+
+  function showAlert(html, type = "") {
+    alertBox.className = "form-alert " + type;
+    alertBox.innerHTML = html;
+    alertBox.hidden = false;
+  }
+
+  function hideAlert() {
+    alertBox.hidden = true;
+    alertBox.innerHTML = "";
+  }
+
+  const attemptKey = () => idInput.value.trim().toLowerCase() || "_";
+
+  function refreshLock() {
+    clearInterval(lockTimer);
+    const { until } = getAttempts(attemptKey());
+    const tick = () => {
+      const left = Math.ceil((until - Date.now()) / 1000);
+      if (left > 0) {
+        btn.disabled = true;
+        btn.textContent = "Thử lại sau " + left + "s";
+      } else {
+        clearInterval(lockTimer);
+        btn.disabled = false;
+        btn.textContent = "Đăng Nhập";
+      }
+    };
+    if (until > Date.now()) {
+      tick();
+      lockTimer = setInterval(tick, 1000);
+    } else {
+      btn.disabled = false;
+      btn.textContent = "Đăng Nhập";
+    }
+  }
+
+  function validate() {
+    let ok = true;
+    const id = idInput.value.trim();
+    if (!id) {
+      setFieldError(idInput, "Vui lòng nhập email hoặc tên đăng nhập.");
+      ok = false;
+    } else if (!validators.email(id)) {
+      setFieldError(idInput, "Tài khoản quản trị phải đăng nhập bằng email được cấp.");
+      ok = false;
+    } else setFieldError(idInput, "");
+
+    if (!pwInput.value) {
+      setFieldError(pwInput, "Vui lòng nhập mật khẩu.");
+      ok = false;
+    } else if (pwInput.value.length < 6) {
+      setFieldError(pwInput, "Mật khẩu phải có ít nhất 6 ký tự.");
+      ok = false;
+    } else setFieldError(pwInput, "");
+    return ok;
+  }
+
+  [idInput, pwInput].forEach((f) =>
+    f.addEventListener("input", () => {
+      if (f.closest(".field").classList.contains("invalid")) validate();
+      if (f === idInput) refreshLock();
+    })
+  );
+  idInput.addEventListener("blur", () => idInput.value && validate());
+
+  function registerFailure(key) {
+    const rec = getAttempts(key);
+    const count = rec.count + 1;
+    if (count >= MAX_ATTEMPTS) {
+      setAttempts(key, { count: 0, until: Date.now() + LOCK_MS });
+      showAlert("Bạn đã nhập sai " + MAX_ATTEMPTS + " lần. Tài khoản tạm khóa đăng nhập trong " + LOCK_MS / 1000 + " giây.");
+      refreshLock();
+      return;
+    }
+    setAttempts(key, { count, until: 0 });
+    const left = MAX_ATTEMPTS - count;
+    showAlert("Email/tên đăng nhập hoặc mật khẩu không đúng." + (left <= 2 ? " Bạn còn " + left + " lần thử." : ""));
+  }
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    hideAlert();
+    if (!validate()) {
+      form.querySelector(".field.invalid input")?.focus();
+      return;
+    }
+    const key = attemptKey();
+    if (getAttempts(key).until > Date.now()) return refreshLock();
+
+    setLoading(btn, true, "Đang đăng nhập...");
+    await wait(600);
+    const user = await findUser(idInput.value);
+    const ok = user && (await verifyPassword(user, pwInput.value));
+    setLoading(btn, false);
+
+    if (!ok) {
+      registerFailure(key);
+      pwInput.select();
+      return;
+    }
+
+    if (user.role !== ROLE) {
+      showAlert(
+        "Tài khoản này thuộc vai trò <b>" + ROLE_LABELS[user.role] + "</b>. <a class=\"link\" href=\"" + TRANG_THEO_VAI[user.role] + "\">Mở trang đăng nhập của vai đó</a>",
+        "info"
+      );
+      return;
+    }
+
+    setAttempts(key, null);
+    setSession(user, remember.checked);
+    if (remember.checked) localStorage.setItem(LAST_ID_KEY, JSON.stringify({ role: ROLE, id: idInput.value.trim() }));
+    else localStorage.removeItem(LAST_ID_KEY);
+    pwInput.value = "";
+
+    toast("Đăng nhập thành công. Xin chào " + user.name + "!");
+    modal({
+      title: "Đăng nhập thành công",
+      body: "Xin chào " + user.name + "! Bạn đang đăng nhập với vai trò " + ROLE_LABELS[user.role] + ".",
+      actions: [
+        {
+          label: "Đăng xuất",
+          onClick: () => {
+            clearSession();
+            toast("Bạn đã đăng xuất khỏi CraftLink.", "info");
+          },
+        },
+        { label: "Tiếp tục", cls: "btn-primary" },
+      ],
+    });
+  });
+
+  const last = JSON.parse(localStorage.getItem(LAST_ID_KEY) || "null");
+  if (params.get("email")) {
+    idInput.value = params.get("email");
+    pwInput.focus();
+  } else if (last) {
+    idInput.value = last.id;
+    remember.checked = true;
+  }
+  refreshLock();
+  if (params.get("registered")) toast("Tạo tài khoản thành công! Vui lòng đăng nhập để tiếp tục.");
+  if (params.get("reset")) toast("Đặt lại mật khẩu thành công! Hãy đăng nhập bằng mật khẩu mới.");
+})();
+    </script>
   </body>
 </html>
