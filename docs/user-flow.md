@@ -1,10 +1,49 @@
-# Sơ đồ User Flow — CraftLink
+# Sitemap & Sơ đồ User Flow — CraftLink
 
-Barem yêu cầu ở đâu: ĐK1 — "Đã có Bảng kiểm kê màn hình (`docs/screen-inventory.md`) + **Sơ đồ User Flow** + Thiết kế Figma/Canva"; Tiêu chí 1.2 đánh giá "Luồng người dùng (User Flow) & Bảng kiểm kê màn hình".
+Barem yêu cầu ở đâu: ĐK1 — "Đã có Bảng kiểm kê màn hình (`docs/screen-inventory.md`) + **Sơ đồ User Flow** + Thiết kế Figma/Canva"; Tiêu chí 1.2 chấm "Sitemap & User Flow cho toàn bộ Role" và "Bảng kiểm kê màn hình ghi đầy đủ 12 cột".
+
+## 1. Sitemap — 18 màn hình chia theo vai trò
+
+Số trong ngoặc là STT tương ứng ở `screen-inventory.md`. Mọi đường dẫn dưới đây là tệp đang có trong repo.
+
+```mermaid
+graph LR
+  ROOT["index.html — Landing bốn lối vào"]
+  AUTH["DangNhapVaDangKy/ — Đăng nhập, Đăng ký"]
+
+  ROOT --> AUTH
+  AUTH --> BUY["Khách hàng — KhachHang/"]
+  AUTH --> SELL["Nghệ nhân — KhongGianNguoiBan/"]
+  AUTH --> MOD["Kiểm duyệt — KiemDuyetVaQuanTri/"]
+  AUTH --> ADM["Quản trị — KiemDuyetVaQuanTri/"]
+
+  BUY --> U1["(1) index.html"]
+  BUY --> U2["(1) favorites.html"]
+  BUY --> U3["(2) product-detail.html"]
+  BUY --> U4["(3) customize.html"]
+  BUY --> U5["(4) artisan-suggestions.html"]
+  BUY --> U6["(5) cart.html"]
+  BUY --> U7["(5) checkout.html"]
+  BUY --> U8["(6) orders.html"]
+  BUY --> U9["(6) order-details.html"]
+
+  SELL --> S1["(7,8) 01-listing-management"]
+  SELL --> S2["(9) 02-brief-inbox"]
+  SELL --> S3["(10,11) 03-proposal-editor"]
+  SELL --> S4["(12) 04-shop-profile"]
+
+  MOD --> M1["(14) 04-moderation-queue"]
+  MOD --> M2["(15) 05-report-center"]
+
+  ADM --> A1["(13) 01-dashboard"]
+  ADM --> A2["(16) 02-category-management"]
+  ADM --> A3["(17) 03-user-management"]
+  ADM --> A4["(18) 06-content-guidelines"]
+```
+
+## 2. Luồng xuyên vai trò
 
 Bản render độ phân giải cao để đưa vào slide: `diagrams/user-flow-sv3-forest.png` (hoặc `.svg` để phóng to không vỡ). Mã nguồn sơ đồ là `diagrams/user-flow-sv3.mmd` — sửa tệp đó rồi chạy `node diagrams/render.mjs` để tái tạo ảnh.
-
-## Luồng xuyên vai trò
 
 ```mermaid
 flowchart TD
@@ -23,8 +62,8 @@ flowchart TD
     D1["Tiếp nhận báo cáo vi phạm"] --> D2["Lọc + xếp ưu tiên (AI triage)"] --> D3["Bỏ qua / Xác minh / Xử lý"]
   end
   subgraph ADM["Quản trị viên — SV3"]
-    E1["Soạn quy định (Policy Copilot)"] --> E2["Xuất bản v1.0 – v4.0"]
-    E3["Quản lý danh mục: thêm / sửa / ẩn"]
+    E1["Soạn quy định (Policy Copilot)"] --> E2["Ban hành quy định đã duyệt"]
+    E3["Quản lý danh mục: thêm / sửa / khóa"]
     E4["Quản lý tài khoản: khóa / mở khóa"]
     E5["Bảng điều khiển: KPI + nhật ký hoạt động"]
   end
@@ -33,23 +72,23 @@ flowchart TD
   C5 -.->|nộp lại| B1
   E2 ==>|bối cảnh cho AI| C2
   E3 ==>|danh mục bắt buộc khi tạo bài| B1
-  E4 -.->|khoa làm mat quyen truy cap| A1
+  E4 -.->|khóa làm mất quyền truy cập| A1
   E5 -.->|đọc trạng thái| C4
   E5 -.->|đọc trạng thái| D3
 ```
 
-## Bốn cạnh nối chứng minh các màn hình không rời rạc
+## 3. Bốn cạnh nối chứng minh các màn hình không rời rạc
 
-| Cạnh | Ý nghĩa nghiệp vụ | Màn hình hai đầu |
-|---|---|---|
-| Khách tạo Brief → Nghệ nhân gửi Proposal | Vòng đời đơn tùy biến khép kín giữa hai vai trò | STT 3 → STT 9–10 |
-| Nghệ nhân nộp bài → bài vào hàng đợi `pending` | Bài đăng không tự ra thị trường, phải qua kiểm duyệt | STT 7–8 → STT 14 |
-| Quản trị viên xuất bản quy định → hàng đợi dùng quy định làm căn cứ | Chính sách nội dung là dữ liệu đầu vào của kiểm duyệt, kể cả đầu vào prompt AI | STT 18 → STT 14 |
-| Quản trị viên khóa tài khoản → khách/nghệ nhân mất quyền truy cập | Phân quyền tác động trực tiếp lên hai vai trò kia | STT 17 → STT 1, 7 |
+| Cạnh | Ý nghĩa nghiệp vụ | Màn hình hai đầu | Bằng chứng trong mã |
+|---|---|---|---|
+| Khách tạo Brief → Nghệ nhân nhận Brief rồi gửi Proposal | Vòng đời đơn tùy biến khép kín giữa hai vai trò | STT 3 → STT 9–10 | `KhachHang/customize.html` → `KhongGianNguoiBan/02-brief-inbox`, `03-proposal-editor` |
+| Nghệ nhân nộp bài → bài vào hàng đợi `pending` | Bài đăng không tự ra thị trường, phải qua kiểm duyệt | STT 7–8 → STT 14 | `products.json`: 14/20 bản ghi `pending`; `04-moderation-queue/js/main.js:200` |
+| Quản trị viên ban hành quy định → hàng đợi dùng quy định làm căn cứ | Chính sách nội dung là dữ liệu đầu vào của kiểm duyệt, kể cả đầu vào prompt AI | STT 18 → STT 14 | `04-moderation-queue/js/main.js:158` nạp `guidelines`, `:349` gửi `guidelines` vào ngữ cảnh AI; `js/ai-fallback.js:60` đọc lại |
+| Quản trị viên khóa tài khoản → khách/nghệ nhân mất quyền truy cập | Phân quyền tác động trực tiếp lên hai vai trò kia | STT 17 → STT 1, 7 | `users.json` trường `active`; `03-user-management` đổi cờ này |
 
-Nhãn trạng thái `pending / approved / revision / rejected` là giá trị thật trong mã, không phải ký hiệu tự đặt; xem `KiemDuyetVaQuanTri/04-moderation-queue/js/main.js` (hàm `render`, bảng `statusNames`).
+Nhãn trạng thái `pending / approved / revision / rejected` là giá trị thật trong mã, không phải ký hiệu tự đặt; xem `KiemDuyetVaQuanTri/04-moderation-queue/js/main.js` (hàm `render`, bảng `statusNames` ở dòng 200). Báo cáo dùng `pending / verifying / handled / dismissed` (`05-report-center/js/main.js:176-178`).
 
-## Phần chưa hoàn thành
+## 4. Phần chưa hoàn thành
 
-- Nhãn màn hình ở lane SV1 và SV2 lấy theo `docs/screen-inventory.md` bản hiện tại; SV1 và SV2 phải xác nhận lại tên thật sau khi đưa mã nguồn vào `pages/`.
+- Landing page ở gốc repo mới chỉ là trang điều hướng bốn vai trò; Sitemap trong mục 1 là bản đầy đủ để đưa vào slide và báo cáo.
 - Bản thiết kế đi kèm: Canva của nhóm và Canva sáu màn hình quản trị (liên kết ở `../README.md`, mục LIÊN KẾT).
