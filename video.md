@@ -4,6 +4,7 @@
 ## Danh sách video theo quy định của học phần (mỗi sinh viên 3 video, 3 trang chính)
 
 | STT kiểm kê | Người quay | Link |
+
 |---|---|---|---|
 
 | 4 | SV1 | https://www.youtube.com/watch?v=AW-wuwhA3zc&t=4s|
