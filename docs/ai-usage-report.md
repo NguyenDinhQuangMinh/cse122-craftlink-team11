@@ -65,7 +65,7 @@ Giới hạn của phần AI hỗ trợ: AI **không** tự quyết định ph�
 
 ## 3. Phần khai báo của SV1 và SV2
 
-Mục 3.2 dưới đây **vẫn đang trống** và chỉ SV2 tự điền được. SV1 đã khai xong mục 3.1; các dữ kiện vẫn đối chiếu được trực tiếp từ mã nguồn.
+Mục 3.1 và 3.2 dưới đây lấy theo khai báo của chính SV1 và SV2; cột "Dữ kiện đã kiểm chứng" ghi đường dẫn mở lại được trong repo. Riêng bản của SV2 nằm ở cấp phân hệ (`KhongGianNguoiBan/docs/ai-usage-report.md`, nhánh `feature/sv2-maker-screens`) và được chuyển sang đây nguyên nội dung — **SV2 cần đọc lại và xác nhận** phần chuyển này.
 
 ### 3.1 SV1 — Khách hàng
 
@@ -81,13 +81,17 @@ Mục 3.2 dưới đây **vẫn đang trống** và chỉ SV2 tự điền đư�
 
 ### 3.2 SV2 — Thợ thủ công
 
-| Hạng mục | Nội dung cần điền | Dữ kiện đã kiểm chứng trong repo | Trạng thái |
+SV2 đã khai đầy đủ trong báo cáo cấp phân hệ [`KhongGianNguoiBan/docs/ai-usage-report.md`](../KhongGianNguoiBan/docs/ai-usage-report.md) (nhánh `feature/sv2-maker-screens`). Bảng dưới đây **chuyển nội dung đó sang bản cấp nhóm**, giữ nguyên chữ của SV2; đường dẫn kiểm chứng là tệp thật trong nhánh, đối chiếu được bằng `git show origin/feature/sv2-maker-screens:KhongGianNguoiBan/docs/ai-usage-report.md`.
+
+| Hạng mục | Nội dung SV2 khai | Dữ kiện đã kiểm chứng trong repo | Trạng thái |
 |---|---|---|---|
-| Công cụ AI đã dùng khi làm bài | Tên công cụ + phiên bản | Chưa có khai báo nào của SV2 | **chưa khai** |
-| Prompt tiêu biểu | 3–5 câu nguyên văn | Chưa có | **chưa khai** |
-| Phần AI sinh trong mã | Tệp và chức năng cụ thể | `KhongGianNguoiBan/js/ai/copywriter.js` (soạn mô tả + từ khóa SEO), phần tóm tắt brief trong `02-brief-inbox`, phần gợi ý chi phí trong `03-proposal-editor` | **chưa khai** |
-| AI sai ở đâu, sửa thế nào | Ít nhất một lỗi cụ thể | Chưa có | **chưa khai** |
-| Chế độ AI trong sản phẩm | Ghi rõ là bộ quy tắc cục bộ | `copywriter.js` dòng 2 ghi: "Máy không gọi model nào: mọi câu dưới đây được ghép trong file này" | đã có bằng chứng, cần SV2 xác nhận |
+| Công cụ AI đã dùng khi làm bài | **Qoder** — trợ lý lập trình dạng agent (đọc/ghi tệp, chạy lệnh trong thư mục dự án). Phạm vi khai báo: tách CSS/JS theo từng vai trò ở phân hệ đăng nhập, dựng màn STT 12, viết `copywriter.js` và `BOT_RULES`, rà đối chiếu barem, viết `README.md` / `docs/sv2-assignment.md` / các dòng 7–12 của `docs/screen-inventory.md`, soạn message commit và nội dung trả lời review trên PR. Phiên bản công cụ: chưa ghi. | `docs/sv2-assignment.md` dòng 19 nối sang báo cáo phân hệ; commit `4be759f`…`13c4416` trên `feature/sv2-maker-screens` | **đã khai** — còn thiếu phiên bản công cụ |
+| Prompt tiêu biểu | 6 câu nguyên văn, gồm "tách tôi phần code css, html, js của quản trị viên, khách hàng, thợ thủ công riêng ra"; "sai rồi hoàn tác về như cũ cho tao" (kèm ghi chú: đã hoàn tác bằng hai commit revert, không force-push); "dựa vào barem giờ hãy chỉ tôi quay 3 video với 3 trang này"; "không tự ý chỉnh sửa những gì k liên quan đến SV2". | Nhật ký phiên Qoder **không nằm trong repo**; người chấm đối chiếu bằng mã nguồn + lịch sử commit + phần trích prompt | **đã khai** — không mở lại được toàn bộ log |
+| Phần AI sinh trong mã | Mã bốn màn hình người bán và ba trang đăng nhập sau khi tách CSS/JS; bộ quy tắc `copywriter.js`, `BOT_RULES`, advisor giá/tiến độ; các dòng 7–12 của `screen-inventory.md`, `sv2-assignment.md`, README phân hệ; message commit và câu trả lời review PR. | `KhongGianNguoiBan/js/ai/copywriter.js`; logic advisor trong `KhongGianNguoiBan/03-proposal-editor/js/main.js`; `DangNhapVaDangKy/01-dang-nhap/*.js` | **đã khai** — tỷ lệ phần trăm không nêu |
+| AI sai ở đâu, sửa thế nào | Hai chỗ tự nêu: (1) yêu cầu tách mã theo vai trò ban đầu làm sai nên phải hoàn tác bằng commit revert, **không force-push** (lịch sử nhánh có 3 commit revert: `85428bf`, `8606ee5`, `d161e77`); (2) cột AI dòng 9 (`02-brief-inbox`) từng ghi "AI Brief Summarizer" trong khi bản chất chỉ là chuỗi soạn sẵn trong dữ liệu mẫu → SV2 đã hạ cột đó về "–". | `git log --grep=Revert origin/feature/sv2-maker-screens`; diff cột AI của `docs/screen-inventory.md`; `copywriter.js` dòng 2 "Máy không gọi model nào: mọi câu dưới đây được ghép trong file này" | **đã khai** — có bằng chứng đọc lại được |
+| Chế độ AI trong sản phẩm | **Bộ quy tắc cục bộ, không gọi mô hình.** khai rõ: "Phân hệ người bán **không gọi mô hình AI nào**… không có lời gọi mạng nào, cũng không có khóa API hay biến môi trường"; ba chỗ nhãn "AI" (Copywriter & SEO STT 8, Cost & Timeline Advisor STT 10, trợ lý đăng nhập `BOT_RULES`) đều là JavaScript trong trình duyệt và giao diện tự ghi điều đó. Kèm sáu bước Input → Processing → Output → Explainability → User control → Save và kịch bản lỗi khi không có từ khoá. | `git grep "fetch(" KhongGianNguoiBan DangNhapVaDangKy` trên nhánh SV2; bảng "Tính năng AI" trong báo cáo phân hệ | **đã khai** |
+
+> Bản của SV2 vẫn tự ghi một giới hạn quan trọng: "video của bốn màn hình người bán sẽ quay và bổ sung sau" — ba video đã đăng của SV2 quay ba trang đăng nhập, không quay màn STT 7–12. Xem thêm mục 4 và 6 của [`docs/barem-audit.md`](./barem-audit.md).
 
 ### 3.3 Nếu dùng thêm công cụ khác
 

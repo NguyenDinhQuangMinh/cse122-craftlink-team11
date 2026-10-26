@@ -7,7 +7,7 @@ Tệp này ghi lại **kết quả đối chiếu trực tiếp** giữa barem (
 1. **ĐK3 (triển khai công khai) chưa đạt** — GitHub Pages chưa bật: `GET /repos/.../pages` trả về `404`, `has_pages = false`. Đây là điều kiện loại trực tiếp duy nhất còn thiếu mà **một người bấm được trong 5 phút**.
 2. **Không nhánh nào chứa toàn bộ sản phẩm.** `main` và `dev` có **0 tệp HTML** (9 tệp, toàn bộ là `docs/` + README + LICENSE + .gitignore). 27 tệp HTML nằm rải trên ba nhánh `feature/*` chưa gộp. Muốn chạy đủ luồng 3 vai trò và triển khai, phải gộp PR #3 → #2 → #1 vào `dev`.
 3. **0/4 Pull Request được gộp.** Cả bốn PR đang `open`. Lịch sử `main` có **11 commit đẩy trực tiếp không qua nhánh/PR** → đúng gạch trừ điểm 7.2 (−0.25đ).
-4. Bốn điều kiện còn lại (ĐK1, ĐK2, ĐK4, ĐK5) **có đủ bằng chứng trong repo**; ĐK4 phụ thuộc thỏa thuận 3 video/người đã báo giảng viên.
+4. Bốn điều kiện còn lại (ĐK1, ĐK2, ĐK4, ĐK5) **có đủ bằng chứng trong repo**; ĐK4 đã đủ 9/9 link video (3 người × 3 video) nhưng ba video của SV2 quay phân hệ đăng nhập — ba trang này **đứng ngoài 18 dòng kiểm kê** — nên vế "khớp 1:1 với `screen-inventory.md`" vẫn lệch với riêng phần Maker. ĐK4 phụ thuộc thỏa thuận 3 video/người đã báo giảng viên.
 5. **Không có vi phạm mức VP-01 và VP-02** (quét bằng đúng mẫu lệnh mà barem nêu ở mục IV.2 — xem mục 5).
 
 ## 2. Năm điều kiện tiên quyết (ĐK1–ĐK5)
@@ -17,8 +17,8 @@ Tệp này ghi lại **kết quả đối chiếu trực tiếp** giữa barem (
 | ĐK1 | Bảng kiểm kê màn hình + Sơ đồ User Flow + Thiết kế Figma/Canva | `docs/screen-inventory.md` dòng 3 có đủ **12 cột** (STT, Thành viên, Vai trò, Mục tiêu, Nhiệm vụ, Màn hình, Tệp HTML, CRUD/Trạng thái, AI, Phụ trách, Công việc/Nhánh, OBS Video) và 18 dòng; `docs/user-flow.md`, `docs/component-guide.md`, `docs/project-proposal.md`; link Canva ở README mục 10 | **Đạt** về tài liệu | 5 link Canva đang là **link chỉnh sửa** → phải đổi sang quyền xem công khai |
 | ĐK2 | Repo công khai, có `main`, `dev`, `feature/*`, commit và PR từ cả 3 thành viên | Repo `private = false`. Nhánh thật: `main`, `dev`, `feature/sv1-buyer`, `feature/sv2-maker-screens`, `feature/sv3-admin-screens`, `docs/sv1-sync`. Commit trên `main`: SV3 28, SV2 13, SV1 7 | **Đạt có điều kiện** | Thiếu `fix/*`; PR chưa được **gộp**; chưa có thẻ nào ở cột "Đã gộp" |
 | ĐK3 | Đã triển khai lên GitHub Pages/Vercel/Netlify, mở được qua đường dẫn công khai, kèm hướng dẫn chạy cục bộ trong README | `GET /repos/.../pages` → **404**. `has_pages = false`. Không có `homepage` trong API | **CHƯA ĐẠT** | Bật Pages sau khi gộp ba PR; README mục 12 đã có hướng dẫn chạy cục bộ |
-| ĐK4 | Danh sách Video OBS tương ứng 1:1 với toàn bộ màn hình độc lập, có webcam + giọng thật | `videos/README.md`: SV3 có 3 link (`youtu.be/LAlWYQg43LY`, `imsnvGvIofQ`, `3dCK3uHpIcY`); SV1 có 3 link trong `video.md` ở nhánh SV1; **SV2: 0 link**, chỉ có kênh `youtube.com/@minhduong3801` | **Rủi ro** — 6/18 màn có link | Nhóm đã chốt 3 video/người với giảng viên; **SV2 phải dán 3 link trước khi nộp** |
-| ĐK5 | `docs/ai-usage-report.md` khai trung thực công cụ, prompt, phần AI sinh, phần tự kiểm chứng | `docs/ai-usage-report.md`: mục 1–2 của SV3 đã khai; **3.1 SV1 đã khai đủ 5 hạng mục** (công cụ Qoder/ChatGPT/Claude, 3 prompt có ngày, tệp AI sinh, lỗi đã sửa, chế độ cục bộ); **3.2 SV2 vẫn "chưa khai" cả 5 dòng** | **Đạt một phần** | SV2 điền mục 3.2; xem thêm cảnh báo ở mục 6.3 |
+| ĐK4 | Danh sách Video OBS tương ứng 1:1 với toàn bộ màn hình độc lập, có webcam + giọng thật | `videos/README.md`: **đủ 9 link** — SV3 3 (`LAlWYQg43LY`, `imsnvGvIofQ`, `3dCK3uHpIcY`), SV1 3 (`PaCFXYhuo9U`, `AW-wuwhA3zc`, `T6ejhOOqfgk`), SV2 3 (`BY0AAIjTSm8`, `2zrLFxVEpiU`, `d4kmFKU6ivg`, playlist `PLDaEqceEwiuk`) | **Đạt về số lượng, lệch về ánh xạ** | Ba video của SV2 quay `khach-hang.html` / `nghe-nhan.html` / `quan-tri.html` — ba trang này **đứng ngoài 18 dòng kiểm kê**; sáu dòng 7–12 (Maker) không có video. Chính báo cáo AI của SV2 vẫn ghi "video của bốn màn hình người bán sẽ quay và bổ sung sau". Phải giữ thỏa thuận 3 video/người bằng văn bản của giảng viên |
+| ĐK5 | `docs/ai-usage-report.md` khai trung thực công cụ, prompt, phần AI sinh, phần tự kiểm chứng | SV3 mục 1–2; **SV1 mục 3.1 đủ 5 hạng mục**; **SV2 khai đầy đủ ở báo cáo cấp phân hệ** `KhongGianNguoiBan/docs/ai-usage-report.md` (nhánh `feature/sv2-maker-screens`) — công cụ Qoder, 6 prompt nguyên văn, bảng "AI sinh / cách kiểm chứng", hạn chế. Bản cấp nhóm mục 3.2 đã được chuyển nội dung của SV2 sang và ghi rõ **SV2 cần xác nhận** | **Đạt** — còn thiếu số phiên bản công cụ của cả ba người | SV2 đọc lại và xác nhận mục 3.2; cả nhóm bổ sung phiên bản công cụ |
 
 ## 3. Tiêu chí 7 — Quản lý công việc, Git/GitHub, triển khai (1.00đ)
 
@@ -43,8 +43,8 @@ Board công khai: **<https://trello.com/b/N2HBpswf>** — `prefs.permissionLevel
 Barem đòi 4 ý; kết quả từng ý:
 
 * **Chiến lược nhánh (`main`, `dev`, `feature/*`, `fix/*`, `docs/*`)** — có `main`, `dev`, 3 nhánh `feature/*`, 1 nhánh `docs/sv1-sync`. **Không có `fix/*`.** Đánh giá: *gần đạt*.
-* **Conventional Commits** — **42/144 commit đúng chuẩn = 29%**. 102 commit còn lại đa số là thông điệp tự sinh của trình soạn thảo web GitHub (`Update README.md`, `Update team-assignment.md`, `Create video.md`, `Delete video`). Gạch "thông điệp commit vô nghĩa" là −0.15đ; từ 25-10 trở đi các commit đã theo chuẩn (`docs(admin): …`, `fix(queue): …`, `style(pages): …`). Không sửa lại lịch sử đã push — thay vào đó khai thật ở mục này và trình bày trong Vấn đáp Câu 4.
-* **Đóng góp đều đặn qua các tuần** — theo ngày (mọi nhánh, đã khử trùng lặp): 3/10: 16 · 4/10: 11 · 6/10: 2 · 10/10: 1 · 11/10: 2 · 12/10: 3 · 13/10: 8 · 24/10: 4 · 25/10: 36 · 26/10: 64. **Khoảng trống 14→23/10 không có commit nào.** Theo người (144 commit): SV3 101 · SV1 24 · SV2 19. Nhận định: có hoạt động ở ba tuần khác nhau nên không rơi vào gạch −0.45đ ("toàn bộ code trong 1–2 commit đêm cuối"), nhưng đồ thị Insights sẽ dốc đứng ở ba ngày cuối.
+* **Conventional Commits** — trên **lịch sử đã push** (6 nhánh từ `origin`, khử trùng lặp theo hash): **49/152 commit đúng chuẩn = 32%**. Chia theo người: SV3 **40/91 = 44%**, SV2 **8/37 = 22%**, SV1 **1/24 = 4%**. 103 commit còn lại đa số là thông điệp tự sinh của trình soạn thảo web GitHub (`Update README.md`, `Update team-assignment.md`, `Create video.md`, `Delete video`). Gạch "thông điệp commit vô nghĩa" là −0.15đ; từ 25-10 trở đi các commit đã theo chuẩn (`docs(admin): …`, `fix(queue): …`, `style(pages): …`). Không sửa lại lịch sử đã push — thay vào đó khai thật ở mục này và trình bày trong Vấn đáp Câu 4.
+* **Đóng góp đều đặn qua các tuần** — theo ngày (mọi nhánh đã push, đã khử trùng lặp): 3/10: 16 · 4/10: 11 · 6/10: 2 · 10/10: 1 · 11/10: 2 · 12/10: 3 · 13/10: 8 · 24/10: 4 · 25/10: 36 · 26/10: 69. **Khoảng trống 14→23/10 không có commit nào.** Theo người (152 commit, đếm theo email tác giả): SV3 91 · SV2 37 · SV1 24. Nhận định: có hoạt động ở ba tuần khác nhau nên không rơi vào gạch −0.45đ ("toàn bộ code trong 1–2 commit đêm cuối"), nhưng đồ thị Insights sẽ dốc đứng ở ba ngày cuối.
 * **Mỗi nhánh tính năng gộp vào `dev` qua PR có Peer Review** — PR #1, #2, #3 đều có **base = `dev`** và đều **chưa gộp**. Số review thật:
   * PR #1 (SV3): `minhd2577-droi` — **DISMISSED** (25-10), `NguyenDinhQuangMinh` — COMMENTED (26-10), còn **requested reviewer** `hungxuan0411-cloud`.
   * PR #2 (SV2): `NguyenDinhQuangMinh` — COMMENTED (25-10, nêu điểm phải sửa), `minhd2577-droi` — COMMENTED (26-10).
@@ -59,13 +59,14 @@ Barem đòi 4 ý; kết quả từng ý:
 |---|---|---|
 | Link triển khai chạy thật, không 404 tài nguyên | **CHƯA** | Pages 404; chưa có `homepage` |
 | README đủ 15 mục chuẩn | **Đạt** | `README.md` có `## 1.` → `## 15.` (cộng mục "Giấy phép" = 16 khối `## `) |
-| `docs/ai-usage-report.md` chi tiết | Đạt một phần | SV3 + SV1 đã khai; SV2 trống (mục 3.2) |
+| `docs/ai-usage-report.md` chi tiết | Đạt | Cả ba người đều có khai; thiếu số phiên bản công cụ. Mục 3.2 là bản chuyển từ `KhongGianNguoiBan/docs/ai-usage-report.md`, cần SV2 xác nhận |
 
 ## 4. Tiêu chí 8 — Video OBS và Vấn đáp
 
-* **8.1 (0.50đ)**: barem đòi *số video = 100% số giao diện độc lập trong Screen Inventory đã duyệt*. Với 18 dòng kiểm kê, con số tuyệt đối là 18 video; nhóm đang có **6 video (3 SV1 + 3 SV3) + 0 của SV2** và đã báo giảng viên theo thỏa thuận 3 video/người. Gạch điểm ghi "*thiếu video so với số màn hình đã duyệt (trừ theo tỷ lệ)*" → **chỉ an toàn nếu có xác nhận của giảng viên bằng văn bản**; nên lưu tin nhắn/email đó vào thư mục nộp bài.
+* **8.1 (0.50đ)**: barem đòi *số video = 100% số giao diện độc lập trong Screen Inventory đã duyệt*. Với 18 dòng kiểm kê, con số tuyệt đối là 18 video; nhóm đang có **9 video có link (3 × 3 người)** theo thỏa thuận 3 video/người đã báo giảng viên. Gạch điểm ghi "*thiếu video so với số màn hình đã duyệt (trừ theo tỷ lệ)*" → **chỉ an toàn nếu có xác nhận của giảng viên bằng văn bản**; nên lưu tin nhắn/email đó vào thư mục nộp bài.
 * Tên tệp đã đúng chuẩn `SVx-XX-screen-name.mp4` trong `videos/README.md` và cột OBS của `docs/screen-inventory.md`.
-* **SV1 cần chốt ánh xạ**: `video.md` (gốc nhánh `feature/sv1-buyer`) ghi "STT 4/7/9", nhưng dòng 7 và 9 của bảng kiểm kê thuộc **SV2**. Nếu 4/7/9 là số thứ tự nội bộ trong 9 trang Buyer thì phải ghi rõ là "STT nội bộ", nếu là STT kiểm kê thì hai link đó đang trỏ sai màn.
+* **Điểm yếu còn lại của 8.1 không phải số lượng mà là ánh xạ.** Ba video của SV2 chứng minh ba trang đăng nhập, không chứng minh dòng nào trong sáu dòng 7–12 (Maker) — phần mà bảng phân công giao cho SV2. Ghi chú trung thực về việc này từng có trong `videos/README.md` và `docs/sv2-assignment.md`, đã bị xóa bằng hai commit `e123199` và `13c4416` (26-10), nhưng báo cáo AI cấp phân hệ của SV2 vẫn còn câu "video của bốn màn hình người bán sẽ quay và bổ sung sau". **Khi bị hỏi, nhóm phải trả lời được: vì sao chọn 3 video/người, ai duyệt, và mỗi video phủ những dòng nào** — im lặng về khoảng trống này dễ bị đọc là khai thiếu hơn thực tế.
+* **SV1 cần chốt ánh xạ**: `video.md` (gốc nhánh `feature/sv1-buyer`) ghi "STT 4/7/9", nhưng dòng 7 và 9 của bảng kiểm kê thuộc **SV2**. `videos/README.md` hiện ghi lời giải thích "4/7/9 là số thứ tự nội bộ trong 9 tệp Buyer"; cách giải thích này vẫn phải được SV1 xác nhận trước khi nộp.
 * **8.2 (0.50đ)**: mỗi sinh viên giải thích từng dòng mã trong lát cắt dọc của mình. Kịch bản 6 phút + Live Modification 5–10 phút lấy từ "ngân hàng 24 đề bài" — SV3 đã chuẩn bị cho màn 14/16/18.
 
 ## 5. Quét 7 vi phạm VP-01…VP-07
@@ -76,9 +77,9 @@ Barem đòi 4 ý; kết quả từng ý:
 | VP-02 | −1.00 | Nhập `<img src=x onerror=alert(1)>` | **Không có lỗi.** 7 chỗ `innerHTML` trong `KiemDuyetVaQuanTri/*/js/main.js` đều đi qua `esc()` (định nghĩa tại dòng 18–47 của từng tệp); SV1 dùng `escapeHtml` trong `KhachHang/js/common.js`, SV2 dùng `escapeHtml` trong `DangNhapVaDangKy/01-dang-nhap/js/*.js` |
 | VP-03 | −1.00 | So sánh ngày commit đầu của mã với ngày có `screen-inventory.md` | **Không vi phạm.** `docs/screen-inventory.md` vào repo ngày **4-10** (`bc325c2 Add screen-inventory.md documentation file`); commit HTML đầu tiên ngày **6-10** (`6091f84 Initialize project structure with HTML CSS JS assets`) chỉ tạo ba tệp rỗng trong `Trang 1/` và **không còn ở bất kỳ nhánh nào hiện nay**; các màn thật bắt đầu từ **13-10** |
 | VP-04 | −1.00 | Đối chiếu các tệp trong `pages/` | **Không vi phạm.** Ba phân hệ có cấu trúc, CSS và JS riêng (`KhachHang/`, `KhongGianNguoiBan/`, `KiemDuyetVaQuanTri/`), không phải đổi tên trang |
-| VP-05 | −1.00 | `git log --graph --oneline --all` | **Không vi phạm.** 144 commit, 64 commit trong 24h cuối nhưng là commit nhỏ theo từng màn, không phải "1–3 commit lớn dồn đêm cuối" |
+| VP-05 | −1.00 | `git log --graph --oneline --all` | **Không vi phạm.** 152 commit đã push trên 6 nhánh, 69 commit trong 24h cuối nhưng là commit nhỏ theo từng màn, không phải "1–3 commit lớn dồn đêm cuối" |
 | VP-06 | −0.50 | Quan sát trực tiếp "Lorem ipsum", "test1,test2,abc" | **Sạch.** Quét `lorem ipsum\|asdf\|test123\|dummy` trên `*.html`, `*.js`, `*.json`: 0 khớp; dữ liệu JSON là sản phẩm gốm thủ công có tên tiếng Việt |
-| VP-07 | −1.00 | Đối chiếu `ai-usage-report.md` trong Vấn đáp | **Rủi ro trung bình.** Tệp tồn tại và SV3/SV1 khai chi tiết; **SV2 chưa khai dòng nào**. Nếu trình bày "không dùng AI" mà mã không giải thích được thì rơi đúng gạch này |
+| VP-07 | −1.00 | Đối chiếu `ai-usage-report.md` trong Vấn đáp | **Rủi ro thấp.** Cả ba người đều có khai chi tiết: SV3 mục 1–2, SV1 mục 3.1, SV2 trong `KhongGianNguoiBan/docs/ai-usage-report.md` và bản nhóm mục 3.2. Khai thiếu mới bị gạch −1.00đ; phần còn thiếu ở đây chỉ là **số phiên bản công cụ** và **nhật ký prompt không nằm trong repo** — hai điều này phải nói thẳng khi bảo vệ, không tô vẽ thành "có log đầy đủ" |
 
 ## 6. Lỗi cụ thể tìm thấy khi đối chiếu (kèm đường dẫn)
 
@@ -127,9 +128,11 @@ Nhánh tạm `integration/test` **chưa push và chỉ dùng để kiểm chứn
 
 **Cần cả nhóm đồng ý:** gộp theo thứ tự PR #3 → #2 → #1 vào `dev`, rồi một PR `dev` → `main`; đóng PR #4 (đích sai, nội dung đã nằm trong nhánh SV3).
 
-**Cần SV1:** sửa 7 tham chiếu hỏng ở mục 6.1 dòng 5–7 và đổi tên `forgot password.html` + `css/forgot passwork.css`; xóa `docs/ai-usage -report.md` và `video.md` ở gốc nhánh (dùng `videos/README.md`); chốt ánh xạ 3 video 4/7/9; bấm Approve PR #1 và #2.
+**Cần SV1:** sửa 7 tham chiếu hỏng ở mục 6.1 dòng 5–7 và đổi tên `forgot password.html` + `css/forgot passwork.css`; xóa `docs/ai-usage -report.md` và `video.md` ở gốc nhánh (dùng `videos/README.md`); xác nhận ánh xạ 3 video "4/7/9" và bổ sung phiên bản công cụ AI vào khai báo 3.1; bấm Approve PR #1 và #2. Lưu ý riêng cho SV1: **24 commit của SV1 chỉ có 1 commit theo chuẩn Conventional Commits** (bảng mục 3.2) — nếu bị hỏi Câu 4 thì giải thích là thao tác qua web GitHub, không phải không biết chuẩn.
 
-**Cần SV2:** điền mục 3.2 `docs/ai-usage-report.md` (5 dòng "chưa khai"); quay và dán 3 link video cho màn STT 7/9/12; sửa 4 liên kết `forgot-password.html`; bấm Approve PR #1 và #3.
+**Cần SV2:** đọc lại và xác nhận mục 3.2 của `docs/ai-usage-report.md` (nội dung đã chuyển từ báo cáo phân hệ sang, SV2 vẫn phải đứng tên); sửa 4 liên kết `forgot-password.html`; chốt hướng xử lý cho sáu dòng 7–12 không có video (quay thêm, hoặc ghi rõ "nằm trong phạm vi demo 3 video/người" ngay trong `screen-inventory.md`); bấm Approve PR #1 và #3.
+
+**Đã xong trong ngày 26-10 (không còn là việc của ai):** 3 link video OBS của SV2 đã vào `videos/README.md`, `docs/screen-inventory.md` và `docs/sv2-assignment.md` (commit `90d5fe1`, `677849b`, `98000c6`).
 
 **Cả nhóm:** đổi 5 link Canva sang quyền "Bất kỳ ai có liên kết đều xem được" và mở thử bằng cửa sổ ẩn danh.
 
