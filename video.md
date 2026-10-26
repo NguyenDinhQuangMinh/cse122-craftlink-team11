@@ -5,8 +5,11 @@
 
 | STT kiểm kê | Người quay | Link |
 |---|---|---|---|
+
 | 4 | SV1 | https://www.youtube.com/watch?v=AW-wuwhA3zc&t=4s|
+
 | 7 | SV1 | https://www.youtube.com/watch?v=T6ejhOOqfgk|
+
 | 9 | SV1 | https://www.youtube.com/watch?v=PaCFXYhuo9U|
 
 
