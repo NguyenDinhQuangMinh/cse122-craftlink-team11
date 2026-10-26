@@ -1,0 +1,300 @@
+/* ==========================================================================
+   CraftLink — Trang Gợi ý nghệ nhân từ AI
+   Bố cục 2 cột: giới thiệu bên trái | danh sách thẻ nghệ nhân bên phải
+   ========================================================================== */
+
+.suggestions-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: 40px;
+  align-items: start;
+  margin-top: 20px;
+}
+
+
+/* ---------- Cột trái: phần giới thiệu ---------- */
+
+.hero-eyebrow {
+  margin: 0 0 10px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.suggestions-hero h1 {
+  margin: 0 0 12px;
+  font-size: 32px;
+  line-height: 1.25;
+}
+
+.hero-text {
+  margin: 0;
+  max-width: 380px;
+  font-size: 15px;
+  color: var(--color-text-muted);
+}
+
+/* Ghi chú minh bạch: điểm trên thẻ là số tiêu chí dữ liệu, không phải AI */
+.hero-honest-note {
+  margin: 14px 0 0;
+  padding: 10px 12px;
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-btn);
+  background-color: #fdfaf5;
+  color: #6b6055;
+  font-size: 13px;
+}
+
+/* Khối ngữ cảnh: sản phẩm và brief đang được dùng để lọc */
+.suggestion-context {
+  margin-top: 20px;
+}
+
+.suggestion-context-label {
+  margin: 0 0 4px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.suggestion-context-name {
+  margin: 0 0 4px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.suggestion-context-meta {
+  margin: 0 0 8px;
+  font-size: 13.5px;
+  color: var(--color-text-muted);
+}
+
+.suggestion-context-brief {
+  margin: 0 0 10px;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: #5f564c;
+  overflow-wrap: anywhere;
+}
+
+
+/* ---------- Cột phải: danh sách thẻ nghệ nhân ---------- */
+
+/* Chỉ danh sách chính dùng flex; không áp lên .tag-list và
+   .artisan-reasons nằm bên trong từng thẻ */
+#artisan-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+#artisan-list[hidden] {
+  display: none;
+}
+
+.suggestion-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.suggestion-summary {
+  margin: 0;
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+/* Nút dùng .btn-light có display riêng nên phải khai báo lại hidden */
+#suggestion-reset-btn[hidden],
+#suggestions-empty-link[hidden] {
+  display: none;
+}
+
+.artisan-suggestion-card {
+  display: grid;
+  grid-template-columns: 110px minmax(0, 1fr) auto;
+  gap: 18px;
+  align-items: center;
+}
+
+.artisan-photo {
+  width: 110px;
+  height: 110px;
+  border-radius: 14px;
+  object-fit: cover;
+}
+
+/* Chữ cái đầu thay ảnh khi hồ sơ chưa có ảnh đại diện */
+.artisan-photo-initial {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-primary-light);
+  color: var(--color-primary-dark);
+  font-size: 34px;
+  font-weight: 700;
+}
+
+.artisan-photo-initial[hidden] {
+  display: none;
+}
+
+.artisan-info {
+  min-width: 0;
+}
+
+.artisan-name-lg {
+  margin: 0 0 8px;
+  font-size: 18px;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 10px;
+}
+
+.artisan-desc {
+  margin: 0;
+  font-size: 14px;
+  color: #5f564c;
+}
+
+.artisan-reasons {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 10px 0 8px;
+}
+
+.artisan-reasons li {
+  position: relative;
+  padding-left: 16px;
+  font-size: 13px;
+  color: #5f564c;
+}
+
+.artisan-reasons li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--color-success);
+  font-weight: 700;
+}
+
+.artisan-meta {
+  margin: 3px 0 0;
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+.artisan-demo-note {
+  margin: 6px 0 0;
+  font-size: 12.5px;
+  font-style: italic;
+  color: var(--color-text-muted);
+}
+
+.artisan-demo-note[hidden] {
+  display: none;
+}
+
+.artisan-card-side {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.match-score {
+  margin: 0;
+  text-align: right;
+}
+
+.match-percent {
+  display: block;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-primary);
+}
+
+/* Số tiêu chí dữ liệu trùng khớp (không phải phần trăm AI) */
+.match-tag {
+  display: block;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-primary);
+}
+
+.match-label {
+  display: block;
+  font-size: 12.5px;
+  color: var(--color-text-muted);
+}
+
+/* Ba nút của mỗi thẻ xếp thành cột bên phải */
+.artisan-card-actions {
+  flex-direction: column;
+}
+
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+/* Máy tính bảng: phần giới thiệu lên trên, danh sách xuống dưới */
+@media (max-width: 960px) {
+  .suggestions-layout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .hero-text {
+    max-width: none;
+  }
+}
+
+/* Điện thoại: ảnh nhỏ lại, điểm phù hợp + nút chuyển xuống hàng riêng */
+@media (max-width: 720px) {
+  .artisan-suggestion-card {
+    grid-template-columns: 84px minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  .artisan-photo {
+    width: 84px;
+    height: 84px;
+  }
+
+  .artisan-card-side {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .artisan-card-actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+}
+
+/* Điện thoại nhỏ */
+@media (max-width: 540px) {
+  .suggestions-hero h1 {
+    font-size: 26px;
+  }
+}

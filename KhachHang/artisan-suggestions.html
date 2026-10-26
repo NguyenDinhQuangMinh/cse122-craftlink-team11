@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gợi ý nghệ nhân | CraftLink</title>
+  <meta name="description" content="Lọc hồ sơ nghệ nhân CraftLink theo sản phẩm đang tùy biến và nội dung brief đã chấp nhận, kèm lý do dựa trên dữ liệu mẫu.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/artisan-suggestions.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+
+      <a href="index.html" class="brand">CraftLink</a>
+
+      <nav class="main-nav" aria-label="Điều hướng chính">
+        <ul>
+          <li><a href="index.html">Khám phá</a></li>
+          <li><a href="index.html">Danh mục</a></li>
+          <li><a href="artisan-suggestions.html" class="active" aria-current="page">Nghệ nhân</a></li>
+          <li><a href="favorites.html">Yêu thích</a></li>
+          <li><a href="orders.html">Đơn hàng</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="index.html" class="icon-btn" aria-label="Tìm kiếm">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </a>
+        <button type="button" class="icon-btn" aria-label="Tin nhắn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </button>
+        <a href="cart.html" class="icon-btn" aria-label="Giỏ hàng">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          <span class="cart-count" id="cart-count" hidden></span>
+        </a>
+        <button type="button" class="icon-btn" aria-label="Tài khoản">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <main class="container">
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="index.html">Trang chủ</a></li>
+        <li><span aria-current="page">Gợi ý nghệ nhân</span></li>
+      </ol>
+    </nav>
+
+    <div class="suggestions-layout">
+
+      <section class="suggestions-hero" aria-labelledby="page-title">
+        <p class="hero-eyebrow">Gợi ý nghệ nhân</p>
+        <h1 id="page-title">Chọn nghệ nhân phù hợp với yêu cầu</h1>
+        <p class="hero-text">Danh sách được lọc từ hồ sơ nghệ nhân mẫu theo sản phẩm và nội dung brief đã chấp nhận. Đây là bộ lọc tiêu chí cục bộ, <strong>chưa kết nối mô hình AI tạo sinh</strong>.</p>
+
+        <div class="suggestion-context panel" id="suggestion-context" hidden>
+          <p class="suggestion-context-label">Sản phẩm đang tùy biến</p>
+          <p class="suggestion-context-name" id="suggestion-product-name"></p>
+          <p class="suggestion-context-meta" id="suggestion-product-meta"></p>
+          <p class="suggestion-context-brief" id="suggestion-brief"></p>
+          <a href="customize.html" class="link-action" id="suggestion-back-link">← Sửa brief</a>
+        </div>
+
+        <p class="hero-honest-note">Số tiêu chí trên mỗi thẻ là số điểm dữ liệu trùng khớp (sản phẩm, thẻ/chuyên môn, ghi chú nhận đặt làm), không phải phần trăm hay xác suất AI.</p>
+      </section>
+
+      <section class="artisan-list" aria-label="Danh sách nghệ nhân được gợi ý">
+        <div class="suggestion-toolbar">
+          <p class="suggestion-summary" id="suggestion-summary" hidden></p>
+          <button type="button" class="btn-light" id="suggestion-reset-btn" hidden>Tạo lại gợi ý</button>
+        </div>
+
+        <ul id="artisan-list"></ul>
+
+        <div class="empty-state" id="suggestions-empty" hidden>
+          <p class="empty-state-title" id="suggestions-empty-title"></p>
+          <p class="empty-state-text" id="suggestions-empty-text"></p>
+          <a href="customize.html" class="btn-light" id="suggestions-empty-link">Quay lại tạo brief</a>
+        </div>
+
+        <template id="artisan-card-template">
+          <li>
+            <article class="panel artisan-suggestion-card">
+              <img class="artisan-photo artisan-photo-img" src="" alt="">
+              <span class="artisan-photo artisan-photo-initial" hidden aria-hidden="true"></span>
+              <div class="artisan-info">
+                <h2 class="artisan-name-lg"></h2>
+                <ul class="tag-list"></ul>
+                <p class="artisan-desc"></p>
+                <ul class="artisan-reasons"></ul>
+                <p class="artisan-meta artisan-location-line"></p>
+                <p class="artisan-meta artisan-product-count-line"></p>
+                <p class="artisan-meta artisan-custom-line"></p>
+                <p class="artisan-demo-note" hidden></p>
+              </div>
+              <div class="artisan-card-side">
+                <p class="match-score">
+                  <span class="match-tag"></span>
+                  <span class="match-label">tiêu chí dữ liệu trùng khớp</span>
+                </p>
+                <div class="btn-row artisan-card-actions">
+                  <button type="button" class="btn-primary artisan-select-btn">Chọn nghệ nhân</button>
+                  <button type="button" class="btn-light artisan-skip-btn">Bỏ qua</button>
+                  <button type="button" class="btn-light artisan-regenerate-btn">Tạo lại</button>
+                </div>
+              </div>
+            </article>
+          </li>
+        </template>
+
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-top">
+      <div class="footer-brand">
+        <p class="footer-logo">CraftLink</p>
+        <p class="footer-tagline">Sàn sản phẩm sáng tạo tùy biến — kết nối người yêu thủ công với các nghệ nhân trên cả nước.</p>
+      </div>
+
+      <nav class="footer-nav" aria-label="Liên kết chân trang — Khám phá">
+        <h2>Khám phá</h2>
+        <ul>
+          <li><a href="index.html">Danh mục sản phẩm</a></li>
+          <li><a href="artisan-suggestions.html">Nghệ nhân</a></li>
+          <li><a href="favorites.html">Yêu thích</a></li>
+          <li><a href="orders.html">Đơn hàng</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer-nav" aria-label="Liên kết chân trang — Hỗ trợ">
+        <h2>Hỗ trợ</h2>
+        <ul>
+          <li><a href="#">Trung tâm trợ giúp</a></li>
+          <li><a href="#">Chính sách đổi trả</a></li>
+          <li><a href="#">Điều khoản sử dụng</a></li>
+          <li><a href="#">Liên hệ</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        <p>© 2026 CraftLink — Sàn sản phẩm sáng tạo tùy biến.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xác nhận đơn tùy biến | CraftLink</title>
+  <meta name="description" content="Xem lại yêu cầu tùy biến, nhập thông tin nhận hàng và chọn thanh toán, giao hàng trên bản demo CraftLink.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/cart.css">
+  <link rel="stylesheet" href="css/checkout.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+
+      <a href="index.html" class="brand">CraftLink</a>
+
+      <nav class="main-nav" aria-label="Điều hướng chính">
+        <ul>
+          <li><a href="index.html">Khám phá</a></li>
+          <li><a href="index.html">Danh mục</a></li>
+          <li><a href="artisan-suggestions.html">Nghệ nhân</a></li>
+          <li><a href="favorites.html">Yêu thích</a></li>
+          <li><a href="orders.html">Đơn hàng</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="index.html" class="icon-btn" aria-label="Tìm kiếm">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </a>
+        <button type="button" class="icon-btn" aria-label="Tin nhắn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </button>
+        <a href="cart.html" class="icon-btn" aria-label="Giỏ hàng">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          <span class="cart-count" id="cart-count" hidden></span>
+        </a>
+        <button type="button" class="icon-btn" aria-label="Tài khoản">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <main class="container">
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="index.html">Trang chủ</a></li>
+        <li><a href="customize.html" id="checkout-breadcrumb-mode">Tùy biến</a></li>
+        <li><span aria-current="page" id="checkout-breadcrumb-current">Xác nhận đơn</span></li>
+      </ol>
+    </nav>
+
+    <section class="page-heading" aria-labelledby="page-title">
+      <div>
+        <h1 id="page-title">Xác nhận đơn tùy biến</h1>
+        <p class="page-subtitle" id="checkout-page-subtitle">Xem lại yêu cầu, nhập thông tin nhận hàng và chọn phương thức thanh toán, giao hàng.</p>
+      </div>
+    </section>
+
+    <ol class="checkout-steps" id="checkout-steps" aria-label="Các bước xác nhận đơn">
+      <li class="checkout-step" data-step="1">
+        <span class="checkout-step-number">1</span>
+        <span class="checkout-step-label">Xem lại</span>
+      </li>
+      <li class="checkout-step" data-step="2">
+        <span class="checkout-step-number">2</span>
+        <span class="checkout-step-label">Nhận hàng</span>
+      </li>
+      <li class="checkout-step" data-step="3">
+        <span class="checkout-step-number">3</span>
+        <span class="checkout-step-label">Thanh toán</span>
+      </li>
+      <li class="checkout-step" data-step="4">
+        <span class="checkout-step-number">4</span>
+        <span class="checkout-step-label">Xác nhận</span>
+      </li>
+    </ol>
+
+    <div class="checkout-layout" id="checkout-layout" hidden>
+
+      <div class="checkout-main">
+
+        <section class="panel checkout-step-panel" data-step="1" aria-labelledby="step1-title" hidden>
+          <h2 class="panel-title" id="step1-title">1. Xem lại yêu cầu tùy biến</h2>
+
+          <div id="review-single">
+            <div class="checkout-product">
+              <img id="review-product-image" src="" alt="">
+              <div>
+                <p class="checkout-product-name" id="review-product-name"></p>
+                <p class="checkout-product-meta" id="review-product-meta"></p>
+                <p class="checkout-product-price" id="review-product-price"></p>
+              </div>
+            </div>
+
+            <dl class="info-list checkout-review-list">
+              <dt>Nghệ nhân đã chọn</dt>
+              <dd id="review-artisan"></dd>
+              <dt>Số lượng</dt>
+              <dd id="review-qty"></dd>
+              <dt>Brief tùy biến</dt>
+              <dd class="checkout-brief-text" id="review-brief"></dd>
+              <dt>Thời gian hoàn thành dự kiến</dt>
+              <dd id="review-lead-time"></dd>
+              <dt>Tạm tính</dt>
+              <dd id="review-total"></dd>
+            </dl>
+
+            <p class="checkout-honest-note">Đơn giá lấy từ dữ liệu sản phẩm mẫu. Dự án chưa có quy tắc phụ phí tùy biến nên không cộng thêm chi phí nào.</p>
+          </div>
+
+          <div id="review-cart" hidden>
+            <ul class="checkout-item-list" id="review-cart-list"></ul>
+
+            <dl class="info-list checkout-review-list">
+              <dt>Số lượng sản phẩm</dt>
+              <dd id="review-cart-count"></dd>
+              <dt>Tạm tính</dt>
+              <dd id="review-cart-total"></dd>
+            </dl>
+
+            <p class="checkout-honest-note">Đơn giá lấy từ dữ liệu sản phẩm mẫu. Dự án chưa có quy tắc phụ phí hoặc phí giao hàng nên tạm tính chỉ gồm giá sản phẩm × số lượng.</p>
+          </div>
+
+          <div class="btn-row checkout-actions">
+            <button type="button" class="btn-primary" id="step1-next">Tiếp tục</button>
+            <a href="customize.html" class="btn-outline" id="review-edit-brief">Sửa brief / số lượng</a>
+            <a href="artisan-suggestions.html" class="btn-light" id="review-change-artisan">Đổi nghệ nhân</a>
+            <a href="cart.html" class="btn-outline" id="review-back-cart" hidden>Sửa giỏ hàng</a>
+          </div>
+        </section>
+
+        <section class="panel checkout-step-panel" data-step="2" aria-labelledby="step2-title" hidden>
+          <h2 class="panel-title" id="step2-title">2. Thông tin nhận hàng</h2>
+
+          <form id="delivery-form" novalidate>
+            <div class="field-group">
+              <label class="checkout-label" for="delivery-phone">Số điện thoại người nhận <span class="required-mark">*</span></label>
+              <input class="checkout-input" type="tel" id="delivery-phone" name="phone" inputmode="tel" autocomplete="tel" placeholder="Ví dụ: 0912345678">
+              <p class="field-error" id="phone-error" role="alert" hidden></p>
+            </div>
+
+            <div class="field-group">
+              <label class="checkout-label" for="delivery-address">Địa chỉ nhận hàng <span class="required-mark">*</span></label>
+              <textarea class="checkout-input" id="delivery-address" name="address" rows="3" placeholder="Số nhà, đường, phường/xã, quận/huyện, tỉnh/thành"></textarea>
+              <p class="field-error" id="address-error" role="alert" hidden></p>
+            </div>
+
+            <p class="checkout-honest-note">Thông tin nhận hàng chỉ được lưu tạm trong tab này để điền lại khi chuyển bước; không gửi đến máy chủ nào và sẽ mất khi đóng tab.</p>
+
+            <div class="btn-row checkout-actions">
+              <button type="submit" class="btn-primary">Tiếp tục</button>
+              <button type="button" class="btn-light" id="step2-back">Quay lại</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="panel checkout-step-panel" data-step="3" aria-labelledby="step3-title" hidden>
+          <h2 class="panel-title" id="step3-title">3. Thanh toán &amp; giao hàng</h2>
+
+          <form id="options-form" novalidate>
+            <fieldset class="choice-group">
+              <legend class="choice-legend">Phương thức thanh toán <span class="required-mark">*</span></legend>
+
+              <label class="choice-option">
+                <input type="radio" name="payment" value="cod">
+                <span>
+                  <strong>Thanh toán khi nhận hàng (COD)</strong>
+                  <span class="choice-desc">Thanh toán cho người giao hàng khi nhận được sản phẩm.</span>
+                </span>
+              </label>
+
+              <label class="choice-option">
+                <input type="radio" name="payment" value="bank-transfer">
+                <span>
+                  <strong>Chuyển khoản ngân hàng</strong>
+                  <span class="choice-desc">Bản demo chưa kết nối cổng thanh toán và chưa có thông tin tài khoản nhận tiền.</span>
+                </span>
+              </label>
+
+              <p class="field-error" id="payment-error" role="alert" hidden></p>
+            </fieldset>
+
+            <fieldset class="choice-group">
+              <legend class="choice-legend">Phương thức giao hàng <span class="required-mark">*</span></legend>
+
+              <label class="choice-option">
+                <input type="radio" name="shipping" value="standard">
+                <span>
+                  <strong>Giao hàng tiêu chuẩn</strong>
+                  <span class="choice-desc">Phương thức do người bán sắp xếp; chưa có thông tin thời gian và phí cụ thể.</span>
+                </span>
+              </label>
+
+              <label class="choice-option">
+                <input type="radio" name="shipping" value="express">
+                <span>
+                  <strong>Giao hàng nhanh</strong>
+                  <span class="choice-desc">Phương thức do người bán sắp xếp; chưa có thông tin thời gian và phí cụ thể.</span>
+                </span>
+              </label>
+
+              <p class="field-error" id="shipping-error" role="alert" hidden></p>
+            </fieldset>
+
+            <p class="checkout-honest-note"><strong>Phí giao hàng:</strong> Chưa có thông tin phí giao hàng trong dữ liệu dự án. Tổng tạm tính chỉ gồm giá sản phẩm × số lượng.</p>
+
+            <div class="btn-row checkout-actions">
+              <button type="submit" class="btn-primary">Tiếp tục</button>
+              <button type="button" class="btn-light" id="step3-back">Quay lại</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="panel checkout-step-panel" data-step="4" aria-labelledby="step4-title" hidden>
+          <h2 class="panel-title" id="step4-title">4. Xác nhận thông tin</h2>
+
+          <dl class="info-list checkout-review-list" id="confirm-single-list">
+            <dt>Sản phẩm</dt>
+            <dd id="confirm-product"></dd>
+            <dt>Số lượng</dt>
+            <dd id="confirm-qty"></dd>
+            <dt>Nghệ nhân</dt>
+            <dd id="confirm-artisan"></dd>
+            <dt>Brief tùy biến</dt>
+            <dd class="checkout-brief-text" id="confirm-brief"></dd>
+          </dl>
+
+          <div id="confirm-cart" hidden>
+            <p class="checkout-cart-heading">Sản phẩm trong giỏ</p>
+            <ul class="checkout-item-list" id="confirm-cart-list"></ul>
+            <p class="checkout-cart-count" id="confirm-cart-count"></p>
+          </div>
+
+          <dl class="info-list checkout-review-list">
+            <dt>Người nhận</dt>
+            <dd id="confirm-delivery"></dd>
+            <dt>Thanh toán</dt>
+            <dd id="confirm-payment"></dd>
+            <dt>Giao hàng</dt>
+            <dd id="confirm-shipping"></dd>
+            <dt>Tạm tính</dt>
+            <dd id="confirm-total"></dd>
+          </dl>
+
+          <p class="checkout-honest-note" id="confirm-payment-note"></p>
+
+          <div class="demo-warning" role="note">
+            <strong>Đây là bản demo.</strong> Bấm xác nhận không gửi đơn đến nghệ nhân, không tạo đơn hàng thật
+            và không thực hiện giao dịch thanh toán. Không có dữ liệu nào được lưu trên máy chủ.
+          </div>
+
+          <div class="btn-row checkout-actions">
+            <button type="button" class="btn-success" id="confirm-order-btn">Xác nhận đơn (bản demo)</button>
+            <button type="button" class="btn-light" id="step4-back">Quay lại</button>
+          </div>
+        </section>
+
+        <section class="panel checkout-complete" id="checkout-complete" aria-labelledby="complete-title" hidden>
+          <p class="checkout-complete-eyebrow">Bản demo</p>
+          <h2 class="panel-title" id="complete-title">Đã ghi nhận xác nhận trên trình duyệt</h2>
+          <p class="checkout-complete-code">Mã tham chiếu demo: <strong id="demo-code"></strong></p>
+
+          <dl class="info-list checkout-review-list" id="complete-single-list">
+            <dt>Sản phẩm</dt>
+            <dd id="complete-product"></dd>
+            <dt>Nghệ nhân</dt>
+            <dd id="complete-artisan"></dd>
+            <dt>Số lượng</dt>
+            <dd id="complete-qty"></dd>
+          </dl>
+
+          <div id="complete-cart" hidden>
+            <p class="checkout-cart-heading">Sản phẩm trong giỏ</p>
+            <ul class="checkout-item-list" id="complete-cart-list"></ul>
+            <p class="checkout-cart-count" id="complete-cart-count"></p>
+          </div>
+
+          <dl class="info-list checkout-review-list">
+            <dt>Người nhận</dt>
+            <dd id="complete-delivery"></dd>
+            <dt>Thanh toán</dt>
+            <dd id="complete-payment"></dd>
+            <dt>Giao hàng</dt>
+            <dd id="complete-shipping"></dd>
+            <dt>Tạm tính</dt>
+            <dd id="complete-total"></dd>
+          </dl>
+
+          <p class="checkout-honest-note" id="complete-cart-note" hidden>Bản demo không tạo đơn hàng thật nên giỏ hàng của bạn vẫn được giữ nguyên.</p>
+
+          <div class="demo-warning" role="note">
+            Chưa có đơn hàng nào được gửi đến nghệ nhân hoặc lưu trên máy chủ. Không có giao dịch thanh toán nào
+            được thực hiện. Mã trên chỉ dùng để minh họa luồng mua hàng trong bản demo.
+          </div>
+
+          <div class="btn-row checkout-actions">
+            <a href="index.html" class="btn-primary">Về trang danh mục</a>
+            <button type="button" class="btn-light" id="restart-btn">Tạo yêu cầu mới</button>
+          </div>
+        </section>
+
+      </div>
+
+      <aside class="panel checkout-summary" id="checkout-summary" aria-label="Tóm tắt đơn tùy biến">
+        <h2 class="panel-title">Tóm tắt đơn</h2>
+        <dl class="summary-list" id="summary-single">
+          <dt>Sản phẩm</dt>
+          <dd id="summary-product"></dd>
+          <dt>Nghệ nhân</dt>
+          <dd id="summary-artisan"></dd>
+          <dt>Số lượng</dt>
+          <dd id="summary-qty"></dd>
+          <dt>Đơn giá tham khảo</dt>
+          <dd id="summary-unit-price"></dd>
+        </dl>
+
+        <div id="summary-cart" hidden>
+          <p class="summary-cart-heading">Sản phẩm trong giỏ</p>
+          <ul class="summary-cart-list" id="summary-cart-list"></ul>
+          <p class="summary-cart-count" id="summary-cart-count"></p>
+        </div>
+
+        <dl class="summary-list">
+          <dt>Thanh toán</dt>
+          <dd id="summary-payment">Chưa chọn</dd>
+          <dt>Giao hàng</dt>
+          <dd id="summary-shipping-method">Chưa chọn</dd>
+          <dt>Phí giao hàng</dt>
+          <dd id="summary-shipping">Chưa có thông tin phí giao hàng</dd>
+        </dl>
+        <div class="summary-total">
+          <span>Tạm tính<br><span class="summary-total-sub">chưa gồm phí giao hàng</span></span>
+          <span class="summary-total-value" id="summary-total"></span>
+        </div>
+        <p class="summary-note">Số tiền chỉ dựa trên giá sản phẩm mẫu và số lượng. Dự án chưa có quy tắc phụ phí tùy biến hoặc phí giao hàng.</p>
+        <p class="summary-note"><strong>Lưu tạm:</strong> Thông tin chỉ tồn tại trong tab này và mất khi đóng tab.</p>
+      </aside>
+
+    </div>
+
+    <div class="empty-state" id="checkout-empty" hidden>
+      <p class="empty-state-title" id="checkout-empty-title"></p>
+      <p class="empty-state-text" id="checkout-empty-text"></p>
+      <div class="btn-row checkout-empty-actions">
+        <a href="index.html" class="btn-primary">Về danh mục sản phẩm</a>
+        <a href="customize.html" class="btn-light" id="checkout-empty-customize" hidden>Tạo yêu cầu tùy biến</a>
+        <a href="artisan-suggestions.html" class="btn-outline" id="checkout-empty-artisan" hidden>Chọn nghệ nhân</a>
+        <a href="cart.html" class="btn-light" id="checkout-empty-cart" hidden>Về giỏ hàng</a>
+      </div>
+    </div>
+
+    <template id="checkout-cart-item-template">
+      <li class="checkout-item">
+        <img src="" alt="">
+        <div class="checkout-item-body">
+          <p class="checkout-item-name"></p>
+          <p class="checkout-item-meta"></p>
+          <p class="checkout-item-price"></p>
+        </div>
+        <p class="checkout-item-subtotal"></p>
+      </li>
+    </template>
+
+    <template id="checkout-summary-item-template">
+      <li class="summary-cart-item">
+        <span class="summary-cart-item-name"></span>
+        <span class="summary-cart-item-meta"></span>
+      </li>
+    </template>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-top">
+      <div class="footer-brand">
+        <p class="footer-logo">CraftLink</p>
+        <p class="footer-tagline">Sàn sản phẩm sáng tạo tùy biến — kết nối người yêu thủ công với các nghệ nhân trên cả nước.</p>
+      </div>
+
+      <nav class="footer-nav" aria-label="Liên kết chân trang — Khám phá">
+        <h2>Khám phá</h2>
+        <ul>
+          <li><a href="index.html">Danh mục sản phẩm</a></li>
+          <li><a href="artisan-suggestions.html">Nghệ nhân</a></li>
+          <li><a href="favorites.html">Yêu thích</a></li>
+          <li><a href="orders.html">Đơn hàng</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer-nav" aria-label="Liên kết chân trang — Hỗ trợ">
+        <h2>Hỗ trợ</h2>
+        <ul>
+          <li><a href="#">Trung tâm trợ giúp</a></li>
+          <li><a href="#">Chính sách đổi trả</a></li>
+          <li><a href="#">Điều khoản sử dụng</a></li>
+          <li><a href="#">Liên hệ</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        <p>© 2026 CraftLink — Sàn sản phẩm sáng tạo tùy biến.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/checkout.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tạo brief tùy biến | CraftLink</title>
+  <meta name="description" content="Mô tả yêu cầu tùy biến và xem lại bản tóm tắt được tạo cục bộ trên trình duyệt trước khi chọn nghệ nhân CraftLink.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/customize.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+
+      <a href="index.html" class="brand">CraftLink</a>
+
+      <nav class="main-nav" aria-label="Điều hướng chính">
+        <ul>
+          <li><a href="index.html">Khám phá</a></li>
+          <li><a href="index.html">Danh mục</a></li>
+          <li><a href="artisan-suggestions.html">Nghệ nhân</a></li>
+          <li><a href="favorites.html">Yêu thích</a></li>
+          <li><a href="orders.html">Đơn hàng</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="index.html" class="icon-btn" aria-label="Tìm kiếm">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </a>
+        <button type="button" class="icon-btn" aria-label="Tin nhắn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </button>
+        <a href="cart.html" class="icon-btn" aria-label="Giỏ hàng">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          <span class="cart-count" id="cart-count" hidden></span>
+        </a>
+        <button type="button" class="icon-btn" aria-label="Tài khoản">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <main class="container">
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="index.html">Trang chủ</a></li>
+        <li><span aria-current="page">Tạo brief tùy biến</span></li>
+      </ol>
+    </nav>
+
+    <section class="page-heading" aria-labelledby="page-title">
+      <div>
+        <h1 id="page-title">Tạo brief tùy biến</h1>
+        <p class="page-subtitle">Mô tả ý tưởng của bạn. CraftLink sẽ tóm tắt yêu cầu từ chính nội dung bạn nhập và dữ liệu sản phẩm mẫu.</p>
+      </div>
+    </section>
+
+    <div class="customize-layout">
+
+      <section class="panel customize-input-panel" aria-label="Nhập yêu cầu tùy biến">
+
+        <div class="customize-product" id="customize-product">
+          <img id="customize-product-image" src="assets/images/coc-gom-la-nau.png" alt="Cốc gốm lá nâu thủ công">
+          <div class="customize-product-info">
+            <p class="customize-product-label">Sản phẩm đang tùy biến</p>
+            <p class="customize-product-name" id="customize-product-name">Cốc gốm lá nâu thủ công</p>
+            <p class="customize-product-meta" id="customize-product-meta">Linh Gốm • 240.000₫ / sản phẩm</p>
+            <a href="product-detail.html?id=coc-gom-la-nau" class="link-action" id="customize-back-link">Đổi sản phẩm</a>
+          </div>
+        </div>
+
+        <div class="field-group customize-qty-group">
+          <h2 class="panel-title">Số lượng</h2>
+          <div class="quantity-stepper">
+            <button type="button" class="qty-btn" id="customize-qty-decrease" aria-label="Giảm số lượng">−</button>
+            <span class="qty-value" id="customize-qty-value">1</span>
+            <button type="button" class="qty-btn" id="customize-qty-increase" aria-label="Tăng số lượng">+</button>
+          </div>
+          <p class="customize-qty-note" id="customize-qty-note">Bản demo giới hạn tối đa 99 sản phẩm mỗi dòng vì chưa có dữ liệu tồn kho.</p>
+        </div>
+
+        <form id="brief-form">
+
+          <div class="field-group">
+            <h2 class="panel-title">Mô tả yêu cầu của bạn</h2>
+            <label class="visually-hidden" for="brief-description">Mô tả yêu cầu của bạn</label>
+            <textarea id="brief-description" name="description" rows="7" maxlength="1000" placeholder="Nhập mô tả yêu cầu, ngân sách, hạn giao, mục đích sử dụng..."></textarea>
+            <p class="char-count"><span id="char-count">0</span>/1000</p>
+          </div>
+
+          <div class="field-group">
+            <h2 class="panel-title">Ảnh tham khảo (tùy chọn)</h2>
+            <div class="upload-box">
+              <p>Kéo thả ảnh vào đây hoặc chọn file</p>
+              <label class="visually-hidden" for="reference-image">Ảnh tham khảo</label>
+              <input type="file" id="reference-image" name="reference-image" accept="image/*">
+            </div>
+            <p class="customize-qty-note">Ảnh chỉ được chọn trên thiết bị; bản demo không tải hoặc lưu ảnh lên máy chủ.</p>
+          </div>
+
+          <button type="submit" class="btn-primary btn-large" id="ai-brief-btn">Tạo bản tóm tắt</button>
+          <p class="form-note" id="brief-note">Vui lòng nhập mô tả yêu cầu trước khi tạo brief.</p>
+
+          <p class="local-note">
+            <strong>Cách hoạt động:</strong> Bản tóm tắt được tạo cục bộ bằng JavaScript từ nội dung bạn nhập
+            và dữ liệu sản phẩm mẫu. Trang <strong>chưa kết nối mô hình AI tạo sinh</strong> và không gửi dữ liệu ra ngoài.
+          </p>
+
+        </form>
+      </section>
+
+      <section class="panel customize-result-panel" aria-label="Bản tóm tắt yêu cầu tùy biến" hidden>
+
+        <p class="ai-status" id="ai-status">
+          <span class="spinner" aria-hidden="true"></span>
+          Đang tạo bản tóm tắt cục bộ từ nội dung bạn nhập...
+        </p>
+
+        <h2 class="panel-title">Bản tóm tắt yêu cầu tùy biến</h2>
+        <dl class="info-list brief-result" id="brief-result"></dl>
+
+        <h2 class="brief-section-title">Căn cứ tạo bản tóm tắt</h2>
+        <p class="ai-explain"></p>
+
+        <div class="btn-row brief-actions">
+          <button type="button" class="btn-success" id="accept-brief-btn">Chấp nhận</button>
+          <button type="button" class="btn-outline" id="edit-brief-btn">Sửa</button>
+          <button type="button" class="btn-outline" id="reject-brief-btn">Từ chối</button>
+          <button type="button" class="btn-outline" id="regenerate-brief-btn">Tạo lại</button>
+          <button type="button" class="btn-outline" id="save-brief-btn">Lưu</button>
+        </div>
+
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-top">
+      <div class="footer-brand">
+        <p class="footer-logo">CraftLink</p>
+        <p class="footer-tagline">Sàn sản phẩm sáng tạo tùy biến — kết nối người yêu thủ công với các nghệ nhân trên cả nước.</p>
+      </div>
+
+      <nav class="footer-nav" aria-label="Liên kết chân trang — Khám phá">
+        <h2>Khám phá</h2>
+        <ul>
+          <li><a href="index.html">Danh mục sản phẩm</a></li>
+          <li><a href="artisan-suggestions.html">Nghệ nhân</a></li>
+          <li><a href="favorites.html">Yêu thích</a></li>
+          <li><a href="orders.html">Đơn hàng</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer-nav" aria-label="Liên kết chân trang — Hỗ trợ">
+        <h2>Hỗ trợ</h2>
+        <ul>
+          <li><a href="#">Trung tâm trợ giúp</a></li>
+          <li><a href="#">Chính sách đổi trả</a></li>
+          <li><a href="#">Điều khoản sử dụng</a></li>
+          <li><a href="#">Liên hệ</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        <p>© 2026 CraftLink — Sàn sản phẩm sáng tạo tùy biến.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>

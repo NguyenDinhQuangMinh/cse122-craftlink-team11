@@ -8,7 +8,7 @@
 
 ## 🎨 BẢN THIẾT KẾ GIAO DIỆN CANVA (UI/UX PROTOTYPE)
 
-👉 **Link thiết kế Canva của SV1:** [Bấm vào đây để xem Prototype Canva SV1](https://www.canva.com/design/DAHWyBVvS6U/eyYrsvv49jN-26FeiXk-Aw/edit)
+👉 **Link thiết kế Canva của SV1:** [Bấm vào đây để xem Prototype Canva SV1](https://www.canva.com/design/DAHZAR9VxmU/dQQiBQ9-OPRH6Q5x8DdAkw/edit)
 
 ---
 
@@ -125,16 +125,16 @@
 
 - [x] Hoàn thành thiết kế Prototype 6 màn hình trên Canva
 - [x] Tích hợp liên kết Canva `https://www.canva.com/design/DAHWyBVvS6U/eyYrsvv49jN-26FeiXk-Aw/edit` vào hồ sơ dự án
-- [ ] Khởi tạo cấu trúc thư mục `pages/common/` và `pages/buyer/`
-- [ ] Dựng khung HTML/CSS dùng chung toàn hệ thống (`navbar.css`, `footer.css`, `style.css`)
-- [ ] Cắt file HTML cho 3 màn hình chung (`index.html`, `login.html`, `profile.html`)
-- [ ] Cắt file HTML cho 3 màn hình Khách hàng (`marketplace.html`, `custom-brief.html`, `orders.html`)
+- [X] Khởi tạo cấu trúc thư mục `pages/common/` và `pages/buyer/`
+- [X] Dựng khung HTML/CSS dùng chung toàn hệ thống (`navbar.css`, `footer.css`, `style.css`)
+- [X] Cắt file HTML cho 3 màn hình chung (`index.html`, `login.html`, `profile.html`)
+- [X] Cắt file HTML cho 3 màn hình Khách hàng 
 - [ ] Viết mã mô phỏng tính năng AI gợi ý sản phẩm trong `js/ai/`
-- [ ] Kiểm tra hiển thị Responsive trên Desktop và Mobile
+- [X] Kiểm tra hiển thị Responsive trên Desktop và Mobile
 - [x] Thiết kế Prototype  màn hình trên Canva
 - [x] Dán liên kết Canva vào tài liệu `docs/sv2-assignment.md` và `docs/team-assignment.md`
-- [ ] Tạo khung HTML/CSS cho phân hệ Maker (`maker.css`)
-- [ ] Hoàn thiện HTML/CSS cho 6 màn hình phụ trách
+- [X] Tạo khung HTML/CSS cho phân hệ người mua.
+- [X] Hoàn thiện HTML/CSS cho 9 màn hình phụ trách
 - [ ] Viết mã mô phỏng tính năng AI Copywriter (`js/ai/`)
-- [ ] Kiểm tra hiển thị Responsive trên các thiết bị
+- [X] Kiểm tra hiển thị Responsive trên các thiết bị
 

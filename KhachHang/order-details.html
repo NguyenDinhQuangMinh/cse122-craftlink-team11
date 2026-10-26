@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chi tiết đơn và revision | CraftLink</title>
+  <meta name="description" content="Theo dõi tiến độ đơn hàng đặt làm, so sánh các phương án thiết kế và gửi yêu cầu chỉnh sửa cho nghệ nhân.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/order-details.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+
+      <a href="index.html" class="brand">CraftLink</a>
+
+      <nav class="main-nav" aria-label="Điều hướng chính">
+        <ul>
+          <li><a href="index.html">Khám phá</a></li>
+          <li><a href="index.html">Danh mục</a></li>
+          <li><a href="artisan-suggestions.html">Nghệ nhân</a></li>
+          <li><a href="favorites.html">Yêu thích</a></li>
+          <li><a href="orders.html" class="active" aria-current="page">Đơn hàng</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="index.html" class="icon-btn" aria-label="Tìm kiếm">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </a>
+        <button type="button" class="icon-btn" aria-label="Tin nhắn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </button>
+        <a href="cart.html" class="icon-btn" aria-label="Giỏ hàng">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          <span class="cart-count" id="cart-count" hidden></span>
+        </a>
+        <button type="button" class="icon-btn" aria-label="Tài khoản">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <main class="container">
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="index.html">Trang chủ</a></li>
+        <li><a href="orders.html">Đơn hàng</a></li>
+        <li><span aria-current="page">Chi tiết đơn và revision</span></li>
+      </ol>
+    </nav>
+
+    <section class="page-heading" aria-labelledby="page-title">
+      <div>
+        <h1 id="page-title">Chi tiết đơn và revision</h1>
+        <p class="page-subtitle">Theo dõi tiến độ, so sánh phương án và quản lý chỉnh sửa dễ dàng.</p>
+      </div>
+    </section>
+
+    <div class="order-detail-layout">
+
+      <div class="order-detail-left">
+
+        <section class="panel order-summary-panel" aria-label="Tóm tắt đơn hàng">
+          <h2 class="panel-title">Thông tin đơn hàng</h2>
+          <img class="order-product-img" src="assets/images/coc-gom-la-nau.png" alt="Cốc gốm lá nâu thủ công">
+          <h3 class="order-product-name">Cốc gốm lá nâu thủ công</h3>
+          <dl class="info-list order-info-list">
+            <dt>Mã đơn</dt>
+            <dd>CL-2505012</dd>
+            <dt>Nghệ nhân</dt>
+            <dd>Linh Gốm</dd>
+            <dt>Ngày đặt</dt>
+            <dd>15/05/2025</dd>
+            <dt>Trạng thái đơn</dt>
+            <dd><span class="badge badge-editing">Đang chỉnh sửa</span></dd>
+            <dt>Tổng tiền</dt>
+            <dd class="order-total">240.000 ₫</dd>
+          </dl>
+        </section>
+
+        <section class="panel timeline-panel" aria-label="Lịch sử đề xuất và chỉnh sửa">
+          <h2 class="panel-title">Lịch sử đề xuất &amp; chỉnh sửa</h2>
+          <ol class="timeline" id="revision-timeline">
+
+            <li class="timeline-item done">
+              <span class="timeline-marker">R1</span>
+              <div class="timeline-content">
+                <p class="timeline-title">Đề xuất ban đầu</p>
+                <p class="timeline-time">15/05/2025 10:30</p>
+                <p class="timeline-text">Gửi phương án thiết kế đầu tiên.</p>
+              </div>
+            </li>
+
+            <li class="timeline-item done">
+              <span class="timeline-marker">R2</span>
+              <div class="timeline-content">
+                <p class="timeline-title">Yêu cầu chỉnh sửa 1</p>
+                <p class="timeline-time">15/05/2025 14:20</p>
+                <p class="timeline-text">Điều chỉnh màu men và độ dày quai cốc.</p>
+              </div>
+            </li>
+
+            <li class="timeline-item done">
+              <span class="timeline-marker">R3</span>
+              <div class="timeline-content">
+                <p class="timeline-title">Đề xuất chỉnh sửa 2</p>
+                <p class="timeline-time">16/05/2025 09:15</p>
+                <p class="timeline-text">Nghệ nhân gửi phương án cập nhật.</p>
+              </div>
+            </li>
+
+            <li class="timeline-item active">
+              <span class="timeline-marker">…</span>
+              <div class="timeline-content">
+                <p class="timeline-title">Chờ xác nhận</p>
+                <p class="timeline-time">16/05/2025 09:15</p>
+                <p class="timeline-text">Bạn xem và phê duyệt phương án mới.</p>
+              </div>
+            </li>
+
+          </ol>
+        </section>
+
+      </div>
+
+      <section class="panel compare-panel" aria-label="So sánh phương án thiết kế">
+        <h2 class="panel-title">So sánh phương án</h2>
+
+        <div class="compare-options">
+
+          <div class="compare-option">
+            <p class="compare-option-label">Phương án trước</p>
+            <img src="assets/images/coc-phuong-an-truoc.png" alt="Cốc gốm phương án trước với men be mịn và quai cốc mảnh">
+            <ul class="compare-specs">
+              <li>Men: Be mịn</li>
+              <li>Quai cốc: Mảnh</li>
+              <li>Dung tích: 320ml</li>
+            </ul>
+          </div>
+
+          <p class="compare-arrow" aria-hidden="true">→</p>
+
+          <div class="compare-option current">
+            <p class="compare-option-label">Phương án hiện tại</p>
+            <img src="assets/images/coc-gom-la-nau.png" alt="Cốc gốm phương án hiện tại với men nâu be và quai cốc dày hơn">
+            <ul class="compare-specs">
+              <li>Men: Nâu be</li>
+              <li>Quai cốc: Dày hơn</li>
+              <li>Dung tích: 320ml</li>
+            </ul>
+          </div>
+
+        </div>
+      </section>
+
+      <div class="order-detail-right">
+
+        <section class="panel revision-panel" aria-label="Gửi yêu cầu chỉnh sửa mới">
+          <h2 class="panel-title">Yêu cầu chỉnh sửa mới</h2>
+          <label class="visually-hidden" for="revision-note">Nội dung yêu cầu chỉnh sửa</label>
+          <textarea id="revision-note" name="revision-note" rows="4" placeholder="Nhập ghi chú chi tiết về điều chỉnh mong muốn..."></textarea>
+          <p class="order-meta">Dự kiến giao: 22/05/2025 • Thanh toán: Chuyển khoản</p>
+          <p class="order-meta">Phụ trách: Linh Gốm • Cập nhật gần nhất: 16/05/2025 09:15</p>
+        </section>
+
+        <section class="panel next-steps-panel" aria-label="Bước tiếp theo">
+          <h2 class="panel-title">Bước tiếp theo</h2>
+          <ol class="next-steps">
+            <li><span class="step-number">1</span><span><strong>Xem phương án hiện tại</strong> — Kiểm tra các chi tiết</span></li>
+            <li><span class="step-number">2</span><span><strong>Ghi chú chỉnh sửa</strong> — Nếu có điểm cần đổi</span></li>
+            <li><span class="step-number">3</span><span><strong>Gửi phản hồi</strong> — Nghệ nhân xử lý tiếp</span></li>
+          </ol>
+
+          <div class="btn-row revision-actions">
+            <a href="orders.html" class="btn-primary" id="approve-option-btn">Chọn phương án hiện tại</a>
+            <button type="button" class="btn-outline" id="send-revision-btn">Gửi yêu cầu chỉnh sửa</button>
+          </div>
+
+          <p class="deadline-note">Cần phản hồi trước 18/05/2025</p>
+          <p class="deadline-sub">Có thể đổi lựa chọn trước khi xác nhận.</p>
+        </section>
+
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-top">
+      <div class="footer-brand">
+        <p class="footer-logo">CraftLink</p>
+        <p class="footer-tagline">Sàn sản phẩm sáng tạo tùy biến — kết nối người yêu thủ công với các nghệ nhân trên cả nước.</p>
+      </div>
+
+      <nav class="footer-nav" aria-label="Liên kết chân trang — Khám phá">
+        <h2>Khám phá</h2>
+        <ul>
+          <li><a href="index.html">Danh mục sản phẩm</a></li>
+          <li><a href="artisan-suggestions.html">Nghệ nhân</a></li>
+          <li><a href="favorites.html">Yêu thích</a></li>
+          <li><a href="orders.html">Đơn hàng</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer-nav" aria-label="Liên kết chân trang — Hỗ trợ">
+        <h2>Hỗ trợ</h2>
+        <ul>
+          <li><a href="#">Trung tâm trợ giúp</a></li>
+          <li><a href="#">Chính sách đổi trả</a></li>
+          <li><a href="#">Điều khoản sử dụng</a></li>
+          <li><a href="#">Liên hệ</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        <p>© 2026 CraftLink — Sàn sản phẩm sáng tạo tùy biến.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>
