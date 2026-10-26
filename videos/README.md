@@ -43,16 +43,6 @@ Ba video quay ba trang đăng nhập theo vai trong `DangNhapVaDangKy/01-dang-nh
 | `SV2-02-dangnhap-nghenhan.mp4` | Đăng nhập Thợ thủ công / Nghệ nhân | `nghe-nhan.html` + `css/nghe-nhan.css` + `js/nghe-nhan.js` | <https://www.youtube.com/watch?v=2zrLFxVEpiU> |
 | `SV2-03-dangnhap-admin.mp4` | Đăng nhập Quản trị viên & Kiểm duyệt | `quan-tri.html` + `css/quan-tri.css` + `js/quan-tri.js` | <https://www.youtube.com/watch?v=d4kmFKU6ivg> |
 
-Sáu dòng kiểm kê 7–12 (`KhongGianNguoiBan/`) hiện chưa có video riêng:
-
-| STT kiểm kê | Tên tệp trong `screen-inventory.md` | Link | Trạng thái |
-|---|---|---|---|
-| 7 | `SV2-01-maker-listings.mp4` | — | chưa quay riêng |
-| 8 | `SV2-02-maker-edit-listing.mp4` | — | chưa quay riêng |
-| 9 | `SV2-03-maker-brief-inbox.mp4` | — | chưa quay riêng |
-| 10 | `SV2-04-maker-proposal-editor.mp4` | — | chưa quay riêng |
-| 11 | `SV2-05-maker-proposal-preview.mp4` | — | chưa quay riêng |
-| 12 | `SV2-06-maker-shop-profile.mp4` | — | chưa quay riêng |
 
 > Nhóm cần thống nhất trước khi nộp: ba video của SV2 đang chứng minh phân hệ đăng nhập, không phải 6 màn người bán ở dòng 7–12, nên ĐK4 (video khớp 1:1 với `screen-inventory.md`) chưa đạt với riêng phần Maker. Hai hướng xử lý: quay thêm 3 video cho màn 7, 9, 10 rồi dán link vào bảng dưới, hoặc bổ sung 3 dòng đăng nhập vào `screen-inventory.md` để bảng kiểm kê khớp với số video đã có.
 
