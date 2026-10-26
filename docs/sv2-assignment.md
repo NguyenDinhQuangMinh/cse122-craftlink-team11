@@ -10,7 +10,11 @@
 
 👉 **Link thiết kế Canva của SV2:** [Link Canva SV2](https://canva.link/rvxflfz5kgg0rg1)
 
-👉 **Link video OBS của SV2:** [Link Video SV2](https://www.youtube.com/@minhduong3801)
+👉 **Link video OBS của SV2:** [Kênh YouTube](https://www.youtube.com/@minhduong3801) · [Playlist 3 video](https://www.youtube.com/playlist?list=PLDaEqceEwiuk)
+
+- `SV2-01-dangnhap-khachhang.mp4` — Đăng nhập Khách hàng: <https://www.youtube.com/watch?v=BY0AAIjTSm8>
+- `SV2-02-dangnhap-nghenhan.mp4` — Đăng nhập Nghệ nhân: <https://www.youtube.com/watch?v=2zrLFxVEpiU>
+- `SV2-03-dangnhap-admin.mp4` — Đăng nhập Quản trị / Kiểm duyệt: <https://www.youtube.com/watch?v=d4kmFKU6ivg>
 
 👉 **Tài liệu phân hệ người bán:** [README](../KhongGianNguoiBan/README.md) · [Kiểm kê màn hình](../KhongGianNguoiBan/docs/screen-inventory.md) · [Báo cáo sử dụng AI](../KhongGianNguoiBan/docs/ai-usage-report.md)
 
