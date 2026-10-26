@@ -97,6 +97,10 @@ Barem đòi 4 ý; kết quả từng ý:
 
 Bốn tham chiếu CSS lỗi (`url()`): `DangNhapVaDangKy/assets/css/style.css → ../img/forgot-hero.png`; `KhachHang/css/forgot password.css → ../img/hero-login.png` (ảnh thật nằm ở `DangNhapVaDangKy/assets/img/hero-login.png`) và `→ ../assest/img/img of forgot password.png` (sai tên thư mục: `assest`, và ảnh không có ở bất kỳ đâu).
 
+**Đính chính một mô tả đang sai trong tài liệu:** `js/common.js` **có tồn tại** ở `KhachHang/js/common.js`; hai tệp thiếu thật là `js/auth-config.js` và `js/auth-service.js`. Vì `js/forgot password.js` dòng 2 chặn ngay ở `if (!window.CL || !window.CLAuth)`, hệ quả là form hiện dòng "Không tải được thành phần xác thực" chứ không phải trang trống hoàn toàn. `README.md` mục 15 và `docs/project-introduction.md` đã sửa theo; **`docs/sv1-assignment.md` dòng 23 vẫn còn câu "nạp ba script common.js, auth-config.js, auth-service.js không có trong nhánh"** — đây là tệp phân công của SV1 nên để SV1 tự sửa, không sửa hộ.
+
+Cách sửa gọn cho SV1/SV2 (không cần viết logic mới): hoặc tạo `DangNhapVaDangKy/01-dang-nhap/forgot-password.html` rồi trỏ bốn liên kết về đó, hoặc đổi bốn liên kết đó thành `../../KhachHang/forgot%20password.html?role=…` và nhân tiện đổi tên tệp + thư mục theo quy chuẩn `role-function-action` ở mục 6.2.
+
 ### 6.2 Vi phạm quy chuẩn tên tệp (mục 2.4, −0.20đ gạch "đặt tên tệp sai quy chuẩn")
 
 * `KhachHang/forgot password.html` — **có dấu cách**, không theo `role-function-action.html`.
@@ -111,14 +115,16 @@ Bốn tham chiếu CSS lỗi (`url()`): `DangNhapVaDangKy/assets/css/style.css �
 * Bảng phân công trong README bản hiện tại ghi **số màn theo dòng kiểm kê (6/6/6)**, không phải số tệp HTML (10/4/8). Đã ghi rõ cách đếm ngay dưới bảng để không bị đọc nhầm là khai sai; `KhachHang/forgot password.html` và 5 tệp `DangNhapVaDangKy/` **đứng ngoài bảng kiểm kê 18 dòng**, nên nếu đưa vào demo thì phải bổ sung vào `screen-inventory.md` hoặc nói rõ là màn phụ.
 * **README trên nhánh `main` là bản cũ và là thứ giảng viên thấy đầu tiên** (mặc định của repo là `main`). Bản `main` chỉ có **31 dòng, 3 mục `##`**, còn bản ở nhánh SV3 có **251 dòng, đủ 15 mục**. Bảng phân công trên `main` ghi SV1 **9** màn, SV2 **3** màn, đăng nhập/đăng ký **6** — không khớp 6/6/6 theo dòng kiểm kê — và ghi tên tính năng AI là "AI Personalization & Visual Matcher" cho SV1, trong khi `docs/ai-usage-report.md` mục 3.1 nói rõ **hai tính năng đó chưa được triển khai** (`screen-inventory.md` cũng phải ghi "định hướng, chưa triển khai"). Khai tên AI không có trong mã là nguy cơ trực tiếp cho VP-07 và cho Câu 3 vấn đáp. **Bản đã đối chiếu lại nằm ở `feature/sv3-admin-screens`; nó chỉ lên `main` sau khi trình tự gộp `dev → main` hoàn tất.**
 
-## 7. Kiểm tra gộp nhánh (đã chạy thật, không phải dự đoán)
+## 7. Kiểm tra gộp nhánh (đã chạy thật lần hai ngày 26-10 sau khi hai nhánh bạn vừa push thêm commit)
 
-Đã tạo nhánh tạm `integration/test` từ `origin/dev` và lần lượt merge ba nhánh tính năng để đo xung đột:
+Đã tạo lại nhánh tạm `integration/test` từ `origin/dev` (mới nhất) và lần lượt merge ba nhánh tính năng để đo xung đột:
 
 * `feature/sv1-buyer` → `dev`: **merge sạch**, 0 xung đột.
 * `feature/sv2-maker-screens` → `dev`: xung đột **2 tệp tài liệu** (`README.md`, `docs/team-assignment.md`), **không xung đột mã**.
-* `feature/sv3-admin-screens` → `dev`: xung đột **3 tệp tài liệu** (`README.md`, `docs/screen-inventory.md`, `docs/team-assignment.md`), **không xung đột mã**.
-* Kết quả gộp đủ ba: **27 tệp HTML** trong cùng một cây làm việc — toàn bộ sản phẩm chỉ tồn tại ở trạng thái này.
+* `feature/sv3-admin-screens` → `dev`: xung đột **4 tệp tài liệu** (`README.md`, `docs/screen-inventory.md`, `docs/sv2-assignment.md`, `docs/team-assignment.md`), **không xung đột mã**.
+* Kết quả gộp đủ ba: **27 tệp HTML** trong cùng một cây làm việc — toàn bộ sản phẩm chỉ tồn tại ở trạng thái này. Quét liên kết trên chính cây đó: **384 tham chiếu `href`/`src` cục bộ, còn 6 đích hỏng**; cộng **4 đường dẫn `url()` trong CSS hỏng** (liệt kê ở mục 6.1). Không có tệp `.mp4` nào được theo dõi (`git ls-files | grep -c '\.mp4$'` = 0).
+
+Toàn bộ xung đột đều ở tệp tài liệu, **mã nguồn không xung đột chỗ nào** — nên việc gộp là quyết định quản trị (ai bấm nút Merge), không phải rủi ro kỹ thuật.
 
 Nhánh tạm `integration/test` **chưa push và chỉ dùng để kiểm chứng**; việc gộp thật vẫn phải làm bằng nút *Merge pull request* trên GitHub để giữ bằng chứng Peer Review cho mục 7.2.
 

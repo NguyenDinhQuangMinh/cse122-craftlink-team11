@@ -52,7 +52,7 @@ Hệ thống **CraftLink** chia thành ba phân hệ, mỗi thành viên một n
 * **Gợi ý nghệ nhân (STT 4) — `KhachHang/artisan-suggestions.html`:** Lọc hồ sơ nghệ nhân theo sản phẩm và brief, chọn nghệ nhân để gửi yêu cầu.
 * **Giỏ hàng & xác nhận đơn (STT 5) — `KhachHang/cart.html`, `KhachHang/checkout.html`:** Sửa/xóa dòng hàng, nhập địa chỉ, chọn thanh toán và xác nhận đơn.
 * **Đơn hàng & chi tiết đơn (STT 6) — `KhachHang/orders.html`, `KhachHang/order-details.html`:** Lọc đơn theo trạng thái, xem tiến độ và gửi yêu cầu chỉnh sửa thiết kế.
-* **Khôi phục mật khẩu — `KhachHang/forgot password.html` (ngoài 18 dòng kiểm kê):** Dựng sẵn luồng ba bước — nhập email đã đăng ký, gửi link đặt lại, đặt mật khẩu mới kèm thước đo độ mạnh. Chưa chạy được: tệp nạp ba script `common.js`, `auth-config.js`, `auth-service.js` không có trong nhánh, và href CSS ghi sai tên tệp; chưa có liên kết trỏ tới từ trang đăng nhập dùng chung.
+* **Khôi phục mật khẩu — `KhachHang/forgot password.html` (ngoài 18 dòng kiểm kê):** Dựng sẵn luồng ba bước — nhập email đã đăng ký, gửi link đặt lại, đặt mật khẩu mới kèm thước đo độ mạnh. Chưa chạy được: trang nạp `js/auth-config.js` và `js/auth-service.js` mà repo không có tệp nào tên như vậy (tệp `js/common.js` thì có thật), nên script dừng ở dòng kiểm tra `window.CLAuth`; href CSS lại ghi sai tên tệp (`forgot passwork.css`). Ba trang đăng nhập liên kết tới `forgot-password.html` (gạch ngang) — tệp không tồn tại, bấm vào là 404.
 
 #### 🔹 Phân hệ 2: Thợ thủ công / Nghệ nhân (Maker) – SV2, nhánh `feature/sv2-maker-screens`, 4 thư mục / 6 dòng kiểm kê
 * **Quản lý listing (STT 7) — `KhongGianNguoiBan/01-listing-management/index.html`:** Xem, tìm kiếm, lọc trạng thái, lưu trữ hoặc chỉnh sửa sản phẩm.
