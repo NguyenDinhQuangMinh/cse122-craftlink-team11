@@ -1,0 +1,14 @@
+/* CSS entry point: imports preserve the original cascade order. */
+@import "../../css/shared/admin/theme.css";
+@import "../../css/shared/reset.css";
+@import "../../css/shared/admin/focus.css";
+@import "../../css/shared/admin/layout.css";
+@import "../../css/shared/admin/components.css";
+@import "../../css/shared/admin/responsive.css";
+@import "./page.css";
+@import "../../css/shared/shell-refinements.css";
+
+@import "../../css/shared/states.css";
+@import "../../css/shared/ai.css";
+
+@import "../../css/shared/mobile-nav.css";

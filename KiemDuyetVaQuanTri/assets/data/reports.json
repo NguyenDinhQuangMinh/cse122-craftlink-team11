@@ -1,0 +1,182 @@
+[
+  {
+    "id": "RPT20261003",
+    "sender": "Nguyễn Thị Lan",
+    "target": "Bình gốm hoa sen",
+    "type": "Sản phẩm",
+    "reason": "Nội dung vi phạm",
+    "date": "03/10/2026 08:00",
+    "status": "pending"
+  },
+  {
+    "id": "RPT20261002",
+    "sender": "Trần Văn Hùng",
+    "target": "Đèn mây tre đan",
+    "type": "Người dùng",
+    "reason": "Gian lận",
+    "date": "04/10/2026 09:07",
+    "status": "verifying"
+  },
+  {
+    "id": "RPT20261001",
+    "sender": "Phạm Minh Anh",
+    "target": "Khay gỗ khắc lá",
+    "type": "Sản phẩm",
+    "reason": "SP không đúng mô tả",
+    "date": "05/10/2026 10:14",
+    "status": "handled"
+  },
+  {
+    "id": "RPT20261000",
+    "sender": "Lê Quốc Bảo",
+    "target": "Trang trí tường macrame",
+    "type": "Sản phẩm",
+    "reason": "Nội dung vi phạm",
+    "date": "06/10/2026 11:21",
+    "status": "pending"
+  },
+  {
+    "id": "RPT20260999",
+    "sender": "Đỗ Thị Hoa",
+    "target": "Bộ ấm chén men lam",
+    "type": "Sản phẩm",
+    "reason": "Gian lận",
+    "date": "07/10/2026 12:28",
+    "status": "dismissed"
+  },
+  {
+    "id": "RPT20260998",
+    "sender": "Vũ Thị Hạnh",
+    "target": "Túi cói quai tròn",
+    "type": "Sản phẩm",
+    "reason": "SP không đúng mô tả",
+    "date": "08/10/2026 13:35",
+    "status": "pending"
+  },
+  {
+    "id": "RPT20260997",
+    "sender": "Hoàng Anh Dũng",
+    "target": "Hộp gỗ khắc tay",
+    "type": "Người dùng",
+    "reason": "Nội dung vi phạm",
+    "date": "09/10/2026 14:42",
+    "status": "verifying"
+  },
+  {
+    "id": "RPT20260996",
+    "sender": "Phạm Quang Minh",
+    "target": "Rổ mây đựng trái cây",
+    "type": "Sản phẩm",
+    "reason": "Gian lận",
+    "date": "10/10/2026 15:49",
+    "status": "handled"
+  },
+  {
+    "id": "RPT20260995",
+    "sender": "Bùi Thu Hà",
+    "target": "Vòng cổ gốm thủ công",
+    "type": "Sản phẩm",
+    "reason": "SP không đúng mô tả",
+    "date": "11/10/2026 16:56",
+    "status": "pending"
+  },
+  {
+    "id": "RPT20260994",
+    "sender": "Đặng Quốc Việt",
+    "target": "Ví da khâu tay",
+    "type": "Sản phẩm",
+    "reason": "Nội dung vi phạm",
+    "date": "12/10/2026 17:03",
+    "status": "dismissed"
+  },
+  {
+    "id": "RPT20260993",
+    "sender": "Nguyễn Hải Yến",
+    "target": "Nến thơm sáp đậu nành",
+    "type": "Sản phẩm",
+    "reason": "Gian lận",
+    "date": "13/10/2026 08:10",
+    "status": "pending"
+  },
+  {
+    "id": "RPT20260992",
+    "sender": "Trần Đức Long",
+    "target": "Tranh màu nước hoa lá",
+    "type": "Người dùng",
+    "reason": "SP không đúng mô tả",
+    "date": "14/10/2026 09:17",
+    "status": "verifying"
+  },
+  {
+    "id": "RPT20260991",
+    "sender": "Lý Ngọc Mai",
+    "target": "Bộ khăn thêu tay",
+    "type": "Sản phẩm",
+    "reason": "Nội dung vi phạm",
+    "date": "15/10/2026 10:24",
+    "status": "handled"
+  },
+  {
+    "id": "RPT20260990",
+    "sender": "Đỗ Minh Khang",
+    "target": "Chậu cây xi măng",
+    "type": "Sản phẩm",
+    "reason": "Gian lận",
+    "date": "16/10/2026 11:31",
+    "status": "pending"
+  },
+  {
+    "id": "RPT20260989",
+    "sender": "Phan Thảo Nhi",
+    "target": "Thiệp giấy nổi",
+    "type": "Sản phẩm",
+    "reason": "SP không đúng mô tả",
+    "date": "17/10/2026 12:38",
+    "status": "dismissed"
+  },
+  {
+    "id": "RPT20260988",
+    "sender": "Mai Gia Bảo",
+    "target": "Túi vải nhuộm tự nhiên",
+    "type": "Sản phẩm",
+    "reason": "Nội dung vi phạm",
+    "date": "18/10/2026 13:45",
+    "status": "pending"
+  },
+  {
+    "id": "RPT20260987",
+    "sender": "Võ Thanh Tâm",
+    "target": "Móc khóa gỗ khắc tên",
+    "type": "Người dùng",
+    "reason": "Gian lận",
+    "date": "19/10/2026 14:52",
+    "status": "verifying"
+  },
+  {
+    "id": "RPT20260986",
+    "sender": "Nguyễn Khánh Linh",
+    "target": "Búp bê vải handmade",
+    "type": "Sản phẩm",
+    "reason": "SP không đúng mô tả",
+    "date": "20/10/2026 15:59",
+    "status": "handled"
+  },
+  {
+    "id": "RPT20260985",
+    "sender": "Lê Hoàng Phúc",
+    "target": "Đĩa gốm vẽ tay",
+    "type": "Sản phẩm",
+    "reason": "Nội dung vi phạm",
+    "date": "21/10/2026 16:06",
+    "status": "pending"
+  },
+  {
+    "id": "RPT20260984",
+    "sender": "Trương Mỹ Duyên",
+    "target": "Giỏ quà cá nhân hóa",
+    "type": "Sản phẩm",
+    "reason": "Gian lận",
+    "date": "22/10/2026 17:13",
+    "status": "dismissed"
+  }
+]

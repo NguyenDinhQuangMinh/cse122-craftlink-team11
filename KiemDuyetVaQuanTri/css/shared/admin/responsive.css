@@ -1,0 +1,104 @@
+/* Admin layout breakpoints */
+
+@media(max-width:1000px) {
+  .sidebar {
+    width: 220px;
+  }
+  .app {
+    margin-left: 220px;
+  }
+  .brand {
+    font-size: 31px;
+  }
+  .area-label {
+    font-size: 11px;
+    margin-left: 15px;
+  }
+  .nav-link {
+    padding-left: 18px;
+  }
+  .topbar {
+    padding: 0 18px;
+  }
+  .page {
+    padding: 18px;
+  }
+  .data-table {
+    min-width: 760px;
+  }
+  .table-card {
+    overflow: auto;
+  }
+}
+@media(max-width:680px) {
+  .sidebar {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 12px;
+  }
+  .brand {
+    height: auto;
+    margin: 0 5px 8px;
+    font-size: 25px;
+  }
+  .area-label {
+    margin: 0 5px 8px;
+  }
+  .side-nav {
+    grid-template-columns: repeat(3,1fr);
+  }
+  .nav-link {
+    height: auto;
+    min-height: 43px;
+    justify-content: center;
+    padding: 5px;
+    font-size: 11px;
+  }
+  .nav-icon {
+    display: none;
+  }
+  .side-user {
+    display: none;
+  }
+  .app {
+    margin: 0;
+  }
+  .topbar {
+    height: 66px;
+    padding: 0 10px;
+  }
+  .system-search {
+    width: 55vw;
+    height: 40px;
+  }
+  .system-search input {
+    font-size: 12px;
+  }
+  .profile span:not(.chevron) {
+    display: none;
+  }
+  .profile img {
+    width: 36px;
+    height: 40px;
+  }
+  .top-actions {
+    gap: 8px;
+  }
+  .page {
+    padding: 15px 11px;
+  }
+  .page h1 {
+    font-size: 28px;
+  }
+  .toolbar {
+    flex-wrap: wrap;
+  }
+  .toolbar>.primary {
+    min-width: 0;
+    flex: 1;
+  }
+  .description {
+    font-size: 14px;
+  }
+}

@@ -1,18 +1,21 @@
-# PHÂN CÔNG NHIỆM VỤ CHI TIẾT - SV1 (BUYER & GENERAL UI)
+# PHÂN CÔNG NHIỆM VỤ CHI TIẾT — SV1 (BUYER)
 
-> **Dự án:** CraftLink - Sàn thương mại điện tử sản phẩm thủ công nghệ thuật tùy biến  
-> **Học phần:** Phát triển Ứng dụng Web Cơ bản (CSE122) - Nhóm 11  
-> **Sinh viên phụ trách:** SV1 (Khách hàng & Khung giao diện chung)
+> **Dự án:** CraftLink — Sàn thương mại điện tử sản phẩm thủ công tùy biến
+> **Học phần:** Phát triển ứng dụng Web cơ bản (CSE122) — Nhóm 11
+> **Sinh viên phụ trách:** Nguyễn Xuân Hưng — 2551060622
+> **Phạm vi:** 9 tệp HTML trong `KhachHang/` (6 dòng kiểm kê)
+> **Nhánh thực tế:** `feature/sv1-buyer` · **PR:** #3
+> **Cập nhật:** 2026-10-26
 
 ---
 
-## 🎨 BẢN THIẾT KẾ GIAO DIỆN CANVA (UI/UX PROTOTYPE)
+## 🎨 BẢN THIẾT KẾ GIAO DIỆN CANVA
 
 👉 **Link thiết kế Canva của SV1:** [Bấm vào đây để xem Prototype Canva SV1](https://www.canva.com/design/DAHZAR9VxmU/dQQiBQ9-OPRH6Q5x8DdAkw/edit)
 
 ---
 
-## 📋 VAI TRÒ & PHÂN TÍCH TRÁCH NHIỆM PHỤ TRÁCH
+## 📋 VAI TRÒ & PHẠM VI
 
 - **Vai trò nghiệp vụ:** Khách hàng (Buyer) và Khung giao diện chung Toàn hệ thống (General Layout).
 - **Phân tích trách nhiệm hệ thống:**
@@ -109,19 +112,21 @@
       + Nút **Gửi yêu cầu chỉnh sửa**.
 ---
 
-## 🤖 TÍNH NĂNG AI TÍCH HỢP (PERSONALIZED AI PRODUCT RECOMMENDER & STYLE MATCHER)
+## 🤖 AI TÍCH HỢP — KHAI BÁO TRUNG THỰC
 
-- **Nguyên lý hoạt động:**
-  1. **Thu thập hành vi:** AI phân tích các lượt xem sản phẩm, từ khóa tìm kiếm và các lựa chọn phong cách nghệ thuật của Khách hàng.
-  2. **Gợi ý cá nhân hóa:** Mô hình AI lọc các sản phẩm thủ công theo độ tương đồng về chất liệu, tông màu và phong cách thiết kế để tạo ra danh sách gợi ý độc bản cho từng tài khoản.
+| Tính năng | Tệp | Có gọi mô hình? | Kết luận |
+|---|---|---|---|
+| CraftLink AI — tư vấn sản phẩm/nghệ nhân | `KhachHang/index.html` + `KhachHang/js/ai-advisor.js` | **Không** | Luật từ khóa cục bộ. Đầu tệp ghi: “Đây KHÔNG phải AI tạo sinh và KHÔNG gọi API bên ngoài.” Điểm khớp là điểm tiêu chí, không phải xác suất. |
+| Bản tóm tắt brief | `KhachHang/customize.html` + `KhachHang/js/main.js` (`buildSummary`, `runSummary`) | **Không** | Luật cục bộ; có đủ UI 6 bước nhưng không phải AI tạo sinh. |
+| Gợi ý nghệ nhân | `KhachHang/artisan-suggestions.html` | **Không** | Trang ghi rõ “bộ lọc tiêu chí cục bộ, chưa kết nối mô hình AI tạo sinh”. Không khai là AI. |
 
-- **Kịch bản trải nghiệm trên giao diện (User Scenario):**
-  - Tại trang chủ (`index.html`) hoặc trang chi tiết (`marketplace.html`), giao diện hiển thị một thẻ thông minh: *"Trợ lý AI đề xuất riêng cho bạn"*.
-  - Khi khách hàng nhấn chọn phong cách yêu thích (ví dụ: *"Gốm vuốt tay phong cách Wabi-Sabi"*), AI lập tức lọc ra 4 tác phẩm thủ công tương thích nhất từ các thợ thủ công khác nhau kèm nhãn đánh giá 🟢 *Độ phù hợp AI: 96%*.
+**Ba tuyên bố AI trong bảng kiểm kê cũ chưa có mã tương ứng:** AI Personalization, AI Visual Matcher, AI Proposal Evaluator. Không được khai là đã triển khai; sửa thành “định hướng, chưa triển khai” hoặc bỏ.
+
+Chi tiết prompt, lỗi đã sửa và mức bằng chứng: xem [`ai-usage-report.md`](ai-usage-report.md) mục 3.1.
 
 ---
 
-## 📑 NHẬT KÝ TIẾN ĐỘ THỰC HIỆN (CHECKLIST WORKFLOW)
+## 📑 NHẬT KÝ TIẾN ĐỘ (CHECKLIST)
 
 - [x] Hoàn thành thiết kế Prototype 6 màn hình trên Canva
 - [x] Tích hợp liên kết Canva `https://www.canva.com/design/DAHWyBVvS6U/eyYrsvv49jN-26FeiXk-Aw/edit` vào hồ sơ dự án
@@ -138,3 +143,45 @@
 - [ ] Viết mã mô phỏng tính năng AI Copywriter (`js/ai/`)
 - [X] Kiểm tra hiển thị Responsive trên các thiết bị
 
+---
+
+## 🎥 VIDEO OBS — ÁNH XẠ BẮT BUỘC
+
+| STT | Tệp bắt buộc | Màn hình | Trạng thái | Link |
+|---|---|---|---|---|
+| 1 | `SV1-01-home-explore.mp4` | `index.html` (kèm `favorites.html`) | Chưa quay | — |
+| 2 | `SV1-02-product-detail.mp4` | `product-detail.html` | Chưa quay | — |
+| 3 | `SV1-03-custom-order-brief.mp4` | `customize.html` | Chưa quay | — |
+| 4 | `SV1-04-proposal-comparison.mp4` | `artisan-suggestions.html` | Chưa quay | — |
+| 5 | `SV1-05-checkout-confirmation.mp4` | `cart.html` + `checkout.html` | Chưa quay | — |
+| 6 | `SV1-06-customer-dashboard.mp4` | `orders.html` + `order-details.html` | Chưa quay | — |
+
+Ba link SV1 đã cung cấp trong tệp `video` của nhánh `feature/sv1-buyer` (STT 4, 7, 9) **chưa được điền vào bảng chính thức** vì chưa khớp được với 6 dòng kiểm kê. Xem [`../videos/README.md`](../videos/README.md).
+
+---
+
+## 🔎 MINH CHỨNG TRONG MÃ
+
+| Nội dung | Tệp và hàm |
+|---|---|
+| Danh sách, tìm kiếm, lọc, sắp xếp | `KhachHang/js/main.js` — `initProductList` |
+| Trợ lý CraftLink AI | `KhachHang/js/ai-advisor.js` — `aiRunSearch`, `aiSearchAll` |
+| Chi tiết sản phẩm | `KhachHang/js/main.js` — `initProductDetail`, `renderProductDetail` |
+| Giỏ hàng | `KhachHang/js/main.js` — `initCartPage` |
+| Yêu thích | `KhachHang/js/main.js` — `initFavoritesPage`; `KhachHang/favorites.html` `#favorites-empty` |
+| Tạo brief | `KhachHang/js/main.js` — `initCustomizePage`, `buildSummary`, `runSummary` |
+| Gợi ý nghệ nhân | `KhachHang/js/main.js` — `initArtisanSuggestionsPage` |
+| Xác nhận đơn | `KhachHang/js/checkout.js` — `renderStep`, `handleConfirm` |
+| Đơn hàng | `KhachHang/js/main.js` — `initOrdersPage` |
+| Chi tiết đơn | `KhachHang/js/main.js` — `initOrderDetailsPage` |
+
+---
+
+## ⚠️ VIỆC CẦN NHÓM XÁC NHẬN
+
+1. **6 hay 9 video:** barem 8.1 yêu cầu mỗi màn hình độc lập một video; phản hồi 2026-10-26 yêu cầu SV1 đủ 6 video. Repo có 9 tệp HTML. Cần chốt cách gộp 3 tệp phụ vào 6 video.
+2. **Nhánh thực tế:** cả 6 task SV1 nằm trên `feature/sv1-buyer`, không phải 6 nhánh `feature/home-explore`, `feature/product-detail`… như bảng cũ.
+3. **Tên AI trong inventory:** bỏ hoặc đánh dấu “chưa triển khai” cho AI Personalization, AI Visual Matcher, AI Proposal Evaluator.
+4. **Chuẩn tên tệp:** chuyển sang `role-function-action.html` phải làm đồng bộ cả nhóm trước khi quay video.
+5. **Canva:** chốt giữa `DAHZAR9VxmU` và `DAHWyBVvS6U`.
+6. **Board:** SV1 được giao dựng board nhưng chưa có link; cần tạo và dán vào `README.md` mục 10.

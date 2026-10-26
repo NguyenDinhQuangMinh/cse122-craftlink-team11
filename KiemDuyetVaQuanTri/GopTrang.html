@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#18232f">
+    <title>CraftLink | Quản trị &amp; Kiểm duyệt</title>
+    <link rel="stylesheet" href="css/gop-trang.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Bỏ qua điều hướng</a>
+    <svg class="icons" aria-hidden="true">
+      <symbol id="grid" viewBox="0 0 24 24">
+        <rect x="3" y="3" width="7" height="7" rx="1.3"/>
+        <rect x="14" y="3" width="7" height="7" rx="1.3"/>
+        <rect x="3" y="14" width="7" height="7" rx="1.3"/>
+        <rect x="14" y="14" width="7" height="7" rx="1.3"/>
+      </symbol>
+      <symbol id="folder" viewBox="0 0 24 24">
+        <path d="M3 7.5A2.5 2.5 0 0 1 5.5 5H10l2 2h6.5A2.5 2.5 0 0 1 21 9.5v8a2.5 2.5 0 0 1-2.5 2.5h-13A2.5 2.5 0 0 1 3 17.5z"/>
+        <path d="M3.5 9h17"/>
+      </symbol>
+      <symbol id="users" viewBox="0 0 24 24">
+        <path d="M16 20v-1.5a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4V20"/>
+        <circle cx="9.5" cy="7.5" r="3.5"/>
+        <path d="M17 11a3.5 3.5 0 1 0-1.2-6.8M17 14.5h1a3 3 0 0 1 3 3V20"/>
+      </symbol>
+      <symbol id="box" viewBox="0 0 24 24">
+        <path d="m12 3 9 5-9 5-9-5z"/>
+        <path d="M3 8v9l9 5 9-5V8M12 13v9"/>
+      </symbol>
+      <symbol id="alert" viewBox="0 0 24 24">
+        <path d="M10.3 4.2 2.6 18a2 2 0 0 0 1.7 3h15.4a2 2 0 0 0 1.7-3L13.7 4.2a2 2 0 0 0-3.4 0Z"/>
+        <path d="M12 9v4m0 4h.01"/>
+      </symbol>
+      <symbol id="shield" viewBox="0 0 24 24">
+        <path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11Z"/>
+        <path d="m9 12 2 2 4-4"/>
+      </symbol>
+    </svg>
+
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="GopTrang.html">
+        <span class="brand-mark">C</span>
+        <h1>CraftLink</h1>
+      </a>
+
+      <div class="label">KHU VỰC QUẢN TRỊ</div>
+
+      <nav class="nav" id="nav" aria-label="Điều hướng trang">
+        <button class="active" type="button" data-page="dashboard">
+          <svg class="icon nav-icon"><use href="#grid"/></svg>
+          Bảng điều khiển
+        </button>
+        <button type="button" data-page="categories">
+          <svg class="icon nav-icon"><use href="#folder"/></svg>
+          Quản lý danh mục
+        </button>
+        <button type="button" data-page="users">
+          <svg class="icon nav-icon"><use href="#users"/></svg>
+          Quản lý tài khoản
+        </button>
+        <div class="label section-label">KIỂM DUYỆT</div>
+        <button type="button" data-page="queue">
+          <svg class="icon nav-icon"><use href="#box"/></svg>
+          Hàng đợi kiểm duyệt
+        </button>
+        <button type="button" data-page="reports">
+          <svg class="icon nav-icon"><use href="#alert"/></svg>
+          Trung tâm báo cáo
+        </button>
+        <button type="button" data-page="rules">
+          <svg class="icon nav-icon"><use href="#shield"/></svg>
+          Quy định nội dung
+        </button>
+      </nav>
+
+      <div class="spacer"></div>
+
+      <div class="status">
+        <span class="dot"></span>
+        Hệ thống đang ổn định
+      </div>
+
+      <div class="user">
+        <img id="roleAvatar" src="assets/admin-sidebar-avatar.png" alt="Ảnh đại diện tài khoản Quản trị viên">
+        <span>
+          <b id="roleName">Quản trị viên Admin</b>
+          <small id="roleTitle">Quản trị hệ thống</small>
+        </span>
+      </div>
+    </aside>
+
+    <button class="shell-menu-toggle" id="menuToggle" type="button" aria-controls="sidebar" aria-expanded="false" aria-label="Mở menu">☰</button>
+    <main class="workspace" id="main" tabindex="-1">
+      <iframe
+        class="screen"
+        id="screen"
+        title="Giao diện CraftLink"
+        src="01-dashboard/index.html"
+      ></iframe>
+
+      <footer class="shell-footer">Đồ án CSE122 · Nhóm 11 · Trang gộp dùng để chuyển vai trò giữa 6 màn quản trị.</footer>
+    </main>
+
+    <script>
+      const pages = {
+        dashboard: "01-dashboard",
+        categories: "02-category-management",
+        users: "03-user-management",
+        queue: "04-moderation-queue",
+        reports: "05-report-center",
+        rules: "06-content-guidelines"
+      };
+      const nav = document.getElementById("nav");
+      const screen = document.getElementById("screen");
+
+      function show(key) {
+        if (!pages[key]) key = "dashboard";
+
+        nav.querySelectorAll("[data-page]").forEach(button => {
+          const active = button.dataset.page === key;
+          button.classList.toggle("active", active);
+          if (active) button.setAttribute("aria-current", "page");
+          else button.removeAttribute("aria-current");
+        });
+
+        const moderator = ["queue", "reports", "rules"].includes(key);
+        document.getElementById("roleName").textContent =
+          moderator ? "Kiểm duyệt viên" : "Quản trị viên Admin";
+        document.getElementById("roleTitle").textContent =
+          moderator ? "Kiểm duyệt nội dung" : "Quản trị hệ thống";
+        document.getElementById("roleAvatar").src = moderator
+          ? "assets/moderator-avatar.jpg"
+          : "assets/admin-sidebar-avatar.png";
+
+        screen.src = pages[key] + "/index.html";
+        setMenu(false);
+        history.replaceState(null, "", "#" + key);
+      }
+
+      nav.addEventListener("click", event => {
+        const button = event.target.closest("[data-page]");
+        if (button) show(button.dataset.page);
+      });
+
+      window.addEventListener("message", event => {
+        if (event.origin !== location.origin || event.source !== screen.contentWindow) return;
+        if (event.data?.type === "craftlink:navigate") show(event.data.page);
+      });
+
+      const menuToggle = document.getElementById("menuToggle");
+      function setMenu(open) {
+        document.body.classList.toggle("menu-open", open);
+        menuToggle.setAttribute("aria-expanded", String(open));
+        menuToggle.setAttribute("aria-label", open ? "Đóng menu" : "Mở menu");
+      }
+      menuToggle.addEventListener("click", () => setMenu(menuToggle.getAttribute("aria-expanded") !== "true"));
+      document.addEventListener("keydown", event => {
+        if (event.key === "Escape") setMenu(false);
+      });
+      document.addEventListener("click", event => {
+        if (document.body.classList.contains("menu-open") &&
+            !event.target.closest("#sidebar, #menuToggle")) setMenu(false);
+      });
+
+      screen.addEventListener("load", () => {
+        try {
+          const doc = screen.contentDocument;
+          const style = doc.createElement("style");
+          style.textContent =
+            "aside.sidebar{display:none!important}button.menu-toggle{display:none!important}.app{width:auto!important;margin:0!important}";
+          doc.head.append(style);
+        } catch {}
+      });
+
+      show(location.hash.slice(1));
+    </script>
+  </body>
+</html>
+

@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#7a3418">
+  <meta name="robots" content="noindex">
+  <meta name="description" content="CraftLink — trang 403: không có quyền truy cập.">
+  <title>Bạn không có quyền truy cập (403) | CraftLink</title>
+  <script>
+    // Trang này được navigation.js mở bằng đường dẫn tuyệt đối tới gốc site, nhưng người
+    // dùng cũng có thể dán URL tay. <base> đưa mọi liên kết tương đối về gốc site, kể cả
+    // khi bản deploy nằm dưới /cse122-craftlink-team11/. CSS/JS tạo bằng đường dẫn tuyệt
+    // đối thay vì viết sẵn trong HTML để trình duyệt dò trước không tải đường dẫn tương
+    // đối theo thư mục hiện hành, tránh các request 404 không có thật.
+    (function () {
+      var repo = "cse122-craftlink-team11";
+      var segments = location.pathname.split("/").filter(Boolean);
+      var at = segments.indexOf(repo);
+      var isFile = location.protocol === "file:";
+
+      function addAssets(root) {
+        ["css/style.css", "css/error-pages.css"].forEach(function (file) {
+          var link = document.createElement("link");
+          link.rel = "stylesheet";
+          link.href = root + file;
+          document.head.appendChild(link);
+        });
+        var script = document.createElement("script");
+        script.src = root + "js/error-pages.js";
+        document.head.appendChild(script);
+      }
+
+      // Mở bằng file:// ngoài thư mục mang tên repo thì giữ đường dẫn tương đối.
+      if (isFile && at < 0) {
+        addAssets("");
+        return;
+      }
+      var root = isFile
+        ? "file:///" + segments.slice(0, at + 1).join("/") + "/"
+        : location.protocol + "//" + location.host +
+          (at > -1 ? "/" + segments.slice(0, at + 1).join("/") : "") + "/";
+      var base = document.createElement("base");
+      base.href = root;
+      document.head.appendChild(base);
+      addAssets(root);
+    })();
+  </script>
+</head>
+<body class="error-page" data-error-code="403">
+  <a class="skip-link" href="#loi-noi-dung">Bỏ qua điều hướng, tới nội dung lỗi</a>
+
+  <header class="site-header">
+    <nav class="site-nav" aria-label="Điều hướng chính">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">C</span>
+        <span>CraftLink</span>
+      </a>
+      <ul class="nav-list">
+        <li><a href="index.html#vai-tro">Bốn lối vào</a></li>
+        <li><a href="KiemDuyetVaQuanTri/01-dashboard/index.html">Khu quản trị</a></li>
+        <li><a href="DangNhapVaDangKy/01-dang-nhap/index.html">Đăng nhập</a></li>
+        <li><a href="README.md">README</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="loi-noi-dung" class="shell error-shell">
+    <section class="error-head" aria-labelledby="error-title">
+      <p class="error-code" data-slot="code">403</p>
+      <h1 id="error-title" class="error-title">Bạn không có quyền truy cập</h1>
+      <p class="error-lede">
+        Bạn không có quyền truy cập vào trang này. Vui lòng quay về trang chủ hoặc liên hệ hỗ trợ
+        nếu bạn cần trợ giúp.
+      </p>
+      <p class="error-actions">
+        <a class="cta" href="index.html">Quay về trang chủ</a>
+        <a class="cta cta--quiet" href="DangNhapVaDangKy/01-dang-nhap/index.html" data-slot="login-link">Đăng nhập bằng vai khác</a>
+      </p>
+    </section>
+
+    <section class="error-card" aria-labelledby="tieu-de-phien">
+      <div class="error-card-head">
+        <h2 id="tieu-de-phien">Phiên đăng nhập và vai trò</h2>
+        <span class="verdict" data-slot="verdict" role="status" aria-live="polite"></span>
+      </div>
+      <dl class="error-facts" data-slot="facts"></dl>
+      <p class="error-note">
+        Trang đọc mốc phiên <code>cl_session</code> do phân hệ đăng nhập của SV2 ghi ra, nên kết quả
+        khớp với tài khoản bạn vừa đăng nhập. Trang không tự gán vai trò.
+      </p>
+    </section>
+
+    <section class="error-card" aria-labelledby="tieu-de-ma-tran">
+      <h2 id="tieu-de-ma-tran">Ma trận quyền của ba vai</h2>
+      <table class="matrix" data-slot="matrix">
+        <caption class="sr-only">Vai trò nào mở được phân hệ nào</caption>
+        <thead>
+          <tr><th scope="col">Phân hệ</th><th scope="col">Khách hàng</th><th scope="col">Nghệ nhân</th><th scope="col">Quản trị</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <section class="error-card" aria-labelledby="tieu-de-goi-y">
+      <h2 id="tieu-de-goi-y">Màn hình bạn có thể tới thay</h2>
+      <p class="field">
+        <label for="tim-kiem">Tìm trong danh mục màn hình của ba phân hệ</label>
+        <input id="tim-kiem" type="search" placeholder="ví dụ: giỏ hàng, hồ sơ gian hàng, quy định" autocomplete="off">
+      </p>
+      <ul class="suggest-list" data-slot="suggest" aria-live="polite" aria-label="Gợi ý màn hình"></ul>
+    </section>
+
+    <section class="error-card" aria-labelledby="tieu-de-nhat-ky">
+      <div class="error-card-head">
+        <h2 id="tieu-de-nhat-ky">Lần lỗi gần đây trên máy này</h2>
+        <button class="link-action" type="button" data-action="clear-log">Xóa nhật ký</button>
+      </div>
+      <ol class="log-list" data-slot="log" aria-live="polite"></ol>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell">
+      <p>CraftLink — bài tập lớn CSE122, nhóm 11: Nguyễn Xuân Hưng (SV1), Dương Vũ Quân Minh (SV2), Nguyễn Đình Quang Minh (SV3).</p>
+      <p>
+        <a href="docs/user-flow.md">User Flow</a> ·
+        <a href="docs/barem-audit.md">Kiểm toán barem</a> ·
+        <a href="404.html">Trang 404 — không tìm thấy</a>
+      </p>
+    </div>
+  </footer>
+</body>
+</html>

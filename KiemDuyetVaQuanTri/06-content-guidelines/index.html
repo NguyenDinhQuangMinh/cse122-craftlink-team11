@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#18232f">
+    <title>Quy định nội dung | CraftLink</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="../js/api.js" defer></script>
+<script src="../js/navigation.js" defer></script>
+<script src="../js/ai-fallback.js" defer></script>
+<script src="../js/ai-client.js" defer></script>
+<script src="js/main.js" defer></script>
+  </head>
+  <body class="moderator">
+    <a class="skip-link" href="#main">Bỏ qua điều hướng</a>
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="../01-dashboard/index.html" data-page="dashboard" aria-label="CraftLink - Bảng điều khiển">
+        <span class="brand-mark">C</span>
+        <span>CraftLink</span>
+      </a>
+
+      <div class="area-label">KHU VỰC QUẢN TRỊ</div>
+
+      <nav class="side-nav" aria-label="Điều hướng">
+        <button class="nav-link" type="button" data-page="dashboard">
+          <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="3" y="3" width="7" height="7" rx="1.3"/>
+            <rect x="14" y="3" width="7" height="7" rx="1.3"/>
+            <rect x="3" y="14" width="7" height="7" rx="1.3"/>
+            <rect x="14" y="14" width="7" height="7" rx="1.3"/>
+          </svg>
+          Bảng điều khiển
+        </button>
+
+        <button class="nav-link" type="button" data-page="categories">
+          <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M3 7.5A2.5 2.5 0 0 1 5.5 5H10l2 2h6.5A2.5 2.5 0 0 1 21 9.5v8a2.5 2.5 0 0 1-2.5 2.5h-13A2.5 2.5 0 0 1 3 17.5z"/>
+            <path d="M3.5 9h17"/>
+          </svg>
+          Quản lý danh mục
+        </button>
+
+        <button class="nav-link" type="button" data-page="users">
+          <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M16 20v-1.5a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4V20"/>
+            <circle cx="9.5" cy="7.5" r="3.5"/>
+            <path d="M17 11a3.5 3.5 0 1 0-1.2-6.8M17 14.5h1a3 3 0 0 1 3 3V20"/>
+          </svg>
+          Quản lý tài khoản
+        </button>
+
+        <div class="sidebar-label nav-section-label">KIỂM DUYỆT</div>
+
+        <button class="nav-link" type="button" data-page="queue">
+          <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="m12 3 9 5-9 5-9-5z"/>
+            <path d="M3 8v9l9 5 9-5V8M12 13v9"/>
+          </svg>
+          Hàng đợi kiểm duyệt
+        </button>
+
+        <button class="nav-link" type="button" data-page="reports">
+          <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M10.3 4.2 2.6 18a2 2 0 0 0 1.7 3h15.4a2 2 0 0 0 1.7-3L13.7 4.2a2 2 0 0 0-3.4 0Z"/>
+            <path d="M12 9v4m0 4h.01"/>
+          </svg>
+          Trung tâm báo cáo
+        </button>
+
+        <button class="nav-link active" type="button" aria-current="page" data-page="rules">
+          <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11Z"/>
+            <path d="m9 12 2 2 4-4"/>
+          </svg>
+          Quy định nội dung
+        </button>
+      </nav>
+
+      <div class="sidebar-spacer"></div>
+
+      <div class="sidebar-status">
+        <span class="status-dot"></span>
+        <span>Hệ thống đang ổn định</span>
+      </div>
+
+      <button class="side-user" type="button" data-action="logout">
+        <img src="../assets/moderator-avatar.jpg" alt="Ảnh đại diện tài khoản Kiểm duyệt viên">
+        <span>
+          <b>Kiểm duyệt viên</b>
+          <small>Đăng xuất</small>
+        </span>
+      </button>
+    </aside>
+
+    <main class="app" id="main" tabindex="-1">
+      <header class="topbar">
+        <button class="menu-toggle" id="menuToggle" type="button" aria-controls="sidebar" aria-expanded="false" aria-label="Mở menu">☰</button>
+        <label class="system-search">
+          <span>⌕</span>
+          <input
+            id="globalSearch"
+            type="search"
+            placeholder="Tìm kiếm đơn hàng, bài đăng, người dùng..."
+            aria-label="Tìm kiếm hệ thống"
+          >
+        </label>
+
+        <div class="top-actions">
+          <div class="popover-wrap">
+            <button
+              class="icon-btn"
+              id="noticeButton"
+              type="button"
+              aria-label="Thông báo"
+            >
+              <svg class="bell" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/>
+              </svg>
+              <i></i>
+            </button>
+            <section class="popover" id="noticeMenu" hidden>
+              <b>Thông báo gần đây</b>
+              <p>Có cập nhật mới trong hệ thống.</p>
+            </section>
+          </div>
+
+          <div class="popover-wrap">
+            <button class="profile" id="profileButton" type="button">
+              <img src="../assets/moderator-avatar.jpg" alt="Ảnh đại diện tài khoản Kiểm duyệt viên">
+              <span>Kiểm duyệt viên</span>
+              <span class="chevron">⌄</span>
+            </button>
+            <section class="popover profile-menu" id="profileMenu" hidden>
+              <b>Kiểm duyệt viên</b>
+              <small>moderator@craftlink.vn</small>
+              <button type="button" data-action="logout">Đăng xuất</button>
+            </section>
+          </div>
+        </div>
+      </header>
+
+      <div class="page">
+        <header class="page-heading">
+          <div>
+            <p class="eyebrow">Tiêu chuẩn CraftLink</p>
+            <h1>Quy định nội dung</h1>
+            <p class="description">
+              Quản lý hướng dẫn dùng khi xem xét sản phẩm và báo cáo.
+            </p>
+          </div>
+          <button class="secondary" type="button" data-ai-trigger="policy-copilot">AI soạn quy định</button>
+          <button class="primary add-rule" id="addRule" type="button">
+            ＋ Thêm quy định
+          </button>
+        </header>
+
+        <div class="toolbar">
+          <label class="search-box">
+            <span aria-hidden="true">⌕</span>
+            <input
+              id="search"
+              type="search"
+              placeholder="Tìm theo tên hoặc nội dung..."
+              aria-label="Tìm quy định"
+            >
+          </label>
+          <label class="sr-only" for="groupFilter">Lọc nhóm quy định</label>
+          <select id="groupFilter" aria-label="Lọc nhóm quy định">
+            <option value="all">Tất cả nhóm</option>
+            <option value="Thông tin sản phẩm">Thông tin sản phẩm</option>
+            <option value="An toàn cộng đồng">An toàn cộng đồng</option>
+            <option value="Quyền tác giả">Quyền tác giả</option>
+            <option value="Kiểm duyệt">Kiểm duyệt</option>
+            <option value="Quyền riêng tư">Quyền riêng tư</option>
+            <option value="Giao dịch">Giao dịch</option>
+            <option value="Đánh giá">Đánh giá</option>
+            <option value="Cộng đồng">Cộng đồng</option>
+          </select>
+          <label class="sr-only" for="ruleSort">Sắp xếp quy định</label>
+          <select id="ruleSort" aria-label="Sắp xếp quy định">
+            <option value="name-asc">Tên A–Z</option>
+            <option value="name-desc">Tên Z–A</option>
+          </select>
+          <span class="result-count" id="resultCount" aria-live="polite"></span>
+        </div>
+
+        <section class="rules-grid" id="rules" aria-live="polite"></section>
+
+        <footer class="page-footer">
+          <p>Quy định chỉ có hiệu lực sau khi quản trị viên xác nhận. Kiểm duyệt viên căn cứ bản đã ban hành để xử lý bài đăng.</p>
+        </footer>
+      </div>
+    </main>
+
+    <dialog class="dialog" id="editor">
+      <form id="ruleForm" novalidate>
+        <header class="dialog-head">
+          <h2 id="dialogTitle">Thêm quy định</h2>
+          <button
+            class="close"
+            id="close"
+            type="button"
+            aria-label="Đóng"
+          >×</button>
+        </header>
+
+        <input type="hidden" name="id">
+
+        <label>
+          Nhóm quy định
+          <select name="group">
+            <option>Thông tin sản phẩm</option>
+            <option>An toàn cộng đồng</option>
+            <option>Quyền tác giả</option>
+            <option>Kiểm duyệt</option>
+            <option>Quyền riêng tư</option>
+            <option>Giao dịch</option>
+            <option>Đánh giá</option>
+            <option>Cộng đồng</option>
+          </select>
+        </label>
+
+        <label>
+          Tên quy định
+          <input
+            name="title"
+            required
+            minlength="2"
+            maxlength="90"
+            aria-describedby="titleError"
+            placeholder="Nhập tên quy định"
+          >
+          <small class="field-error" id="titleError" aria-live="polite"></small>
+        </label>
+
+        <label>
+          Nội dung
+          <textarea
+            name="text"
+            required
+            minlength="8"
+            maxlength="500"
+            aria-describedby="textError"
+            placeholder="Mô tả tiêu chuẩn cần áp dụng"
+          ></textarea>
+          <small class="field-error" id="textError" aria-live="polite"></small>
+        </label>
+
+        <div class="dialog-actions">
+          <button class="secondary" id="cancel" type="button">Hủy</button>
+          <button class="primary" type="submit">Lưu quy định</button>
+        </div>
+      </form>
+    </dialog>
+
+    <div id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
+
+

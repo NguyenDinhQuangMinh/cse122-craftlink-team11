@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#c85a32">
+  <meta name="robots" content="noindex">
+  <meta name="description" content="CraftLink — trang 404: không tìm thấy trang.">
+  <title>Không tìm thấy trang (404) | CraftLink</title>
+  <script>
+    // GitHub Pages phục vụ chính tệp này tại MỌI đường dẫn thiếu, nên thư mục hiện hành
+    // của trình duyệt không còn là gốc site. <base> đưa mọi liên kết tương đối về gốc;
+    // riêng CSS/JS được tạo bằng đường dẫn tuyệt đối thay vì viết sẵn trong HTML: trình
+    // duyệt dò trước (preload scanner) chỉ tải đường dẫn nằm trong byte gốc, nên Network
+    // chỉ còn đúng một request 404 — đường dẫn thiếu mà người dùng bấm phải.
+    (function () {
+      var repo = "cse122-craftlink-team11";
+      var segments = location.pathname.split("/").filter(Boolean);
+      var at = segments.indexOf(repo);
+      var isFile = location.protocol === "file:";
+
+      function addAssets(root) {
+        ["css/style.css", "css/error-pages.css"].forEach(function (file) {
+          var link = document.createElement("link");
+          link.rel = "stylesheet";
+          link.href = root + file;
+          document.head.appendChild(link);
+        });
+        var script = document.createElement("script");
+        script.src = root + "js/error-pages.js";
+        document.head.appendChild(script);
+      }
+
+      // Mở bằng file:// ngoài thư mục mang tên repo thì giữ đường dẫn tương đối.
+      if (isFile && at < 0) {
+        addAssets("");
+        return;
+      }
+      var root = isFile
+        ? "file:///" + segments.slice(0, at + 1).join("/") + "/"
+        : location.protocol + "//" + location.host +
+          (at > -1 ? "/" + segments.slice(0, at + 1).join("/") : "") + "/";
+      var base = document.createElement("base");
+      base.href = root;
+      document.head.appendChild(base);
+      addAssets(root);
+    })();
+  </script>
+</head>
+<body class="error-page" data-error-code="404">
+  <a class="skip-link" href="#loi-noi-dung">Bỏ qua điều hướng, tới nội dung lỗi</a>
+
+  <header class="site-header">
+    <nav class="site-nav" aria-label="Điều hướng chính">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">C</span>
+        <span>CraftLink</span>
+      </a>
+      <ul class="nav-list">
+        <li><a href="index.html#vai-tro">Bốn lối vào</a></li>
+        <li><a href="index.html#chay-thu">Chạy thử</a></li>
+        <li><a href="docs/screen-inventory.md">Kiểm kê màn hình</a></li>
+        <li><a href="README.md">README</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="loi-noi-dung" class="shell error-shell">
+    <section class="error-head" aria-labelledby="error-title">
+      <p class="error-code" data-slot="code">404</p>
+      <h1 id="error-title" class="error-title">Không tìm thấy trang</h1>
+      <p class="error-lede">
+        Trang bạn đang tìm kiếm có thể đã được di chuyển, xóa hoặc không tồn tại.
+      </p>
+      <p class="error-actions">
+        <a class="cta" href="index.html">Quay về trang chủ</a>
+        <button class="cta cta--quiet" type="button" data-action="back">Thử lại trang trước</button>
+      </p>
+    </section>
+
+    <section class="error-card" aria-labelledby="tieu-de-chuan-doan">
+      <h2 id="tieu-de-chuan-doan">Chi tiết để chẩn đoán</h2>
+      <dl class="error-facts" data-slot="facts"></dl>
+      <p class="mislink" data-slot="mislink" hidden></p>
+      <p class="error-note">
+        Đường dẫn và trang gửi tới được lấy từ chính trình duyệt, chỉ hiển thị dưới dạng văn bản
+        nên không thể chèn thẻ HTML qua liên kết sai.
+      </p>
+    </section>
+
+    <section class="error-card" aria-labelledby="tieu-de-goi-y">
+      <h2 id="tieu-de-goi-y">Gợi ý màn hình gần nhất</h2>
+      <p class="field">
+        <label for="tim-kiem">Tìm trong danh mục màn hình của ba phân hệ</label>
+        <input id="tim-kiem" type="search" placeholder="ví dụ: đơn hàng, proposal, hàng đợi" autocomplete="off">
+      </p>
+      <ul class="suggest-list" data-slot="suggest" aria-live="polite" aria-label="Gợi ý màn hình"></ul>
+    </section>
+
+    <section class="error-card" aria-labelledby="tieu-de-nhat-ky">
+      <div class="error-card-head">
+        <h2 id="tieu-de-nhat-ky">Lần lỗi gần đây trên máy này</h2>
+        <button class="link-action" type="button" data-action="clear-log">Xóa nhật ký</button>
+      </div>
+      <ol class="log-list" data-slot="log" aria-live="polite"></ol>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell">
+      <p>CraftLink — bài tập lớn CSE122, nhóm 11: Nguyễn Xuân Hưng (SV1), Dương Vũ Quân Minh (SV2), Nguyễn Đình Quang Minh (SV3).</p>
+      <p>
+        <a href="docs/user-flow.md">User Flow</a> ·
+        <a href="docs/barem-audit.md">Kiểm toán barem</a> ·
+        <a href="403.html">Trang 403 — không có quyền</a>
+      </p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#c85a32">
+  <meta name="description" content="CraftLink — sàn thương mại điện tử cho sản phẩm thủ công đặt làm riêng. Bài tập lớn CSE122, nhóm 11.">
+  <title>CraftLink — Sàn thủ công tùy biến | CSE122 nhóm 11</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#vai-tro">Bỏ qua điều hướng, tới bốn lối vào</a>
+
+  <header class="site-header">
+    <nav class="site-nav" aria-label="Điều hướng chính">
+      <a class="brand" href="index.html" aria-current="page">
+        <span class="brand-mark" aria-hidden="true">C</span>
+        <span>CraftLink</span>
+      </a>
+      <ul class="nav-list">
+        <li><a href="#vai-tro">Bốn lối vào</a></li>
+        <li><a href="#chay-thu">Chạy thử</a></li>
+        <li><a href="docs/screen-inventory.md">Kiểm kê màn hình</a></li>
+        <li><a href="docs/user-flow.md">User Flow</a></li>
+        <li><a href="README.md">README</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="shell hero" aria-labelledby="tieu-de">
+      <p class="eyebrow">CSE122 · Nhóm 11 · Bản demo</p>
+      <h1 id="tieu-de">Sàn thủ công tùy biến, chia theo ba vai trò thật</h1>
+      <p class="lede">
+        CraftLink nối khách hàng đặt làm, nghệ nhân nhận đơn và người kiểm duyệt nội dung
+        thành một quy trình có trạng thái: brief là bản ghi, bài đăng phải qua hàng đợi duyệt,
+        và mỗi quyết định kiểm duyệt dựa trên bản quy định đang có hiệu lực.
+      </p>
+      <ul class="facts">
+        <li><strong>18</strong> màn hình nghiệp vụ + 2 màn lỗi 404/403</li>
+        <li><strong>3</strong> nhóm người dùng</li>
+        <li><strong>8</strong> tính năng AI, đủ 3 nhóm</li>
+        <li><strong>9/9</strong> link video OBS đã dán</li>
+      </ul>
+    </section>
+
+    <section class="shell roles" id="vai-tro" aria-labelledby="tieu-de-vai-tro">
+      <div class="section-head">
+        <h2 id="tieu-de-vai-tro">Bốn lối vào</h2>
+        <p>Chọn đúng vai trò bạn muốn xem. Mỗi lối vào là một phân hệ độc lập.</p>
+      </div>
+
+      <ul class="role-grid">
+        <li>
+          <article class="role-card" data-accent="clay">
+            <p class="role-tag">Khách hàng · SV1</p>
+            <h3>Người mua</h3>
+            <p>Khám phá sản phẩm, gửi brief đặt làm riêng, chọn nghệ nhân, đặt đơn và theo dõi tiến độ.</p>
+            <ul class="role-screens">
+              <li>Danh sách sản phẩm, sản phẩm yêu thích</li>
+              <li>Chi tiết sản phẩm, chọn nghệ nhân</li>
+              <li>Brief tùy biến, giỏ hàng, xác nhận đơn</li>
+              <li>Đơn hàng và chi tiết đơn</li>
+            </ul>
+            <a class="cta" href="KhachHang/index.html">Mở giao diện người mua</a>
+          </article>
+        </li>
+
+        <li>
+          <article class="role-card" data-accent="sage">
+            <p class="role-tag">Thợ thủ công · SV2</p>
+            <h3>Người bán</h3>
+            <p>Quản lý listing, nhận brief từ khách, soạn báo giá có xem trước và thiết lập gian hàng.</p>
+            <ul class="role-screens">
+              <li>Quản lý listing và biểu mẫu tạo mới</li>
+              <li>Hòm thư brief</li>
+              <li>Soạn proposal kèm khung xem trước</li>
+              <li>Hồ sơ gian hàng</li>
+            </ul>
+            <a class="cta" href="KhongGianNguoiBan/01-listing-management/index.html">Mở giao diện người bán</a>
+          </article>
+        </li>
+
+        <li>
+          <article class="role-card" data-accent="ink">
+            <p class="role-tag">Kiểm duyệt &amp; Quản trị · SV3</p>
+            <h3>Quản trị hệ thống</h3>
+            <p>Duyệt bài đăng, xử lý báo cáo, quản lý danh mục và tài khoản, ban hành quy định nội dung.</p>
+            <ul class="role-screens">
+              <li>Bảng điều khiển và hàng đợi kiểm duyệt</li>
+              <li>Trung tâm báo cáo</li>
+              <li>Danh mục ngành hàng, tài khoản người dùng</li>
+              <li>Quy định nội dung</li>
+            </ul>
+            <a class="cta" href="KiemDuyetVaQuanTri/GopTrang.html">Mở giao diện quản trị</a>
+          </article>
+        </li>
+
+        <li>
+          <article class="role-card" data-accent="clay">
+            <p class="role-tag">Dùng chung · Cả nhóm</p>
+            <h3>Đăng nhập &amp; Đăng ký</h3>
+            <p>Ba trang đăng nhập theo vai trò, khóa tạm 60 giây sau năm lần sai liên tiếp, và trang tạo tài khoản nghệ nhân.</p>
+            <ul class="role-screens">
+              <li>Đăng nhập khách hàng, nghệ nhân, quản trị</li>
+              <li>Đăng ký tài khoản nghệ nhân</li>
+              <li>Khôi phục mật khẩu (dựng giao diện, chưa nối xác thực)</li>
+            </ul>
+            <a class="cta cta--quiet" href="DangNhapVaDangKy/01-dang-nhap/index.html">Mở trang đăng nhập</a>
+          </article>
+        </li>
+      </ul>
+    </section>
+
+    <section class="shell runbook" id="chay-thu" aria-labelledby="tieu-de-chay-thu">
+      <h2 id="tieu-de-chay-thu">Chạy thử trên máy</h2>
+      <ol>
+        <li>Mở thư mục gốc của repo trong VS Code, bật <strong>Live Server</strong>, hoặc chạy <code>python -m http.server 8000</code> rồi mở <code>http://localhost:8000</code>.</li>
+        <li>Không mở tệp bằng <code>file://</code>: trình duyệt sẽ chặn việc tải tệp JSON của các phân hệ.</li>
+        <li>Dữ liệu mồi nằm ở <code>KiemDuyetVaQuanTri/assets/data/</code> (15–20 bản ghi mỗi bộ). Thay đổi được lưu vào Local Storage của trình duyệt, không ghi ngược vào repo.</li>
+        <li>Ba tác vụ AI gọi qua máy chủ đọc cấu hình từ biến môi trường (<code>AI_API_URL</code>, <code>AI_API_KEY</code>, <code>AI_MODEL</code>); năm tính năng AI còn lại chạy bằng bộ quy tắc cục bộ. Khi máy chủ chưa có khóa, cả ba tác vụ cũng lùi về bộ quy tắc và giao diện ghi rõ nguồn kết quả.</li>
+      </ol>
+      <p class="runbook-note">
+        Hai lối vào <strong>Người mua</strong> và <strong>Người bán</strong> chỉ mở được sau khi PR #3 và PR #2 được gộp vào nhánh chính;
+        mã của hai phân hệ đó đang nằm trong pull request, chưa nằm trên nhánh mặc định.
+      </p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell">
+      <p>CraftLink — bài tập lớn CSE122, nhóm 11: Nguyễn Xuân Hưng (SV1), Dương Vũ Quân Minh (SV2), Nguyễn Đình Quang Minh (SV3).</p>
+      <p>
+        <a href="docs/project-proposal.md">Đề xuất dự án</a> ·
+        <a href="docs/ai-usage-report.md">Khai báo AI</a> ·
+        <a href="videos/README.md">Danh sách video</a>
+      </p>
+    </div>
+  </footer>
+</body>
+</html>

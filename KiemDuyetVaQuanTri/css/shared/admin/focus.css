@@ -1,0 +1,6 @@
+/* Admin keyboard focus indicator */
+
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible {
+  outline: 3px solid #d25a38;
+  outline-offset: 2px;
+}
