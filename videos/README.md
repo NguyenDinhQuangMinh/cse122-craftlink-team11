@@ -18,7 +18,7 @@ Tên tệp lấy đúng theo cột "OBS Video" của `../docs/screen-inventory.m
 | 16 | `SV3-04-admin-category-management.mp4` | <https://youtu.be/imsnvGvIofQ> | 14:24 |
 | 18 | `SV3-06-admin-content-policy.mp4` | <https://youtu.be/3dCK3uHpIcY> | 17:21 |
 
-### SV1 — Nguyễn Xuân Hưng (chưa có link)
+### SV1 — Nguyễn Xuân Hưng (đã có 3 link, chờ khớp số dòng)
 
 | STT kiểm kê | Tên tệp bắt buộc | Link | Trạng thái |
 |---|---|---|---|
@@ -29,7 +29,19 @@ Tên tệp lấy đúng theo cột "OBS Video" của `../docs/screen-inventory.m
 | 5 | `SV1-05-checkout-confirmation.mp4` | — | **chưa quay / chưa dán link** |
 | 6 | `SV1-06-customer-dashboard.mp4` | — | **chưa quay / chưa dán link** |
 
+**Ba link SV1 đã dẫn** (nguồn: tệp `video` trên nhánh `feature/sv1-buyer`, ngày 26-10):
+
+| STT SV1 ghi | Link |
+|---|---|
+| 4 | <https://www.youtube.com/watch?v=AW-wuwhA3zc> |
+| 7 | <https://www.youtube.com/watch?v=T6ejhOOqfgk> |
+| 9 | <https://www.youtube.com/watch?v=PaCFXYhuo9U> |
+
+> Số 7 và 9 trong bảng kiểm kê đang thuộc SV2, nên ba link này **chưa điền vào bảng chính thức**. Hưng cần xác nhận: nếu 7 và 9 là số thứ tự nội bộ trong 9 trang Buyer thì ghi rõ "STT nội bộ", còn nếu là dòng kiểm kê thì phải quay đúng trang của mình để ĐK4 khớp 1:1.
+
 ### SV2 — Dương Vũ Quân Minh (chưa có link)
+
+Kênh YouTube: <https://www.youtube.com/@minhduong3801> — chưa có link theo từng màn.
 
 | STT kiểm kê | Tên tệp bắt buộc | Link | Trạng thái |
 |---|---|---|---|
