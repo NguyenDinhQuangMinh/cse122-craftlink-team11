@@ -39,6 +39,8 @@ Cột "PR" ghi số pull request đang mở thật; cột "Video" ghi tên tệp
 
 ## 3. Dựng board trong 15 phút
 
+**Người phụ trách:** Hưng (SV1) đang dựng board. Tệp này chỉ là bản nguồn để đối chiếu; giảng viên cần mở được đường dẫn board thật, nên khi có link thì dán vào `README.md` mục 10.
+
 1. Tạo board **công khai** trên Trello, đặt tên `CSE122 — CraftLink — Nhóm 11`.
 2. Tạo đúng năm danh sách theo bảng ở mục 1.
 3. Dán mỗi dòng ở mục 2 thành một thẻ, tiêu đề thẻ theo mẫu `TASK-14 · Hàng đợi kiểm duyệt (STT 14) — SV3`.
@@ -55,4 +57,4 @@ Cột "PR" ghi số pull request đang mở thật; cột "Video" ghi tên tệp
 
 ## 4. Điều kiện để cột 4 và 5 có thật
 
-Board chỉ được tính khi trạng thái trên board khớp với repo. Hiện tại cả ba pull request đều **đang mở và chưa có review nào**, nên chưa thẻ nào được chuyển sang cột "Đã gộp". Trình tự gộp đề xuất: **#3 (Khách hàng) → #2 (Người bán) → #1 (Quản trị)**, vì `#1` chứa `index.html` và `README.md` cuối cùng nhắc tới hai phân hệ kia.
+Board chỉ được tính khi trạng thái trên board khớp với repo. Hiện tại cả ba pull request đều **đang mở**, chưa PR nào được gộp, nên chưa thẻ nào được chuyển sang cột "Đã gộp". Trình tự gộp đề xuất: **#3 (Khách hàng) → #2 (Người bán) → #1 (Quản trị)**, vì `#1` chứa `index.html` và `README.md` cuối cùng nhắc tới hai phân hệ kia.

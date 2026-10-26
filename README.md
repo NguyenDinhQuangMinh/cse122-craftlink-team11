@@ -181,7 +181,9 @@ Cấu hình: `AI_API_URL`, `AI_API_KEY`, `AI_MODEL` — chỉ khai ở biến m�
 1. **GitHub Pages** — Settings → Pages → Deploy from branch → chọn nhánh chính, thư mục gốc. Phù hợp vì toàn bộ giao diện là tệp tĩnh. Lưu ý: endpoint `api/ai.js` không chạy trên Pages, ba tính năng AI sẽ dùng bộ quy tắc cục bộ.
 2. **Vercel** — import repo, đặt biến môi trường `AI_API_URL`, `AI_API_KEY`, `AI_MODEL`. Cách này giữ được cả endpoint AI.
 
-Kiểm tra sau khi triển khai: mở trang landing, bấm lần lượt bốn lối vào, xác nhận không có 404 cho CSS/JS/JSON trong tab Network.
+**Thứ tự bắt buộc: gộp đủ ba pull request (#3 → #2 → #1) rồi mới deploy.** Trang landing trỏ tới `KhachHang/`, `KhongGianNguoiBan/` và `DangNhapVaDangKy/` — ba thư mục chỉ xuất hiện sau khi gộp; deploy sớm sẽ tạo ba link 404. Sau khi gộp, xoá đoạn ghi chú "chỉ mở được sau khi PR #3 và PR #2 được gộp" ở `index.html` và điền URL thật vào bảng dưới.
+
+Kiểm tra sau khi triển khai: mở trang landing, bấm lần lượt bốn lối vào, xác nhận không có 404 cho CSS/JS/JSON trong tab Network; sau đó mở thử một màn của mỗi thành viên và chạy một thao tác ghi (thêm/sửa) để chắc `localStorage` hoạt động trên tên miền mới.
 
 | Môi trường | URL |
 | :--- | :--- |

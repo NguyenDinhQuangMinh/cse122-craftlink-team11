@@ -40,12 +40,9 @@ Tên tệp lấy đúng theo cột "OBS Video" của `../docs/screen-inventory.m
 | 11 | `SV2-05-maker-proposal-preview.mp4` | — | **chưa quay / chưa dán link** |
 | 12 | `SV2-06-maker-shop-profile.mp4` | — | **chưa quay / chưa dán link** |
 
-> **Việc nhóm phải chốt bằng văn bản:** bảng trên liệt kê 6 video cho SV1 và 6 cho SV2 theo cột OBS của bảng kiểm kê, trong khi SV3 chỉ quay 3 video và ba màn còn lại được chứng minh trong chính ba video đó. Hai phương án đang tồn tại song song:
+> **Đã chốt: 3 video/người.** Theo xác nhận của nhóm, 3 video cho 6 màn của mỗi người là đủ yêu cầu của giảng viên; các màn không quay riêng được chứng minh ngay trong ba video đó. Vì vậy SV1 và SV2 mỗi bạn **chọn 3 màn chính** trong 6 dòng của mình, quay đủ 8 bước rồi dán link vào đúng 3 dòng tương ứng; 3 dòng còn lại ghi "Không quay riêng — nằm trong phạm vi demo".
 >
-> - **Phương án A — 1:1 đúng ĐK4:** mỗi người quay đủ số dòng có trong bảng (SV3 phải quay thêm 3 video).
-> - **Phương án B — 3 video/người:** giữ nguyên SV3, SV1 và SV2 mỗi người chọn 3 trang chính; các dòng còn lại ghi "Không quay riêng – nằm trong phạm vi demo" như SV3 đang làm.
->
-> Nhóm cần hỏi giảng viên và lưu lại câu trả lời (email hoặc tin nhắn) trước khi nộp, vì ĐK4 là điều kiện loại trực tiếp.
+> Vẫn nên lưu lại tin nhắn hoặc email xác nhận của giảng viên vào thư mục nộp bài: ĐK4 là điều kiện loại trực tiếp và người chấm có thể hỏi lại.
 
 ## Tám bước phải có trong từng video
 

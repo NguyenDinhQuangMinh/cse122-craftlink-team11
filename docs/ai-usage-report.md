@@ -50,6 +50,7 @@ Việc đã giao cho AI và người thực hiện phải tự kiểm chứng:
 | Soạn và chỉnh `README.md`, `docs/screen-inventory.md`, `docs/user-flow.md`, các tệp `README.md` mô tả thư mục | Đọc lại từng câu, sửa chỗ mô tả sai so với mã |
 | Dựng sơ đồ User Flow và chụp ảnh mockup từ chính trang đã chạy | Mở sơ đồ cạnh màn hình thật, đối chiếu nhãn trạng thái với mã |
 | Đề xuất điểm sửa mã trực tiếp để quay video OBS | Chạy thử đề xuất trên máy trước khi tin |
+| Rà trạng thái tải của Trung tâm báo cáo và đề xuất lỗi vòng lặp sắp xếp | Mở trang, xác nhận 20 bản ghi hiển thị, thử sắp xếp, lọc, mở chi tiết và chạy AI trước khi nhận kết quả |
 | Viết message commit, mô tả Pull Request | Đọc trước khi push; commit chỉ mang tên sinh viên |
 
 Prompt tiêu biểu đã dùng (nguyên văn, rút gọn):
