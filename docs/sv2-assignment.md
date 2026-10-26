@@ -12,6 +12,8 @@
 
 👉 **Link video OBS của SV2:** [Link Video SV2](https://www.youtube.com/@minhduong3801)
 
+👉 **Tài liệu phân hệ người bán:** [README](../KhongGianNguoiBan/README.md) · [Kiểm kê màn hình](../KhongGianNguoiBan/docs/screen-inventory.md) · [Báo cáo sử dụng AI](../KhongGianNguoiBan/docs/ai-usage-report.md)
+
 ---
 
 ## 📋 VAI TRÒ & TRÁCH NHIỆM CHÍNH
