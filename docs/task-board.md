@@ -43,11 +43,11 @@ Cột "PR" ghi số pull request thật — **cả ba PR #1/#2/#3 đã gộp và
 
 ## 3. Board đã dựng — link và cách đọc
 
-**Board công khai:** <https://trello.com/b/N2HBpswf> — tên `CSE122 — CraftLink — Nhóm 11`, tạo ngày 26-10-2026 bằng tài khoản của SV3 vì Hưng chưa kịp dựng. Đã có đủ năm cột theo mục 1 và **28 thẻ**: 18 thẻ TASK theo mục 2 cộng **10 thẻ công việc**. **Đo lại ngày 27-10-2026 từ `trello.com/b/N2HBpswf.json` sau khi chuỗi gộp nhánh hoàn tất: Backlog 6 · Đang làm 0 · Chờ review 0 · Đã gộp 19 · Video & bảo vệ 3.** Bốn thẻ công việc đã sang "Đã gộp" kèm merge hash trong mô tả: `MERGE`, `DEPLOY`, `SCREENS`, `VIDEO · SV2`; 15 thẻ TASK đi theo ba PR phân hệ.
+**Board công khai:** <https://trello.com/b/N2HBpswf> — tên `CSE122 — CraftLink — Nhóm 11`, tạo ngày 26-10-2026 bằng tài khoản của SV3 vì Hưng chưa kịp dựng. Đã có đủ năm cột theo mục 1 và **29 thẻ**: 18 thẻ TASK theo mục 2 cộng **11 thẻ công việc**. **Đo lại ngày 27-10-2026 từ `trello.com/b/N2HBpswf.json` sau khi chuỗi gộp nhánh hoàn tất: Backlog 7 · Đang làm 0 · Chờ review 0 · Đã gộp 19 · Video & bảo vệ 3.** Bốn thẻ công việc đã sang "Đã gộp" kèm merge hash trong mô tả: `MERGE`, `DEPLOY`, `SCREENS`, `VIDEO · SV2`; 15 thẻ TASK đi theo ba PR phân hệ. Thẻ thứ 29 `SWITCHER` thêm vào sáng 27-10 khi rà checklist mục 4 của barem (xem `barem-audit.md` mục 9).
 
-**Hạn hoàn thành (cột mà tiêu chí 7.1 gọi là "hạn hoàn thành") đã gắn cho 28/28 thẻ.** Với 18 thẻ TASK, hạn lấy theo **ngày commit thật đưa tệp HTML lần đầu vào nhánh** — SV3: 13-10-2026, SV1 và SV2: 25-10-2026 — kiểm chứng bằng `git log --diff-filter=A --format=%ad --date=short <nhánh> -- <tệp>`; cả 18 thẻ đều được tick "Đánh dấu hoàn thành" vì mã đã viết xong và đã vào `main`, phần còn lại nằm ở video và khai báo AI. Mười thẻ công việc có hạn 27-10-2026 (ngày nộp và bảo vệ); **bốn thẻ đã tick** là `VIDEO · SV2` (26-10), `SCREENS`, `MERGE`, `DEPLOY` (27-10); **sáu thẻ Backlog còn mở và không tick** — đó đúng là việc của SV1/SV2 và của cả nhóm ở `barem-audit.md` mục 8.
+**Hạn hoàn thành (cột mà tiêu chí 7.1 gọi là "hạn hoàn thành") đã gắn cho 29/29 thẻ.** Với 18 thẻ TASK, hạn lấy theo **ngày commit thật đưa tệp HTML lần đầu vào nhánh** — SV3: 13-10-2026, SV1 và SV2: 25-10-2026 — kiểm chứng bằng `git log --diff-filter=A --format=%ad --date=short <nhánh> -- <tệp>`; cả 18 thẻ đều được tick "Đánh dấu hoàn thành" vì mã đã viết xong và đã vào `main`, phần còn lại nằm ở video và khai báo AI. Mười một thẻ công việc có hạn 27-10-2026 (ngày nộp và bảo vệ); **bốn thẻ đã tick** là `VIDEO · SV2` (26-10), `SCREENS`, `MERGE`, `DEPLOY` (27-10); **bảy thẻ Backlog còn mở và không tick** — đó đúng là việc của SV1/SV2 và của cả nhóm ở `barem-audit.md` mục 8. Tổng thẻ được tick: **22/29**.
 
-Mười thẻ công việc, đọc từ mục "Việc còn lại" của `barem-audit.md`:
+Mười một thẻ công việc, đọc từ mục "Việc còn lại" của `barem-audit.md`:
 
 | Thẻ | Cột (27-10) | Ai làm |
 |---|---|---|
@@ -61,6 +61,7 @@ Mười thẻ công việc, đọc từ mục "Việc còn lại" của `barem-a
 | `FIX · Đổi tên forgot password.html và sửa 3 tham chiếu CSS/JS sai — SV1` | Backlog | SV1 |
 | `DOCS · SV1 + SV2 điền khai báo AI vào docs/ai-usage-report.md — SV1/SV2` | Backlog (còn mở: SV2 xác nhận mục 3.2, cả ba chưa ghi phiên bản công cụ, SV1 xử lý tệp trùng `docs/ai-usage -report.md`) | SV1, SV2 |
 | `DOCS · Chuyển 5 link Canva sang quyền xem công khai — Cả nhóm` | Backlog | Cả ba |
+| `SWITCHER · Dựng bộ chuyển vai trò giữa ba phân hệ (checklist mục 4) — SV3/Cả nhóm` | Backlog (thêm sáng 27-10; mô tả ghi phép đo **0/29 trang có role-switcher** và hướng làm một tệp `js/role-switcher.js` dùng chung) | SV3 + SV1 + SV2 |
 
 Mỗi thẻ mang mô tả một dòng, đủ bốn liên kết mà tiêu chí 7.1 đòi:
 

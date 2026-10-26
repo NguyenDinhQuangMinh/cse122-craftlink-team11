@@ -31,13 +31,13 @@ Board công khai: **<https://trello.com/b/N2HBpswf>** — `prefs.permissionLevel
 
 | Cột board | Số thẻ | Ghi chú (đo lại từ `trello.com/b/N2HBpswf.json` ngày 27-10-2026) |
 |---|---|---|
-| Backlog | 6 | REVIEW (peer review, xem 3.2) · 2 thẻ FIX của SV1/SV2 cho mục 6.1 · 2 thẻ DOCS (khai AI, link Canva) · 1 thẻ VIDEO (SV1 đối chiếu 4/7/9) |
+| Backlog | 7 | REVIEW (peer review, xem 3.2) · 2 thẻ FIX của SV1/SV2 cho mục 6.1 · 2 thẻ DOCS (khai AI, link Canva) · 1 thẻ VIDEO (SV1 đối chiếu 4/7/9) · 1 thẻ SWITCHER mới thêm sáng 27-10 (checklist mục 4, xem mục 9 dòng 4) |
 | Đang làm | 0 | Trống vì toàn bộ phần SV3 đã gộp xong |
 | Chờ review | 0 | Ba PR phân hệ đã merge nên không còn thẻ chờ |
 | Đã gộp | 19 | 15 thẻ TASK + SCREENS (404/403) + MERGE + DEPLOY + VIDEO của SV2; MERGE và DEPLOY đã tick hoàn thành, mô tả ghi đúng merge hash |
 | Video & bảo vệ | 3 | TASK-14, 16, 18 (SV3 — đã có link video, chờ quay vòng bảo vệ) |
 
-**28/28 thẻ** đều có **hạn hoàn thành** và **mô tả** gắn `Nhánh · PR · Video · Màn hình` (+ `AI:` với màn có tính năng AI). Hạn của 18 thẻ TASK lấy theo **ngày commit thật đưa tệp HTML lần đầu vào nhánh**: SV3 = 13-10-2026, SV1 và SV2 = 25-10-2026 (kiểm chứng bằng `git log --diff-filter=A`). Thẻ MERGE/DEPLOY/SCREENS mang merge hash thật (`ec74e6b`, `a5a51e6`, `8eb9f51`, `da3131b`, `2ce1f23`) nên mở ngược được trên GitHub.
+**29/29 thẻ** đều có **hạn hoàn thành** và **mô tả** gắn `Nhánh · PR · Video · Màn hình` (+ `AI:` với màn có tính năng AI). 22/29 thẻ đang tick "Đánh dấu hoàn thành" (18 thẻ TASK + MERGE + DEPLOY + SCREENS + VIDEO của SV2). Hạn của 18 thẻ TASK lấy theo **ngày commit thật đưa tệp HTML lần đầu vào nhánh**: SV3 = 13-10-2026, SV1 và SV2 = 25-10-2026 (kiểm chứng bằng `git log --diff-filter=A`). Thẻ MERGE/DEPLOY/SCREENS mang merge hash thật (`ec74e6b`, `a5a51e6`, `8eb9f51`, `da3131b`, `2ce1f23`) nên mở ngược được trên GitHub.
 
 ### 3.2 Mục 7.2 (0.45đ) — Quy trình Git
 
@@ -222,7 +222,7 @@ Nhánh tạm `integration/test` từng tạo ngày 26-10 chỉ để đo xung đ
 
 ## 8. Phân việc còn lại (cập nhật sau gộp + deploy, 27-10-2026)
 
-**Không còn việc tồn đọng cho SV3 trên Git/GitHub:** ba PR phân hệ đã gộp vào `dev` (`ec74e6b`, `a5a51e6`, `8eb9f51`), `dev` → `main` qua PR #5 (`da3131b`), GitHub Pages đã build và đo, `homepage` của repo đã trỏ về URL công khai, 19/28 thẻ Trello nằm ở cột "Đã gộp" với mô tả chứa merge hash thật. Phần còn lại của SV3 chỉ là **kỹ thuật trình bày khi Vấn đáp**: mở sẵn 6 tab (mục 9).
+**Không còn việc tồn đọng cho SV3 trên Git/GitHub:** ba PR phân hệ đã gộp vào `dev` (`ec74e6b`, `a5a51e6`, `8eb9f51`), `dev` → `main` qua PR #5 (`da3131b`), GitHub Pages đã build và đo, `homepage` của repo đã trỏ về URL công khai, 19/29 thẻ Trello nằm ở cột "Đã gộp" với mô tả chứa merge hash thật. Phần còn lại của SV3 là **kỹ thuật trình bày khi Vấn đáp** (mở sẵn 6 tab, mục 9) và **thẻ SWITCHER vừa mở** (mục 9 dòng 4) — nếu còn giờ thì làm một phần.
 
 **Cần cả nhóm đồng ý (một người bấm):** đóng PR #4 (`docs/sv1-sync` → `feature/sv3-admin-screens`, sai base, nội dung đã vào nhánh SV3). Nếu nhóm còn mở PR nào nữa (kể cả PR tài liệu), **người khác phải bấm Approve trước khi Merge** — đây là cách duy nhất để mục 7.2 có thêm bằng chứng, vì ba PR phân hệ đã gộp nên không còn cửa bổ sung Approve.
 
@@ -256,7 +256,7 @@ Barem bắt **cả ba ngồi cùng nhau tick đủ 20 mục trong 24 giờ trư�
 | 12 | 3 | Chuẩn bị cách kích hoạt nhanh 4 trạng thái: Normal / Loading / Empty / Error | **Đạt trên 6 màn SV3** (tìm từ khóa không tồn tại ra Empty, `js/ai-fallback.js` ra Loading + Error khi không có khoá AI). Chưa ghi sẵn kịch bản cho màn SV1/SV2 | Mỗi người viết 1 dòng "gõ gì để thấy lỗi" vào `videos/README.md` hoặc ghi miệng trước buổi demo |
 | 13 | 3 | Cả 3 tính năng AI đủ 6 bước Input → Processing → Output → Explainability → User control → Save/Apply | **Đạt trên 3 tác vụ AI của SV3** (bằng chứng mã: `04-moderation-queue/js/main.js:220` in `%` độ tin cậy + khuyến nghị + các yếu tố; `:337` tiêu đề "AI phân loại rủi ro sản phẩm"; `:365` ghi quyết định kèm dòng "kiểm duyệt viên vẫn là người quyết định"). SV1 có AI advisor + AI sản phẩm (`KhachHang/js/ai-advisor.js`); SV2 có copywriter | SV1/SV2 đọc lại 6 bước trên trang mình trước khi quay/demo |
 | 14 | 3 | Có ít nhất 1 kịch bản AI Failure / Uncertainty UX | **Đạt** (rò AI không có khoá + độ tin cậy thấp, đã chạy thử — xem `docs/sv3-assignment.md` mục Tiến độ) | SV1/SV2 nên có 1 kịch bản của mình để đủ vai |
-| 15 | 4 | Board công khai, mỗi Task ghi Task ID, Screen, Assignee, Branch, PR Link, OBS Link | **Đạt**: `trello.com/b/N2HBpswf` public, 5 cột, **28 thẻ**, 28/28 có hạn + mô tả, 19 thẻ "Đã gộp" | Không còn việc; chỉ cập nhật khi có link video mới |
+| 15 | 4 | Board công khai, mỗi Task ghi Task ID, Screen, Assignee, Branch, PR Link, OBS Link | **Đạt**: `trello.com/b/N2HBpswf` public, 5 cột, **29 thẻ**, 29/29 có hạn + mô tả, 22/29 đã tick, 19 thẻ "Đã gộp" | Không còn việc; chỉ cập nhật khi có link video mới hoặc khi làm thẻ SWITCHER |
 | 16 | 4 | Đủ `main`, `dev`, `feature/*`; commit theo Conventional Commits; **mọi PR có nhận xét của thành viên khác TRƯỚC khi merge** | **Một phần**: nhánh đủ; **176 commit không-merge, 35% đúng chuẩn** (SV3 49/100, SV2 10/44, SV1 0/23); có nhận xét trên cả 3 PR phân hệ nhưng **không có lượt APPROVED nào**, PR #5 gộp `dev→main` không có review | **Cửa duy nhất còn lại**: mở PR tài liệu (`b195741`) và để người khác Approve trước khi merge. Cần bạn quyết + cần một thành viên bấm |
 | 17 | 4 | Số video OBS = đúng số màn độc lập; mọi video mở được, có mặt + giọng + sửa trực tiếp + commit | **Rủi ro đã ghi**: thoả thuận miệng với thầy **3 video/người = 9**, trong khi kiểm kê 18 dòng (mục 4). 9 link YouTube đã dán; **SV2 chưa link cho dòng 7–12, SV1 mới dán 3 link cho dòng 2/4/5** | SV1/SV2 dán link còn thiếu + xác nhận ánh xạ "4/7/9"; nếu thầy đòi 1:1 thì phải quay thêm — chỉ các bạn làm được |
 | 18 | 4 | `docs/ai-usage-report.md` + `README.md` trung thực, đủ mục bắt buộc | **Đạt cho phần đã đo**: README **15 mục**, ai-usage-report khai 3 tác vụ AI đã nối + phần AI sinh + lỗi AI + phần SV tự sửa; chuỗi "AI Personalization/Visual Matcher" chỉ còn ở dạng câu phủ định (mục 6.4). Còn **hai tệp khai báo song song** trên `main` (17 074 B và 9 952 B tên có dấu cách) và `video.md` ở gốc | SV1 quyết gộp/xoá; cả ba bổ sung **phiên bản công cụ AI** |

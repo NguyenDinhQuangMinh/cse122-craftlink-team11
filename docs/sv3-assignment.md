@@ -122,7 +122,7 @@ Cần có kịch bản kiểm thử được trực tiếp trên giao diện. Í
 - [x] Quay và gắn video OBS theo bảng kiểm kê chung sau khi nhóm tổng hợp đủ ba phần (ba link của SV3 ở `videos/README.md` dòng 14/16/18; hai màn lỗi không có video riêng).
 - [x] Chạy chuỗi gộp nhánh Trục chéo 3 ngày 27-10-2026: PR #3 → `ec74e6b`, PR #2 → `a5a51e6`, PR #1 → `8eb9f51` vào `dev`, rồi PR #5 → `da3131b` về `main`. Sáu lượt xung đột đều ở tệp `.md`, **0 xung đột mã**; cách dệt lại từng ô ghi ở `barem-audit.md` mục 7.
 - [x] Bật GitHub Pages cho nhánh `main` (thư mục gốc) kèm `.nojekyll` (`3e14704`), đặt `homepage` của repo, và đo bản công khai: 11/11 liên kết landing = 200, bốn lối vào = 200, `/duong-dan-sai` = HTTP 404 đúng trang `404.html` của nhóm (`custom_404: true`).
-- [x] Giữ board Trello khớp repo: 19/28 thẻ ở cột "Đã gộp", mô tả của `MERGE`/`DEPLOY`/`SCREENS` ghi merge hash thật.
+- [x] Giữ board Trello khớp repo: 19/29 thẻ ở cột "Đã gộp", mô tả của `MERGE`/`DEPLOY`/`SCREENS` ghi merge hash thật.
 - [ ] Đưa bảng token về một nguồn chung (`css/style.css`) — hiện có sáu bảng `:root`, 0 màu hex chung; đo và lý do để sau khi nộp ghi ở `css/README.md`.
 - [ ] Mở PR kế tiếp thì chờ người khác Approve trước khi Merge — ba PR phân hệ đã gộp nên không còn bổ sung được bằng chứng đó (xem `barem-audit.md` mục 3.2).
 
