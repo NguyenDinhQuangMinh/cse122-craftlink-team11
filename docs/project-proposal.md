@@ -114,5 +114,5 @@ AI không tự duyệt, tự xóa hay tự khóa tài khoản: mọi kết quả
 ## 8. Việc còn mở
 
 - Triển khai công khai (ĐK3) chưa thực hiện; xem mục "Triển khai" của `../README.md`.
-- Bảng công việc Trello/Jira công khai chưa dựng; mã `TASK-01…18` trong `screen-inventory.md` là mã thẻ nhóm tự đặt, cần dán đúng mã đó lên board để thành mã card thật.
+- Board công việc đã dựng và để chế độ công khai: <https://trello.com/b/N2HBpswf> — năm cột, 18 thẻ mang đúng mã `TASK-01…18`, mỗi thẻ ghi nhánh · PR · video · màn hình trong mô tả (bản nguồn và cách đọc: `task-board.md`). Phần còn mở là **giữ board khớp với repo**: thẻ chỉ sang cột "Đã gộp" khi PR tương ứng được gộp, và cột "Video & bảo vệ" sẽ nhận thêm thẻ khi SV1, SV2 dán link video.
 - `api/ai.js` đã có endpoint nhưng chưa gắn biến môi trường trên nền tảng triển khai, nên bản demo công khai sẽ chạy bằng bộ quy tắc cục bộ.

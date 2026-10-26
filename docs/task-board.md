@@ -1,6 +1,6 @@
-# Bảng công việc nhóm — nguồn để dựng board Trello/Jira
+# Bảng công việc nhóm — bản nguồn của board Trello
 
-Barem yêu cầu ở đâu: Tiêu chí 7.1 (0.25đ) đòi **board Trello/Jira công khai, tối thiểu 5 cột**, mỗi thẻ gắn được bốn thứ: công việc (Task ID) ↔ nhánh (branch) ↔ pull request ↔ video OBS. Tệp này là bản nguồn để dán lên board; bản thân nó **không thay thế** board, vì giảng viên cần mở được đường dẫn thật.
+Barem yêu cầu ở đâu: Tiêu chí 7.1 (0.25đ) đòi **board Trello/Jira công khai, tối thiểu 5 cột**, mỗi thẻ gắn được bốn thứ: công việc (Task ID) ↔ nhánh (branch) ↔ pull request ↔ video OBS. Board thật đang chạy ở <https://trello.com/b/N2HBpswf>; tệp này là bản nguồn để đối chiếu và dựng lại, **không thay thế board** vì giảng viên cần mở được đường dẫn thật.
 
 ## 1. Năm cột của board
 
@@ -41,23 +41,21 @@ Cột "PR" ghi số pull request đang mở thật; cột "Video" ghi tên tệp
 
 > **Cột Video của SV1.** Ba dòng 2, 4, 5 đã có link YouTube (`../videos/README.md`); ba dòng 1, 3, 6 không quay riêng theo thỏa thuận ba video mỗi người. Cột "Cột hiện tại" vẫn là *Chờ review* vì PR #3 chưa gộp.
 
-## 3. Dựng board trong 15 phút
+## 3. Board đã dựng — link và cách đọc
 
-**Người phụ trách:** Hưng (SV1) được giao dựng board nhưng **chưa có link công khai** tính đến 2026-10-26, nên tiêu chí 7.1 chưa đạt. Tệp này chỉ là bản nguồn để đối chiếu; giảng viên cần mở được đường dẫn board thật, nên khi có link thì dán vào `README.md` mục 10.
+**Board công khai:** <https://trello.com/b/N2HBpswf> — tên `CSE122 — CraftLink — Nhóm 11`, tạo ngày 26-10-2026 bằng tài khoản của SV3 vì Hưng chưa kịp dựng. Đã có đủ năm cột theo mục 1 và đúng 18 thẻ theo mục 2: 15 thẻ ở "Chờ review", 3 thẻ ở "Video & bảo vệ", hai cột "Backlog" và "Đang làm" đang trống, "Đã gộp" trống vì chưa PR nào được gộp. Link cũng nằm ở `README.md` mục 10.
 
-1. Tạo board **công khai** trên Trello, đặt tên `CSE122 — CraftLink — Nhóm 11`.
-2. Tạo đúng năm danh sách theo bảng ở mục 1.
-3. Dán mỗi dòng ở mục 2 thành một thẻ, tiêu đề thẻ theo mẫu `TASK-14 · Hàng đợi kiểm duyệt (STT 14) — SV3`.
-4. Dán phần mô tả thẻ theo mẫu sau, thay bằng giá trị thật:
+Mỗi thẻ mang mô tả một dòng, đủ bốn liên kết mà tiêu chí 7.1 đòi:
 
-   ```
-   Nhánh: feature/sv3-admin-screens
-   Pull request: #1
-   Video: SV3-02-admin-moderation-queue.mp4 — https://youtu.be/LAlWYQg43LY
-   Màn hình: KiemDuyetVaQuanTri/04-moderation-queue/index.html
-   ```
-5. Gắn nhãn theo người (`SV1`, `SV2`, `SV3`) để lọc được theo thành viên.
-6. Dán link board vào `README.md` mục 10 và vào báo cáo, để giảng viên mở được từ repo.
+```
+Nhánh: feature/sv3-admin-screens · PR: #1 · Video: SV3-02-admin-moderation-queue.mp4 (https://youtu.be/LAlWYQg43LY) · Màn hình: KiemDuyetVaQuanTri/04-moderation-queue/index.html · AI: moderation-risk qua api/ai.js
+```
+
+Ba việc còn lại trên board, ai cũng làm được:
+
+1. Khi một PR được gộp, kéo các thẻ tương ứng sang cột "Đã gộp" rồi ghi thêm commit hash vào mô tả.
+2. Khi SV1 hoặc SV2 có thêm link video, sửa phần "Video:" trong mô tả thẻ và kéo thẻ sang "Video & bảo vệ".
+3. Nhãn theo người (`SV1`, `SV2`, `SV3`) chưa gắn; tên thẻ đã có hậu tố `— SVx` nên vẫn lọc được bằng ô tìm kiếm của board, dán `is:label` sau khi gắn nhãn thì mới có danh sách theo màu.
 
 ## 4. Điều kiện để cột 4 và 5 có thật
 

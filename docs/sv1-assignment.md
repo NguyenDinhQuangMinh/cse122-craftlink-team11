@@ -70,7 +70,7 @@ Chi tiết prompt, lỗi đã sửa và mức bằng chứng: xem [`ai-usage-rep
 - [x] Cross-review PR #1 và PR #2 ngày 2026-10-26
 - [ ] Quay đủ 6 video OBS `SV1-01`…`SV1-06` — hiện **0/6**
 - [ ] Tách lịch sử PR #3 theo từng màn hình, dùng Conventional Commits
-- [ ] Dựng board Trello/Jira công khai và dán link vào `README.md` mục 10
+- [x] Dựng board Trello/Jira công khai và dán link vào `README.md` mục 10 — board <https://trello.com/b/N2HBpswf> tạo ngày 26-10-2026 (SV3 dựng thay), 5 cột + 18 thẻ
 - [ ] Sửa cột nhánh/tên AI trong `screen-inventory.md` và `task-board.md` (đang chờ PR #1 gộp)
 - [ ] Chốt chuẩn tên `role-function-action.html` ở phạm vi cả nhóm
 - [ ] Bổ sung minh chứng responsive (ảnh hoặc biên bản) nếu giảng viên yêu cầu

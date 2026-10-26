@@ -161,7 +161,8 @@ Cấu hình: `AI_API_URL`, `AI_API_KEY`, `AI_MODEL` — chỉ khai ở biến m�
 | :--- | :--- |
 | Bảng kiểm kê 18 màn hình (12 cột) | [`docs/screen-inventory.md`](./docs/screen-inventory.md) |
 | Sitemap & User Flow toàn bộ vai trò | [`docs/user-flow.md`](./docs/user-flow.md) |
-| Bảng công việc 18 thẻ (nguồn dựng Trello/Jira) | [`docs/task-board.md`](./docs/task-board.md) |
+| Board Trello công khai — 5 cột, 18 thẻ | <https://trello.com/b/N2HBpswf> |
+| Bảng công việc 18 thẻ (bản nguồn và cách đọc board) | [`docs/task-board.md`](./docs/task-board.md) |
 | Component Guide (màu, chữ, thành phần) | [`docs/component-guide.md`](./docs/component-guide.md) |
 | Đề xuất dự án (P1–P4, O1–O7, thực thể, ma trận trạng thái) | [`docs/project-proposal.md`](./docs/project-proposal.md) |
 | Canva SV1 — Khách hàng | <https://www.canva.com/design/DAHZAR9VxmU/dQQiBQ9-OPRH6Q5x8DdAkw/edit> · bản cũ ghi `DAHWyBVvS6U` — SV1 cần chốt một link |
