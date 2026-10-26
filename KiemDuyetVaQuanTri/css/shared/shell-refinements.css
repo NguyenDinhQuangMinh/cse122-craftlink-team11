@@ -193,7 +193,7 @@
   position: fixed;
   top: -48px;
   left: 16px;
-  z-index: 20;
+  z-index: 1003;
   padding: 10px 14px;
   border-radius: 8px;
   background: var(--paper);
@@ -214,5 +214,10 @@
 @media (min-width:681px) and (max-width:1100px) {
   .skip-link {
     left: 242px;
+  }
+}
+@media (max-width:680px) {
+  .skip-link {
+    left: 60px;
   }
 }
