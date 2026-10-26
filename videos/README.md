@@ -34,13 +34,15 @@ Tên tệp lấy đúng theo cột "OBS Video" của `../docs/screen-inventory.m
 
 Kênh YouTube: <https://www.youtube.com/@minhduong3801> · Playlist: <https://www.youtube.com/playlist?list=PLDaEqceEwiuk>
 
-Ba video quay ba trang đăng nhập theo vai trong `DangNhapVaDangKy/01-dang-nhap/`. Tiêu đề trên YouTube đã theo khuôn đặt tên ở cuối tệp.
+Ba video quay ba trang đăng nhập theo vai trong `DangNhapVaDangKy/01-dang-nhap/` — phần SV2 bàn giao thêm ngoài 6 dòng kiểm kê 7–12. Tiêu đề trên YouTube đã theo khuôn đặt tên ở cuối tệp.
 
 | Tên tệp | Màn hình | Tệp mã nguồn | Link |
 |---|---|---|---|
 | `SV2-01-dangnhap-khachhang.mp4` | Đăng nhập Khách hàng | `khach-hang.html` + `css/khach-hang.css` + `js/khach-hang.js` | <https://www.youtube.com/watch?v=BY0AAIjTSm8> |
 | `SV2-02-dangnhap-nghenhan.mp4` | Đăng nhập Thợ thủ công / Nghệ nhân | `nghe-nhan.html` + `css/nghe-nhan.css` + `js/nghe-nhan.js` | <https://www.youtube.com/watch?v=2zrLFxVEpiU> |
 | `SV2-03-dangnhap-admin.mp4` | Đăng nhập Quản trị viên & Kiểm duyệt | `quan-tri.html` + `css/quan-tri.css` + `js/quan-tri.js` | <https://www.youtube.com/watch?v=d4kmFKU6ivg> |
+
+> Nhóm cần thống nhất trước khi nộp: ba video của SV2 đang chứng minh phân hệ đăng nhập, không phải 6 màn người bán ở dòng 7–12, nên ĐK4 (video khớp 1:1 với `screen-inventory.md`) chưa đạt với riêng phần Maker. Hai hướng xử lý: quay thêm 3 video cho màn 7, 9, 10 rồi dán link vào bảng dưới, hoặc bổ sung 3 dòng đăng nhập vào `screen-inventory.md` để bảng kiểm kê khớp với số video đã có.
 
 > **Đã chốt: 3 video/người.** Theo xác nhận của nhóm, 3 video cho 6 màn của mỗi người là đủ yêu cầu của giảng viên; các màn không quay riêng được chứng minh ngay trong ba video đó. Vì vậy SV1 và SV2 mỗi bạn **chọn 3 màn chính** trong 6 dòng của mình, quay đủ 8 bước rồi dán link vào đúng 3 dòng tương ứng; 3 dòng còn lại ghi "Không quay riêng — nằm trong phạm vi demo".
 >
