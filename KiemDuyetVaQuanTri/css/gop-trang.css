@@ -161,6 +161,24 @@ body {
   height: 100vh;
   margin-left: 258px;
 }
+.skip-link {
+  position: fixed;
+  top: -48px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1003;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: #fff;
+  color: #18232f;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 6px 18px rgba(28, 41, 54, .18);
+}
+.skip-link:focus {
+  top: 12px;
+}
 .screen {
   flex: 1;
   min-height: 0;

@@ -11,6 +11,7 @@
 <script src="js/main.js" defer></script>
   </head>
   <body class="admin">
+    <a class="skip-link" href="#main">Bỏ qua điều hướng</a>
     <aside class="sidebar" id="sidebar">
       <a class="brand" href="../01-dashboard/index.html" data-page="dashboard" aria-label="CraftLink - Bảng điều khiển">
         <span class="brand-mark">C</span>
@@ -90,7 +91,7 @@
       </button>
     </aside>
 
-    <main class="app">
+    <main class="app" id="main" tabindex="-1">
       <header class="topbar">
         <button class="menu-toggle" id="menuToggle" type="button" aria-controls="sidebar" aria-expanded="false" aria-label="Mở menu">☰</button>
         <label class="system-search">

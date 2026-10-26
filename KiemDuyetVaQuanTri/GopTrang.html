@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/gop-trang.css">
   </head>
   <body>
+    <a class="skip-link" href="#main">Bỏ qua điều hướng</a>
     <svg class="icons" aria-hidden="true">
       <symbol id="grid" viewBox="0 0 24 24">
         <rect x="3" y="3" width="7" height="7" rx="1.3"/>
@@ -91,7 +92,7 @@
     </aside>
 
     <button class="shell-menu-toggle" id="menuToggle" type="button" aria-controls="sidebar" aria-expanded="false" aria-label="Mở menu">☰</button>
-    <main class="workspace">
+    <main class="workspace" id="main" tabindex="-1">
       <iframe
         class="screen"
         id="screen"

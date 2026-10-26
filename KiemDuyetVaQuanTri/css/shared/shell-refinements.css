@@ -188,3 +188,31 @@
   max-width: 100%;
   overflow-x: auto;
 }
+
+.skip-link {
+  position: fixed;
+  top: -48px;
+  left: 16px;
+  z-index: 20;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: var(--paper);
+  color: var(--navy);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 6px 18px rgba(28, 41, 54, .18);
+}
+.skip-link:focus {
+  top: 12px;
+}
+@media (min-width:681px) {
+  .skip-link {
+    left: 274px;
+  }
+}
+@media (min-width:681px) and (max-width:1100px) {
+  .skip-link {
+    left: 242px;
+  }
+}
