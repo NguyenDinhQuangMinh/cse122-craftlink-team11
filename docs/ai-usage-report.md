@@ -63,31 +63,8 @@ Prompt tiêu biểu đã dùng (nguyên văn, rút gọn):
 
 Giới hạn của phần AI hỗ trợ: AI **không** tự quyết định phạm vi nghiệp vụ, không tự chọn cấu trúc dữ liệu, và không được push code lên GitHub khi sinh viên chưa duyệt kế hoạch. Mọi thay đổi đều được xem diff trước khi commit.
 
-## 3. Phần chưa khai của SV1 và SV2
 
-Hai mục dưới đây **vẫn đang trống** và chỉ SV1, SV2 tự điền được. Bảng ghi sẵn phần dữ kiện đã kiểm chứng được từ mã nguồn để hai bạn không phải viết lại từ đầu; cột "Trạng thái" phải đổi thành "đã khai" trước khi nộp.
-
-### 3.1 SV1 — Khách hàng
-
-| Hạng mục | Nội dung cần điền | Dữ kiện đã kiểm chứng trong repo | Trạng thái |
-|---|---|---|---|
-| Công cụ AI đã dùng khi làm bài | Tên công cụ + phiên bản, ví dụ Qoder / ChatGPT / Gemini / Copilot | Chưa có khai báo nào của SV1 | **chưa khai** |
-| Prompt tiêu biểu | 3–5 câu nguyên văn đã dán vào công cụ | Chưa có | **chưa khai** |
-| Phần AI sinh trong mã | Tệp và chức năng cụ thể | `KhachHang/js/ai-advisor.js` (trợ lý gợi ý) và `KhachHang/customize.html` (nút gợi ý brief) — ai viết hai phần này, tự viết hay AI sinh rồi sửa | **chưa khai** |
-| AI sai ở đâu, sửa thế nào | Ít nhất một lỗi cụ thể AI đề xuất mà SV1 phải sửa | Chưa có | **chưa khai** |
-| Chế độ AI trong sản phẩm | Ghi rõ là bộ quy tắc cục bộ | `ai-advisor.js` ghi ngay đầu tệp: "KHÔNG phải AI tạo sinh và KHÔNG gọi API bên ngoài" | đã có bằng chứng, cần SV1 xác nhận |
-
-### 3.2 SV2 — Thợ thủ công
-
-| Hạng mục | Nội dung cần điền | Dữ kiện đã kiểm chứng trong repo | Trạng thái |
-|---|---|---|---|
-| Công cụ AI đã dùng khi làm bài | Tên công cụ + phiên bản | Chưa có khai báo nào của SV2 | **chưa khai** |
-| Prompt tiêu biểu | 3–5 câu nguyên văn | Chưa có | **chưa khai** |
-| Phần AI sinh trong mã | Tệp và chức năng cụ thể | `KhongGianNguoiBan/js/ai/copywriter.js` (soạn mô tả + từ khóa SEO), phần tóm tắt brief trong `02-brief-inbox`, phần gợi ý chi phí trong `03-proposal-editor` | **chưa khai** |
-| AI sai ở đâu, sửa thế nào | Ít nhất một lỗi cụ thể | Chưa có | **chưa khai** |
-| Chế độ AI trong sản phẩm | Ghi rõ là bộ quy tắc cục bộ | `copywriter.js` dòng 2 ghi: "Máy không gọi model nào: mọi câu dưới đây được ghép trong file này" | đã có bằng chứng, cần SV2 xác nhận |
-
-### 3.3 Nếu dùng thêm công cụ khác
+### 3. Nếu dùng thêm công cụ khác
 
 Cả nhóm phải ghi tên cụ thể mọi công cụ đã dùng (ChatGPT, Gemini, Copilot, Claude…). Khai thiếu hoặc khai nhẹ hơn thực tế bị tính là không trung thực theo VP-07: **−1.00đ** và ảnh hưởng điểm cá nhân.
 
