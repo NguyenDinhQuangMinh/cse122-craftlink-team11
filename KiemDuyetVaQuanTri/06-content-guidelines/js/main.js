@@ -106,10 +106,10 @@ $("#groupFilter").addEventListener("change", render);
 $("#ruleSort").addEventListener("change", render);
 form.elements.title.addEventListener("input", () => clearFieldError(form.elements.title, $("#titleError")));
 form.elements.text.addEventListener("input", () => clearFieldError(form.elements.text, $("#textError")));
-$("#globalSearch").addEventListener("input", event => {
+$("#globalSearch").addEventListener("input", CraftLinkAPI.debounce(event => {
   $("#search").value = event.target.value;
   render();
-});
+}));
 
 $("#rules").addEventListener("click", event => {
   if (event.target.closest('[data-action="clear-search"]')) {

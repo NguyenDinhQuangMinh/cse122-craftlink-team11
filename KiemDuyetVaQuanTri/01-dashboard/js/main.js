@@ -39,9 +39,9 @@ function wireHeader(searchHandler) {
     });
   });
 
-  $("#globalSearch").addEventListener("input", e => {
+  $("#globalSearch").addEventListener("input", CraftLinkAPI.debounce(e => {
     if (searchHandler) searchHandler(e.target.value);
-  });
+  }));
 }
 
 function esc(value) {
