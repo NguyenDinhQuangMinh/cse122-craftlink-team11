@@ -172,3 +172,14 @@
     display: none;
   }
 }
+
+.page-footer {
+  margin-top: 20px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 12px;
+}
+.page-footer p {
+  margin: 0;
+}
