@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="vi"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CraftLink — Hồ sơ gian hàng</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Fraunces:wght@600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="https://cdn.tailwindcss.com/3.4.17" type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.577.0/dist/umd/lucide.min.js" type="text/javascript"></script>
+ </head>
+ <body style="background: rgb(247, 243, 237);">
+  <div class="shell">
+   <aside class="sidebar" aria-label="Điều hướng CraftLink">
+    <div class="brand" style="font-size: 27px;">CraftLink</div>
+    <div class="side-caption">KHÔNG GIAN NGƯỜI BÁN</div>
+    <nav aria-label="Màn hình"><a class="nav-btn" href="../01-listing-management/index.html">Quản lý listing</a> <a class="nav-btn" href="../02-brief-inbox/index.html">Hòm thư brief</a> <a class="nav-btn" href="../03-proposal-editor/index.html">Proposal</a> <a class="nav-btn active" href="../04-shop-profile/index.html" aria-current="page">Hồ sơ gian hàng</a>
+    </nav>
+    <p class="side-note" style="color: rgb(217, 200, 180);">CraftLink đồng hành cùng người làm thủ công trong mỗi cơ hội hợp tác.</p>
+   </aside>
+   <div class="workspace">
+    <div class="page">
+     <header class="topbar">
+      <div id="breadcrumb" class="breadcrumb" aria-live="polite">
+       Bảng điều khiển / Hồ sơ gian hàng
+      </div><span class="account">Nhà Gốm An Nhiên</span>
+     </header>
+     <main>
+      <section id="profile" class="view active" aria-labelledby="profile-title">
+       <div class="heading-row">
+        <div>
+         <div class="eyebrow" style="color: var(--terra);">HỒ SƠ GIAN HÀNG</div>
+         <h1 id="profile-title">Thiết lập gian hàng</h1>
+         <p class="subtle">Tên xưởng và câu chuyện thương hiệu hiện ở thanh trên của cả bốn màn hình người bán.</p>
+        </div>
+        <div class="heading-meta"><span id="profile-status" class="chip draft">Chưa có thay đổi</span><button id="reset-profile" type="button" class="btn">Khôi phục mặc định</button>
+        </div>
+       </div>
+       <div class="editor-layout">
+        <div class="editor-main">
+         <form id="profile-form" class="surface editor-card" novalidate>
+          <div class="eyebrow">THÔNG TIN XƯỞNG</div>
+          <h2 class="mt-2">Hồ sơ công khai</h2>
+          <div class="form-group mt-4">
+           <label for="pf-name" class="form-label">Tên xưởng</label><input id="pf-name" class="field" maxlength="60" required autocomplete="organization">
+          </div>
+          <div class="form-grid">
+           <div class="form-group">
+            <label for="pf-craft" class="form-label">Chuyên môn</label><input id="pf-craft" class="field" maxlength="40" list="craft-options" autocomplete="off">
+            <datalist id="craft-options">
+             <option value="Gốm sứ"></option>
+             <option value="Mây tre"></option>
+             <option value="Trang trí"></option>
+             <option value="Dệt may"></option>
+             <option value="Mộc"></option>
+            </datalist>
+           </div>
+           <div class="form-group">
+            <label for="pf-phone" class="form-label">Điện thoại liên hệ</label><input id="pf-phone" class="field" type="tel" maxlength="20" inputmode="tel" autocomplete="tel">
+           </div>
+          </div>
+          <div class="form-grid">
+           <div class="form-group">
+            <label for="pf-email" class="form-label">Email gian hàng</label><input id="pf-email" class="field" type="email" maxlength="60" spellcheck="false" autocomplete="email">
+           </div>
+           <div class="form-group">
+            <label for="pf-address" class="form-label">Địa chỉ xưởng</label><input id="pf-address" class="field" maxlength="120" autocomplete="street-address">
+           </div>
+          </div>
+          <div class="form-group">
+           <label for="pf-story" class="form-label">Câu chuyện thương hiệu</label><textarea id="pf-story" class="field" rows="6" maxlength="700"></textarea>
+           <p class="subtle mt-2"><span id="pf-story-count">0</span>/700 ký tự. Nên nói rõ công đoạn làm tay và thời gian hoàn thiện một sản phẩm.</p>
+          </div>
+          <div class="divider"></div>
+          <div class="form-group">
+           <label for="pf-avatar-file" class="form-label">Ảnh đại diện</label>
+           <div class="image-picker"><span class="thumb-ph image-preview" id="pf-avatar-ph" aria-hidden="true">CL</span> <img id="pf-avatar-preview" class="image-preview hidden-state" alt="Xem trước ảnh đại diện gian hàng">
+            <div class="image-picker-controls"><input id="pf-avatar-file" class="field" type="file" accept=".png,.jpg,.jpeg,.webp"> <input id="pf-avatar-url" class="field" type="text" spellcheck="false" placeholder="Hoặc dán URL ảnh (https://…)"> <button id="pf-avatar-clear" type="button" class="small-btn">Xóa ảnh</button>
+            </div>
+           </div>
+           <p id="pf-avatar-feedback" class="subtle mt-2">Chưa có ảnh đại diện. Chọn tệp hoặc dán URL.</p>
+          </div>
+          <div class="form-group">
+           <label for="pf-cover-file" class="form-label">Ảnh bìa gian hàng</label>
+           <div class="image-picker"><span class="thumb-ph image-preview" id="pf-cover-ph" aria-hidden="true">Bìa</span> <img id="pf-cover-preview" class="image-preview hidden-state" alt="Xem trước ảnh bìa gian hàng">
+            <div class="image-picker-controls"><input id="pf-cover-file" class="field" type="file" accept=".png,.jpg,.jpeg,.webp"> <input id="pf-cover-url" class="field" type="text" spellcheck="false" placeholder="Hoặc dán URL ảnh (https://…)"> <button id="pf-cover-clear" type="button" class="small-btn">Xóa ảnh</button>
+            </div>
+           </div>
+           <p id="pf-cover-feedback" class="subtle mt-2">Chưa có ảnh bìa. Chọn tệp hoặc dán URL.</p>
+          </div>
+          <ul id="pf-errors" class="advisor-list" aria-live="polite"></ul>
+          <div class="flex justify-end gap-2 mt-5"><button id="save-profile" type="submit" class="btn terra">Lưu hồ sơ</button>
+          </div>
+         </form>
+        </div>
+        <aside class="surface editor-card preview" aria-label="Xem trước hồ sơ gian hàng">
+         <div class="eyebrow">KHÁCH HÀNG THẤY GÌ</div>
+         <h2 class="mt-2">Gian hàng của bạn</h2>
+         <div class="reference-card mt-3"><img id="pv-cover" class="hidden-state" alt="Ảnh bìa gian hàng"> <span id="pv-cover-note">Chưa có ảnh bìa. Khu vực này sẽ hiện ảnh bạn chọn ở khung bên trái.</span>
+         </div>
+         <div class="customer-line"><span class="avatar" id="pv-avatar">AN</span> <img id="pv-avatar-img" class="image-preview hidden-state" alt="Ảnh đại diện gian hàng">
+          <div><strong id="pv-name">Nhà Gốm An Nhiên</strong>
+           <p class="subtle" id="pv-craft">Gốm sứ</p>
+          </div>
+         </div>
+         <p class="subtle mt-3" id="pv-story"></p>
+         <div class="divider"></div>
+         <div class="info-grid">
+          <div><small>ĐỊA CHỈ XƯỞNG</small><strong id="pv-address"></strong>
+          </div>
+          <div><small>ĐIỆN THOẠI</small><strong id="pv-phone"></strong>
+          </div>
+          <div><small>EMAIL</small><strong id="pv-email"></strong>
+          </div>
+          <div><small>CẬP NHẬT LÚC</small><strong id="pv-updated">Chưa lưu trong trình duyệt này</strong>
+          </div>
+         </div>
+         <p class="trace mt-4" id="pv-storage"></p>
+        </aside>
+       </div>
+      </section>
+     </main>
+    </div>
+   </div>
+  </div>
+  <div id="toast" class="toast hidden-state" role="status" aria-live="polite"></div>
+  <script src="../js/chung.js"></script>
+  <script src="js/main.js"></script>
+ </body>
+</html>

@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tạo tài khoản – CraftLink</title>
+    <meta name="description" content="Tạo tài khoản CraftLink để mua sắm, đặt làm riêng hoặc mở gian hàng thủ công." />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+  </head>
+  <body class="page-register" data-role="customer">
+    <header class="site-header">
+      <a class="brand" href="../01-dang-nhap/index.html" aria-label="CraftLink – Trang đăng nhập">
+        <span class="brand-mark"><svg class="ic"><use href="#i-vase" /></svg></span>CraftLink
+      </a>
+      <nav class="main-nav" aria-label="Điều hướng chính">
+        <a href="#" data-soon>Trang chủ</a>
+        <a href="#" data-soon>Khám phá</a>
+        <a href="#" data-soon>Về chúng tôi</a>
+        <a href="#" data-soon>Trợ giúp</a>
+      </nav>
+      <div class="header-actions"></div>
+    </header>
+
+    <main class="auth-main register-main">
+      <section class="auth-visual" aria-label="Giới thiệu">
+        <!-- Trang 4: Khách hàng -->
+        <div class="role-panel photo-panel" data-panel="customer">
+          <h2>Bắt đầu hành trình<br />khám phá <span class="accent-terra">đồ thủ công Việt</span></h2>
+          <div class="photo-grid">
+            <img src="../assets/img/product-mug.png" alt="Cốc gốm men xanh trên lót ly mây" />
+            <img src="../assets/img/product-vase.png" alt="Bình gốm men ngọc" />
+            <img src="../assets/img/product-tray.png" alt="Khay mây tre đan" />
+            <img src="../assets/img/product-bag.png" alt="Túi da thủ công" />
+          </div>
+        </div>
+
+        <!-- Trang 5: Nghệ nhân -->
+        <div class="role-panel artisan-intro" data-panel="artisan">
+          <p class="eyebrow">Mở gian hàng của bạn</p>
+          <h1>Tạo tài khoản Nghệ nhân</h1>
+          <p>Đăng sản phẩm, nhận brief và xây dựng câu chuyện thương hiệu riêng</p>
+          <div class="brief-card">
+            <h3>Nhận brief tùy biến</h3>
+            <ul>
+              <li><span class="tile"><svg class="ic"><use href="#i-file" /></svg></span><span><b>Nhận yêu cầu thiết kế</b>theo nhu cầu riêng</span></li>
+              <li><span class="tile"><svg class="ic"><use href="#i-message" /></svg></span><span><b>Trao đổi trực tiếp với</b>khách hàng</span></li>
+              <li><span class="tile"><svg class="ic"><use href="#i-box" /></svg></span><span><b>Đề xuất sản phẩm</b>và gửi proposal</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="auth-card" aria-label="Biểu mẫu tạo tài khoản">
+        <div class="role-tabs" role="tablist" aria-label="Chọn loại tài khoản">
+          <button class="role-tab" role="tab" type="button" data-role="customer" aria-selected="true">Khách Hàng</button>
+          <button class="role-tab" role="tab" type="button" data-role="artisan" aria-selected="false">Thợ Thủ Công / Nghệ Nhân</button>
+          <button class="role-tab" role="tab" type="button" data-role="admin" aria-selected="false">Quản Trị Viên &amp; Kiểm Duyệt</button>
+        </div>
+
+        <div class="card-head" data-for="customer">
+          <p class="eyebrow">Bắt đầu hành trình của bạn</p>
+          <h1>Tạo tài khoản CraftLink</h1>
+          <p class="subtitle">Khám phá sản phẩm và đặt làm riêng theo cách của bạn</p>
+        </div>
+
+        <form class="form" id="registerForm" novalidate>
+          <div class="segmented" role="radiogroup" aria-label="Mục đích sử dụng">
+            <button class="seg-btn" type="button" role="radio" data-role="customer" aria-checked="true"><svg class="ic"><use href="#i-bag" /></svg>Tôi muốn Mua hàng</button>
+            <button class="seg-btn" type="button" role="radio" data-role="artisan" aria-checked="false"><svg class="ic"><use href="#i-palette" /></svg>Tôi là Thợ thủ công (Bán hàng)</button>
+          </div>
+
+          <div class="form-alert" id="registerAlert" role="alert" hidden></div>
+
+          <div class="form-row">
+            <div class="field">
+              <label for="fullName">Họ và tên</label>
+              <input class="input" id="fullName" name="fullName" autocomplete="name" placeholder="Nhập họ và tên của bạn" required />
+              <p class="error-text"></p>
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input class="input" id="email" name="email" type="email" autocomplete="email" placeholder="Nhập email của bạn" required />
+              <p class="error-text"></p>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="phone">Số điện thoại</label>
+            <input class="input" id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="Nhập số điện thoại của bạn" required />
+            <p class="error-text"></p>
+          </div>
+
+          <div class="form-row">
+            <div class="field">
+              <label for="password">Mật khẩu</label>
+              <div class="control">
+                <input class="input" id="password" name="password" type="password" autocomplete="new-password" placeholder="••••••••" required />
+                <button class="pw-toggle" type="button" aria-label="Hiện mật khẩu" aria-pressed="false"><svg class="ic"><use href="#i-eye" /></svg></button>
+              </div>
+              <p class="error-text"></p>
+            </div>
+            <div class="field">
+              <label for="confirm">Xác nhận mật khẩu</label>
+              <div class="control">
+                <input class="input" id="confirm" name="confirm" type="password" autocomplete="new-password" placeholder="••••••••" required />
+                <button class="pw-toggle" type="button" aria-label="Hiện mật khẩu" aria-pressed="false"><svg class="ic"><use href="#i-eye" /></svg></button>
+              </div>
+              <p class="error-text"></p>
+            </div>
+          </div>
+
+          <p class="hint">Dùng ít nhất 8 ký tự, gồm chữ và số</p>
+          <div class="strength" id="strength" data-score="0">
+            <div class="strength-bars" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+            <div class="strength-labels" aria-hidden="true"><span>Yếu</span><span>Trung bình</span><span>Tốt</span><span>Mạnh</span></div>
+            <span class="sr-only" aria-live="polite"></span>
+          </div>
+
+          <div class="artisan-group" data-for="artisan">
+            <p class="group-title">Thông tin gian hàng</p>
+            <div class="form-row">
+              <div class="field">
+                <label for="shop">Tên Xưởng / Gian hàng</label>
+                <input class="input" id="shop" name="shop" placeholder="Nhập tên xưởng hoặc gian hàng" />
+                <p class="error-text"></p>
+              </div>
+              <div class="field">
+                <span class="field-label" id="specialty-label">Chuyên môn thủ công</span>
+                <div class="select" id="specialty">
+                  <input type="hidden" name="specialty" />
+                  <button class="select-btn" type="button" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="specialty-label specialty-value">
+                    <span id="specialty-value">Chọn chuyên môn</span><svg class="ic"><use href="#i-chevron-down" /></svg>
+                  </button>
+                  <ul class="select-list" role="listbox" aria-labelledby="specialty-label" tabindex="-1" hidden>
+                    <li role="option" aria-selected="false">Gốm sứ<svg class="ic"><use href="#i-check" /></svg></li>
+                    <li role="option" aria-selected="false">Đồ gỗ<svg class="ic"><use href="#i-check" /></svg></li>
+                    <li role="option" aria-selected="false">Đồ da<svg class="ic"><use href="#i-check" /></svg></li>
+                    <li role="option" aria-selected="false">Trang sức<svg class="ic"><use href="#i-check" /></svg></li>
+                    <li role="option" aria-selected="false">Mây tre đan<svg class="ic"><use href="#i-check" /></svg></li>
+                    <li role="option" aria-selected="false">Dệt may<svg class="ic"><use href="#i-check" /></svg></li>
+                  </ul>
+                </div>
+                <p class="error-text"></p>
+              </div>
+            </div>
+            <p class="hint">Bạn có thể cập nhật thông tin chi tiết sau khi tạo tài khoản.</p>
+          </div>
+
+          <div class="field">
+            <label class="checkbox terms">
+              <input type="checkbox" id="terms" name="terms" />
+              <span>Tôi đồng ý với <a class="link" href="#" data-soon>Điều khoản dịch vụ &amp; Chính sách nội dung</a> của CraftLink</span>
+            </label>
+            <p class="error-text"></p>
+          </div>
+
+          <button class="btn btn-sage btn-block" id="registerBtn" type="submit">Tạo Tài Khoản</button>
+        </form>
+
+        <p class="switch-line" style="display: flex">Đã có tài khoản? <a class="link" id="loginLink" href="../01-dang-nhap/index.html">Đăng nhập</a></p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a href="../../docs/project-introduction.md"><svg class="ic"><use href="#i-book" /></svg>Tài liệu BTL (docs/)</a>
+      <a href="../../docs/screen-inventory.md"><svg class="ic"><use href="#i-clipboard-list" /></svg>Bảng phân công 18 Tasks</a>
+      <a href="mailto:hotro@craftlink.vn"><svg class="ic"><use href="#i-headset" /></svg>Liên hệ hỗ trợ</a>
+    </footer>
+
+    <script src="../assets/js/common.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Đăng nhập CraftLink</title>
+    <meta name="description" content="CraftLink – chọn trang đăng nhập theo vai trò: khách hàng, nghệ nhân hoặc quản trị." />
+    <style>
+      body { font-family: "DM Sans", sans-serif; background: #f7f3ed; color: #39291f; margin: 0; padding: 40px 6vw; }
+      h1 { font-family: Fraunces, serif; }
+      ul { list-style: none; padding: 0; display: flex; gap: 12px; flex-wrap: wrap; }
+      li a { display: block; padding: 10px 16px; border-radius: 10px; background: #fffefa; border: 1px solid #e9ded1; text-decoration: none; color: #bf623c; }
+    </style>
+  </head>
+  <body>
+    <h1>Chọn trang đăng nhập theo vai trò</h1>
+    <p>Mỗi vai một trang riêng. Trang này chỉ chuyển tiếp theo tham số <code>?role=</code> mà trang đăng ký gửi sang.</p>
+    <ul>
+      <li><a href="khach-hang.html">Khách hàng</a></li>
+      <li><a href="nghe-nhan.html">Thợ thủ công / Nghệ nhân</a></li>
+      <li><a href="quan-tri.html">Quản trị viên &amp; Kiểm duyệt</a></li>
+    </ul>
+    <script>
+      const p = new URLSearchParams(location.search);
+      const trang = { customer: "khach-hang.html", artisan: "nghe-nhan.html", admin: "quan-tri.html" }[p.get("role")];
+      if (trang) {
+        p.delete("role");
+        const duoi = p.toString();
+        location.replace(trang + (duoi ? "?" + duoi : ""));
+      }
+    </script>
+  </body>
+</html>

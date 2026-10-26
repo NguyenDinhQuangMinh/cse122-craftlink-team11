@@ -1,0 +1,966 @@
+/* CSS DUOC GIU TRONG MOT FILE;
+cac muc duoi day duoc chia bang ghi chu de de thuyet trinh. */
+/* 1. MÀU SẮC VÀ THIẾT LẬP CHUNG */
+:root {
+  --cream:#f7f3ed;
+  --paper:#fffefa;
+  --espresso:#101b2d;
+  --ink:#39291f;
+  --muted:#796f64;
+  --border:#e9ded1;
+  --terra:#bf623c;
+  --green:#54845b;
+  --sage:#edf5eb;
+  --beige:#eee7dd;
+}
+* {
+  box-sizing:border-box;
+}
+body {
+  margin:0;
+  width:100%;
+  font-family:"DM Sans",sans-serif;
+  color:var(--ink);
+}
+button,input,select,textarea {
+  font:inherit;
+}
+button {
+  cursor:pointer;
+}
+button:disabled {
+  opacity:.55;
+  cursor:not-allowed;
+}
+:focus-visible {
+  outline:3px solid #cf8659;
+  outline-offset:2px;
+}
+/* 2. BỐ CỤC CHÍNH: THANH BÊN, KHU VỰC LÀM VIỆC, TIÊU ĐỀ */
+    .shell {
+  width:100%;
+  min-height:calc(100 * min(var(--vh,1vh),1vh));
+  display:flex;
+  align-items:stretch;
+}
+.sidebar {
+  width:238px;
+  flex:none;
+  background:var(--espresso);
+  color:#fbf4e9;
+  padding:26px 14px;
+  display:flex;
+  flex-direction:column;
+  position:sticky;
+  top:0;
+  align-self:stretch;
+  min-height:calc(100 * min(var(--vh,1vh),1vh));
+  height:auto;
+}
+.brand {
+  font-family:Fraunces,serif;
+  font-weight:700;
+  letter-spacing:-.04em;
+  padding:2px 13px 28px;
+}
+.side-caption {
+  font-size:10px;
+  letter-spacing:.16em;
+  font-weight:700;
+  padding:0 13px 12px;
+}
+.nav-btn {
+  display:block;
+  width:100%;
+  border:0;
+  border-radius:9px;
+  background:transparent;
+  color:#ffffff;
+  text-align:left;
+  padding:13px 14px;
+  font-size:13px;
+  font-weight:600;
+  margin:3px 0;
+}
+.nav-btn:hover {
+  background:#1c2a40;
+}
+.nav-btn.active {
+  background:var(--terra);
+  color:#ffffff;
+}
+.side-note {
+  margin-top:auto;
+  border-top:1px solid #34445b;
+  padding:18px 12px 3px;
+  font-size:12px;
+  line-height:1.6;
+}
+.workspace {
+  flex:1;
+  min-width:0;
+  padding:22px clamp(18px,3vw,48px) 48px;
+}
+.page {
+  max-width:1440px;
+  margin:auto;
+}
+.topbar {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  padding:3px 0 21px;
+  border-bottom:1px solid var(--border);
+}
+.breadcrumb {
+  font-size:12px;
+  color:var(--muted);
+}
+.account {
+  border:1px solid var(--border);
+  border-radius:30px;
+  padding:8px 13px;
+  font-size:12px;
+}
+.view {
+  display:none;
+}
+.view.active {
+  display:block;
+}
+.heading-row {
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:16px;
+  flex-wrap:wrap;
+  margin:28px 0 23px;
+}
+.eyebrow {
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.14em;
+}
+.heading-row h1 {
+  margin:8px 0;
+  font-size:clamp(27px,3vw,38px);
+  letter-spacing:-.045em;
+  line-height:1.17;
+}
+h2 {
+  font-size:19px;
+  letter-spacing:-.025em;
+  margin:0 0 12px;
+}
+h3 {
+  font-size:15px;
+  margin:0 0 9px;
+}
+.subtle {
+  font-size:13px;
+  line-height:1.65;
+  color:var(--muted);
+  margin:0;
+}
+.surface {
+  background:var(--paper);
+  border:1px solid var(--border);
+  border-radius:13px;
+  box-shadow:0 4px 17px #48301b08;
+}
+/* 3. NÚT BẤM, Ô NHẬP LIỆU, NHÃN TRẠNG THÁI */
+    .btn {
+  border:1px solid #d9cbbc;
+  border-radius:8px;
+  background:var(--beige);
+  color:var(--ink);
+  min-height:42px;
+  padding:9px 15px;
+  font-size:12px;
+  font-weight:700;
+  transition:filter .18s,transform .18s;
+}
+.btn:hover,.small-btn:hover {
+  filter:brightness(.95);
+  transform:translateY(-1px);
+}
+.btn.terra {
+  background:var(--terra);
+  border-color:var(--terra);
+  color:#fff;
+}
+.btn.green {
+  background:var(--green);
+  border-color:var(--green);
+  color:#fff;
+}
+.btn.active-toggle {
+  background:#f8e9df;
+  border-color:#d6aa93;
+  color:#a84929;
+}
+.small-btn {
+  border:0;
+  background:transparent;
+  color:#a84929;
+  padding:7px 5px;
+  font-size:12px;
+  font-weight:700;
+}
+.field {
+  width:100%;
+  min-height:42px;
+  border:1px solid #dcd0c2;
+  border-radius:8px;
+  background:#fff;
+  color:var(--ink);
+  padding:9px 11px;
+  outline:none;
+}
+.field:focus {
+  border-color:var(--terra);
+  box-shadow:0 0 0 3px #bf623c20;
+}
+.form-label {
+  display:block;
+  font-size:11px;
+  font-weight:700;
+  color:#786a5e;
+  margin-bottom:6px;
+}
+.form-group {
+  margin-bottom:16px;
+}
+.form-grid,.info-grid {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:14px;
+}
+.info-grid small {
+  display:block;
+  font-size:11px;
+  font-weight:700;
+  color:var(--muted);
+  margin-bottom:6px;
+}
+.info-grid strong {
+  font-size:13px;
+}
+.divider {
+  border-top:1px solid var(--border);
+  margin:20px 0;
+}
+.chip {
+  display:inline-block;
+  border-radius:30px;
+  padding:5px 10px;
+  font-size:11px;
+  font-weight:700;
+  white-space:nowrap;
+}
+.chip.live,.chip.replied,.chip.ai,.chip.sent {
+  background:#e9f3e8;
+  color:#3f7049;
+}
+.chip.pending,.chip.new {
+  background:#fae8dc;
+  color:#a44d2e;
+}
+.chip.draft,.chip.review {
+  background:#eee8e0;
+  color:#736458;
+}
+.hidden-state {
+  display:none!important;
+}
+/* 4. PHẦN 1 — QUẢN LÝ LISTING: THẺ THỐNG KÊ, BẢNG VÀ LƯỚI */
+    .metrics {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+  margin-bottom:18px;
+}
+.metric {
+  padding:19px 21px;
+}
+.metric span {
+  font-size:12px;
+  color:var(--muted);
+}
+.metric strong {
+  display:block;
+  font:700 29px Fraunces,serif;
+  color:var(--terra);
+  margin-top:5px;
+}
+.toolbar {
+  padding:15px;
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:9px;
+  margin-bottom:18px;
+}
+.toolbar .search {
+  flex:1;
+  min-width:190px;
+}
+.toolbar select {
+  width:auto;
+  min-width:165px;
+}
+.section-line {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin:22px 0 11px;
+  flex-wrap:wrap;
+}
+.section-line h2,.section-line h3 {
+  margin:0;
+}
+.listing-head,.listing-row {
+  display:grid;
+  grid-template-columns:minmax(190px,2.2fr) .8fr .9fr .6fr 1fr .8fr 1.55fr;
+  gap:10px;
+  align-items:center;
+}
+.listing-head {
+  padding:13px 17px;
+  border-bottom:1px solid var(--border);
+  font-size:10px;
+  font-weight:700;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+.listing-row {
+  padding:13px 17px;
+  border-bottom:1px solid var(--border);
+  font-size:12px;
+}
+.listing-row:last-child {
+  border:0;
+}
+.product {
+  display:flex;
+  align-items:center;
+  gap:11px;
+  min-width:0;
+}
+.product img {
+  width:57px;
+  height:57px;
+  object-fit:cover;
+  border-radius:8px;
+  flex:none;
+  background:var(--beige);
+}
+.product strong {
+  display:block;
+  line-height:1.35;
+}
+.product small {
+  display:block;
+  color:var(--muted);
+  margin-top:4px;
+}
+/* 4b. ANH LISTING: O DAI DIEN CHO TREN + HOP CHON ANH */
+    .thumb-ph {
+  width:57px;
+  height:57px;
+  flex:none;
+  border-radius:8px;
+  display:grid;
+  place-items:center;
+  background:var(--beige);
+  color:#a08a76;
+  font-size:11px;
+  font-weight:700;
+}
+.listing-grid .product .thumb-ph {
+  width:100%;
+  height:150px;
+  margin-bottom:10px;
+}
+.image-picker {
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+}
+.image-preview {
+  width:82px;
+  height:82px;
+  flex:none;
+  border-radius:9px;
+  border:1px solid var(--border);
+  background-color:var(--beige);
+  object-fit:cover;
+}
+#new-image-placeholder {
+  display:grid;
+  place-items:center;
+  color:#a08a76;
+  font-size:11px;
+  font-weight:700;
+}
+.image-picker-controls {
+  flex:1;
+  min-width:0;
+  display:grid;
+  gap:8px;
+}
+.image-picker-controls input[type=file] {
+  padding:8px;
+  font-size:12px;
+}
+#clear-image {
+  justify-self:start;
+  padding-left:0;
+}
+.actions {
+  display:flex;
+  flex-wrap:wrap;
+  gap:0 6px;
+}
+.listing-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(235px,1fr));
+  gap:15px;
+  padding:15px;
+}
+.listing-grid .listing-head {
+  display:none;
+}
+.listing-grid .listing-row {
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+  gap:10px;
+  border:1px solid var(--border);
+  border-radius:11px;
+  padding:12px;
+}
+.listing-grid .product {
+  display:block;
+}
+.listing-grid .product img {
+  width:100%;
+  height:150px;
+  margin-bottom:10px;
+}
+.listing-grid .actions {
+  border-top:1px solid var(--border);
+  padding-top:7px;
+}
+.empty {
+  padding:46px 20px;
+  text-align:center;
+  color:var(--muted);
+}
+/* 5. PHẦN 2 — HÒM THƯ BRIEF: DANH SÁCH VÀ CHI TIẾT */
+    .brief-layout {
+  display:grid;
+  grid-template-columns:minmax(285px,36%) minmax(0,1fr);
+  gap:18px;
+  align-items:start;
+}
+.brief-list {
+  overflow:hidden;
+}
+.brief-list-top {
+  padding:17px;
+  border-bottom:1px solid var(--border);
+}
+.brief-list-top .field+.field {
+  margin-top:9px;
+}
+.brief-item {
+  display:flex;
+  gap:11px;
+  width:100%;
+  text-align:left;
+  background:transparent;
+  border:0;
+  border-bottom:1px solid var(--border);
+  padding:17px;
+  transition:background .2s;
+}
+.brief-item:hover,.brief-item.selected {
+  background:#fcf0e7;
+}
+.brief-item.selected {
+  box-shadow:inset 3px 0 var(--terra);
+}
+.brief-item-content {
+  min-width:0;
+}
+.avatar {
+  display:grid;
+  place-items:center;
+  flex:none;
+  width:39px;
+  height:39px;
+  border-radius:50%;
+  background:#eadccc;
+  color:#76503a;
+  font-size:12px;
+  font-weight:700;
+}
+.brief-item strong {
+  font-size:13px;
+}
+.brief-item p {
+  font-size:12px;
+  margin:4px 0;
+}
+.brief-item small {
+  font-size:11px;
+  color:var(--muted);
+}
+.unread {
+  display:inline-block;
+  width:7px;
+  height:7px;
+  background:var(--terra);
+  border-radius:50%;
+  margin-left:5px;
+}
+.brief-detail,.editor-card,.preview {
+  padding:24px;
+}
+.detail-head {
+  display:flex;
+  justify-content:space-between;
+  align-items:start;
+  gap:12px;
+  flex-wrap:wrap;
+}
+.customer-line {
+  display:flex;
+  align-items:center;
+  gap:9px;
+  margin-top:12px;
+}
+.reference-row {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:10px;
+}
+.reference-card {
+  min-width:0;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:9px;
+  overflow:hidden;
+}
+.reference-card img {
+  display:block;
+  width:100%;
+  height:90px;
+  object-fit:cover;
+}
+.reference-card span {
+  display:block;
+  padding:8px;
+  font-size:11px;
+}
+.ai-box {
+  background:var(--sage);
+  border:1px solid #d4e4d0;
+  border-radius:11px;
+  padding:18px;
+}
+.ai-box p {
+  font-size:13px;
+  line-height:1.65;
+  color:#47644a;
+}
+/* 5b. KET QUA TU VAN CHI PHI & TIEN DO */
+    .advisor-list {
+  list-style:none;
+  margin:12px 0 0;
+  padding:0;
+  display:grid;
+  gap:8px;
+}
+.advisor-list li {
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:8px;
+  border:1px solid #d4e4d0;
+  border-radius:9px;
+  background:#fff;
+  padding:9px 11px;
+}
+.advisor-tag {
+  flex:none;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:#54845b;
+}
+.advisor-text {
+  flex:1;
+  min-width:180px;
+  font-size:12.5px;
+  line-height:1.55;
+  color:#3f5a43;
+}
+.advisor-warn {
+  border-color:#e6b48a;
+  background:#fdf5ee;
+}
+.advisor-warn .advisor-tag {
+  color:#a84929;
+}
+.advisor-warn .advisor-text {
+  color:#7d4a2a;
+}
+.advisor-tip .advisor-tag {
+  color:#7a6a3f;
+}
+.advisor-apply {
+  margin-left:auto;
+  flex:none;
+  border:1px solid #c9dccb;
+  border-radius:7px;
+  background:#fff;
+  color:#3f7049;
+  padding:5px 9px;
+  font-size:11px;
+  font-weight:700;
+  white-space:nowrap;
+}
+.criteria {
+  margin:8px 0 0;
+  padding-left:19px;
+  font-size:13px;
+  line-height:1.9;
+}
+.detail-note {
+  margin-top:18px;
+}
+.trace {
+  margin:0 0 16px;
+  padding:11px 13px;
+  border-radius:9px;
+  background:var(--sage);
+  border:1px solid #b9d5b3;
+  color:#3f7049;
+  font-size:12px;
+  line-height:1.6;
+}
+/* 6. PHẦN 3 — PROPOSAL: CÁC BƯỚC, BẢNG CHI PHÍ VÀ XEM TRƯỚC */
+    .steps {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:9px;
+  margin-bottom:19px;
+}
+.step {
+  display:flex;
+  gap:8px;
+  align-items:center;
+  border-bottom:2px solid #dfd3c5;
+  padding-bottom:11px;
+  color:#807367;
+  font-size:11px;
+}
+.step b {
+  display:grid;
+  place-items:center;
+  flex:none;
+  width:23px;
+  height:23px;
+  border-radius:50%;
+  background:#ece4da;
+}
+.step.done {
+  color:var(--green);
+  border-color:var(--green);
+}
+.step.done b {
+  background:var(--green);
+  color:#fff;
+}
+.step.current {
+  color:#a84929;
+  border-color:var(--terra);
+  font-weight:700;
+}
+.step.current b {
+  background:var(--terra);
+  color:#fff;
+}
+.editor-layout {
+  display:grid;
+  grid-template-columns:minmax(0,1.5fr) minmax(280px,1fr);
+  gap:18px;
+  align-items:start;
+}
+.scope-wrap {
+  overflow-x:auto;
+}
+.scope-table,.preview-table {
+  width:100%;
+  border-collapse:collapse;
+}
+.scope-table {
+  min-width:580px;
+}
+.scope-table th,.preview-table th {
+  text-align:left;
+  font-size:10px;
+  color:var(--muted);
+  padding:9px 4px;
+  border-bottom:1px solid var(--border);
+}
+.scope-table td {
+  padding:4px;
+}
+.scope-table td:nth-child(2) {
+  width:68px;
+}
+.scope-table td:nth-child(3) {
+  width:112px;
+}
+.scope-table td:nth-child(4) {
+  width:125px;
+}
+.scope-table td:last-child {
+  width:35px;
+}
+.preview-table td {
+  padding:9px 4px;
+  border-bottom:1px solid var(--border);
+  font-size:12px;
+}
+.preview-table td:last-child,.preview-table th:last-child {
+  text-align:right;
+}
+.upload-box {
+  border:1px dashed #cbb9a8;
+  border-radius:9px;
+  background:#fcfaf7;
+  padding:17px;
+}
+.upload-box input {
+  width:100%;
+  font-size:12px;
+}
+.preview {
+  position:sticky;
+  top:18px;
+}
+.preview-total {
+  font:700 27px Fraunces,serif;
+  color:var(--terra);
+}
+.proposal-actions {
+  position:sticky;
+  bottom:0;
+  z-index:3;
+  display:flex;
+  flex-wrap:wrap;
+  gap:9px;
+  justify-content:flex-end;
+  padding:15px;
+  margin-top:17px;
+  background:var(--paper);
+  border:1px solid var(--border);
+  border-radius:11px;
+  box-shadow:0 -5px 18px #48301b0c;
+}
+/* 6b. NHAN TRANG THAI PROPOSAL VA BAN GUI (BUOC 4) */
+    button.step {
+  width:100%;
+  background:none;
+  border-width:0 0 2px;
+  border-style:solid;
+  text-align:left;
+  padding:0 0 11px;
+  font:inherit;
+  font-size:12px;
+  cursor:default;
+}
+button.step:disabled {
+  opacity:1;
+  cursor:default;
+}
+button.step.done:not(:disabled) {
+  cursor:pointer;
+}
+button.step.done:not(:disabled):hover span {
+  text-decoration:underline;
+}
+.editor-main {
+  display:grid;
+  gap:16px;
+  min-width:0;
+}
+.brief-recap {
+  background:#fcf6ef;
+  border:1px solid var(--border);
+  border-radius:11px;
+  padding:15px 17px;
+  margin:6px 0 18px;
+}
+.brief-recap .criteria {
+  margin-top:12px;
+}
+.step-back {
+  margin-right:auto;
+}
+.heading-meta {
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:8px;
+}
+.back-link {
+  font-size:12px;
+  font-weight:700;
+  color:#a84929;
+  text-decoration:none;
+}
+.back-link:hover {
+  text-decoration:underline;
+}
+.send-panel {
+  padding:20px 22px 22px;
+  border-left:3px solid var(--green);
+}
+.send-panel h2 {
+  font-size:18px;
+}
+/* 7. CỬA SỔ THÔNG BÁO VÀ HỘP THOẠI */
+    .modal-backdrop {
+  position:fixed;
+  inset:0;
+  z-index:10;
+  display:grid;
+  place-items:center;
+  background:#24160eb3;
+  padding:16px;
+}
+.modal {
+  background:var(--paper);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:25px;
+  width:min(100%,480px);
+  max-height:calc(100 * min(var(--vh,1vh),1vh) - 32px);
+  overflow:auto;
+  box-shadow:0 20px 60px #1c110c40;
+}
+.toast {
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  z-index:20;
+  background:var(--espresso);
+  color:#fff;
+  border-radius:10px;
+  padding:13px 17px;
+  font-size:13px;
+  max-width:min(380px,calc(100% - 40px));
+  box-shadow:0 10px 30px #26150f35;
+}
+/* 8. MÀN HÌNH VỪA — ĐIỀU CHỈNH KHI CỬA SỔ NHỎ HƠN 1200PX */
+    @media(max-width:1200px) {
+  .listing-head {
+    display:none;
+  }
+  .listing-row {
+    grid-template-columns:2fr 1fr 1fr;
+  }
+  .listing-row .actions {
+    grid-column:1/-1;
+  }
+  .editor-layout {
+    grid-template-columns:1fr;
+  }
+  .preview {
+    position:static;
+  }
+}
+/* 9. ĐIỆN THOẠI / MÀN HÌNH NHỎ */
+    @media(max-width:760px) {
+  .shell {
+    display:block;
+  }
+  .sidebar {
+    position:static;
+    width:100%;
+    height:auto;
+    min-height:0;
+    padding:12px 14px;
+  }
+  .brand {
+    padding:3px 5px 10px;
+  }
+  .side-caption,.side-note {
+    display:none;
+  }
+  .sidebar nav {
+    display:flex;
+    gap:5px;
+    overflow-x:auto;
+  }
+  .nav-btn {
+    width:auto;
+    white-space:nowrap;
+    padding:10px;
+    font-size:12px;
+  }
+  .workspace {
+    padding:17px 15px 42px;
+  }
+  .brief-layout {
+    grid-template-columns:1fr;
+  }
+  .steps {
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+/* 10. ĐIỆN THOẠI RẤT NHỎ */
+    @media(max-width:520px) {
+  .metrics {
+    gap:7px;
+  }
+  .metric {
+    padding:12px;
+  }
+  .metric strong {
+    font-size:23px;
+  }
+  .account {
+    display:none;
+  }
+  .listing-row {
+    grid-template-columns:1fr 1fr;
+  }
+  .listing-row .product {
+    grid-column:1/-1;
+  }
+  .info-grid,.form-grid {
+    grid-template-columns:1fr;
+  }
+  .reference-row {
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+  .proposal-actions .btn {
+    flex:1;
+  }
+  .brief-detail,.editor-card,.preview {
+    padding:18px;
+  }
+}
+/* Dieu chinh link menu de hien thi giong nut bam ban dau. */
+.sidebar .nav-btn {
+  text-decoration: none;
+}
