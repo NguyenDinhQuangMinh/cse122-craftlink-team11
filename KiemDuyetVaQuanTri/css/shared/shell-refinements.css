@@ -183,3 +183,8 @@
 .page-footer p {
   margin: 0;
 }
+
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+}
