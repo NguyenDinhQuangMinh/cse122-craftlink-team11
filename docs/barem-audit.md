@@ -150,6 +150,52 @@ Barem (và checklist) đòi *cả ba thành viên dùng chung bảng màu, phôn
 * **Vì sao chưa sửa vội:** sáu màn quản trị đã được rà responsive + rà XSS theo bảng màu hiện tại; `KhachHang/`, `KhongGianNguoiBan/`, `DangNhapVaDangKy/` là mã của thành viên khác (nguyên tắc của nhóm: không sửa hộ màn của bạn). Gộp token hàng loạt sát giờ nộp sẽ làm hỏng toàn bộ kết quả đã kiểm chứng.
 * Cách trả lời khi bị hỏi: thừa nhận repo còn sáu bảng `:root`, chỉ ra hướng đã ghi ở `css/README.md` (hợp nhất token vào `css/style.css`, đổi dần sang biến chung, đo lại 320/375/768/1280 px cho 29 trang), và nêu rằng **trang landing + hai trang lỗi đã dùng chung một bảng token** làm bằng chứng cho khả năng hợp nhất.
 
+### 6.6 Đo trên CHÍNH BẢN CÔNG KHAI (checklist mục 5, 6, 19) — 27-10-2026
+
+Bổ sung quan trọng: các số đo trước đây lấy từ máy chủ tĩnh trên máy. Mục này đo trực tiếp trên `https://nguyendinhquangminh.github.io/cse122-craftlink-team11/`.
+
+**a) Mọi tham chiếu cục bộ được gọi bằng HTTP thật.** Duyệt cây `dev` + 46 tệp `.css`: **112 đích duy nhất** (từ `href`/`src`/`data-src` trong 29 tệp HTML và mọi `url()` trong CSS). Kết quả: **105 trả HTTP 200, 7 trả 404**. Bảy 404 trùng với bảng mục 6.1 + 4 đường dẫn `url()` đã ghi, và **không cái nào thuộc màn của SV3**:
+
+| Đích 404 trên Pages | Ai nạp nó |
+|---|---|
+| `DangNhapVaDangKy/01-dang-nhap/forgot-password.html` | 3 trang cổng đăng nhập của SV2 |
+| `KhachHang/css/forgot passwork.css` | `KhachHang/forgot password.html` (SV1) |
+| `KhachHang/js/auth-config.js`, `KhachHang/js/auth-service.js` | cùng trang trên (SV1) |
+| `DangNhapVaDangKy/assets/img/forgot-hero.png` | `DangNhapVaDangKy/assets/css/style.css` (SV2) |
+| `KhachHang/assest/img/img of forgot password.png` | `KhachHang/css/forgot password.css` (SV1) |
+| `KhachHang/img/hero-login.png` | `KhachHang/css/forgot password.css` (SV1) |
+
+Bốn dòng sau là **tài nguyên thật bị 404** (CSS/ảnh), đúng câu chữ chế tài của 7.3 ("link deploy bị lỗi 404 tài nguyên, −0.15đ") và đúng điều checklist mục 19 cấm. Người ngoài không sửa được thay: ba thư mục liên quan đều là mã của SV1/SV2.
+
+**b) Responsive 29 trang × 5 cỡ = 145 phép đo.** Cách đo: mở `index.html` của site thật, nạp từng trang trong iframe **cùng nguồn** đặt ở chiều rộng 320 / 375 / 640 / 768 / 1280 px, rồi lấy `documentElement.scrollWidth` so với `clientWidth`. Cỡ 640 px là đại diện trung thực cho "phóng to 200% trên màn 1280 px" mà checklist mục 6 yêu cầu (1280 ÷ 2 = 640). *Lưu ý phương pháp:* phép đo đầu tiên lấy cả `body.scrollWidth` nên báo nhầm hai trang quản trị tràn ngang; thực tế các trang đó đặt `html { overflow-x: clip }` và bản thân bảng rộng đã nằm trong hộp `overflow-x: auto`, nên **không có thanh cuộn ngang nào**. Số liệu dưới đây dùng `documentElement` — đơn vị đúng bằng thứ người xem nhìn thấy.
+
+Kết quả: **27/29 trang không cuộn ngang ở cả năm cỡ.** Hai trang còn lại đều của SV1 và chỉ hỏng ở cỡ 320 px:
+
+| Trang | 320 px | 375 px | 640 px | 768 px | 1280 px | Phần tử gây tràn |
+|---|---|---|---|---|---|---|
+| `KhachHang/customize.html` | **338** | 360 | ổn | ổn | ổn | `section.panel.customize-input-panel` |
+| `KhachHang/forgot password.html` | **323** | 360 | ổn | ổn | ổn | `button.pw-toggle` |
+
+Sửa đề xuất (một dòng CSS, không đụng logic): thêm `min-width: 0` cho `.customize-input-panel` (hoặc `overflow-wrap: anywhere` cho khối chứa) và `flex-shrink: 0`→`min-width:0` cho `.pw-toggle`. SV1 giữ tệp này, nên tôi không tự sửa.
+
+**c) Cấu trúc HTML + alt + nhãn (checklist mục 5) — quét 29 tệp HTML, bỏ phần chú thích.**
+* **Ảnh: 65 thẻ `<img>`, 0 thẻ thiếu `alt`.**
+* **Ô nhập: 85 thẻ `<input>` (không tính hidden/submit/button), 75 cái có `<label for>` trỏ đúng `id`, 10 cái còn lại có `aria-label`; 0 nhãn mồ côi** (tức không `<label for>` nào trỏ vào id không tồn tại).
+* Thiếu thẻ ngữ nghĩa còn **6/29** sau khi sửa `GopTrang.html` hôm nay (thêm `<header>` bao khối sidebar, thay `<aside class="sidebar">` bằng `<header class="sidebar">`; CSS chỉ định vị bằng lớp `.sidebar` nên không đổi hình dạng):
+
+| Tệp | Còn thiếu |
+|---|---|
+| `DangNhapVaDangKy/01-dang-nhap/index.html` | không `<header>`, `<nav>`, `<main>`, `<footer>` (SV2) |
+| `DangNhapVaDangKy/02-dang-ky/index.html` | **2 thẻ `<h1>`** (SV2) |
+| `KhongGianNguoiBan/01-listing-management/index.html` | không `<footer>` (SV2) |
+| `KhongGianNguoiBan/02-brief-inbox/index.html` | không `<footer>` (SV2) |
+| `KhongGianNguoiBan/03-proposal-editor/index.html` | không `<footer>` (SV2) |
+| `KhongGianNguoiBan/04-shop-profile/index.html` | không `<footer>` (SV2) |
+
+Sáu màn của SV3, hai trang lỗi `404/403` và landing `index.html` **đủ cả bốn thẻ ngữ nghĩa, đúng một `<h1>`**.
+
+**d) Bộ dữ liệu JSON thật (checklist mục 9).** Repo có **5 tệp `assets/data/*.json`**, tất cả trong `KiemDuyetVaQuanTri/`: `categories.json` **15** bản ghi, `guidelines.json` **15**, `products.json` **20**, `reports.json` **20**, `users.json` **20** — nằm trọn trong dải 15–25 mà barem đòi, không có `test 1`/Lorem ipsum. Hai phân hệ còn lại không dùng `.json`: SV1 lưu trên `localStorage` (`CART_KEY`, `FAVORITES_KEY`, `LAST_ID_KEY`, `LOG_KEY`), SV2 dùng `KHO_GIAN_HANG`, `USERS_KEY`, `SESSION_KEY`, `ATTEMPT_KEY`; barem cho phép "JSON / localStorage / MockAPI" nên cách này hợp lệ, chỉ khác đường dẫn ví dụ trong barem. Tổng cộng 97 lần gọi `localStorage` trên 14 tệp JS — đủ bằng chứng cho mục 11 (dữ liệu sống lại sau F5).
+
 ## 7. Gộp nhánh — ĐÃ thực hiện và push ngày 27-10-2026
 
 Chuỗi merge giữ nguyên lịch sử (merge commit, không squash):
@@ -180,21 +226,43 @@ Nhánh tạm `integration/test` từng tạo ngày 26-10 chỉ để đo xung đ
 
 **Cần cả nhóm đồng ý (một người bấm):** đóng PR #4 (`docs/sv1-sync` → `feature/sv3-admin-screens`, sai base, nội dung đã vào nhánh SV3). Nếu nhóm còn mở PR nào nữa (kể cả PR tài liệu), **người khác phải bấm Approve trước khi Merge** — đây là cách duy nhất để mục 7.2 có thêm bằng chứng, vì ba PR phân hệ đã gộp nên không còn cửa bổ sung Approve.
 
-**Cần SV1:** sửa 3 tham chiếu hỏng ở mục 6.1 dòng 5–7 và đổi tên `KhachHang/forgot password.html` + `css/forgot passwork.css` theo chuẩn `role-function-action`; quyết định xử lý `docs/ai-usage -report.md` (9 952 byte, tên có dấu cách, **nội dung khác** bản `docs/ai-usage-report.md` 17 074 byte — phải gộp chữ rồi mới xoá, không xoá một bên bừa bãi); xử lý `video.md` ở gốc repo (1 048 byte, bảng "STT 4/7/9") — trùng `videos/README.md`; xác nhận ánh xạ 3 video "4/7/9" và bổ sung phiên bản công cụ AI vào khai báo 3.1; tự sửa `docs/sv1-assignment.md` dòng 23 (đang ghi `common.js` không tồn tại — tệp **có tồn tại** ở `KhachHang/js/common.js`). Lưu ý riêng: **23 commit của SV1 trên `main` có 0 commit theo chuẩn Conventional Commits** (mục 3.2) — nếu bị hỏi Câu 4 thì giải thích là thao tác qua web GitHub, không phải không biết chuẩn.
+**Cần cả nhóm quyết (phát hiện ngày 27-10 khi rà checklist mục 4):** sản phẩm **không có bộ chuyển đổi giữa ba vai trò**. Landing `index.html` và `GopTrang.html` lo được hai đầu, nhưng từ một trang của SV1 không có liên kết nào sang phân hệ SV2/SV3 — demo liên vai đành phải quay về trang chủ hoặc gõ URL. Cách nhẹ nhất: một tệp `js/role-switcher.js` dùng chung (nút nổi ghi ba tên vai, đọc `cl_session` để biết vai hiện tại, điều hướng tới trang gốc của từng phân hệ) rồi **mỗi người thêm một dòng `<script>` vào trang của mình**. Tôi viết phần dùng chung và gắn vào các trang do SV3 giữ; 19 trang của SV1/SV2 phải chính các bạn cắm dòng đó (nguyên tắc không sửa màn của nhau).
 
-**Cần SV2:** đọc lại và xác nhận mục 3.2 của `docs/ai-usage-report.md` (nội dung đã chuyển từ báo cáo phân hệ sang, SV2 vẫn phải đứng tên); sửa **4** liên kết `forgot-password.html` (3 trong `DangNhapVaDangKy/01-dang-nhap/*.html` và 1 chuỗi trong `DangNhapVaDangKy/02-dang-ky/js/main.js:199`); chốt hướng xử lý cho sáu dòng 7–12 không có video (quay thêm, hoặc giữ cách ghi hiện tại trong `screen-inventory.md`: "Không quay riêng — nằm trong phạm vi demo SV2").
+**Cần SV1:** sửa 3 tham chiếu hỏng ở mục 6.1 dòng 5–7 và đổi tên `KhachHang/forgot password.html` + `css/forgot passwork.css` theo chuẩn `role-function-action`; **hai trang của SV1 là hai trang duy nhất trong 29 trang bị cuộn ngang ở cỡ 320 px** (đo trên bản công khai, mục 6.6b): `customize.html` tràn tới 338 px do `section.panel.customize-input-panel`, `forgot password.html` 323 px do `button.pw-toggle` — chỉ cần `min-width: 0` / `overflow-wrap: anywhere`; quyết định xử lý `docs/ai-usage -report.md` (9 952 byte, tên có dấu cách, **nội dung khác** bản `docs/ai-usage-report.md` 17 074 byte — phải gộp chữ rồi mới xoá, không xoá một bên bừa bãi); xử lý `video.md` ở gốc repo (1 048 byte, bảng "STT 4/7/9") — trùng `videos/README.md`; xác nhận ánh xạ 3 video "4/7/9" và bổ sung phiên bản công cụ AI vào khai báo 3.1; tự sửa `docs/sv1-assignment.md` dòng 23 (đang ghi `common.js` không tồn tại — tệp **có tồn tại** ở `KhachHang/js/common.js`). Lưu ý riêng: **23 commit của SV1 trên `main` có 0 commit theo chuẩn Conventional Commits** (mục 3.2) — nếu bị hỏi Câu 4 thì giải thích là thao tác qua web GitHub, không phải không biết chuẩn.
 
-**Đã xong trong ngày 26 và 27-10 (không còn là việc của ai):** 3 link video OBS của SV2 vào `videos/README.md` + `docs/screen-inventory.md` + `docs/sv2-assignment.md` (`90d5fe1`, `677849b`, `98000c6`); hai màn `404.html`/`403.html` + `css/error-pages.css` + `js/error-pages.js` + guard `KiemDuyetVaQuanTri/js/navigation.js` (`2ce1f23`); chuỗi gộp nhánh và bật Pages.
+**Cần SV2:** đọc lại và xác nhận mục 3.2 của `docs/ai-usage-report.md` (nội dung đã chuyển từ báo cáo phân hệ sang, SV2 vẫn phải đứng tên); sửa **4** liên kết `forgot-password.html` (3 trong `DangNhapVaDangKy/01-dang-nhap/*.html` và 1 chuỗi trong `DangNhapVaDangKy/02-dang-ky/js/main.js:199`) **cộng ảnh nền `DangNhapVaDangKy/assets/img/forgot-hero.png` đang 404 trên bản deploy**; **6 trang của SV2 thiếu thẻ ngữ nghĩa** theo bảng mục 6.6c (`01-dang-nhap/index.html` thiếu cả `<header> <nav> <main> <footer>`, `02-dang-ky/index.html` có **hai** `<h1>`, bốn trang `KhongGianNguoiBan/` thiếu `<footer>`) — toàn bộ là thẻ bao ngoài, không đụng logic; chốt hướng xử lý cho sáu dòng 7–12 không có video (quay thêm, hoặc giữ cách ghi hiện tại trong `screen-inventory.md`: "Không quay riêng — nằm trong phạm vi demo SV2").
 
-**Cả nhóm:** đổi 5 link Canva sang quyền "Bất kỳ ai có liên kết đều xem được" và mở thử bằng cửa sổ ẩn danh. Đo ngày 27-10: hai link dài vẫn ở dạng `/design/…/edit` (`README.md` dòng 171 và 175), ba link còn lại là kiểu rút gọn `canva.link/…` (dòng 172–174) nên **không nhìn URL mà biết được quyền xem** — phải mở thử bằng cửa sổ ẩn danh. `README.md` dòng 178 hiện tự ghi cả năm liên kết đang là link chỉnh sửa.
+**Đã xong trong ngày 26 và 27-10 (không còn là việc của ai):** 3 link video OBS của SV2 vào `videos/README.md` + `docs/screen-inventory.md` + `docs/sv2-assignment.md` (`90d5fe1`, `677849b`, `98000c6`); hai màn `404.html`/`403.html` + `css/error-pages.css` + `js/error-pages.js` + guard `KiemDuyetVaQuanTri/js/navigation.js` (`2ce1f23`); chuỗi gộp nhánh và bật Pages; **`KiemDuyetVaQuanTri/GopTrang.html` đã có `<header>`** (thẻ bao khối sidebar, đo checklist mục 5 — commit cục bộ trên `dev`, chưa push).
 
-## 9. Checklist 24 giờ trước khi nộp (mục X.2 của barem, rút phần liên quan tới Git/board)
+**Cả nhóm:** đổi 5 link Canva sang quyền "Bất kỳ ai có liên kết đều xem được" và mở thử bằng cửa sổ ẩn danh. Đo ngày 27-10: hai link dài vẫn ở dạng `/design/…/edit` (`README.md` dòng 172 và 176), ba link còn lại là kiểu rút gọn `canva.link/…` (dòng 173–175) nên **không nhìn URL mà biết được quyền xem** — phải mở thử bằng cửa sổ ẩn danh. Ghi chú `README.md` dòng 179 hiện đã tự nêu đúng thực trạng đó.
 
-- [x] Repo công khai, có `main` + `dev` + `feature/*`
-- [x] Board Trello công khai, 5 cột, mọi thẻ có hạn/nhánh/PR/tệp — 28 thẻ, 19 thẻ "Đã gộp"
-- [x] **PR #3, #2, #1 đã gộp vào `dev` (commit `ec74e6b`, `a5a51e6`, `8eb9f51`), `dev` → `main` qua PR #5 (`da3131b`)** — *chưa* có đủ điều: không có review APPROVED nào, chỉ có COMMENTED/DISMISSED + issue comment (mục 3.2)
-- [x] **Link triển khai công khai mở được, không 404 tài nguyên** — <https://nguyendinhquangminh.github.io/cse122-craftlink-team11/>, đo ngày 27-10 (mục 3.3)
-- [ ] `docs/ai-usage-report.md`: SV2 xác nhận mục 3.2; cả ba bổ sung **phiên bản công cụ**; SV1 quyết định gộp `docs/ai-usage -report.md` (tệp trùng tên gần giống, sai chuẩn ĐK5)
-- [x] Đủ video theo thỏa thuận 3/người, 9 link đã dán vào `videos/README.md` và cột OBS — [ ] ánh xạ dòng 7–12 và "4/7/9" vẫn cần SV1/SV2 chốt (mục 4, 8)
-- [ ] Link Canva ở chế độ xem công khai
-- [ ] 6 tab trình duyệt đã mở sẵn khi vào bảo vệ: deploy URL, localhost, Canva, Trello, GitHub (PR + Insights/Network), thư mục video — kèm VS Code ở nhánh `main` mới nhất
+## 9. Checklist 20 mục của barem (mục X.2) — đối chiếu từng dòng, có số đo
+
+Barem bắt **cả ba ngồi cùng nhau tick đủ 20 mục trong 24 giờ trước khi nộp**. Bảng dưới là phần tôi rà thay được bằng phép đo thật, ngày 27-10-2026, trên bản công khai. Cột "Ai quyết" là chỗ không thể làm hộ.
+
+| # | Khối | Mục kiểm tra | Trạng thái đo được | Ai quyết / việc còn lại |
+|---|---|---|---|---|
+| 1 | 1 | `screen-inventory.md` đủ 100% màn hình, khớp 1:1 với tệp trong `pages/` | **Đạt phần kiểm kê, lệch phần đường dẫn**: bảng đúng **18 dòng**, 29 tệp HTML trong repo = 19 tệp ứng 18 dòng + 10 màn phụ (mục 6.4). Repo **không có thư mục `pages/`** — barem lấy `pages/*.html` làm ví dụ cấu trúc, nhóm dùng `-role/NN-man/index.html` và đã ghi lý do trong README | Cả nhóm: chọn giữ cấu trúc hiện tại và giải trình, hay dọn về `pages/` (không nên làm sát giờ nộp) |
+| 2 | 1 | Link Figma/Canva mở quyền xem công khai; đủ Sitemap, User Flow, Desktop+Mobile Mockup, Component Guide, AI Mockup | **Chưa đạt**: 5 link đều là link **chỉnh sửa** (đo: 2 link `/design/…/edit`, 3 link rút gọn không đọc được quyền từ URL). Trong tệp: Sitemap + User Flow (`docs/user-flow.md`), mockup desktop, **trang Component Guide chưa có trong Canva** | Cả nhóm bấm "Anyone with the link can view" + mở thử ẩn danh; vẽ thêm trang Component Guide vào Canva |
+| 3 | 1 | Mọi tệp HTML tên kiểu `role-function-action.html`, kebab-case, tiếng Anh, không dấu | **Một phần**: `KhachHang/` dùng tiếng Anh kebab nhưng có `forgot password.html` (dấu cách) và `css/forgot passwork.css`; `DangNhapVaDangKy/`, `KhongGianNguoiBan/`, `KiemDuyetVaQuanTri/` dùng thư mục tiếng Việt + `index.html` | SV1 đổi tên `forgot password.html`; đổi tên hàng loạt là việc cả nhóm, để sau buổi nộp (mục 6.2) |
+| 4 | 1 | Có thanh điều hướng / bộ chuyển đổi nhanh giữa các **Role** để demo liền mạch, không phải gõ URL | **Chưa đạt — khoảng trống thật lớn nhất còn lại.** Quét 29 tệp HTML: **0** trang có role-switcher. Landing `index.html` có 4 thẻ vai trò (đi từ trang chủ được), `KiemDuyetVaQuanTri/GopTrang.html` chuyển được giữa 6 màn quản trị, nhưng **mỗi phân hệ là một silo kín**: vào `KhachHang/*` rồi thì không có liên kết nào ra `KhongGianNguoiBan/*` hay `KiemDuyetVaQuanTri/*` | Cần một người thêm **một dòng** gọi script dùng chung vào các trang của mình. Tôi làm được cho phần SV3 + landing; phần SV1/SV2 phải chính các bạn bấm vì nguyên tắc không sửa màn của nhau |
+| 5 | 2 | Mọi trang có `<header> <nav> <main> <footer>`, đúng 1 `<h1>`, mọi `<img>` có `alt`, mọi ô nhập có `<label>` | **Đạt gần tuyệt đối về alt/nhãn**: 65 ảnh **0 thiếu alt**; 85 ô nhập có 75 `<label for>` khít id + 10 `aria-label`, **0 nhãn mồ côi**. Thiếu thẻ ngữ nghĩa còn **6/29**, **tất cả thuộc SV2** (`01-dang-nhap/index.html` thiếu cả 4 thẻ; `02-dang-ky/index.html` có 2 `<h1>`; 4 trang `KhongGianNguoiBan/` thiếu `<footer>`). `GopTrang.html` của SV3 đã sửa hôm nay | SV2 thêm `<header>/<nav>/<main>/<footer>` và bỏ `<h1>` thứ hai — mỗi chỗ là vài thẻ bao ngoài, không đổi logic |
+| 6 | 2 | DevTools ở 320 / 375 / 768 / 1280 px và phóng to 200%: không vỡ khung, không cuộn ngang ngoài ý muốn | **Đã đo thật, 145 phép đo**: 27/29 trang sạch ở cả năm cỡ (320/375/640/768/1280; 640 = 200% của 1280). Hai trang hỏng đều của SV1 và chỉ ở 320 px: `customize.html` (338 px, do `section.panel.customize-input-panel`) và `forgot password.html` (323 px, do `button.pw-toggle`) | SV1 thêm `min-width:0`/`overflow-wrap:anywhere` theo gợi ý ở mục 6.6b |
+| 7 | 2 | Tab thấy `:focus-visible`, Esc đóng Modal | **Đạt trên màn SV3 + hai trang lỗi** (đã kiểm bằng trình duyệt: skip-link, viền focus, Esc đóng modal/drawer). Chưa đo tự động cho 19 trang SV1/SV2 | SV1/SV2 bấm Tab + Esc trên trang của mình, 10 phút |
+| 8 | 2 | Ba thành viên dùng chung bảng màu/chữ/nút trong `css/style.css` (`:root`) | **Chưa đạt, đo được**: **6 bảng `:root`**, **0 màu hex chung** (mục 6.5). Landing + `404` + `403` dùng chung một bảng gốc — bằng chứng cho hướng hợp nhất | Sau buổi nộp. Khi bị hỏi: trả lời theo mẫu ở mục 6.5 |
+| 9 | 3 | `assets/data/*.json` hoặc localStorage có 15–25 bản ghi thật, đúng ngữ cảnh | **Đạt**: 5 tệp JSON ở `KiemDuyetVaQuanTri/assets/data/` với **15/15/20/20/20** bản ghi; dữ liệu chuyên ngành gốm thủ công, không Lorem ipsum. SV1/SV2 dùng `localStorage` (97 lời gọi, khoá `CART_KEY`, `FAVORITES_KEY`, `KHO_GIAN_HANG`, `USERS_KEY`…) — barem cho phép | Không còn việc |
+| 10 | 3 | Tìm từ khóa + lọc đa tiêu chí + sắp xếp/phân trang **kết hợp được nhau** | **Đạt trên 4 màn SV3** (`02`, `04`, `05`, `06` có `sort(`/phân trang) và `KhachHang/js/main.js`, `copywriter.js` của bạn | Kiểm Demo: mỗi người chạy liên hoàn tìm → lọc → sắp trên trang của mình |
+| 11 | 3 | Create / Update / Cancel-Archive lưu vào localStorage/API và **giữ nguyên sau F5** | **Đạt**: các màn SV3 ghi qua `PREFIX + collection` nên F5 còn; SV1 có `LAST_ID_KEY`/`LOG_KEY`; SV2 có thao tác archive trong `01-listing-management/js/main.js` | Chụp/ghi lại thao tác F5 lúc demo cho chắc |
+| 12 | 3 | Chuẩn bị cách kích hoạt nhanh 4 trạng thái: Normal / Loading / Empty / Error | **Đạt trên 6 màn SV3** (tìm từ khóa không tồn tại ra Empty, `js/ai-fallback.js` ra Loading + Error khi không có khoá AI). Chưa ghi sẵn kịch bản cho màn SV1/SV2 | Mỗi người viết 1 dòng "gõ gì để thấy lỗi" vào `videos/README.md` hoặc ghi miệng trước buổi demo |
+| 13 | 3 | Cả 3 tính năng AI đủ 6 bước Input → Processing → Output → Explainability → User control → Save/Apply | **Đạt trên 3 tác vụ AI của SV3** (bằng chứng mã: `04-moderation-queue/js/main.js:220` in `%` độ tin cậy + khuyến nghị + các yếu tố; `:337` tiêu đề "AI phân loại rủi ro sản phẩm"; `:365` ghi quyết định kèm dòng "kiểm duyệt viên vẫn là người quyết định"). SV1 có AI advisor + AI sản phẩm (`KhachHang/js/ai-advisor.js`); SV2 có copywriter | SV1/SV2 đọc lại 6 bước trên trang mình trước khi quay/demo |
+| 14 | 3 | Có ít nhất 1 kịch bản AI Failure / Uncertainty UX | **Đạt** (rò AI không có khoá + độ tin cậy thấp, đã chạy thử — xem `docs/sv3-assignment.md` mục Tiến độ) | SV1/SV2 nên có 1 kịch bản của mình để đủ vai |
+| 15 | 4 | Board công khai, mỗi Task ghi Task ID, Screen, Assignee, Branch, PR Link, OBS Link | **Đạt**: `trello.com/b/N2HBpswf` public, 5 cột, **28 thẻ**, 28/28 có hạn + mô tả, 19 thẻ "Đã gộp" | Không còn việc; chỉ cập nhật khi có link video mới |
+| 16 | 4 | Đủ `main`, `dev`, `feature/*`; commit theo Conventional Commits; **mọi PR có nhận xét của thành viên khác TRƯỚC khi merge** | **Một phần**: nhánh đủ; **176 commit không-merge, 35% đúng chuẩn** (SV3 49/100, SV2 10/44, SV1 0/23); có nhận xét trên cả 3 PR phân hệ nhưng **không có lượt APPROVED nào**, PR #5 gộp `dev→main` không có review | **Cửa duy nhất còn lại**: mở PR tài liệu (`b195741`) và để người khác Approve trước khi merge. Cần bạn quyết + cần một thành viên bấm |
+| 17 | 4 | Số video OBS = đúng số màn độc lập; mọi video mở được, có mặt + giọng + sửa trực tiếp + commit | **Rủi ro đã ghi**: thoả thuận miệng với thầy **3 video/người = 9**, trong khi kiểm kê 18 dòng (mục 4). 9 link YouTube đã dán; **SV2 chưa link cho dòng 7–12, SV1 mới dán 3 link cho dòng 2/4/5** | SV1/SV2 dán link còn thiếu + xác nhận ánh xạ "4/7/9"; nếu thầy đòi 1:1 thì phải quay thêm — chỉ các bạn làm được |
+| 18 | 4 | `docs/ai-usage-report.md` + `README.md` trung thực, đủ mục bắt buộc | **Đạt cho phần đã đo**: README **15 mục**, ai-usage-report khai 3 tác vụ AI đã nối + phần AI sinh + lỗi AI + phần SV tự sửa; chuỗi "AI Personalization/Visual Matcher" chỉ còn ở dạng câu phủ định (mục 6.4). Còn **hai tệp khai báo song song** trên `main` (17 074 B và 9 952 B tên có dấu cách) và `video.md` ở gốc | SV1 quyết gộp/xoá; cả ba bổ sung **phiên bản công cụ AI** |
+| 19 | 4 | Kiểm tra link deploy trên ẩn danh + trên điện thoại: **không ảnh/CSS/JS nào 404** | **Đo HTTP thật**: 105/112 đích trả 200, **7 đích 404** — 4 là tài nguyên (2 CSS/JS của trang quên mật khẩu SV1 + 3 ảnh nền qua `url()`), 3 liên kết trỏ tới `forgot-password.html` không tồn tại. **0 lỗi thuộc màn SV3** | SV1/SV2 sửa theo bảng 6.6a; đây là chỗ 7.3 bị trừ −0.15 nếu để nguyên |
+| 20 | 4 | Cả 3 tập duyệt demo 6 phút + tự làm thử ≥3 đề trong ngân hàng 24 đề Live Modification | **Chưa làm** — việc của người, không đo hộ được | Ba bạn lịch hẹn 1 buổi; xem `docs/barem-audit.md` mục 8 và đề cương ôn cá nhân |
+
+**Bốn mục chưa đạt cần quyết định ngay hôm nay:** 2 (quyền xem Canva — một người bấm), 4 (Role Switcher), 16 (một lượt Approve thật qua PR tài liệu), 19 (404 tài nguyên của SV1/SV2). Mục 17 và 20 là việc bắt buộc của thành viên, không ai làm thay.
+
+**Sáu tab phải mở sẵn khi vào bàn chấm** (quy chế yêu cầu mở nhanh, không kịp giải thích): ① bản deploy <https://nguyendinhquangminh.github.io/cse122-craftlink-team11/>, ② `index.html` chạy local (máy chủ tĩnh, **không mở bằng `file://`** vì `fetch()` bị chặn), ③ Canva quyền xem công khai, ④ board Trello, ⑤ GitHub (PR #1/#2/#3 đã merged + Insights → Networks để chứng minh ba người cùng commit), ⑥ thư mục `video/` với 9 link đã mở sẵn, kèm VS Code ở `main` mới nhất và Terminal để gõ `git diff` khi được yêu cầu.
