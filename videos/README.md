@@ -30,18 +30,17 @@ Tên tệp lấy đúng theo cột "OBS Video" của `../docs/screen-inventory.m
 >
 > SV1 cần đổi tên tệp lưu trữ của video STT 4 thành `SV1-04-artisan-suggestions.mp4` cho khớp màn hình thật; tên cũ `SV1-04-proposal-comparison.mp4` là tên của màn "so sánh proposal" đã bỏ.
 
-### SV2 — Dương Vũ Quân Minh (chưa có link)
+### SV2 — Dương Vũ Quân Minh (đã quay 3 video)
 
-Kênh YouTube: <https://www.youtube.com/@minhduong3801> — chưa có link theo từng màn.
+Kênh YouTube: <https://www.youtube.com/@minhduong3801> · Playlist: <https://www.youtube.com/playlist?list=PLDaEqceEwiuk>
 
-| STT kiểm kê | Tên tệp bắt buộc | Link | Trạng thái |
+Ba video quay ba trang đăng nhập theo vai trong `DangNhapVaDangKy/01-dang-nhap/`. Tiêu đề trên YouTube đã theo khuôn đặt tên ở cuối tệp.
+
+| Tên tệp | Màn hình | Tệp mã nguồn | Link |
 |---|---|---|---|
-| 7 | `SV2-01-maker-listings.mp4` | — | **chưa quay / chưa dán link** |
-| 8 | `SV2-02-maker-edit-listing.mp4` | — | **chưa quay / chưa dán link** |
-| 9 | `SV2-03-maker-brief-inbox.mp4` | — | **chưa quay / chưa dán link** |
-| 10 | `SV2-04-maker-proposal-editor.mp4` | — | **chưa quay / chưa dán link** |
-| 11 | `SV2-05-maker-proposal-preview.mp4` | — | **chưa quay / chưa dán link** |
-| 12 | `SV2-06-maker-shop-profile.mp4` | — | **chưa quay / chưa dán link** |
+| `SV2-01-dangnhap-khachhang.mp4` | Đăng nhập Khách hàng | `khach-hang.html` + `css/khach-hang.css` + `js/khach-hang.js` | <https://www.youtube.com/watch?v=BY0AAIjTSm8> |
+| `SV2-02-dangnhap-nghenhan.mp4` | Đăng nhập Thợ thủ công / Nghệ nhân | `nghe-nhan.html` + `css/nghe-nhan.css` + `js/nghe-nhan.js` | <https://www.youtube.com/watch?v=2zrLFxVEpiU> |
+| `SV2-03-dangnhap-admin.mp4` | Đăng nhập Quản trị viên & Kiểm duyệt | `quan-tri.html` + `css/quan-tri.css` + `js/quan-tri.js` | <https://www.youtube.com/watch?v=d4kmFKU6ivg> |
 
 > **Đã chốt: 3 video/người.** Theo xác nhận của nhóm, 3 video cho 6 màn của mỗi người là đủ yêu cầu của giảng viên; các màn không quay riêng được chứng minh ngay trong ba video đó. Vì vậy SV1 và SV2 mỗi bạn **chọn 3 màn chính** trong 6 dòng của mình, quay đủ 8 bước rồi dán link vào đúng 3 dòng tương ứng; 3 dòng còn lại ghi "Không quay riêng — nằm trong phạm vi demo".
 >
