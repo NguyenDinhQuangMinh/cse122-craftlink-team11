@@ -1,0 +1,165 @@
+/* ==========================================================================
+   CraftLink — Trang Đơn hàng của bạn
+   Thanh tab trạng thái + ô tìm kiếm + bảng đơn hàng
+   ========================================================================== */
+
+.orders-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+
+/* ---------- Tab lọc theo trạng thái ---------- */
+
+.order-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tab-btn {
+  padding: 8px 16px;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background-color: var(--color-surface);
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #5f564c;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s, background-color 0.2s;
+}
+
+.tab-btn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.tab-btn.active {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #ffffff;
+}
+
+
+/* ---------- Ô tìm kiếm + lọc thời gian ---------- */
+
+.orders-tools {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.order-search {
+  width: 280px;
+}
+
+.orders-tools select {
+  min-width: 150px;
+  padding: 9px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-btn);
+  background-color: var(--color-surface);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+
+/* ---------- Bảng đơn hàng ---------- */
+
+/* Cho phép cuộn ngang trên màn hình nhỏ thay vì làm vỡ bố cục */
+.table-scroll {
+  overflow-x: auto;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+.orders-table {
+  width: 100%;
+  min-width: 760px;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.orders-table th {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-align: left;
+  white-space: nowrap;
+}
+
+.orders-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--color-border);
+  vertical-align: middle;
+}
+
+.orders-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.orders-table tbody tr:hover {
+  background-color: #fdfaf5;
+}
+
+.order-code {
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.order-artisan {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+}
+
+.order-actions {
+  white-space: nowrap;
+}
+
+.order-actions .link-action {
+  margin-right: 14px;
+}
+
+.order-actions .link-action:last-child {
+  margin-right: 0;
+}
+
+.orders-empty {
+  margin-top: 18px;
+}
+
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+/* Máy tính bảng: thanh công cụ xếp thành cột, ô tìm kiếm rộng hết */
+@media (max-width: 960px) {
+  .orders-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .order-search {
+    width: auto;
+    flex: 1;
+  }
+
+  .orders-tools {
+    width: 100%;
+  }
+
+  .orders-tools select {
+    flex-shrink: 0;
+  }
+}

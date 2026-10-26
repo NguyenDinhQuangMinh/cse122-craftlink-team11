@@ -1,0 +1,29 @@
+flowchart TD
+  subgraph SV1["Khách hàng — SV1"]
+    A1["Đăng ký / Đăng nhập"] --> A2["Tạo Brief đặt làm tùy biến"]
+  end
+  subgraph SV2["Nghệ nhân — SV2"]
+    B1["Tạo / nộp bài đăng sản phẩm"] --> B2["Gửi Proposal báo giá"]
+  end
+  subgraph MOD["Kiểm duyệt viên — SV3"]
+    C1["Bài đăng vào hàng đợi (pending)"] --> C2["Xem chi tiết + Phân tích AI"]
+    C2 --> C3{Quyết định}
+    C3 -->|Duyệt| C4["approved — hiển thị công khai"]
+    C3 -->|Yêu cầu sửa| C5["revision — trả về nghệ nhân"]
+    C3 -->|Từ chối| C6["rejected — buộc ghi lý do"]
+    D1["Tiếp nhận báo cáo vi phạm"] --> D2["Lọc + xếp ưu tiên (AI triage)"] --> D3["Bỏ qua / Xác minh / Xử lý"]
+  end
+  subgraph ADM["Quản trị viên — SV3"]
+    E1["Soạn quy định (Policy Copilot)"] --> E2["Ban hành quy định đã duyệt"]
+    E3["Quản lý danh mục: thêm / sửa / ẩn"]
+    E4["Quản lý tài khoản: khóa / mở khóa"]
+    E5["Bảng điều khiển: KPI + nhật ký hoạt động"]
+  end
+  A2 --> B2
+  B1 --> C1
+  C5 -.->|nộp lại| B1
+  E2 ==>|bối cảnh cho AI| C2
+  E3 ==>|danh mục bắt buộc khi tạo bài| B1
+  E4 -.->|khóa làm mất quyền truy cập| A1
+  E5 -.->|đọc trạng thái| C4
+  E5 -.->|đọc trạng thái| D3

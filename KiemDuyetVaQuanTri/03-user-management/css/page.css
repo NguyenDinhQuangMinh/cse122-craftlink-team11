@@ -1,0 +1,200 @@
+/* Page styles: 03-user-management */
+
+.user-panel {
+  padding: 18px 14px 0;
+}
+.user-tools {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  margin: 0 0 18px;
+}
+.user-tools .search-box {
+  width: min(100%,390px);
+}
+.role-tabs {
+  display: flex;
+  gap: 0;
+  width: min(100%,880px);
+  border: 1px solid #e5e4e1;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.role-tabs button {
+  height: 46px;
+  flex: 1;
+  padding: 0 14px;
+  border: 0;
+  border-right: 1px solid #e5e4e1;
+  background: white;
+  color: #55585b;
+  font-size: 16px;
+  white-space: nowrap;
+}
+.role-tabs button:last-child {
+  border: 0;
+}
+.role-tabs button.selected {
+  background: #d45730;
+  color: #fff;
+}
+.table-scroll {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+}
+.user-panel .data-table {
+  min-width: 900px;
+}
+.user-panel .data-table th {
+  height: 57px;
+  background: white;
+  font-weight: 400;
+}
+.user-panel .data-table td {
+  height: 73px;
+  font: 16px Inter,"Segoe UI",Arial,sans-serif;
+}
+.user-panel .data-table td:first-child {
+  min-width: 210px;
+}
+.user-cell {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+.user-cell img {
+  width: 47px;
+  height: 47px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.image-upload small {
+  color: #72777c;
+  font-size: 12px;
+  line-height: 1.45;
+}
+.upload-preview {
+  display: block;
+  max-width: 100%;
+  object-fit: cover;
+  border: 1px solid #e4e3e1;
+  border-radius: 8px;
+  background: #f4eee7;
+}
+.avatar-preview {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+}
+.upload-preview[hidden] {
+  display: none;
+}
+.user-cell b {
+  font-weight: 400;
+  white-space: nowrap;
+}
+.role-pill {
+  display: inline-block;
+  padding: 7px 10px;
+  border-radius: 7px;
+  background: #eef3ed;
+  color: #548461;
+  white-space: nowrap;
+}
+.role-pill.maker,.role-pill.moderator {
+  background: #f5efe2;
+  color: #9c7950;
+}
+.user-state {
+  display: inline-block;
+  padding: 8px 11px;
+  border-radius: 7px;
+  background: #e4f1e7;
+  color: #43855b;
+  white-space: nowrap;
+}
+.user-state.locked {
+  background: #fde6df;
+  color: #d5523b;
+}
+.user-panel .switch {
+  width: 52px;
+  height: 31px;
+}
+.user-panel .switch:after {
+  width: 23px;
+  height: 23px;
+}
+.user-panel .switch.on:after {
+  left: 25px;
+}
+@media(max-width:680px) {
+  .role-tabs {
+    overflow: auto;
+  }
+  .role-tabs button {
+    font-size: 11px;
+    padding: 0 8px;
+  }
+  .user-panel {
+    padding: 10px;
+  }
+  .user-panel .search-box {
+    width: 100%;
+  }
+}
+.bell {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.empty {
+  padding: 26px;
+  color: #8b8e91;
+  text-align: center;
+}
+.user-tools {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.user-tools>.search-box {
+  flex: 0 1 390px;
+  min-width: 260px;
+}
+.role-tabs {
+  flex: 1;
+  width: auto;
+}
+.topbar {
+  height: 104px;
+}
+.system-search {
+  height: 55px;
+}
+.page {
+  padding-top: 35px;
+}
+.description {
+  margin-bottom: 31px;
+}
+.role-tabs button {
+  height: 52px;
+}
+.user-tools { flex-wrap: wrap; }
+.user-tools > #addUser { flex: 0 0 auto; min-height: 42px; }
+.user-actions { display: flex; align-items: center; justify-content: flex-end; gap: 6px; min-width: 180px; }
+.user-actions .action-btn { min-height: 32px; padding: 5px 8px; border: 1px solid #d8dee8; border-radius: 7px; background: #fff; color: #344054; }
+.user-actions .action-btn.danger { color: #a43b32; }
+#userEditor { max-height: min(90vh, 760px); overflow: auto; }
+@media (max-width:680px) {
+  .user-tools { align-items: stretch; }
+  .user-tools > .search-box, .user-tools > #addUser { width: 100%; max-width: none; }
+  .user-actions { justify-content: flex-start; min-width: 180px; }
+}

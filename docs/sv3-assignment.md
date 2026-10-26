@@ -7,7 +7,9 @@
 
 ## Thiết kế Canva
 
-[Thiết kế Canva của SV3](https://canva.link/zqtyq0qivogb17s)
+[Thiết kế Canva của SV3](https://canva.link/zqtyq0qivogb17s) — bài trình bày 6 trang cho khu quản trị.
+
+[Bản thiết kế tổng hợp của nhóm](https://canva.link/10ir1xtkau6li7b) — Multi-design 32 trang; **trang 31 là mockup 404, trang 32 là mockup 403** mà SV3 đã dựng thành mã ngày 27-10-2026 (xem mục "Hai màn lỗi dùng chung" bên dưới).
 
 ## Vai trò và trách nhiệm
 
@@ -17,12 +19,33 @@
 
 ## Phạm vi sáu màn hình
 
-1. **Bảng điều khiển tổng quan** — `pages/admin-dashboard-overview.html`: xem doanh thu, đơn hàng, nghệ nhân đang hoạt động, bài đăng chờ duyệt, biểu đồ và nhật ký hệ thống.
-2. **Hàng đợi kiểm duyệt sản phẩm** — `pages/admin-moderation-queue.html`: xem nội dung/ảnh; duyệt, từ chối hoặc yêu cầu chỉnh sửa.
-3. **Trung tâm báo cáo và khiếu nại** — `pages/admin-reports-center.html`: lọc báo cáo, xem bằng chứng, cập nhật tiến trình và xử lý vi phạm.
-4. **Quản lý danh mục ngành hàng** — `pages/admin-category-management.html`: tìm kiếm, thêm, sửa, ẩn/hiện hoặc xóa danh mục.
-5. **Quản lý tài khoản người dùng** — `pages/admin-user-management.html`: tìm tài khoản, xem thông tin và khóa/mở khóa theo quyết định của Admin.
-6. **Quản lý quy định và tiêu chuẩn nội dung** — `pages/admin-content-policy.html`: soạn, sửa, xem lịch sử phiên bản và xuất bản quy định.
+1. **Bảng điều khiển tổng quan** — `KiemDuyetVaQuanTri/01-dashboard/index.html`: xem doanh thu, đơn hàng, nghệ nhân đang hoạt động, bài đăng chờ duyệt, biểu đồ và nhật ký hệ thống.
+2. **Hàng đợi kiểm duyệt sản phẩm** — `KiemDuyetVaQuanTri/04-moderation-queue/index.html`: xem nội dung/ảnh; duyệt, từ chối hoặc yêu cầu chỉnh sửa.
+3. **Trung tâm báo cáo và khiếu nại** — `KiemDuyetVaQuanTri/05-report-center/index.html`: lọc báo cáo, xem bằng chứng, cập nhật tiến trình và xử lý vi phạm.
+4. **Quản lý danh mục ngành hàng** — `KiemDuyetVaQuanTri/02-category-management/index.html`: tìm kiếm, thêm, sửa, ẩn/hiện hoặc xóa danh mục.
+5. **Quản lý tài khoản người dùng** — `KiemDuyetVaQuanTri/03-user-management/index.html`: tìm tài khoản, xem thông tin và khóa/mở khóa theo quyết định của Admin.
+6. **Quản lý quy định và tiêu chuẩn nội dung** — `KiemDuyetVaQuanTri/06-content-guidelines/index.html`: soạn, sửa, xem lịch sử phiên bản và xuất bản quy định.
+
+> **Đường dẫn (cập nhật 26-10-2026).** Bản trước ghi `pages/admin-*.html` — sáu tệp này không tồn tại trong repo. Mã nguồn thật nằm trong sáu thư mục con của `KiemDuyetVaQuanTri/`, mỗi thư mục một `index.html`, mở chung được qua trang gộp `KiemDuyetVaQuanTri/GopTrang.html`.
+
+## Hai màn lỗi dùng chung (bổ sung 27-10-2026)
+
+Hai trang dựng lại **trang 31 và 32 của bản thiết kế tổng hợp**, đứng ngoài 18 dòng kiểm kê vì phục vụ toàn bộ site:
+
+| Tệp | Vai trò | Nguồn vào |
+| :--- | :--- | :--- |
+| `404.html` | "Không tìm thấy trang" | GitHub Pages tự phục vụ tệp này cho mọi đường dẫn thiếu; khi chạy cục bộ thì Live Server/máy chủ tĩnh dùng cùng quy ước |
+| `403.html` | "Bạn không có quyền truy cập" | `KiemDuyetVaQuanTri/js/navigation.js` đọc `cl_session` trước khi dựng menu; thiếu quyền thì `location.replace` lên trang này kèm `?need=…&screen=…` |
+
+Năm chức năng thật, dùng chung `css/error-pages.css` và `js/error-pages.js`:
+
+1. **Chẩn đoán** — đường dẫn thiếu lấy từ `location.pathname` (bỏ tiền tố gốc site), trang gửi tới từ `document.referrer`, tài khoản và vai trò từ `cl_session`; mọi giá trị chỉ ghi bằng `textContent`.
+2. **Đích thật gần nhất** — bảng `MISLINKS` trong `js/error-pages.js` nối bốn kiểu liên kết sai đã đo ở `docs/barem-audit.md` mục 6.1 (`forgot-password.html` → `KhachHang/forgot password.html`, `video.md` → `videos/README.md`, `docs/ai-usage -report.md` → `docs/ai-usage-report.md`, thư mục `assest/` → `assets/`) với tệp đúng đang có trong repo. Trang lỗi không sửa mã hộ phân hệ khác, chỉ để người dùng không bị dồn vào đường cụt.
+3. **Gợi ý màn hình** — chấm điểm từ khóa trên danh mục 27 đường dẫn thật của ba phân hệ, có ô tìm kiếm đánh không dấu (`tri → try`, debounce 120 ms).
+4. **Nhật ký lỗi** — tối đa 20 bản ghi trong Local Storage (`craftlink:error-log`), gộp bản trùng trong 30 giây, hiển thị 5 bản gần nhất, có nút xóa.
+5. **Ma trận quyền** — bảng 3×3 vai trò × phân hệ, tô đậm hàng của vai trò đang đăng nhập, và `storage` listener tải lại trang ngay khi phiên đổi ở tab khác.
+
+Quyền kiểm duyệt khớp nhau giữa hai nơi: guard trong `navigation.js` và `NEEDED_ROLES` trong `error-pages.js` cùng chấp nhận `admin` cho màn quản trị, `admin` hoặc `moderator` cho màn kiểm duyệt. **Chưa đăng nhập = chế độ demo**, sáu màn quản trị vẫn mở để quay video; đây là lựa chọn có chủ đích vì bài là bản dựng giao diện, không có xác thực thật.
 
 ## Phân bổ AI theo barem CSE122, tiêu chí 6.1–6.3
 
@@ -35,6 +58,8 @@ CraftLink dùng **một Trợ lý AI dùng chung**, không tạo sáu AI riêng 
 - **AI-3 — Trợ lý chuyên môn/Copilot:** hỗ trợ tóm tắt, giải thích quy định và đề xuất bước xử lý trên Dashboard, Trung tâm báo cáo và Quản lý quy định.
 
 ### Năng lực của Trợ lý AI trên sáu màn hình SV3
+
+> **Trạng thái triển khai (26-10-2026).** Mới có **ba** tác vụ AI nối vào giao diện và chạy được: `moderation-risk` (Hàng đợi kiểm duyệt), `report-triage` (Trung tâm báo cáo), `policy-copilot` (Quy định nội dung). Ba màn **Dashboard, Quản lý danh mục và Quản lý tài khoản** trong bảng dưới là **định hướng chưa cài đặt** — không trình bày là đã có. Mã nguồn ba tác vụ đã chạy nằm ở `KiemDuyetVaQuanTri/js/ai-client.js`, `js/ai-fallback.js` và `api/ai.js`.
 
 | Màn hình | Ngữ cảnh đầu vào | Kết quả AI và giải thích | Kiểm soát và lưu kết quả | Trường hợp không chắc chắn |
 |---|---|---|---|---|
@@ -87,11 +112,12 @@ Cần có kịch bản kiểm thử được trực tiếp trên giao diện. Í
 ## Tiến độ
 
 - [x] Ghi nhận liên kết Canva SV3.
-- [ ] Đưa mã nguồn sáu màn hình vào repo theo cấu trúc thư mục chung đã thống nhất.
-- [ ] Hoàn thiện thao tác, kiểm tra dữ liệu, trạng thái và thông báo kết quả.
-- [ ] Tích hợp một Trợ lý AI dùng chung với các năng lực/ngữ cảnh nêu trên.
-- [ ] Hoàn thiện đủ sáu bước AI UX trên các tác vụ AI được trình diễn.
-- [ ] Tạo và chạy thử ít nhất một kịch bản thiếu dữ liệu hoặc độ tin cậy thấp trên giao diện.
-- [ ] Kiểm tra responsive và khả năng truy cập.
-- [ ] Quay và gắn video OBS theo bảng kiểm kê chung sau khi nhóm tổng hợp đủ ba phần.
+- [x] Đưa mã nguồn sáu màn hình vào repo theo cấu trúc thư mục chung đã thống nhất.
+- [x] Hoàn thiện thao tác, kiểm tra dữ liệu, trạng thái và thông báo kết quả.
+- [x] Tích hợp một Trợ lý AI dùng chung cho ba tác vụ nghiệp vụ (kiểm duyệt, báo cáo, quy định).
+- [x] Hoàn thiện đủ sáu bước AI UX trên các tác vụ AI được trình diễn.
+- [x] Tạo và chạy thử ít nhất một kịch bản thiếu dữ liệu hoặc độ tin cậy thấp trên giao diện.
+- [x] Kiểm tra responsive và khả năng truy cập.
+- [x] Dựng hai màn lỗi 404/403 từ mockup Canva (trang 31–32), nối `navigation.js` và làm bốn chức năng đọc được trên trình duyệt.
+- [x] Quay và gắn video OBS theo bảng kiểm kê chung sau khi nhóm tổng hợp đủ ba phần (ba link của SV3 ở `videos/README.md` dòng 14/16/18; hai màn lỗi không có video riêng).
 

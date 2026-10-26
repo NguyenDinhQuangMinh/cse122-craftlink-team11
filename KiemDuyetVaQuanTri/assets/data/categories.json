@@ -1,0 +1,122 @@
+[
+  {
+    "id": "c1",
+    "name": "Gốm sứ thủ công",
+    "children": 3,
+    "products": 128,
+    "active": true,
+    "image": 1
+  },
+  {
+    "id": "c2",
+    "name": "Đồ da cao cấp",
+    "children": 5,
+    "products": 96,
+    "active": true,
+    "image": 2
+  },
+  {
+    "id": "c3",
+    "name": "Trang sức & Phụ kiện",
+    "children": 4,
+    "products": 156,
+    "active": true,
+    "image": 3
+  },
+  {
+    "id": "c4",
+    "name": "Đồ gỗ nghệ thuật",
+    "children": 6,
+    "products": 203,
+    "active": true,
+    "image": 4
+  },
+  {
+    "id": "c5",
+    "name": "Thêu dệt may mặc",
+    "children": 3,
+    "products": 74,
+    "active": false,
+    "image": 5
+  },
+  {
+    "id": "c6",
+    "name": "Mây tre đan",
+    "children": 4,
+    "products": 118,
+    "active": true,
+    "image": 1
+  },
+  {
+    "id": "c7",
+    "name": "Nến thơm & Hương liệu",
+    "children": 2,
+    "products": 87,
+    "active": true,
+    "image": 2
+  },
+  {
+    "id": "c8",
+    "name": "Tranh vẽ thủ công",
+    "children": 3,
+    "products": 142,
+    "active": true,
+    "image": 3
+  },
+  {
+    "id": "c9",
+    "name": "Đồ tái chế sáng tạo",
+    "children": 4,
+    "products": 65,
+    "active": true,
+    "image": 4
+  },
+  {
+    "id": "c10",
+    "name": "Da thủ công",
+    "children": 2,
+    "products": 91,
+    "active": true,
+    "image": 5
+  },
+  {
+    "id": "c11",
+    "name": "Đồ trang trí nhà cửa",
+    "children": 5,
+    "products": 177,
+    "active": true,
+    "image": 1
+  },
+  {
+    "id": "c12",
+    "name": "Phụ kiện thời trang",
+    "children": 3,
+    "products": 133,
+    "active": true,
+    "image": 2
+  },
+  {
+    "id": "c13",
+    "name": "Quà tặng cá nhân hóa",
+    "children": 4,
+    "products": 102,
+    "active": true,
+    "image": 3
+  },
+  {
+    "id": "c14",
+    "name": "Đồ chơi thủ công",
+    "children": 2,
+    "products": 58,
+    "active": false,
+    "image": 4
+  },
+  {
+    "id": "c15",
+    "name": "Sản phẩm giấy nghệ thuật",
+    "children": 3,
+    "products": 46,
+    "active": true,
+    "image": 5
+  }
+]

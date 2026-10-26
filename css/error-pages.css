@@ -1,0 +1,327 @@
+/* Trang lỗi dùng chung (404 / 403) — chỉ tham chiếu biến trong css/style.css,
+   không lặp lại giá trị màu hay cỡ chữ. */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+body.error-page {
+  background: var(--cream-50);
+  color: var(--ink-900);
+  font-family: var(--font-sans);
+  line-height: 1.55;
+}
+
+.error-shell {
+  display: grid;
+  gap: var(--space-6);
+  padding-block: var(--space-7) var(--space-8);
+}
+
+/* Con của grid có min-width:auto mặc định, nên nội dung dài trong một thẻ
+   (bảng quyền, danh sách sự kiện) sẽ đẩy cả trang ngang ra quá 320px. */
+.error-shell > * {
+  min-width: 0;
+}
+
+.error-head {
+  display: grid;
+  gap: var(--space-4);
+  max-width: var(--measure);
+}
+
+.error-code {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: clamp(3.2rem, 12vw, 6rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--clay-600);
+}
+
+body[data-error-code="403"] .error-code {
+  color: var(--clay-900);
+}
+
+.error-title {
+  margin: 0;
+  font-size: var(--text-2xl);
+  line-height: 1.2;
+}
+
+.error-lede {
+  margin: 0;
+  font-size: var(--text-lg);
+  color: var(--ink-700);
+  max-width: var(--measure);
+}
+
+.error-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin: var(--space-2) 0 0;
+}
+
+button.cta {
+  font: inherit;
+  cursor: pointer;
+}
+
+.error-card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: #fff;
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-5);
+}
+
+.error-card h2 {
+  margin: 0 0 var(--space-4);
+  font-size: var(--text-xl);
+}
+
+.error-card-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.error-note {
+  margin: var(--space-4) 0 0;
+  font-size: var(--text-sm);
+  color: var(--ink-500);
+}
+
+.mislink {
+  margin: var(--space-4) 0 0;
+  padding: var(--space-3);
+  border-left: 3px solid var(--clay-600);
+  background: var(--cream-100);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: var(--text-sm);
+}
+
+.mislink[hidden] {
+  display: none;
+}
+
+.mislink-target {
+  font-family: ui-monospace, "Cascadia Mono", Consolas, monospace;
+  color: var(--clay-700);
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.mislink-why {
+  color: var(--ink-500);
+}
+
+.error-facts {
+  display: grid;
+  grid-template-columns: minmax(120px, max-content) 1fr;
+  gap: var(--space-2) var(--space-4);
+  margin: 0;
+  font-size: var(--text-sm);
+}
+
+.error-facts dt {
+  color: var(--ink-500);
+  font-weight: 600;
+}
+
+.error-facts dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+  font-family: ui-monospace, "Cascadia Mono", Consolas, monospace;
+}
+
+.verdict {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1) var(--space-3);
+  border-radius: 999px;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  background: var(--clay-100);
+  color: var(--clay-900);
+}
+
+.verdict[data-state="ok"] {
+  background: var(--sage-100);
+  color: var(--sage-700);
+}
+
+.field {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0 0 var(--space-4);
+}
+
+.field label {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--ink-700);
+}
+
+.field input {
+  font: inherit;
+  padding: var(--space-3);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--cream-50);
+  color: var(--ink-900);
+}
+
+.field input:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.suggest-list,
+.log-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--space-2);
+}
+
+.suggest-list li {
+  display: grid;
+  gap: 2px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: var(--space-3);
+  background: var(--cream-100);
+}
+
+.suggest-list a {
+  color: var(--clay-700);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.suggest-list a:hover,
+.suggest-list a:focus-visible {
+  text-decoration: underline;
+}
+
+.suggest-list .suggest-path {
+  font-size: var(--text-sm);
+  color: var(--ink-500);
+  font-family: ui-monospace, "Cascadia Mono", Consolas, monospace;
+  overflow-wrap: anywhere;
+}
+
+.suggest-list .empty,
+.log-list .empty {
+  color: var(--ink-500);
+  font-size: var(--text-sm);
+}
+
+.log-list li {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  font-size: var(--text-sm);
+  border-bottom: 1px dashed var(--cream-200);
+  padding-bottom: var(--space-2);
+}
+
+.log-list .log-code {
+  font-weight: 700;
+  color: var(--clay-700);
+}
+
+.log-list .log-when {
+  color: var(--ink-500);
+  white-space: nowrap;
+}
+
+.log-list .log-path {
+  flex: 1 1 220px;
+  overflow-wrap: anywhere;
+  font-family: ui-monospace, "Cascadia Mono", Consolas, monospace;
+}
+
+.link-action {
+  font: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  color: var(--focus);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.matrix {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-sm);
+}
+
+.matrix th,
+.matrix td {
+  text-align: left;
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--line);
+  /* Nhãn hàng chứa đường dẫn dài (/, KiemDuyetVaQuanTri/) — cho phép ngắt để ô không
+     đẩy bản tối thiểu của thẻ ra quá 320px. */
+  overflow-wrap: anywhere;
+}
+
+.matrix thead th {
+  color: var(--ink-500);
+  font-weight: 600;
+}
+
+.matrix td[data-cell] {
+  font-weight: 600;
+  color: var(--sage-700);
+}
+
+.matrix td[data-cell="off"] {
+  font-weight: 500;
+  color: var(--ink-300);
+}
+
+.matrix tr[data-current] {
+  background: var(--cream-100);
+}
+
+@media (max-width: 520px) {
+  .error-shell {
+    gap: var(--space-5);
+    padding-block: var(--space-5) var(--space-6);
+  }
+
+  .error-card {
+    padding: var(--space-4);
+  }
+
+  .error-facts {
+    grid-template-columns: 1fr;
+    gap: var(--space-1);
+  }
+
+  .error-facts dd {
+    margin-bottom: var(--space-3);
+  }
+
+  .matrix {
+    display: block;
+    overflow-x: auto;
+  }
+}

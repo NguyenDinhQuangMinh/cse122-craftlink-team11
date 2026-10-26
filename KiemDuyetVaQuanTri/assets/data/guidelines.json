@@ -1,0 +1,92 @@
+[
+  {
+    "id": "rule-01",
+    "title": "Sản phẩm đúng mô tả",
+    "group": "Thông tin sản phẩm",
+    "text": "Ảnh, chất liệu, kích thước và tình trạng phải phản ánh đúng sản phẩm người mua sẽ nhận."
+  },
+  {
+    "id": "rule-02",
+    "title": "Không đăng hàng giả hoặc hàng cấm",
+    "group": "An toàn cộng đồng",
+    "text": "Không chấp nhận hàng giả, hàng vi phạm pháp luật hoặc nội dung cổ súy hành vi nguy hiểm."
+  },
+  {
+    "id": "rule-03",
+    "title": "Tôn trọng quyền sở hữu trí tuệ",
+    "group": "Quyền tác giả",
+    "text": "Chỉ đăng nội dung do mình sở hữu hoặc được phép sử dụng; nêu nguồn khi phù hợp."
+  },
+  {
+    "id": "rule-04",
+    "title": "Công khai thời gian hoàn thiện",
+    "group": "Giao dịch",
+    "text": "Nêu thời gian sản xuất và giao hàng dự kiến cho sản phẩm làm theo yêu cầu."
+  },
+  {
+    "id": "rule-05",
+    "title": "Nêu rõ chính sách đổi trả",
+    "group": "Giao dịch",
+    "text": "Thông tin điều kiện đổi trả, trường hợp không áp dụng và đầu mối liên hệ."
+  },
+  {
+    "id": "rule-06",
+    "title": "Dùng hình ảnh do người bán cung cấp",
+    "group": "Quyền tác giả",
+    "text": "Không sử dụng ảnh của người bán khác hoặc ảnh gây hiểu nhầm về hàng hóa."
+  },
+  {
+    "id": "rule-07",
+    "title": "Không thu thập dữ liệu trái phép",
+    "group": "Quyền riêng tư",
+    "text": "Không yêu cầu mật khẩu, mã OTP hoặc thông tin thanh toán ngoài quy trình chính thức."
+  },
+  {
+    "id": "rule-08",
+    "title": "Trao đổi lịch sự",
+    "group": "Cộng đồng",
+    "text": "Không quấy rối, xúc phạm, đe dọa hoặc phân biệt đối xử với người dùng khác."
+  },
+  {
+    "id": "rule-09",
+    "title": "Ghi rõ vật liệu tái chế",
+    "group": "Thông tin sản phẩm",
+    "text": "Khai báo trung thực nguồn gốc và tình trạng vật liệu tái chế."
+  },
+  {
+    "id": "rule-10",
+    "title": "Nội dung cá nhân hóa phù hợp",
+    "group": "An toàn cộng đồng",
+    "text": "Từ chối yêu cầu cá nhân hóa vi phạm pháp luật hoặc quyền của người khác."
+  },
+  {
+    "id": "rule-11",
+    "title": "Không đánh giá giả",
+    "group": "Đánh giá",
+    "text": "Không mua bán, trao đổi hoặc tạo đánh giá để thao túng uy tín."
+  },
+  {
+    "id": "rule-12",
+    "title": "Báo cáo có căn cứ",
+    "group": "Kiểm duyệt",
+    "text": "Đính kèm liên kết, ảnh hoặc mô tả cụ thể khi gửi báo cáo vi phạm."
+  },
+  {
+    "id": "rule-13",
+    "title": "Bảo vệ thông tin khách hàng",
+    "group": "Quyền riêng tư",
+    "text": "Không đăng địa chỉ, số điện thoại hay thông tin riêng tư của người khác."
+  },
+  {
+    "id": "rule-14",
+    "title": "Tuân thủ quy định an toàn",
+    "group": "An toàn cộng đồng",
+    "text": "Mô tả rõ cảnh báo an toàn khi sản phẩm có yêu cầu sử dụng đặc biệt."
+  },
+  {
+    "id": "rule-15",
+    "title": "Cập nhật tình trạng còn hàng",
+    "group": "Thông tin sản phẩm",
+    "text": "Cập nhật tình trạng sản phẩm để tránh giao dịch khi hàng đã hết."
+  }
+]

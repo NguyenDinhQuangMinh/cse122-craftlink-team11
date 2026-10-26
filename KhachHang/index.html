@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Danh sách sản phẩm | CraftLink</title>
+  <meta name="description" content="Danh sách sản phẩm thủ công trên CraftLink — sàn sản phẩm sáng tạo tùy biến, kết nối bạn với các nghệ nhân.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/ai-advisor.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+
+      <a href="index.html" class="brand">CraftLink</a>
+
+      <nav class="main-nav" aria-label="Điều hướng chính">
+        <ul>
+          <li><a href="index.html">Khám phá</a></li>
+          <li><a href="index.html" class="active" aria-current="page">Danh mục</a></li>
+          <li><a href="artisan-suggestions.html">Nghệ nhân</a></li>
+          <li><a href="favorites.html">Yêu thích</a></li>
+          <li><a href="orders.html">Đơn hàng</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="index.html" class="icon-btn" aria-label="Tìm kiếm">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </a>
+        <button type="button" class="icon-btn" aria-label="Tin nhắn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </button>
+        <a href="cart.html" class="icon-btn" aria-label="Giỏ hàng">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          <span class="cart-count" id="cart-count" hidden></span>
+        </a>
+        <button type="button" class="icon-btn" aria-label="Tài khoản">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <main class="container">
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="index.html">Trang chủ</a></li>
+        <li><span aria-current="page">Danh sách sản phẩm</span></li>
+      </ol>
+    </nav>
+
+    <section class="page-heading" aria-labelledby="page-title">
+      <div>
+        <h1 id="page-title">Danh sách sản phẩm</h1>
+        <p class="page-subtitle">Khám phá các sản phẩm thủ công độc đáo và yêu cầu tùy biến theo ý bạn cùng các nghệ nhân của CraftLink.</p>
+      </div>
+
+      <form class="search-form" role="search">
+        <label class="visually-hidden" for="search-input">Tìm kiếm sản phẩm</label>
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="search" id="search-input" name="search" placeholder="Tìm sản phẩm, nghệ nhân hoặc phong cách...">
+      </form>
+    </section>
+
+    <section class="panel ai-advisor" id="ai-advisor" aria-labelledby="ai-advisor-title">
+      <div class="ai-advisor-head">
+        <div class="ai-advisor-heading">
+          <p class="ai-eyebrow">CraftLink AI</p>
+          <h2 id="ai-advisor-title">Trợ lý thủ công thông minh</h2>
+          <p class="ai-subtitle">Mô tả điều bạn cần — trợ lý sẽ phân tích ý định, tìm trong dữ liệu sản phẩm và nghệ nhân hiện có, rồi giải thích vì sao phù hợp.</p>
+        </div>
+        <p class="ai-mode-tag">Tìm kiếm cục bộ</p>
+      </div>
+
+      <form class="ai-form" id="ai-form" novalidate>
+        <label class="visually-hidden" for="ai-input">Mô tả điều bạn đang tìm</label>
+        <textarea class="ai-input" id="ai-input" name="ai-input" rows="3" maxlength="300"
+          placeholder="Ví dụ: Tôi cần một món quà sinh nhật bằng gốm dưới 300.000đ..."
+          title="Mẹo: nhấn Ctrl + Enter để gửi"></textarea>
+
+        <div class="ai-suggestions" id="ai-suggestions" aria-label="Gợi ý câu hỏi">
+          <span class="ai-suggestions-label">Thử nhanh:</span>
+          <button type="button" class="ai-chip" data-prompt="Quà sinh nhật bằng gốm dưới 300.000đ">Quà gốm dưới 300.000₫</button>
+          <button type="button" class="ai-chip" data-prompt="Tìm thợ gỗ ở Hà Nội">Thợ gỗ ở Hà Nội</button>
+          <button type="button" class="ai-chip" data-prompt="Bình gốm trang trí tối giản">Bình gốm trang trí tối giản</button>
+          <button type="button" class="ai-chip" data-prompt="Nghệ nhân nhận đặt làm theo yêu cầu">Nghệ nhân nhận đặt làm</button>
+          <button type="button" class="ai-chip" data-prompt="Bát gốm men lam">Bát gốm men lam</button>
+        </div>
+
+        <div class="ai-actions btn-row">
+          <button type="submit" class="btn-primary" id="ai-submit-btn">Tư vấn ngay</button>
+          <button type="button" class="btn-light" id="ai-reset-btn">Xóa nội dung</button>
+        </div>
+      </form>
+
+      <div class="ai-status" id="ai-status" role="status" hidden>
+        <span class="spinner" aria-hidden="true"></span>
+        <span>Đang phân tích câu hỏi và đối chiếu dữ liệu mẫu...</span>
+      </div>
+
+      <p class="form-note ai-error" id="ai-error" role="alert" hidden></p>
+
+      <div class="ai-answer" id="ai-answer" aria-live="polite" hidden>
+        <p class="ai-answer-text" id="ai-answer-text"></p>
+        <ul class="ai-criteria-list" id="ai-criteria"></ul>
+      </div>
+
+      <div class="ai-followup" id="ai-followup" hidden>
+        <p class="ai-followup-title">Bạn cho tôi biết thêm để lọc chính xác hơn:</p>
+        <div class="ai-followup-row" id="ai-budget-followup" hidden>
+          <span class="ai-followup-label">Ngân sách tối đa:</span>
+          <button type="button" class="ai-chip" data-budget="100000">Dưới 100.000₫</button>
+          <button type="button" class="ai-chip" data-budget="200000">Dưới 200.000₫</button>
+          <button type="button" class="ai-chip" data-budget="300000">Dưới 300.000₫</button>
+          <button type="button" class="ai-chip" data-budget="500000">Dưới 500.000₫</button>
+          <button type="button" class="ai-chip" data-budget="all">Xem tất cả</button>
+        </div>
+        <div class="ai-followup-row" id="ai-location-followup" hidden>
+          <span class="ai-followup-label">Địa điểm:</span>
+          <button type="button" class="ai-chip" data-location="ha-noi">Hà Nội</button>
+          <button type="button" class="ai-chip" data-location="ho-chi-minh">TP. Hồ Chí Minh</button>
+          <button type="button" class="ai-chip" data-location="da-nang">Đà Nẵng</button>
+          <button type="button" class="ai-chip" data-location="all">Xem tất cả</button>
+        </div>
+      </div>
+
+      <div class="ai-results" id="ai-results" aria-live="polite" hidden>
+        <section class="ai-result-block" id="ai-product-block" aria-label="Sản phẩm phù hợp">
+          <div class="ai-result-head">
+            <h3 class="ai-result-title">Sản phẩm phù hợp</h3>
+            <span class="ai-result-count" id="ai-product-count" hidden></span>
+          </div>
+          <ul class="ai-result-grid" id="ai-product-results"></ul>
+          <div class="empty-state" id="ai-product-empty" hidden>
+            <p class="empty-state-title">Chưa có sản phẩm phù hợp</p>
+            <p class="empty-state-text"></p>
+          </div>
+        </section>
+
+        <section class="ai-result-block" id="ai-artisan-block" aria-label="Nghệ nhân phù hợp">
+          <div class="ai-result-head">
+            <h3 class="ai-result-title">Nghệ nhân phù hợp</h3>
+            <span class="ai-result-count" id="ai-artisan-count" hidden></span>
+          </div>
+          <ul class="ai-artisan-list" id="ai-artisan-results"></ul>
+          <div class="empty-state" id="ai-artisan-empty" hidden>
+            <p class="empty-state-title">Chưa có nghệ nhân phù hợp</p>
+            <p class="empty-state-text"></p>
+          </div>
+          <div class="ai-unverified" id="ai-unverified-block" hidden>
+            <h4 class="ai-unverified-title">Có chuyên môn phù hợp nhưng chưa có dữ liệu địa điểm</h4>
+            <p class="ai-unverified-text">Các nghệ nhân dưới đây khớp tiêu chí chuyên môn, nhưng dự án chưa có thông tin địa điểm nên chưa thể xác nhận theo yêu cầu của bạn.</p>
+            <ul class="ai-unverified-list" id="ai-unverified-results"></ul>
+          </div>
+        </section>
+
+        <div class="empty-state ai-empty" id="ai-empty" hidden>
+          <p class="empty-state-title" id="ai-empty-title">Chưa tìm thấy kết quả phù hợp</p>
+          <p class="empty-state-text" id="ai-empty-text"></p>
+          <button type="button" class="btn-light" id="ai-empty-reset">Xóa nội dung và thử lại</button>
+        </div>
+      </div>
+
+      <p class="ai-disclaimer">
+        <strong>Về tính năng này:</strong> Đây là bản demo tìm kiếm cục bộ theo từ khóa và tiêu chí,
+        <strong>chưa kết nối mô hình AI tạo sinh</strong>. Kết quả chỉ dựa trên dữ liệu mẫu có sẵn
+        trong dự án và không gửi dữ liệu ra ngoài. Thông tin chưa có sẽ được ghi rõ “Chưa có thông tin”.
+      </p>
+    </section>
+
+    <template id="ai-product-template">
+      <li class="product-card ai-product-card">
+        <article>
+          <a href="product-detail.html" class="product-media ai-product-media">
+            <img class="ai-product-image" src="" alt="">
+          </a>
+          <div class="product-body">
+            <h4 class="product-name"><a href="product-detail.html" class="ai-product-name"></a></h4>
+            <p class="product-artisan"><span class="ai-product-artisan"></span></p>
+            <div class="product-meta">
+              <span class="product-price"></span>
+              <span class="product-rating"><span class="star" aria-hidden="true">★</span> <span class="ai-product-rating"></span></span>
+            </div>
+            <p class="product-note ai-product-note" hidden></p>
+            <p class="ai-match-line"><span class="ai-match-badge"></span><span class="ai-match-text"></span></p>
+            <p class="ai-reason"></p>
+            <a href="product-detail.html" class="btn-customize ai-detail-btn">Xem chi tiết</a>
+          </div>
+        </article>
+      </li>
+    </template>
+
+    <template id="ai-artisan-template">
+      <li class="ai-artisan-card">
+        <div class="ai-artisan-head">
+          <img class="avatar avatar-lg ai-artisan-avatar" src="" alt="">
+          <span class="ai-artisan-initial" hidden aria-hidden="true"></span>
+          <div class="ai-artisan-identity">
+            <h4 class="ai-artisan-name"></h4>
+            <p class="ai-artisan-shop" hidden></p>
+            <p class="ai-match-line"><span class="ai-match-badge"></span><span class="ai-match-text"></span></p>
+          </div>
+        </div>
+        <ul class="ai-artisan-tags"></ul>
+        <dl class="ai-artisan-facts">
+          <dt>Chuyên môn</dt><dd class="ai-fact-specialty"></dd>
+          <dt>Địa điểm</dt><dd class="ai-fact-location"></dd>
+          <dt>Giá sản phẩm mẫu</dt><dd class="ai-fact-price"></dd>
+          <dt>Nhận đơn tùy biến</dt><dd class="ai-fact-custom"></dd>
+        </dl>
+        <p class="ai-artisan-reason"></p>
+        <p class="ai-demo-note" hidden></p>
+        <button type="button" class="btn-primary ai-artisan-products-btn">Xem sản phẩm của thợ</button>
+      </li>
+    </template>
+
+    <template id="ai-unverified-template">
+      <li class="ai-unverified-item">
+        <img class="avatar avatar-sm ai-unverified-avatar" src="" alt="">
+        <span class="ai-unverified-initial" hidden aria-hidden="true"></span>
+        <div class="ai-unverified-body">
+          <p class="ai-unverified-name"></p>
+          <p class="ai-unverified-meta"></p>
+          <p class="ai-unverified-reason"></p>
+        </div>
+      </li>
+    </template>
+
+    <div class="catalog">
+
+      <aside class="filters" aria-label="Bộ lọc sản phẩm">
+        <div class="filters-head">
+          <h2 class="filters-title">Bộ lọc</h2>
+          <button type="button" class="link-action" id="reset-filters-btn">Xóa bộ lọc</button>
+        </div>
+
+        <form class="filter-form" id="filter-form">
+
+          <fieldset class="filter-group">
+            <legend>Danh mục</legend>
+            <ul class="filter-list">
+              <li>
+                <input type="radio" name="category" id="category-all" value="all" checked>
+                <label for="category-all">Tất cả sản phẩm</label>
+              </li>
+              <li>
+                <input type="radio" name="category" id="category-do-gom" value="do-gom">
+                <label for="category-do-gom">Đồ gốm</label>
+              </li>
+              <li>
+                <input type="radio" name="category" id="category-do-trang-tri" value="do-trang-tri">
+                <label for="category-do-trang-tri">Đồ trang trí</label>
+              </li>
+              <li>
+                <input type="radio" name="category" id="category-do-dung-nha-bep" value="do-dung-nha-bep">
+                <label for="category-do-dung-nha-bep">Đồ dùng nhà bếp</label>
+              </li>
+              <li>
+                <input type="radio" name="category" id="category-phu-kien" value="phu-kien">
+                <label for="category-phu-kien">Phụ kiện</label>
+              </li>
+              <li>
+                <input type="radio" name="category" id="category-qua-tang" value="qua-tang">
+                <label for="category-qua-tang">Quà tặng</label>
+              </li>
+            </ul>
+          </fieldset>
+
+          <fieldset class="filter-group">
+            <legend>Khoảng giá</legend>
+            <label class="visually-hidden" for="price-range">Giá tối đa</label>
+            <input type="range" class="price-range" id="price-range" name="price" min="100000" max="1000000" step="50000" value="1000000">
+            <div class="price-scale">
+              <span>100.000₫</span>
+              <span class="price-max" id="price-output">1.000.000₫</span>
+            </div>
+          </fieldset>
+
+          <fieldset class="filter-group">
+            <legend>Phong cách</legend>
+            <ul class="filter-list">
+              <li>
+                <input type="checkbox" name="style" id="style-toi-gian" value="toi-gian">
+                <label for="style-toi-gian">Tối giản</label>
+              </li>
+              <li>
+                <input type="checkbox" name="style" id="style-moc-mac" value="moc-mac">
+                <label for="style-moc-mac">Mộc mạc</label>
+              </li>
+              <li>
+                <input type="checkbox" name="style" id="style-hien-dai" value="hien-dai">
+                <label for="style-hien-dai">Hiện đại</label>
+              </li>
+              <li>
+                <input type="checkbox" name="style" id="style-truyen-thong" value="truyen-thong">
+                <label for="style-truyen-thong">Truyền thống</label>
+              </li>
+            </ul>
+          </fieldset>
+
+          <fieldset class="filter-group">
+            <legend>Thời gian hoàn thành</legend>
+            <ul class="filter-list">
+              <li>
+                <input type="checkbox" name="lead-time" id="lead-1-3" value="1-3">
+                <label for="lead-1-3">1 – 3 ngày</label>
+              </li>
+              <li>
+                <input type="checkbox" name="lead-time" id="lead-4-7" value="4-7">
+                <label for="lead-4-7">4 – 7 ngày</label>
+              </li>
+              <li>
+                <input type="checkbox" name="lead-time" id="lead-8-14" value="8-14">
+                <label for="lead-8-14">8 – 14 ngày</label>
+              </li>
+              <li>
+                <input type="checkbox" name="lead-time" id="lead-tren-14" value="tren-14">
+                <label for="lead-tren-14">Trên 14 ngày</label>
+              </li>
+            </ul>
+          </fieldset>
+
+        </form>
+      </aside>
+
+      <section class="catalog-main" aria-label="Kết quả sản phẩm">
+        <h2 class="visually-hidden">Kết quả sản phẩm</h2>
+
+        <div class="catalog-toolbar">
+          <div class="catalog-status">
+            <p class="filter-status">Lọc: <strong id="filter-summary">Tất cả sản phẩm</strong> • <strong id="sort-summary">Phổ biến</strong></p>
+            <p class="result-count"><span id="product-count">8</span> sản phẩm phù hợp với bộ lọc hiện tại</p>
+          </div>
+
+          <div class="catalog-sort">
+            <label for="sort-select">Sắp xếp</label>
+            <select id="sort-select" name="sort">
+              <option value="popular" selected>Phổ biến</option>
+              <option value="price-asc">Giá: Tăng dần</option>
+              <option value="price-desc">Giá: Giảm dần</option>
+              <option value="rating">Đánh giá cao nhất</option>
+            </select>
+          </div>
+        </div>
+
+        <ul class="product-grid" id="product-grid">
+
+          <li class="product-card" data-id="coc-gom-la-nau" data-price="240000" data-category="do-dung-nha-bep" data-style="moc-mac toi-gian" data-lead-time="4-7" data-rating="4.9">
+            <article>
+              <a href="product-detail.html" class="product-media">
+                <img src="assets/images/coc-gom-la-nau.png" alt="Cốc gốm lá nâu thủ công">
+              </a>
+              <div class="product-body">
+                <h3 class="product-name"><a href="product-detail.html">Cốc gốm lá nâu thủ công</a></h3>
+                <p class="product-artisan">Linh Gốm</p>
+                <div class="product-meta">
+                  <span class="product-price">240.000₫</span>
+                  <span class="product-rating"><span class="star" aria-hidden="true">★</span> 4.9 <span class="rating-count">(128)</span></span>
+                </div>
+                <a href="customize.html" class="btn-customize">Yêu cầu tùy biến</a>
+              </div>
+            </article>
+          </li>
+
+          <li class="product-card" data-id="bat-gom-men-lam" data-price="180000" data-category="do-dung-nha-bep" data-style="truyen-thong" data-lead-time="4-7" data-rating="4.8">
+            <article>
+              <a href="product-detail.html" class="product-media">
+                <img src="assets/images/bat-gom-men-lam.png" alt="Bát gốm men lam">
+              </a>
+              <div class="product-body">
+                <h3 class="product-name"><a href="product-detail.html">Bát gốm men lam</a></h3>
+                <p class="product-artisan">Gốm An Nhiên</p>
+                <div class="product-meta">
+                  <span class="product-price">180.000₫</span>
+                  <span class="product-rating"><span class="star" aria-hidden="true">★</span> 4.8 <span class="rating-count">(98)</span></span>
+                </div>
+                <a href="customize.html" class="btn-customize">Yêu cầu tùy biến</a>
+              </div>
+            </article>
+          </li>
+
+          <li class="product-card" data-id="binh-gom-dang-tron" data-price="260000" data-category="do-trang-tri" data-style="toi-gian hien-dai" data-lead-time="8-14" data-rating="4.8">
+            <article>
+              <a href="product-detail.html" class="product-media">
+                <img src="assets/images/binh-gom-dang-tron.png" alt="Bình gốm dáng tròn">
+              </a>
+              <div class="product-body">
+                <h3 class="product-name"><a href="product-detail.html">Bình gốm dáng tròn</a></h3>
+                <p class="product-artisan">Gốm Mộc</p>
+                <div class="product-meta">
+                  <span class="product-price">260.000₫</span>
+                  <span class="product-rating"><span class="star" aria-hidden="true">★</span> 4.8 <span class="rating-count">(74)</span></span>
+                </div>
+                <a href="customize.html" class="btn-customize">Yêu cầu tùy biến</a>
+              </div>
+            </article>
+          </li>
+
+          <li class="product-card" data-id="chuong-gio-gom" data-price="200000" data-category="phu-kien" data-style="moc-mac" data-lead-time="1-3" data-rating="4.8">
+            <article>
+              <a href="product-detail.html" class="product-media">
+                <img src="assets/images/chuong-gio-gom.png" alt="Chuông gió gốm">
+              </a>
+              <div class="product-body">
+                <h3 class="product-name"><a href="product-detail.html">Chuông gió gốm</a></h3>
+                <p class="product-artisan">Gốm Mộc</p>
+                <div class="product-meta">
+                  <span class="product-price">200.000₫</span>
+                  <span class="product-rating"><span class="star" aria-hidden="true">★</span> 4.8 <span class="rating-count">(100)</span></span>
+                </div>
+                <a href="customize.html" class="btn-customize">Yêu cầu tùy biến</a>
+              </div>
+            </article>
+          </li>
+
+          <li class="product-card" data-id="binh-gom-van-la" data-price="320000" data-category="do-trang-tri" data-style="moc-mac" data-lead-time="4-7" data-rating="4.9">
+            <article>
+              <a href="product-detail.html" class="product-media">
+                <img src="assets/images/binh-gom-van-la.png" alt="Bình gốm vân lá">
+              </a>
+              <div class="product-body">
+                <h3 class="product-name"><a href="product-detail.html">Bình gốm vân lá</a></h3>
+                <p class="product-artisan">Linh Gốm</p>
+                <div class="product-meta">
+                  <span class="product-price">320.000₫</span>
+                  <span class="product-rating"><span class="star" aria-hidden="true">★</span> 4.9 <span class="rating-count">(46)</span></span>
+                </div>
+                <p class="product-note">Giao dự kiến 3–5 ngày</p>
+                <a href="customize.html" class="btn-customize">Yêu cầu tùy biến</a>
+              </div>
+            </article>
+          </li>
+
+          <li class="product-card" data-id="dia-men-lam" data-price="210000" data-category="do-gom" data-style="truyen-thong toi-gian" data-lead-time="tren-14" data-rating="4.8">
+            <article>
+              <a href="product-detail.html" class="product-media">
+                <img src="assets/images/dia-men-lam.png" alt="Đĩa men lam thủ công">
+              </a>
+              <div class="product-body">
+                <h3 class="product-name"><a href="product-detail.html">Đĩa men lam thủ công</a></h3>
+                <p class="product-artisan">Gốm An Nhiên</p>
+                <div class="product-meta">
+                  <span class="product-price">210.000₫</span>
+                  <span class="product-rating"><span class="star" aria-hidden="true">★</span> 4.8 <span class="rating-count">(63)</span></span>
+                </div>
+                <p class="product-note">Nhận đặt làm theo yêu cầu</p>
+                <a href="customize.html" class="btn-customize">Yêu cầu tùy biến</a>
+              </div>
+            </article>
+          </li>
+
+          <li class="product-card" data-id="chau-cay-mini" data-price="150000" data-category="do-gom" data-style="moc-mac" data-lead-time="1-3" data-rating="4.7">
+            <article>
+              <a href="product-detail.html" class="product-media">
+                <img src="assets/images/chau-cay-mini.png" alt="Chậu cây mini mộc">
+              </a>
+              <div class="product-body">
+                <h3 class="product-name"><a href="product-detail.html">Chậu cây mini mộc</a></h3>
+                <p class="product-artisan">Gốm Nhà Quê</p>
+                <div class="product-meta">
+                  <span class="product-price">150.000₫</span>
+                  <span class="product-rating"><span class="star" aria-hidden="true">★</span> 4.7 <span class="rating-count">(38)</span></span>
+                </div>
+                <p class="product-note">Giao dự kiến 2–4 ngày</p>
+                <a href="customize.html" class="btn-customize">Yêu cầu tùy biến</a>
+              </div>
+            </article>
+          </li>
+
+          <li class="product-card" data-id="bo-am-tra" data-price="680000" data-category="qua-tang" data-style="truyen-thong" data-lead-time="1-3" data-rating="5.0">
+            <article>
+              <a href="product-detail.html" class="product-media">
+                <img src="assets/images/bo-am-tra.png" alt="Bộ ấm trà gia đình">
+              </a>
+              <div class="product-body">
+                <h3 class="product-name"><a href="product-detail.html">Bộ ấm trà gia đình</a></h3>
+                <p class="product-artisan">Gốm Mộc</p>
+                <div class="product-meta">
+                  <span class="product-price">680.000₫</span>
+                  <span class="product-rating"><span class="star" aria-hidden="true">★</span> 5.0 <span class="rating-count">(21)</span></span>
+                </div>
+                <p class="product-note">Có sẵn • Đổi trả 7 ngày</p>
+                <a href="customize.html" class="btn-customize">Yêu cầu tùy biến</a>
+              </div>
+            </article>
+          </li>
+
+        </ul>
+
+        <div class="empty-state" id="empty-state" hidden>
+          <p class="empty-state-title">Không tìm thấy sản phẩm phù hợp</p>
+          <p class="empty-state-text">Hãy thử bỏ chọn một vài bộ lọc hoặc đổi từ khóa tìm kiếm.</p>
+        </div>
+
+        <nav class="pagination" id="pagination" aria-label="Phân trang">
+          <button type="button" class="page-btn active" aria-current="page">1</button>
+          <button type="button" class="page-btn">2</button>
+          <button type="button" class="page-btn">3</button>
+        </nav>
+
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-top">
+      <div class="footer-brand">
+        <p class="footer-logo">CraftLink</p>
+        <p class="footer-tagline">Sàn sản phẩm sáng tạo tùy biến — kết nối người yêu thủ công với các nghệ nhân trên cả nước.</p>
+      </div>
+
+      <nav class="footer-nav" aria-label="Liên kết chân trang — Khám phá">
+        <h2>Khám phá</h2>
+        <ul>
+          <li><a href="index.html">Danh mục sản phẩm</a></li>
+          <li><a href="artisan-suggestions.html">Nghệ nhân</a></li>
+          <li><a href="favorites.html">Yêu thích</a></li>
+          <li><a href="orders.html">Đơn hàng</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer-nav" aria-label="Liên kết chân trang — Hỗ trợ">
+        <h2>Hỗ trợ</h2>
+        <ul>
+          <li><a href="#">Trung tâm trợ giúp</a></li>
+          <li><a href="#">Chính sách đổi trả</a></li>
+          <li><a href="#">Điều khoản sử dụng</a></li>
+          <li><a href="#">Liên hệ</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        <p>© 2026 CraftLink — Sàn sản phẩm sáng tạo tùy biến.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/ai-advisor.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#18232f">
+    <title>Bảng điều khiển | CraftLink</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="../js/api.js" defer></script>
+<script src="../js/navigation.js" defer></script>
+<script src="js/main.js" defer></script>
+  </head>
+  <body class="admin">
+    <a class="skip-link" href="#main">Bỏ qua điều hướng</a>
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="../01-dashboard/index.html" data-page="dashboard" aria-label="CraftLink - Bảng điều khiển">
+        <span class="brand-mark">C</span>
+        <span>CraftLink</span>
+      </a>
+
+      <div class="area-label">KHU VỰC QUẢN TRỊ</div>
+
+      <nav class="side-nav" aria-label="Điều hướng">
+        <button class="nav-link active" type="button" aria-current="page" data-page="dashboard">
+          <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="3" y="3" width="7" height="7" rx="1.3"/>
+            <rect x="14" y="3" width="7" height="7" rx="1.3"/>
+            <rect x="3" y="14" width="7" height="7" rx="1.3"/>
+            <rect x="14" y="14" width="7" height="7" rx="1.3"/>
+          </svg>
+          Bảng điều khiển
+        </button>
+
+        <button class="nav-link" type="button" data-page="categories">
+          <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M3 7.5A2.5 2.5 0 0 1 5.5 5H10l2 2h6.5A2.5 2.5 0 0 1 21 9.5v8a2.5 2.5 0 0 1-2.5 2.5h-13A2.5 2.5 0 0 1 3 17.5z"/>
+            <path d="M3.5 9h17"/>
+          </svg>
+          Quản lý danh mục
+        </button>
+
+        <button class="nav-link" type="button" data-page="users">
+          <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M16 20v-1.5a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4V20"/>
+            <circle cx="9.5" cy="7.5" r="3.5"/>
+            <path d="M17 11a3.5 3.5 0 1 0-1.2-6.8M17 14.5h1a3 3 0 0 1 3 3V20"/>
+          </svg>
+          Quản lý tài khoản
+        </button>
+
+        <div class="sidebar-label nav-section-label">KIỂM DUYỆT</div>
+
+        <button class="nav-link" type="button" data-page="queue">
+          <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="m12 3 9 5-9 5-9-5z"/>
+            <path d="M3 8v9l9 5 9-5V8M12 13v9"/>
+          </svg>
+          Hàng đợi kiểm duyệt
+        </button>
+
+        <button class="nav-link" type="button" data-page="reports">
+          <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M10.3 4.2 2.6 18a2 2 0 0 0 1.7 3h15.4a2 2 0 0 0 1.7-3L13.7 4.2a2 2 0 0 0-3.4 0Z"/>
+            <path d="M12 9v4m0 4h.01"/>
+          </svg>
+          Trung tâm báo cáo
+        </button>
+
+        <button class="nav-link" type="button" data-page="rules">
+          <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11Z"/>
+            <path d="m9 12 2 2 4-4"/>
+          </svg>
+          Quy định nội dung
+        </button>
+      </nav>
+
+      <div class="sidebar-spacer"></div>
+
+      <div class="sidebar-status">
+        <span class="status-dot"></span>
+        <span>Hệ thống đang ổn định</span>
+      </div>
+
+      <button class="side-user" type="button" data-action="logout">
+        <img src="../assets/admin-sidebar-avatar.png" alt="Ảnh đại diện tài khoản Quản trị viên">
+        <span>
+          <b>Quản trị viên Admin</b>
+          <small>Đăng xuất</small>
+        </span>
+      </button>
+    </aside>
+
+    <main class="app" id="main" tabindex="-1">
+      <header class="topbar">
+        <button class="menu-toggle" id="menuToggle" type="button" aria-controls="sidebar" aria-expanded="false" aria-label="Mở menu">☰</button>
+        <label class="system-search">
+          <span aria-hidden="true">⌕</span>
+          <input
+            id="globalSearch"
+            type="search"
+            placeholder="Tìm kiếm hệ thống, danh mục, tài khoản..."
+            aria-label="Tìm kiếm hệ thống"
+          >
+        </label>
+
+        <div class="top-actions">
+          <div class="popover-wrap">
+            <button
+              class="icon-btn"
+              id="noticeButton"
+              type="button"
+              aria-label="Thông báo"
+            >
+              <svg class="bell" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/>
+              </svg>
+              <i></i>
+            </button>
+
+            <section class="popover" id="noticeMenu" hidden>
+              <b>Thông báo gần đây</b>
+              <p>Có cập nhật mới trong hệ thống.</p>
+              <p>Phiên demo đang hoạt động.</p>
+            </section>
+          </div>
+
+          <div class="popover-wrap">
+            <button class="profile" id="profileButton" type="button">
+              <img src="../assets/admin-avatar.png" alt="Ảnh đại diện tài khoản Quản trị viên">
+              <span>Quản trị viên Admin</span>
+              <span class="chevron">⌄</span>
+            </button>
+
+            <section class="popover profile-menu" id="profileMenu" hidden>
+              <b>Quản trị viên Admin</b>
+              <small>admin@craftlink.vn</small>
+              <button type="button" data-action="logout">Đăng xuất</button>
+            </section>
+          </div>
+        </div>
+      </header>
+
+      <div class="page">
+        <h1 class="sr-only">Bảng điều khiển quản trị CraftLink</h1>
+        <section class="metric-grid">
+          <article class="metric">
+            <span>Tổng doanh thu sàn</span>
+            <strong>2.450.000.000 ₫</strong>
+            <small><b>↑</b> 18,6% so với tháng trước</small>
+          </article>
+          <article class="metric">
+            <span>Đơn hàng tùy biến</span>
+            <strong>638</strong>
+            <small><b>↑</b> 12,4% so với tháng trước</small>
+          </article>
+          <article class="metric">
+            <span>Thợ thủ công đang hoạt động</span>
+            <strong id="activeMakers">1.248</strong>
+            <small><b>↑</b> 9,7% so với tháng trước</small>
+          </article>
+          <article class="metric alert">
+            <span>Cảnh báo hệ thống</span>
+            <strong id="systemAlerts">12</strong>
+            <small><b>↑</b> 5 so với tháng trước</small>
+          </article>
+        </section>
+
+        <section class="dash-grid">
+          <article class="chart-card card">
+            <header>
+              <b>Doanh thu nền tảng theo tháng</b>
+            </header>
+            <div class="line-chart">
+              <div class="y-labels">
+                <span>3.0B</span>
+                <span>2.5B</span>
+                <span>2.0B</span>
+                <span>1.5B</span>
+                <span>1.0B</span>
+                <span>500M</span>
+                <span>0</span>
+              </div>
+              <svg
+                id="revenueChart"
+                viewBox="0 0 600 235"
+                role="img"
+                aria-label="Biểu đồ doanh thu theo tháng"
+              >
+                <g class="grid-lines">
+                  <path d="M0 15H600M0 48H600M0 81H600M0 114H600M0 147H600M0 180H600M0 213H600"/>
+                </g>
+                <path class="line" d="M25 176 L135 137 L245 93 L355 128 L465 88 L575 57"/>
+                <g class="dots">
+                  <circle cx="25" cy="176" r="5"/>
+                  <circle cx="135" cy="137" r="5"/>
+                  <circle cx="245" cy="93" r="5"/>
+                  <circle cx="355" cy="128" r="5"/>
+                  <circle cx="465" cy="88" r="5"/>
+                  <circle cx="575" cy="57" r="5"/>
+                </g>
+              </svg>
+              <div class="x-labels">
+                <span>Tháng 1</span>
+                <span>Tháng 2</span>
+                <span>Tháng 3</span>
+                <span>Tháng 4</span>
+                <span>Tháng 5</span>
+                <span>Tháng 6</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="chart-card card">
+            <header>
+              <b>Tỷ lệ đóng góp theo ngành hàng</b>
+            </header>
+            <div class="donut-layout">
+              <div class="donut">
+                <span>38%</span>
+                <span>26%</span>
+                <span>18%</span>
+                <span>10%</span>
+                <span>8%</span>
+              </div>
+              <div class="legend">
+                <p><i></i>Gốm sứ thủ công <b>38%</b></p>
+                <p><i></i>Đồ gỗ nghệ thuật <b>26%</b></p>
+                <p><i></i>Đồ da cao cấp <b>18%</b></p>
+                <p><i></i>Trang sức &amp; Phụ kiện <b>10%</b></p>
+                <p><i></i>Thêu dệt may mặc <b>8%</b></p>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <section class="logs card">
+          <h2>Nhật ký hoạt động hệ thống</h2>
+          <div class="table-scroll">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Thời gian</th>
+                  <th>Mô tả sự kiện</th>
+                  <th>Người thực hiện</th>
+                  <th>Trạng thái</th>
+                </tr>
+              </thead>
+              <tbody id="logs"></tbody>
+            </table>
+          </div>
+        </section>
+        <footer class="page-footer">
+          <p>Bảng điều khiển chỉ đọc: số liệu được tổng hợp từ các màn quản trị và kiểm duyệt, không sửa được tại đây.</p>
+        </footer>
+      </div>
+    </main>
+
+    <div id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
+
+

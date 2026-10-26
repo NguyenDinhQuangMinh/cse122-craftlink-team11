@@ -1,0 +1,471 @@
+/* ==========================================================================
+   CraftLink — Trang Xác nhận đơn tùy biến (checkout.html)
+   Bố cục 2 cột: các bước xác nhận | tóm tắt đơn
+   Dùng lại màu sắc, nút, panel và bảng chữ của css/style.css.
+   ========================================================================== */
+
+.checkout-steps {
+  display: flex;
+  gap: 10px;
+  margin: 20px 0 24px;
+}
+
+.checkout-step {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-btn);
+  color: var(--color-text-muted);
+  font-size: 14px;
+}
+
+.checkout-step-number {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: #f1ece5;
+  color: #7a6f63;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.checkout-step.is-active {
+  border-color: var(--color-primary);
+  background-color: var(--color-primary-light);
+  color: var(--color-primary-dark);
+  font-weight: 600;
+}
+
+.checkout-step.is-active .checkout-step-number {
+  background-color: var(--color-primary);
+  color: #ffffff;
+}
+
+.checkout-step.is-done {
+  color: var(--color-success-dark);
+}
+
+.checkout-step.is-done .checkout-step-number {
+  background-color: var(--color-success);
+  color: #ffffff;
+  font-size: 0;
+}
+
+.checkout-step.is-done .checkout-step-number::after {
+  content: "✓";
+  font-size: 14px;
+}
+
+
+/* ---------- Bố cục chính ---------- */
+
+.checkout-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: 28px;
+  align-items: start;
+}
+
+.checkout-layout-complete {
+  grid-template-columns: 1fr;
+}
+
+.checkout-summary {
+  position: sticky;
+  top: 20px;
+}
+
+.summary-total-sub {
+  font-size: 12.5px;
+  font-weight: 400;
+  color: var(--color-text-muted);
+}
+
+.checkout-summary .summary-total {
+  align-items: flex-start;
+}
+
+.checkout-summary .summary-note {
+  text-align: left;
+}
+
+
+/* ---------- Bước 1: xem lại sản phẩm ---------- */
+
+.checkout-product {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px;
+  margin-bottom: 18px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-btn);
+  background-color: #fdfaf5;
+}
+
+.checkout-product img {
+  width: 96px;
+  height: 96px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.checkout-product-name {
+  margin: 0 0 4px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.checkout-product-meta {
+  margin: 0 0 4px;
+  font-size: 13.5px;
+  color: var(--color-text-muted);
+}
+
+.checkout-product-price {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-price);
+}
+
+
+/* ---------- Danh sách nhiều sản phẩm (chế độ giỏ hàng) ---------- */
+
+.checkout-item-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0 0 18px;
+}
+
+.checkout-item {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr) auto;
+  gap: 14px;
+  align-items: center;
+  padding: 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-btn);
+  background-color: #fdfaf5;
+}
+
+.checkout-item img {
+  width: 64px;
+  height: 64px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.checkout-item-body {
+  min-width: 0;
+}
+
+.checkout-item-name {
+  margin: 0 0 2px;
+  font-size: 14.5px;
+  font-weight: 700;
+}
+
+.checkout-item-meta {
+  margin: 0 0 4px;
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+.checkout-item-price {
+  margin: 0;
+  font-size: 13.5px;
+}
+
+.checkout-item-subtotal {
+  margin: 0;
+  font-size: 14.5px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.checkout-cart-heading {
+  margin: 0 0 10px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.checkout-cart-count {
+  margin: 0 0 16px;
+  font-size: 13.5px;
+  color: var(--color-text-muted);
+}
+
+.summary-cart-heading {
+  margin: 0 0 8px;
+  font-size: 14px;
+  color: var(--color-text-muted);
+}
+
+.summary-cart-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0 0 10px;
+}
+
+.summary-cart-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 13.5px;
+}
+
+.summary-cart-item-name {
+  font-weight: 600;
+}
+
+.summary-cart-item-meta {
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.summary-cart-count {
+  margin: 0 0 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 13.5px;
+  color: var(--color-text-muted);
+}
+
+.checkout-review-list dd {
+  white-space: pre-wrap;
+}
+
+.checkout-brief-text {
+  font-weight: 400;
+  font-size: 14.5px;
+  color: #5f564c;
+  line-height: 1.65;
+}
+
+.checkout-honest-note {
+  margin: 16px 0 0;
+  padding: 12px 14px;
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-btn);
+  background-color: #fdfaf5;
+  color: #6b6055;
+  font-size: 13.5px;
+}
+
+.checkout-actions {
+  margin-top: 18px;
+}
+
+
+/* ---------- Bước 2: form nhận hàng ---------- */
+
+.checkout-label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.required-mark {
+  color: var(--color-price);
+}
+
+.checkout-input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-btn);
+  background-color: var(--color-surface);
+  font-size: 14px;
+  line-height: 1.6;
+  resize: vertical;
+}
+
+.checkout-input:focus {
+  border-color: var(--color-primary);
+  outline: none;
+}
+
+.field-error {
+  margin: 6px 0 0;
+  color: #b3261e;
+  font-size: 13px;
+}
+
+
+/* ---------- Bước 3: lựa chọn thanh toán / giao hàng ---------- */
+
+.choice-group {
+  margin-bottom: 22px;
+}
+
+.choice-legend {
+  margin-bottom: 10px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.choice-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 14px;
+  margin-bottom: 10px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-btn);
+  background-color: var(--color-surface);
+  cursor: pointer;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+.choice-option:hover {
+  border-color: var(--color-primary);
+}
+
+.choice-option:has(input:checked) {
+  border-color: var(--color-primary);
+  background-color: var(--color-primary-light);
+}
+
+.choice-option input {
+  margin-top: 4px;
+  accent-color: var(--color-primary);
+}
+
+.choice-option strong {
+  display: block;
+  font-size: 14.5px;
+}
+
+.choice-desc {
+  display: block;
+  margin-top: 2px;
+  font-size: 13.5px;
+  color: var(--color-text-muted);
+}
+
+
+/* ---------- Bước 4 + hoàn tất ---------- */
+
+.demo-warning {
+  margin-top: 18px;
+  padding: 12px 14px;
+  border: 1px solid #f0d9b0;
+  border-radius: var(--radius-btn);
+  background-color: #fdf3d7;
+  color: #7a4b00;
+  font-size: 13.5px;
+}
+
+.checkout-complete {
+  border-color: var(--color-success-light);
+}
+
+.checkout-complete-eyebrow {
+  margin: 0 0 6px;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--color-success-dark);
+}
+
+.checkout-complete-code {
+  margin: 0 0 16px;
+  font-size: 14px;
+}
+
+.checkout-empty-actions {
+  justify-content: center;
+  margin-top: 16px;
+}
+
+
+/* ---------- Ẩn phần tử có display riêng khi JS đặt [hidden] ---------- */
+
+#checkout-steps[hidden],
+#checkout-layout[hidden],
+.checkout-step-panel[hidden],
+.checkout-summary[hidden],
+.checkout-complete[hidden],
+#review-cart[hidden],
+#summary-cart[hidden],
+#confirm-cart[hidden],
+#complete-cart[hidden],
+#complete-cart-note[hidden],
+.checkout-actions [hidden] {
+  display: none;
+}
+
+#checkout-empty .btn-primary[hidden],
+#checkout-empty .btn-outline[hidden],
+#checkout-empty .btn-light[hidden] {
+  display: none;
+}
+
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+/* Máy tính bảng: tóm tắt xuống dưới, các bước chia 2 cột */
+@media (max-width: 960px) {
+  .checkout-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .checkout-summary {
+    position: static;
+  }
+}
+
+@media (max-width: 720px) {
+  .checkout-steps {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .checkout-step {
+    padding: 10px 12px;
+  }
+}
+
+@media (max-width: 540px) {
+  .checkout-product {
+    align-items: flex-start;
+  }
+
+  .checkout-product img {
+    width: 76px;
+    height: 76px;
+  }
+
+  .checkout-item {
+    grid-template-columns: 52px minmax(0, 1fr);
+  }
+
+  .checkout-item img {
+    width: 52px;
+    height: 52px;
+  }
+
+  .checkout-item-subtotal {
+    grid-column: 1 / -1;
+    justify-self: end;
+  }
+
+  .checkout-step-label {
+    font-size: 13px;
+  }
+}

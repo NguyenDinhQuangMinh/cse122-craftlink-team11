@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="vi"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CraftLink — Listing</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Fraunces:wght@600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="https://cdn.tailwindcss.com/3.4.17" type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.577.0/dist/umd/lucide.min.js" type="text/javascript"></script>
+ </head>
+ <body data-template-id="__page-root" style="background: rgb(247, 243, 237);">
+  <div class="shell">
+   <aside class="sidebar" aria-label="Điều hướng CraftLink">
+    <div data-template-id="brand" class="brand canva-text" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 27px;">CraftLink</div>
+    <div data-template-id="nav-caption" class="side-caption canva-text" style="color: rgb(215, 224, 237); font-weight: 400; font-style: normal; font-size: 10px;">KHÔNG GIAN NGƯỜI BÁN</div>
+    <nav aria-label="Màn hình"><a class="nav-btn active" href="../01-listing-management/index.html" aria-current="page"><span data-template-id="nav-listing" class="canva-text" style="color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 15px;">Quản lý listing</span></a> <a class="nav-btn" href="../02-brief-inbox/index.html"><span data-template-id="nav-brief" class="canva-text" style="color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 15px;">Hòm thư brief</span></a> <a class="nav-btn" href="../03-proposal-editor/index.html"><span data-template-id="nav-proposal" class="canva-text" style="color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 15px;">Proposal</span></a> <a class="nav-btn" href="../04-shop-profile/index.html"><span data-template-id="nav-profile" class="canva-text" style="color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 15px;">Hồ sơ gian hàng</span></a>
+    </nav>
+    <p data-template-id="side-note" class="side-note canva-text" style="color: rgb(217, 200, 180); font-weight: 400; font-style: normal; font-size: 15px;">CraftLink đồng hành cùng người làm thủ công trong mỗi cơ hội hợp tác.</p>
+   </aside>
+   <div class="workspace">
+    <div class="page">
+     <header class="topbar">
+      <div id="breadcrumb" class="breadcrumb" aria-live="polite">
+       Bảng điều khiển / Quản lý listing
+      </div><span data-template-id="account" class="account canva-tag" style="background: rgb(255, 254, 250); color: rgb(57, 41, 31); font-weight: 400; font-style: normal; font-size: 15px;">Nhà Gốm An Nhiên</span>
+     </header>
+     <main>
+      <section id="listing" class="view active" aria-labelledby="listing-title">
+       <div class="heading-row">
+        <div>
+         <div data-template-id="listing-eyebrow" class="eyebrow canva-text" style="color: rgb(191, 98, 60); font-weight: 400; font-style: normal; font-size: 15px;">GIAN HÀNG CỦA BẠN</div>
+         <h1 id="listing-title" data-template-id="listing-title-text" class="canva-text" style="color: rgb(57, 41, 31); font-weight: 700; font-style: normal; font-size: 30px;">Quản lý listing</h1>
+         <p data-template-id="listing-description" class="subtle canva-text" style="color: rgb(121, 111, 100); font-weight: 400; font-style: normal; font-size: 15px;">Theo dõi sản phẩm, cập nhật thông tin và giữ gian hàng luôn sẵn sàng.</p>
+        </div><button id="create-listing" data-template-id="create-listing-label" type="button" class="btn terra canva-button" style="background: rgb(191, 98, 60); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 15px;">+ Tạo listing mới</button>
+       </div>
+       <div class="metrics">
+        <div class="surface metric">
+         <span data-template-id="metric-live-label" class="canva-text" style="color: rgb(121, 111, 100); font-weight: 400; font-style: normal; font-size: 15px;">Đang hoạt động</span><strong id="metric-live">2</strong>
+        </div>
+        <div class="surface metric">
+         <span data-template-id="metric-pending-label" class="canva-text" style="color: rgb(121, 111, 100); font-weight: 400; font-style: normal; font-size: 15px;">Chờ duyệt</span><strong id="metric-pending">1</strong>
+        </div>
+        <div class="surface metric">
+         <span data-template-id="metric-draft-label" class="canva-text" style="color: rgb(121, 111, 100); font-weight: 400; font-style: normal; font-size: 15px;">Bản nháp</span><strong id="metric-draft">1</strong>
+        </div>
+       </div>
+       <div class="surface toolbar"><label for="listing-search" class="sr-only">Tìm sản phẩm</label><input id="listing-search" class="field search" type="search" placeholder="Tìm theo tên sản phẩm…"> <label for="listing-filter" class="sr-only">Lọc trạng thái listing</label><select id="listing-filter" class="field"><option value="all">Tất cả trạng thái</option><option value="live">Đang hoạt động</option><option value="pending">Chờ duyệt</option><option value="draft">Bản nháp</option></select> <button id="table-view" type="button" class="btn active-toggle" aria-pressed="true">Bảng</button><button id="grid-view" type="button" class="btn" aria-pressed="false">Lưới</button>
+       </div>
+       <div class="section-line">
+        <h2 data-template-id="products-heading" class="canva-text" style="color: rgb(57, 41, 31); font-weight: 700; font-style: normal; font-size: 23px;">Sản phẩm của tôi</h2>
+        <div>
+         <button id="demo-loading" data-template-id="demo-loading-text" type="button" class="small-btn canva-button" style="color: rgb(168, 73, 41); font-weight: 400; font-style: normal; font-size: 15px;">Xem trạng thái tải</button><button id="demo-empty" data-template-id="demo-empty-text" type="button" class="small-btn canva-button" style="color: rgb(168, 73, 41); font-weight: 400; font-style: normal; font-size: 15px;">Xem trạng thái trống</button>
+        </div>
+       </div>
+       <div id="listing-panel" class="surface">
+        <div id="listing-collection">
+         <div class="listing-head">
+          <span>Sản phẩm</span><span>Giá</span><span>Danh mục</span><span>Tồn kho</span><span>Trạng thái</span><span>Cập nhật</span><span>Thao tác</span>
+         </div>
+         <article class="listing-row" data-product-id="cup" data-name="Cốc gốm thủ công men xanh ngọc" data-status="live" data-category="Gốm sứ" data-price="280000" data-stock="18">
+          <div class="product">
+           <img data-template-id="product-cup-image" class="canva-image" loading="lazy" src="https://images.pexels.com/photos/11889259/pexels-photo-11889259.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=400" alt="Cận cảnh cốc gốm thủ công có lớp men bóng">
+           <div>
+            <strong data-template-id="product-cup-name" class="canva-text" style="color: rgb(57, 41, 31); font-weight: 700; font-style: normal; font-size: 15px;">Cốc gốm thủ công men xanh ngọc</strong><small data-template-id="product-cup-code" class="canva-text" style="color: rgb(121, 111, 100); font-weight: 400; font-style: normal; font-size: 15px;">CL-GOM-001</small>
+           </div>
+          </div><strong class="row-price">280.000 đ</strong><span class="row-category">Gốm sứ</span><span class="row-stock">18</span><span><span class="chip live">Đang hoạt động</span></span><span>02/10/2026</span>
+          <div class="actions">
+           <button type="button" class="small-btn edit-product">Chỉnh sửa</button><button type="button" class="small-btn archive-product">Lưu trữ</button><button type="button" class="small-btn stats-product">Xem thống kê</button>
+          </div>
+         </article>
+         <article class="listing-row" data-product-id="vase" data-name="Bình gốm họa tiết hoa sen" data-status="pending" data-category="Gốm sứ" data-price="540000" data-stock="7">
+          <div class="product">
+           <img data-template-id="product-vase-image" class="canva-image" loading="lazy" src="https://images.pexels.com/photos/15037675/pexels-photo-15037675.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=400" alt="Bình gốm trang trí với hoa sen trắng">
+           <div>
+            <strong data-template-id="product-vase-name" class="canva-text" style="color: rgb(57, 41, 31); font-weight: 700; font-style: normal; font-size: 15px;">Bình gốm họa tiết hoa sen</strong><small data-template-id="product-vase-code" class="canva-text" style="color: rgb(121, 111, 100); font-weight: 400; font-style: normal; font-size: 15px;">CL-GOM-002</small>
+           </div>
+          </div><strong class="row-price">540.000 đ</strong><span class="row-category">Gốm sứ</span><span class="row-stock">7</span><span><span class="chip pending">Chờ duyệt</span></span><span>01/10/2026</span>
+          <div class="actions">
+           <button type="button" class="small-btn edit-product">Chỉnh sửa</button><button type="button" class="small-btn archive-product">Lưu trữ</button><button type="button" class="small-btn stats-product">Xem thống kê</button>
+          </div>
+         </article>
+         <article class="listing-row" data-product-id="bag" data-name="Túi cói đan tay" data-status="live" data-category="Mây tre" data-price="390000" data-stock="12">
+          <div class="product">
+           <img data-template-id="product-bag-image" class="canva-image" loading="lazy" src="https://images.pexels.com/photos/17014915/pexels-photo-17014915.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=400" alt="Túi xách tròn đan thủ công trên nền sáng">
+           <div>
+            <strong data-template-id="product-bag-name" class="canva-text" style="color: rgb(57, 41, 31); font-weight: 700; font-style: normal; font-size: 15px;">Túi cói đan tay</strong><small data-template-id="product-bag-code" class="canva-text" style="color: rgb(121, 111, 100); font-weight: 400; font-style: normal; font-size: 15px;">CL-MAY-003</small>
+           </div>
+          </div><strong class="row-price">390.000 đ</strong><span class="row-category">Mây tre</span><span class="row-stock">12</span><span><span class="chip live">Đang hoạt động</span></span><span>29/09/2026</span>
+          <div class="actions">
+           <button type="button" class="small-btn edit-product">Chỉnh sửa</button><button type="button" class="small-btn archive-product">Lưu trữ</button><button type="button" class="small-btn stats-product">Xem thống kê</button>
+          </div>
+         </article>
+         <article class="listing-row" data-product-id="macrame" data-name="Tranh treo tường macrame" data-status="draft" data-category="Trang trí" data-price="460000" data-stock="5">
+          <div class="product">
+           <img data-template-id="product-macrame-image" class="canva-image" loading="lazy" src="https://images.pexels.com/photos/13211211/pexels-photo-13211211.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=400" alt="Tranh macrame màu be với các nút thắt thủ công">
+           <div>
+            <strong data-template-id="product-macrame-name" class="canva-text" style="color: rgb(57, 41, 31); font-weight: 700; font-style: normal; font-size: 15px;">Tranh treo tường macrame</strong><small data-template-id="product-macrame-code" class="canva-text" style="color: rgb(121, 111, 100); font-weight: 400; font-style: normal; font-size: 15px;">CL-TRANG-004</small>
+           </div>
+          </div><strong class="row-price">460.000 đ</strong><span class="row-category">Trang trí</span><span class="row-stock">5</span><span><span class="chip draft">Bản nháp</span></span><span>27/09/2026</span>
+          <div class="actions">
+           <button type="button" class="small-btn edit-product">Chỉnh sửa</button><button type="button" class="small-btn archive-product">Lưu trữ</button><button type="button" class="small-btn stats-product">Xem thống kê</button>
+          </div>
+         </article>
+        </div>
+        <div id="listing-empty" class="empty hidden-state">
+         <h3 data-template-id="empty-title" class="canva-text" style="color: rgb(57, 41, 31); font-weight: 700; font-style: normal; font-size: 18px;">Chưa tìm thấy listing phù hợp</h3>
+         <p data-template-id="empty-description" class="canva-text" style="color: rgb(121, 111, 100); font-weight: 400; font-style: normal; font-size: 15px;">Thử từ khóa hoặc trạng thái khác để tiếp tục.</p><button id="clear-filters" data-template-id="clear-filters-text" type="button" class="btn canva-button mt-3" style="background: rgb(238, 231, 221); color: rgb(57, 41, 31); font-weight: 400; font-style: normal; font-size: 15px;">Xóa bộ lọc</button>
+        </div>
+        <div id="listing-loading" class="empty hidden-state" role="status">
+         <div class="animate-pulse text-3xl" aria-hidden="true">
+          ◌
+         </div>
+         <p data-template-id="loading-description" class="canva-text" style="color: rgb(121, 111, 100); font-weight: 400; font-style: normal; font-size: 15px;">Đang tải danh sách sản phẩm…</p>
+        </div>
+       </div>
+      </section>
+     </main>
+    </div>
+   </div>
+  </div>
+  <div id="listing-modal" class="modal-backdrop hidden-state" role="dialog" aria-modal="true" aria-labelledby="listing-modal-title">
+   <div class="modal">
+    <h2 id="listing-modal-title">Tạo listing mới</h2>
+    <p data-template-id="listing-modal-description" class="subtle canva-text" style="color: rgb(121, 111, 100); font-weight: 400; font-style: normal; font-size: 15px;">Thông tin listing chỉ được giữ trong phiên dùng thử này.</p>
+    <form id="listing-form" class="mt-5">
+     <div class="form-group">
+      <label for="new-name" class="form-label">Tên sản phẩm</label><input id="new-name" class="field" maxlength="100" required="">
+     </div>
+     <div class="form-grid">
+      <div class="form-group">
+       <label for="new-price" class="form-label">Giá bán (đ)</label><input id="new-price" class="field" type="number" min="0" required="">
+      </div>
+      <div class="form-group">
+       <label for="new-stock" class="form-label">Tồn kho</label><input id="new-stock" class="field" type="number" min="0" required="">
+      </div>
+     </div>
+     <div class="form-group">
+      <label for="new-category" class="form-label">Danh mục</label><select id="new-category" class="field"><option>Gốm sứ</option><option>Mây tre</option><option>Trang trí</option></select>
+     </div>
+     <div class="form-group">
+      <label for="new-image-file" class="form-label">Ảnh sản phẩm</label>
+      <div class="image-picker">
+       <img id="new-image-preview" class="image-preview hidden-state" alt="Xem trước ảnh sản phẩm đã chọn">
+       <span id="new-image-placeholder" class="thumb-ph image-preview" aria-hidden="true">CL</span>
+       <div class="image-picker-controls">
+        <input id="new-image-file" class="field" type="file" accept=".png,.jpg,.jpeg,.webp">
+        <input id="new-image-url" class="field" type="text" spellcheck="false" placeholder="Hoặc dán URL ảnh (https://…)">
+        <button id="clear-image" type="button" class="small-btn">Xóa ảnh</button>
+       </div>
+      </div>
+      <p id="image-feedback" class="subtle mt-2">Chưa có ảnh. Chọn tệp hoặc dán URL để ảnh hiện trong danh sách.</p>
+     </div>
+     <div class="form-group">
+      <label for="new-description" class="form-label">Mô tả sản phẩm</label><textarea id="new-description" class="field" rows="5" maxlength="900" placeholder="Viết tay hoặc nhập vài từ khoá rồi để bộ gợi ý bên dưới soạn giúp."></textarea>
+     </div>
+     <div class="form-group">
+      <label for="new-keywords" class="form-label">Từ khoá SEO</label><input id="new-keywords" class="field" type="text" spellcheck="false" placeholder="cốc gốm thủ công, quà tặng handmade">
+     </div>
+     <div class="ai-box">
+      <span class="chip ai">✦ AI</span>
+      <h3 class="mt-3">AI Artisan Copywriter &amp; SEO</h3>
+      <p id="writer-description" class="mt-2">Nhập vài từ khoá ngắn về chất liệu và kỹ thuật, bộ quy tắc sẽ ghép thành mô tả kèm danh sách từ khoá gợi ý. Máy không gọi mô hình nào, mọi câu chữ đều tra được trong mã nguồn.</p>
+      <div class="form-group mt-3">
+       <label for="ai-keywords" class="form-label">Từ khoá cho bộ gợi ý</label><input id="ai-keywords" class="field" type="text" spellcheck="false" placeholder="ví dụ: cốc gốm, vuốt tay, men hỏa biến, xanh ngọc">
+      </div><button id="ask-writer" type="button" class="btn terra">✦ Nhờ AI sáng tạo mô tả</button>
+      <div id="writer-result" class="hidden-state">
+       <div class="divider"></div>
+       <div class="detail-head">
+        <div>
+         <div class="eyebrow">KẾT QUẢ</div><span id="writer-status" class="chip draft">Chưa áp dụng</span>
+        </div>
+       </div>
+       <p id="writer-output" class="subtle mt-2"></p>
+       <h3 class="mt-3">Từ khoá gợi ý</h3>
+       <p id="writer-keywords" class="subtle mt-2"></p>
+       <ul id="writer-notes" class="advisor-list" aria-label="Giải thích của bộ gợi ý"></ul>
+       <div class="flex gap-2 mt-4 flex-wrap"><button id="use-writer" type="button" class="btn green">Dùng mô tả này</button><button id="redo-writer" type="button" class="btn">Tạo lại</button><button id="reject-writer" type="button" class="small-btn">Bỏ kết quả</button></div>
+      </div>
+     </div>
+     <div class="flex justify-end gap-2 mt-5">
+      <button data-template-id="listing-cancel" type="button" class="btn close-modal canva-button" style="background: rgb(238, 231, 221); color: rgb(57, 41, 31); font-weight: 400; font-style: normal; font-size: 15px;">Hủy</button><button data-template-id="listing-save" type="submit" class="btn terra canva-button" style="background: rgb(191, 98, 60); color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 15px;">Lưu listing</button>
+     </div>
+    </form>
+   </div>
+  </div>
+  <!-- HỘP THOẠI XÁC NHẬN LƯU TRỮ -->
+  <div id="archive-modal" class="modal-backdrop hidden-state" role="dialog" aria-modal="true" aria-labelledby="archive-title">
+   <div class="modal">
+    <h2 id="archive-title" data-template-id="archive-title-text" class="canva-text" style="color: rgb(57, 41, 31); font-weight: 700; font-style: normal; font-size: 23px;">Lưu trữ listing?</h2>
+    <p data-template-id="archive-description" class="subtle canva-text" style="color: rgb(121, 111, 100); font-weight: 400; font-style: normal; font-size: 15px;">Sản phẩm sẽ được ẩn khỏi danh sách trong phiên dùng thử này.</p>
+    <div class="flex justify-end gap-2 mt-6">
+     <button data-template-id="archive-cancel" type="button" class="btn close-modal canva-button" style="background: rgb(238, 231, 221); color: rgb(57, 41, 31); font-weight: 400; font-style: normal; font-size: 15px;">Hủy</button><button id="confirm-archive" data-template-id="archive-confirm" type="button" class="btn terra canva-button" style="background: rgb(191, 98, 60); color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 15px;">Xác nhận lưu trữ</button>
+    </div>
+   </div>
+  </div>
+  <div id="toast" class="toast hidden-state" role="status" aria-live="polite"></div>
+  <script src="../js/chung.js"></script>
+  <script src="../js/ai/copywriter.js"></script>
+  <script src="js/main.js"></script>
+ </body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Giỏ hàng | CraftLink</title>
+  <meta name="description" content="Giỏ hàng CraftLink — xem lại các sản phẩm thủ công trước khi yêu cầu đặt làm cùng nghệ nhân.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/cart.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+
+      <a href="index.html" class="brand">CraftLink</a>
+
+      <nav class="main-nav" aria-label="Điều hướng chính">
+        <ul>
+          <li><a href="index.html">Khám phá</a></li>
+          <li><a href="index.html">Danh mục</a></li>
+          <li><a href="artisan-suggestions.html">Nghệ nhân</a></li>
+          <li><a href="favorites.html">Yêu thích</a></li>
+          <li><a href="orders.html">Đơn hàng</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="index.html" class="icon-btn" aria-label="Tìm kiếm">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </a>
+        <button type="button" class="icon-btn" aria-label="Tin nhắn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </button>
+        <a href="cart.html" class="icon-btn" aria-label="Giỏ hàng">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          <span class="cart-count" id="cart-count" hidden></span>
+        </a>
+        <button type="button" class="icon-btn" aria-label="Tài khoản">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <main class="container">
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="index.html">Trang chủ</a></li>
+        <li><span aria-current="page">Giỏ hàng</span></li>
+      </ol>
+    </nav>
+
+    <section class="page-heading" aria-labelledby="page-title">
+      <div>
+        <h1 id="page-title">Giỏ hàng</h1>
+        <p class="page-subtitle">Xem lại các sản phẩm trước khi yêu cầu đặt làm.</p>
+      </div>
+    </section>
+
+    <div class="cart-layout">
+
+      <section class="cart-items" aria-label="Sản phẩm trong giỏ">
+        <h2 class="visually-hidden">Sản phẩm trong giỏ</h2>
+
+        <ul id="cart-list"></ul>
+
+        <!-- Mẫu một dòng sản phẩm trong giỏ: JavaScript nhân bản (clone) mẫu
+             này cho từng sản phẩm đọc từ localStorage rồi gắn vào #cart-list -->
+        <template id="cart-item-template">
+          <li class="cart-item panel">
+            <a href="product-detail.html" class="cart-item-media">
+              <img src="" alt="">
+            </a>
+            <div class="cart-item-info">
+              <h3 class="cart-item-name"><a href="product-detail.html"></a></h3>
+              <p class="cart-item-artisan"></p>
+              <p class="cart-item-price"></p>
+            </div>
+            <div class="cart-item-side">
+              <div class="quantity-stepper">
+                <button type="button" class="qty-btn" data-action="decrease" aria-label="Giảm số lượng">−</button>
+                <span class="qty-value">1</span>
+                <button type="button" class="qty-btn" data-action="increase" aria-label="Tăng số lượng">+</button>
+              </div>
+              <p class="cart-item-subtotal"></p>
+              <button type="button" class="link-action btn-remove" data-action="remove">Xóa</button>
+            </div>
+          </li>
+        </template>
+
+        <div class="empty-state" id="cart-empty" hidden>
+          <p class="empty-state-title">Giỏ hàng của bạn đang trống</p>
+          <p class="empty-state-text">Hãy khám phá danh mục sản phẩm và chọn món đồ thủ công ưng ý nhé.</p>
+        </div>
+      </section>
+
+      <aside class="cart-summary panel" aria-label="Tóm tắt đơn hàng">
+        <h2 class="panel-title">Tóm tắt đơn hàng</h2>
+        <dl class="summary-list">
+          <dt>Tạm tính</dt>
+          <dd id="cart-subtotal">1.310.000 ₫</dd>
+          <dt>Phí giao hàng</dt>
+          <dd id="cart-shipping">Chưa có thông tin phí giao hàng</dd>
+        </dl>
+        <div class="summary-total">
+          <span>Tổng cộng</span>
+          <span class="summary-total-value" id="cart-total">1.310.000 ₫</span>
+        </div>
+        <a href="checkout.html?mode=cart" class="btn-primary btn-large" id="checkout-btn">Tiến hành đặt hàng</a>
+        <p class="summary-note">Thanh toán sau khi chốt phương án cuối cùng với nghệ nhân.</p>
+      </aside>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-top">
+      <div class="footer-brand">
+        <p class="footer-logo">CraftLink</p>
+        <p class="footer-tagline">Sàn sản phẩm sáng tạo tùy biến — kết nối người yêu thủ công với các nghệ nhân trên cả nước.</p>
+      </div>
+
+      <nav class="footer-nav" aria-label="Liên kết chân trang — Khám phá">
+        <h2>Khám phá</h2>
+        <ul>
+          <li><a href="index.html">Danh mục sản phẩm</a></li>
+          <li><a href="artisan-suggestions.html">Nghệ nhân</a></li>
+          <li><a href="favorites.html">Yêu thích</a></li>
+          <li><a href="orders.html">Đơn hàng</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer-nav" aria-label="Liên kết chân trang — Hỗ trợ">
+        <h2>Hỗ trợ</h2>
+        <ul>
+          <li><a href="#">Trung tâm trợ giúp</a></li>
+          <li><a href="#">Chính sách đổi trả</a></li>
+          <li><a href="#">Điều khoản sử dụng</a></li>
+          <li><a href="#">Liên hệ</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        <p>© 2026 CraftLink — Sàn sản phẩm sáng tạo tùy biến.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>

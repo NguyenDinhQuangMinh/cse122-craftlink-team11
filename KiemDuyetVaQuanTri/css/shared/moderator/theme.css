@@ -1,0 +1,13 @@
+/* Moderator theme tokens */
+
+:root {
+  font-family: Inter,"Segoe UI",Arial,sans-serif;
+  color: #252d37;
+  background: #faf8f5;
+  --navy: #182532;
+  --orange: #d95832;
+  --green: #4c9370;
+  --muted: #5a6472;
+  --line: #ecebe8;
+  --paper: #fff;
+}

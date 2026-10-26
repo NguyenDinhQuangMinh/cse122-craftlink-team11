@@ -147,3 +147,18 @@ vite.config.ts.timestamp-*
 
 # Turbo Repo
 .turbo
+
+# Vercel local state
+.vercel/
+
+# OS and editor noise
+.DS_Store
+Thumbs.db
+.idea/
+
+# Video evidence stays on YouTube (see videos/README.md)
+*.mp4
+*.mov
+
+# Personal OBS scripts for SV3, kept local only
+KiemDuyetVaQuanTri/docs/script-SV3-*.md

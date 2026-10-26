@@ -1,0 +1,283 @@
+/* ==========================================================================
+   CraftLink — Trang Chi tiết đơn và revision
+   Bố cục 3 cột: tóm tắt + lịch sử | so sánh phương án | chỉnh sửa + bước tiếp theo
+   ========================================================================== */
+
+.order-detail-layout {
+  display: grid;
+  grid-template-columns: 320px minmax(0, 1fr) 340px;
+  gap: 24px;
+  align-items: start;
+}
+
+.order-detail-left,
+.order-detail-right {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+
+/* ---------- Cột trái: tóm tắt đơn hàng ---------- */
+
+.order-product-img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+.order-product-name {
+  margin: 0 0 12px;
+  font-size: 17px;
+}
+
+.order-total {
+  font-size: 20px;
+  color: var(--color-price);
+}
+
+
+/* ---------- Cột trái: dòng thời gian revision ---------- */
+
+.timeline-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  gap: 12px;
+  padding-bottom: 18px;
+}
+
+/* Đường dọc nối các mốc thời gian */
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: 17px;
+  top: 38px;
+  bottom: 2px;
+  width: 2px;
+  background-color: var(--color-border);
+}
+
+.timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+.timeline-item:last-child::before {
+  display: none;
+}
+
+.timeline-marker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 2px solid var(--color-border);
+  border-radius: 50%;
+  background-color: #f1ece5;
+  color: var(--color-text-muted);
+  font-size: 12.5px;
+  font-weight: 700;
+}
+
+.timeline-item.done .timeline-marker {
+  border-color: var(--color-primary);
+  background-color: var(--color-primary-light);
+  color: var(--color-primary-dark);
+}
+
+.timeline-item.active .timeline-marker {
+  border-color: var(--color-primary);
+  background-color: var(--color-primary);
+  color: #ffffff;
+}
+
+.timeline-title {
+  margin: 0;
+  font-size: 14.5px;
+  font-weight: 600;
+}
+
+.timeline-time {
+  margin: 2px 0 4px;
+  font-size: 12.5px;
+  color: var(--color-text-muted);
+}
+
+.timeline-text {
+  margin: 0;
+  font-size: 13.5px;
+  color: #5f564c;
+}
+
+
+/* ---------- Cột giữa: so sánh hai phương án ---------- */
+
+.compare-options {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 16px;
+  align-items: center;
+}
+
+.compare-option {
+  padding: 16px;
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-btn);
+  background-color: #fdfaf5;
+  text-align: center;
+}
+
+.compare-option.current {
+  border-color: var(--color-primary);
+  background-color: var(--color-primary-light);
+}
+
+.compare-option-label {
+  margin: 0 0 10px;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--color-text-muted);
+}
+
+.compare-option.current .compare-option-label {
+  color: var(--color-primary-dark);
+}
+
+.compare-option img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.compare-specs {
+  font-size: 13.5px;
+  color: #5f564c;
+}
+
+.compare-specs li {
+  padding: 3px 0;
+}
+
+.compare-arrow {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+
+/* ---------- Cột phải: yêu cầu chỉnh sửa + bước tiếp theo ---------- */
+
+#revision-note {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-btn);
+  font-size: 14px;
+  line-height: 1.6;
+  resize: vertical;
+}
+
+.order-meta {
+  margin: 12px 0 0;
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+.next-steps li {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: #5f564c;
+}
+
+.next-steps li:last-child {
+  margin-bottom: 18px;
+}
+
+.next-steps strong {
+  color: var(--color-text);
+}
+
+.step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background-color: var(--color-primary-light);
+  color: var(--color-primary-dark);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.revision-actions {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.deadline-note {
+  margin: 14px 0 0;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--color-price);
+}
+
+.deadline-sub {
+  margin: 4px 0 0;
+  font-size: 12.5px;
+  color: var(--color-text-muted);
+}
+
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+/* Máy tính bảng lớn: cột phải xuống dưới, xếp 2 ô cạnh nhau */
+@media (max-width: 1100px) {
+  .order-detail-layout {
+    grid-template-columns: 320px minmax(0, 1fr);
+  }
+
+  .order-detail-right {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: start;
+  }
+}
+
+/* Máy tính bảng: tất cả xếp thành 1 cột */
+@media (max-width: 960px) {
+  .order-detail-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Điện thoại nhỏ: 2 phương án so sánh xếp dọc, mũi tên xoay xuống */
+@media (max-width: 540px) {
+  .compare-options {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .compare-arrow {
+    transform: rotate(90deg);
+    justify-self: center;
+  }
+
+  .order-detail-right {
+    grid-template-columns: 1fr;
+  }
+}

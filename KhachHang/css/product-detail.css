@@ -1,0 +1,301 @@
+/* ==========================================================================
+   CraftLink — Trang Chi tiết sản phẩm
+   Bố cục 3 cột: bộ ảnh | thông tin sản phẩm | nghệ nhân + đánh giá
+   ========================================================================== */
+
+.product-detail {
+  display: grid;
+  grid-template-columns: minmax(0, 440px) minmax(0, 1fr) 330px;
+  gap: 28px;
+  align-items: start;
+  margin-top: 20px;
+}
+
+
+/* ---------- Cột 1: bộ ảnh sản phẩm ---------- */
+
+.gallery-main {
+  margin: 0;
+}
+
+.gallery-main img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+}
+
+.gallery-thumbs {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* Sản phẩm chỉ có 1 ảnh: JS ẩn dãy ảnh nhỏ, cần khai báo lại vì
+   quy tắc display: grid phía trên sẽ thắng thuộc tính hidden mặc định */
+.gallery-thumbs[hidden] {
+  display: none;
+}
+
+.thumb-btn {
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  background: none;
+  cursor: pointer;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+
+.thumb-btn img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.thumb-btn:hover,
+.thumb-btn.active {
+  border-color: var(--color-primary);
+}
+
+
+/* ---------- Cột 2: thông tin sản phẩm ---------- */
+
+.product-info h1 {
+  margin: 4px 0 0;
+  font-size: 28px;
+  line-height: 1.3;
+}
+
+.product-subtitle {
+  margin: 6px 0 14px;
+  font-size: 15px;
+  color: var(--color-text-muted);
+}
+
+.product-price-lg {
+  margin: 0 0 8px;
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--color-price);
+}
+
+/* Ghi chú nguồn giá — không cộng phụ phí khi dữ liệu chưa có quy tắc */
+.product-price-note {
+  margin: 0 0 4px;
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+.product-specs h2,
+.product-description h2 {
+  margin: 20px 0 10px;
+  font-size: 17px;
+}
+
+.product-specs .info-list {
+  margin: 0;
+  padding: 14px 16px;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-btn);
+}
+
+.product-description p {
+  margin: 0;
+  font-size: 15px;
+  color: #5f564c;
+}
+
+
+/* ---------- Hàng nút: số lượng + thêm giỏ + yêu thích ---------- */
+
+/* (Nút tăng giảm số lượng dùng chung nằm trong css/style.css) */
+
+.product-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.btn-favorite {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-btn);
+  background-color: var(--color-surface);
+  color: #7a6f63;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s, background-color 0.2s;
+}
+
+.btn-favorite:hover {
+  border-color: var(--color-price);
+  color: var(--color-price);
+}
+
+/* Khi đã được thêm vào yêu thích (JavaScript sẽ đổi aria-pressed) */
+.btn-favorite[aria-pressed="true"] {
+  border-color: var(--color-price);
+  background-color: #fdeceb;
+  color: var(--color-price);
+}
+
+.btn-favorite[aria-pressed="true"] svg {
+  fill: currentColor; /* trái tim đặc khi sản phẩm đã nằm trong yêu thích */
+}
+
+.btn-favorite[aria-pressed="true"] svg {
+  fill: currentColor;
+}
+
+
+/* ---------- Cột 3: nghệ nhân + đánh giá ---------- */
+
+.product-side {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.artisan-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+/* Chữ cái đầu thay ảnh khi hồ sơ nghệ nhân chưa có ảnh đại diện */
+.artisan-initial {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-primary-light);
+  color: var(--color-primary-dark);
+  font-size: 26px;
+  font-weight: 700;
+}
+
+/* Không có ảnh đại diện thì JS ẩn ảnh; .avatar không đặt display nên
+   quy tắc riêng dưới đây chỉ để chắc chắn trạng thái hidden hoạt động */
+.artisan-initial[hidden] {
+  display: none;
+}
+
+.artisan-name {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.artisan-location {
+  margin: 2px 0 0;
+  font-size: 13.5px;
+  color: var(--color-text-muted);
+}
+
+.artisan-stats {
+  margin: 0 0 4px;
+  font-size: 14px;
+}
+
+.rating-count {
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+.artisan-products {
+  margin: 0 0 16px;
+  font-size: 14px;
+  color: var(--color-text-muted);
+}
+
+/* Trong panel hẹp, hai nút xếp thành cột cho gọn */
+.artisan-actions {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+
+/* ---------- Danh sách đánh giá ---------- */
+
+.review-item {
+  padding: 12px 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.review-item:first-child {
+  padding-top: 0;
+  border-top: none;
+}
+
+.review-head {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 4px;
+  font-size: 14px;
+}
+
+.review-text {
+  margin: 0;
+  font-size: 14px;
+  color: #5f564c;
+}
+
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+/* Máy tính bảng lớn: nghệ nhân + đánh giá xuống dưới, xếp 2 cột */
+@media (max-width: 1100px) {
+  .product-detail {
+    grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
+  }
+
+  .product-side {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+}
+
+/* Máy tính bảng: cả 3 khối xếp thành 1 cột */
+@media (max-width: 960px) {
+  .product-detail {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Điện thoại nhỏ */
+@media (max-width: 540px) {
+  .product-info h1 {
+    font-size: 24px;
+  }
+
+  .product-price-lg {
+    font-size: 22px;
+  }
+
+  .product-actions .btn-primary {
+    flex: 1;
+  }
+
+  .gallery-thumbs {
+    gap: 6px;
+  }
+
+  .product-side {
+    grid-template-columns: 1fr;
+  }
+}
