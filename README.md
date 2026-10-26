@@ -23,9 +23,12 @@ Bối cảnh thị trường dài hơn: [`docs/project-introduction.md`](./docs/
 | STT | Thành viên | MSSV | Vai trò phụ trách | Màn hình | Tính năng AI | Nhánh |
 | :---: | :--- | :---: | :--- | :---: | :--- | :--- |
 | 1 | **SV1** — Nguyễn Xuân Hưng | 2551060622 | Khách hàng (Buyer) | 6 | AI tư vấn sản phẩm, AI Brief Assistant | `feature/home-explore` và các nhánh con |
-| 2 | **SV2** — Dương Vũ Quân Minh | 2551060650 | Thợ thủ công (Maker) | 6 | AI Copywriter & SEO, AI Brief Summarizer, AI Cost & Timeline Advisor | `feature/maker-*` |
+| 2 | **SV2** — Dương Vũ Quân Minh | 2551060650 | Thợ thủ công (Maker) | 4 | AI Copywriter & SEO, AI Brief Summarizer, AI Cost & Timeline Advisor | `feature/maker-*` |
 | 3 | **SV3** — Nguyễn Đình Quang Minh | 2551060651 | Kiểm duyệt viên + Quản trị viên | 6 | AI Content Moderation, AI Report Triage, AI Policy Copilot | `feature/sv3-admin-screens` |
-| — | **SV1 + SV2** | — | Đăng nhập / Đăng ký | 2 | — | `DangNhapVaDangKy/` |
+| — | **SV1 + SV2** | — | Đăng nhập / Đăng ký | 6 | — | `DangNhapVaDangKy/` |
+| — | **SV3** | — | 404 và 403 | 2 | — | `chưa có` |
+
+
 
 Bảng kiểm kê 18 màn hình, đủ 12 cột: [`docs/screen-inventory.md`](./docs/screen-inventory.md).
 Phân công chi tiết: [`docs/sv1-assignment.md`](./docs/sv1-assignment.md), [`docs/sv2-assignment.md`](./docs/sv2-assignment.md), [`docs/sv3-assignment.md`](./docs/sv3-assignment.md).
