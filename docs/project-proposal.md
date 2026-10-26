@@ -92,16 +92,16 @@ Ghi chú trung thực: bản mã hiện tại **chưa** có lịch sử phiên b
 
 | Phân hệ | Vai trò | Số màn hình | STT trong kiểm kê | Mã nguồn |
 |---|---|---|---|---|
-| SV1 | Khách hàng | 6 màn / 9 tệp | 1–6 | `KhachHang/` |
+| SV1 | Khách hàng | 6 màn / 10 tệp | 1–6 | `KhachHang/` |
 | SV2 | Thợ thủ công / Nghệ nhân | 6 màn / 4 tệp | 7–12 | `KhongGianNguoiBan/` |
 | SV3 | Kiểm duyệt viên + Quản trị viên | 6 | 13–18 | `KiemDuyetVaQuanTri/` |
 | Cả nhóm | Đăng nhập / Đăng ký | 2 | ngoài bảng | `DangNhapVaDangKy/` |
 
 Tổng 18 màn hình, liệt kê 1:1 tại `screen-inventory.md`, mỗi dòng trỏ đúng một tệp đang có trong repo.
 
-## 7. Ba tính năng AI
+## 7. Ba tác vụ AI chạy qua máy chủ
 
-Barem 6.1 cần tối thiểu ba tính năng AI; nhóm khai ba tính năng dưới đây, tất cả chạy được cả ở chế độ có mô hình và chế độ bộ quy tắc cục bộ.
+Barem 6.1 cần tối thiểu ba tính năng AI. Nhóm có **8 tính năng AI** trải trên cả ba phân hệ (bảng đầy đủ ở mục 9 của `../README.md`), trong đó ba tác vụ dưới đây là phần gọi mô hình qua `api/ai.js`, chạy được cả ở chế độ có mô hình và chế độ bộ quy tắc cục bộ.
 
 | Mã | Tính năng | Loại tác vụ ở `api/ai.js` | Màn hình | Người quyết định cuối |
 |---|---|---|---|---|

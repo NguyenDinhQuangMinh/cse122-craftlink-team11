@@ -37,34 +37,37 @@ Nền tảng **CraftLink** hướng tới việc xây dựng một hệ sinh th�
 * **Tối ưu hóa quy trình đặt làm theo yêu cầu (Custom Order):** Chuẩn hóa việc truyền tải ý tưởng giữa Khách hàng và Thợ thủ công thông qua hệ thống Brief và Proposal minh bạch, giảm thiểu rủi ro sai sót trong quá trình chế tác.
 * **Nâng cao năng lực thương mại cho Nghệ nhân & Làng nghề:** Cung cấp bộ công cụ quản lý gian hàng chuyên nghiệp, hỗ trợ tối ưu bài đăng và xây dựng thương hiệu cá nhân uy tín.
 * **Đảm bảo an toàn giao dịch & Chất lượng nội dung:** Xây dựng cơ chế kiểm duyệt bài đăng, xử lý báo cáo vi phạm và giải quyết tranh chấp nhanh chóng, minh bạch.
-* **Tích hợp các tính năng AI hỗ trợ người dùng:** Tự động hóa gợi ý sản phẩm, hỗ trợ viết mô tả, kiểm duyệt nội dung tự động và phát hiện các biến động bất thường trên hệ thống.
+* **Tích hợp các tính năng AI hỗ trợ người dùng:** Gợi ý sản phẩm và soạn brief cho khách hàng, hỗ trợ viết mô tả/ước tính chi phí cho nghệ nhân, chấm rủi ro bài đăng và phân loại báo cáo cho kiểm duyệt viên.
 
 ---
 
 ### 4. Phạm vi phân hệ chức năng theo vai trò
 
-Hệ thống **CraftLink** được phân chia rõ ràng thành 3 phân hệ chức năng tương ứng với nhiệm vụ của 3 thành viên trong nhóm:
+Hệ thống **CraftLink** chia thành ba phân hệ, mỗi thành viên một nhánh, tổng **18 màn hình nghiệp vụ** (bảng kiểm kê: [`screen-inventory.md`](./screen-inventory.md)). Hai trang đăng nhập/đăng ký dùng chung nằm ngoài bảng kiểm kê.
 
-#### 🔹 Phân hệ 1: Khách hàng (Customer) – SV1
-* **Khám phá & Tìm kiếm (`index.html`):** Xem banner, danh mục sản phẩm, tìm kiếm/lọc sản phẩm thủ công và nhận gợi ý cá nhân hóa từ AI.
-* **Xem chi tiết sản phẩm (`product-detail.html`):** Xem thông tin, chất liệu, kích thước, hình ảnh sắc nét và gợi ý sản phẩm tương tự.
-* **Tạo Brief yêu cầu tùy biến (`custom-order-brief.html`):** Soạn thảo ý tưởng đặt làm riêng, chọn ngân sách, tải ảnh tham khảo và gửi yêu cầu cho thợ thủ công.
-* **So sánh & Chọn Proposal (`proposal-comparison.html`):** Tiếp nhận, phân tích, so sánh các báo giá/kế hoạch gửi về từ nhiều nghệ nhân và bấm chấp nhận/từ chối.
-* **Thanh toán & Xác nhận (`checkout-confirmation.html`):** Kiểm tra giỏ hàng/đơn hàng tùy biến, chọn phương thức thanh toán và hoàn tất đặt hàng.
-* **Quản lý Đơn hàng & Hồ sơ (`customer-dashboard.html`):** Theo dõi tiến độ chế tác sản phẩm theo thời gian thực và quản lý thông tin cá nhân.
+#### 🔹 Phân hệ 1: Khách hàng (Customer) – SV1, nhánh `feature/sv1-buyer`, 10 tệp HTML / 6 dòng kiểm kê
+* **Khám phá & tìm kiếm (STT 1) — `KhachHang/index.html`, `KhachHang/favorites.html`:** Xem danh mục sản phẩm, tìm kiếm/lọc/sắp xếp, lưu sản phẩm yêu thích; trợ lý tìm kiếm cục bộ.
+* **Xem chi tiết sản phẩm (STT 2) — `KhachHang/product-detail.html`:** Xem thông tin, chất liệu, kích thước, hình ảnh; thêm vào giỏ hoặc chuyển sang đặt làm tùy biến.
+* **Tạo brief tùy biến (STT 3) — `KhachHang/customize.html`:** Soạn ý tưởng, chọn ngân sách, đính kèm ảnh tham khảo và tạo bản tóm tắt cục bộ trước khi chọn nghệ nhân.
+* **Gợi ý nghệ nhân (STT 4) — `KhachHang/artisan-suggestions.html`:** Lọc hồ sơ nghệ nhân theo sản phẩm và brief, chọn nghệ nhân để gửi yêu cầu.
+* **Giỏ hàng & xác nhận đơn (STT 5) — `KhachHang/cart.html`, `KhachHang/checkout.html`:** Sửa/xóa dòng hàng, nhập địa chỉ, chọn thanh toán và xác nhận đơn.
+* **Đơn hàng & chi tiết đơn (STT 6) — `KhachHang/orders.html`, `KhachHang/order-details.html`:** Lọc đơn theo trạng thái, xem tiến độ và gửi yêu cầu chỉnh sửa thiết kế.
+* **Khôi phục mật khẩu — `KhachHang/forgot-password.html` (ngoài 18 dòng kiểm kê):** Luồng ba bước mô phỏng — nhập email đã đăng ký, gửi link đặt lại (giả lập, không gửi thư thật), đặt mật khẩu mới kèm thước đo độ mạnh; chưa có liên kết trỏ tới từ trang đăng nhập dùng chung.
 
-#### 🔹 Phân hệ 2: Thợ thủ công / Nghệ nhân (Maker) – SV2
-* **Quản lý Listing sản phẩm (`maker-listing-management.html`):** Xem danh sách sản phẩm đăng bán, lọc trạng thái (Đang bán, Chờ duyệt, Bản nháp) và chuyển đổi giao diện bảng/lưới[cite: 8].
-* **Tạo & Cập nhật Listing (`maker-listing-editor.html`):** Nhập thông tin sản phẩm, thiết lập giá, tồn kho và sử dụng công cụ AI hỗ trợ viết mô tả SEO.
-* **Hòm thư Brief / Yêu cầu tùy biến (`maker-brief-inbox.html`):** Lọc và tiếp nhận các yêu cầu đặt làm riêng từ khách hàng, xem bản tóm tắt Brief do AI hỗ trợ.
-* **Chỉnh sửa Proposal báo giá (`maker-proposal-editor.html`):** Xây dựng báo giá chi tiết, mốc thời gian hoàn thành, các khoản chi phí và điều khoản giao dịch.
-* **Xem trước Proposal (`maker-proposal-preview.html`):** Kiểm tra lại toàn bộ giao diện đề xuất báo giá trước khi gửi chính thức tới khách hàng.
-* **Quản lý Gian hàng & Hồ sơ (`maker-shop-profile.html`):** Cập nhật thông tin xưởng sản xuất, câu chuyện thương hiệu và địa chỉ liên hệ.
+#### 🔹 Phân hệ 2: Thợ thủ công / Nghệ nhân (Maker) – SV2, nhánh `feature/sv2-maker-screens`, 4 thư mục / 6 dòng kiểm kê
+* **Quản lý listing (STT 7) — `KhongGianNguoiBan/01-listing-management/index.html`:** Xem, tìm kiếm, lọc trạng thái, lưu trữ hoặc chỉnh sửa sản phẩm.
+* **Tạo & cập nhật listing (STT 8) — biểu mẫu *+ Tạo listing mới* trong cùng trang:** Nhập thông tin, tải ảnh, chọn danh mục, đặt giá và tồn kho; có AI copywriter cục bộ.
+* **Hòm thư brief (STT 9) — `KhongGianNguoiBan/02-brief-inbox/index.html`:** Lọc và tiếp nhận yêu cầu đặt làm, xem bản tóm tắt brief.
+* **Soạn proposal (STT 10) — `KhongGianNguoiBan/03-proposal-editor/index.html`:** Nhập chi phí, thời gian, hạng mục công việc và điều khoản; có gợi ý chi phí/thời gian cục bộ.
+* **Xem trước proposal (STT 11) — khung xem trước trong cùng trang:** Kiểm tra nội dung khách sẽ nhận trước khi gửi.
+* **Hồ sơ gian hàng (STT 12) — `KhongGianNguoiBan/04-shop-profile/index.html`:** Cập nhật tên xưởng, giới thiệu thương hiệu, ảnh bìa và thông tin liên hệ.
 
-#### 🔹 Phân hệ 3: Quản trị viên & Kiểm duyệt viên (Admin & Moderator) – SV3
-* **Bảng điều khiển tổng quan (`admin-dashboard-overview.html`):** Giám sát các chỉ số doanh thu sàn, biểu đồ ngành hàng, hoạt động nghệ nhân và nhận cảnh báo bất thường từ AI.
-* **Hàng đợi kiểm duyệt sản phẩm (`admin-moderation-queue.html`):** Duyệt hoặc từ chối các bài đăng sản phẩm mới, tích hợp AI tự động quét nội dung/hình ảnh vi phạm.
-* **Trung tâm xử lý báo cáo & khiếu nại (`admin-reports-center.html`):** Tiếp nhận, phân loại và xử lý các báo cáo vi phạm/khiếu nại tranh chấp từ người dùng.
-* **Quản lý danh mục ngành hàng (`admin-category-management.html`):** Thêm mới, chỉnh sửa, ẩn/hiển thị các danh mục và ngành hàng thủ công.
-* **Quản lý tài khoản người dùng (`admin-user-management.html`):** Lọc danh sách người dùng theo vai trò, theo dõi trạng thái và thực hiện Khóa/Mở khóa tài khoản.
-* **Quản lý quy định & Tiêu chuẩn (`admin-content-policy.html`):** Soạn thảo, quản lý lịch sử phiên bản và xuất bản các chính sách, quy định của nền tảng.
+#### 🔹 Phân hệ 3: Quản trị viên & Kiểm duyệt viên (Admin & Moderator) – SV3, nhánh `feature/sv3-admin-screens`, 6 tệp
+* **Bảng điều khiển (STT 13) — `KiemDuyetVaQuanTri/01-dashboard/index.html`:** Bốn thẻ số liệu, biểu đồ và nhật ký hoạt động; chỉ đọc, hai thẻ tính từ kho dữ liệu chung.
+* **Hàng đợi kiểm duyệt (STT 14) — `04-moderation-queue/index.html`:** Duyệt, yêu cầu chỉnh sửa hoặc từ chối bài đăng; AI chấm rủi ro kèm lý do.
+* **Trung tâm báo cáo (STT 15) — `05-report-center/index.html`:** Lọc theo trạng thái/lý do/thời gian, xử lý hoặc bỏ qua báo cáo; AI phân loại và xếp ưu tiên.
+* **Quản lý danh mục (STT 16) — `02-category-management/index.html`:** Thêm, sửa, xóa, ẩn/hiện danh mục và đếm danh mục con/sản phẩm.
+* **Quản lý tài khoản (STT 17) — `03-user-management/index.html`:** Lọc theo vai trò, thêm/sửa, khóa hoặc mở khóa tài khoản.
+* **Quy định nội dung (STT 18) — `06-content-guidelines/index.html`:** Thêm, sửa, xóa quy định; tìm kiếm, lọc nhóm, sắp xếp; AI soạn bản nháp để quản trị viên duyệt.
+
+> **Phạm vi thật so với mô tả ban đầu:** không có màn "so sánh proposal" phía khách — SV1 thay bằng màn **chọn nghệ nhân**. Bảng điều khiển chỉ đọc và chỉ hai trong bốn thẻ số liệu tính từ dữ liệu chung. Quy định nội dung chưa có lịch sử phiên bản và chưa có bước xuất bản riêng. Ba tính năng AI của phân hệ quản trị gọi `api/ai.js` (có dự phòng cục bộ); năm tính năng của SV1/SV2 là bộ quy tắc cục bộ.

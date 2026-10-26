@@ -18,18 +18,17 @@ Tên tệp lấy đúng theo cột "OBS Video" của `../docs/screen-inventory.m
 | 16 | `SV3-04-admin-category-management.mp4` | <https://youtu.be/imsnvGvIofQ> | 14:24 |
 | 18 | `SV3-06-admin-content-policy.mp4` | <https://youtu.be/3dCK3uHpIcY> | 17:21 |
 
-### SV1 — Nguyễn Xuân Hưng (đã có 3 link, chờ khớp số dòng)
+### SV1 — Nguyễn Xuân Hưng (3/3 video, đã khớp dòng kiểm kê)
 
+| STT kiểm kê | Màn hình | Tên tệp bắt buộc | Link |
+|---|---|---|---|
+| 2 | Chi tiết sản phẩm — `product-detail.html` | `SV1-02-product-detail.mp4` | <https://www.youtube.com/watch?v=PaCFXYhuo9U> |
+| 4 | Gợi ý nghệ nhân — `artisan-suggestions.html` | `SV1-04-artisan-suggestions.mp4` | <https://www.youtube.com/watch?v=AW-wuwhA3zc> |
+| 5 | Giỏ hàng & xác nhận đơn — `cart.html`, `checkout.html` | `SV1-05-checkout-confirmation.mp4` | <https://www.youtube.com/watch?v=T6ejhOOqfgk> |
 
-**Ba link SV1 đã dẫn** (nguồn: tệp `video` trên nhánh `feature/sv1-buyer`, ngày 26-10):
-
-| STT SV1 ghi | Link |
-|---|---|
-| 4 | <https://www.youtube.com/watch?v=AW-wuwhA3zc> |
-| 7 | <https://www.youtube.com/watch?v=T6ejhOOqfgk> |
-| 9 | <https://www.youtube.com/watch?v=PaCFXYhuo9U> |
-
-> Số 7 và 9 trong bảng kiểm kê đang thuộc SV2, nên ba link này **chưa điền vào bảng chính thức**. Hưng cần xác nhận: nếu 7 và 9 là số thứ tự nội bộ trong 9 trang Buyer thì ghi rõ "STT nội bộ", còn nếu là dòng kiểm kê thì phải quay đúng trang của mình để ĐK4 khớp 1:1.
+> **Cách khớp:** tiêu đề công khai của ba video (đọc qua YouTube oEmbed ngày 26-10-2026) lần lượt là `artisan suggetion.html`, `cart html`, `product detail html`. Số 4/7/9 trong tệp `video` của SV1 là số thứ tự nội bộ trong 9 tệp Buyer, không phải STT kiểm kê. Ba dòng còn lại của SV1 (STT 1, 3, 6) không quay riêng theo thỏa thuận 3 video/người.
+>
+> SV1 cần đổi tên tệp lưu trữ của video STT 4 thành `SV1-04-artisan-suggestions.mp4` cho khớp màn hình thật; tên cũ `SV1-04-proposal-comparison.mp4` là tên của màn "so sánh proposal" đã bỏ.
 
 ### SV2 — Dương Vũ Quân Minh (chưa có link)
 

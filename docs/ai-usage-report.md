@@ -2,7 +2,7 @@
 
 Barem yêu cầu ở đâu: ĐK5 — "Có tệp báo cáo `docs/ai-usage-report.md` khai báo trung thực các công cụ AI, câu lệnh prompt, phần AI sinh và phần sinh viên tự kiểm chứng/chỉnh sửa"; VP-07 trừ **1.00đ** nếu tệp thiếu hoặc khai không trung thực.
 
-Tệp này là báo cáo cấp nhóm. Phần chi tiết của phân hệ quản trị ở `../KiemDuyetVaQuanTri/docs/ai-usage-report.md`. SV1 và SV2 phải tự bổ sung phần của mình trước khi nộp — mục 3 đã dựng sẵn bảng điền và phần dữ kiện kiểm chứng được từ mã nguồn.
+Tệp này là báo cáo cấp nhóm. Phần chi tiết của phân hệ quản trị ở `../KiemDuyetVaQuanTri/docs/ai-usage-report.md`. SV1 đã khai ở mục 3.1; SV2 phải tự bổ sung mục 3.2 trước khi nộp.
 
 ---
 
@@ -22,7 +22,7 @@ Ngoài bốn loại tác vụ chạy qua `api/ai.js`, ba phân hệ còn có cá
 | Tính năng | Phân hệ | Tệp | Có gọi mô hình? |
 |---|---|---|---|
 | Trợ lý gợi ý sản phẩm & nghệ nhân | SV1 | `KhachHang/js/ai-advisor.js` | Không — tệp ghi rõ "KHÔNG phải AI tạo sinh và KHÔNG gọi API bên ngoài" |
-| Gợi ý nội dung brief | SV1 | `KhachHang/customize.html`, `js/` cùng thư mục | Không |
+| Gợi ý nội dung brief | SV1 | `KhachHang/customize.html`, `KhachHang/js/main.js` (`buildSummary`, `runSummary`) | Không |
 | Copywriter & SEO mô tả sản phẩm | SV2 | `KhongGianNguoiBan/js/ai/copywriter.js` | Không — dòng 2: "Máy không gọi model nào" |
 | Tóm tắt brief | SV2 | `KhongGianNguoiBan/02-brief-inbox/` | Không |
 | Gợi ý chi phí & thời gian | SV2 | `KhongGianNguoiBan/03-proposal-editor/` | Không |
@@ -63,19 +63,21 @@ Prompt tiêu biểu đã dùng (nguyên văn, rút gọn):
 
 Giới hạn của phần AI hỗ trợ: AI **không** tự quyết định phạm vi nghiệp vụ, không tự chọn cấu trúc dữ liệu, và không được push code lên GitHub khi sinh viên chưa duyệt kế hoạch. Mọi thay đổi đều được xem diff trước khi commit.
 
-## 3. Phần chưa khai của SV1 và SV2
+## 3. Phần khai báo của SV1 và SV2
 
-Hai mục dưới đây **vẫn đang trống** và chỉ SV1, SV2 tự điền được. Bảng ghi sẵn phần dữ kiện đã kiểm chứng được từ mã nguồn để hai bạn không phải viết lại từ đầu; cột "Trạng thái" phải đổi thành "đã khai" trước khi nộp.
+Mục 3.2 dưới đây **vẫn đang trống** và chỉ SV2 tự điền được. SV1 đã khai xong mục 3.1; các dữ kiện vẫn đối chiếu được trực tiếp từ mã nguồn.
 
 ### 3.1 SV1 — Khách hàng
 
-| Hạng mục | Nội dung cần điền | Dữ kiện đã kiểm chứng trong repo | Trạng thái |
+| Hạng mục | Nội dung SV1 khai | Dữ kiện đã kiểm chứng trong repo | Trạng thái |
 |---|---|---|---|
-| Công cụ AI đã dùng khi làm bài | Tên công cụ + phiên bản, ví dụ Qoder / ChatGPT / Gemini / Copilot | Chưa có khai báo nào của SV1 | **chưa khai** |
-| Prompt tiêu biểu | 3–5 câu nguyên văn đã dán vào công cụ | Chưa có | **chưa khai** |
-| Phần AI sinh trong mã | Tệp và chức năng cụ thể | `KhachHang/js/ai-advisor.js` (trợ lý gợi ý) và `KhachHang/customize.html` (nút gợi ý brief) — ai viết hai phần này, tự viết hay AI sinh rồi sửa | **chưa khai** |
-| AI sai ở đâu, sửa thế nào | Ít nhất một lỗi cụ thể AI đề xuất mà SV1 phải sửa | Chưa có | **chưa khai** |
-| Chế độ AI trong sản phẩm | Ghi rõ là bộ quy tắc cục bộ | `ai-advisor.js` ghi ngay đầu tệp: "KHÔNG phải AI tạo sinh và KHÔNG gọi API bên ngoài" | đã có bằng chứng, cần SV1 xác nhận |
+| Công cụ AI đã dùng khi làm bài | **Qoder** — viết/sửa mã, soạn tài liệu, thao tác Git theo yêu cầu. **ChatGPT** và **Claude** — sinh viên tự khai có dùng thêm; phạm vi chi tiết chưa có nhật ký. Phiên bản công cụ: **[CẦN XÁC MINH]**. | Commit/PR trong repo cá nhân và repo nhóm; không có nhật ký prompt đầy đủ trong repo | **đã khai một phần** — còn phiên bản và phạm vi ChatGPT/Claude |
+| Prompt tiêu biểu | (1) 2026-10-11: “Nhiệm vụ của tôi là xây dựng giao diện trang dành cho NGƯỜI MUA bằng HTML, CSS và JavaScript thuần. … Không yêu cầu backend, database, framework hoặc API phức tạp.” (2) 2026-10-15: “bạn hãy tạo lại link favorites cho tôi tại link cũ khi tôi bấm hủy hết phần yêu thích thì nó mất hết ản phẩm” [sic]. (3) 2026-10-24: “Tôi muốn bổ sung một tính năng AI giúp người dùng mô tả nhu cầu của mình, sau đó nhận được tư vấn và gợi ý sản phẩm hoặc thợ thủ công phù hợp. **Yêu cầu quan trọng nhất:** Chỉ bổ sung tính năng AI vào giao diện hiện có. Không thiết kế lại website, không thay đổi bố cục hiện tại và không tự ý sửa các chức năng đang hoạt động.” | Nhật ký phiên làm việc Qoder trên máy sinh viên; **không nằm trong repository** | **đã khai** — người chấm không mở lại được toàn bộ log |
+| Phần AI sinh trong mã | `KhachHang/js/ai-advisor.js` (toàn bộ trợ lý tìm kiếm cục bộ); phần `buildSummary` / `runSummary` trong `KhachHang/js/main.js` (bản tóm tắt brief); phần lớn JavaScript còn lại và các tài liệu `docs/` do AI soạn, SV1 đọc lại và sửa. HTML/CSS do SV1 viết, có tham khảo AI. | `KhachHang/js/ai-advisor.js`; `KhachHang/js/main.js` (`buildSummary`, `runSummary`); `docs/` | **đã khai** — tỷ lệ phần trăm chính xác **[CẦN XÁC MINH]** |
+| AI sai ở đâu, sửa thế nào | **Lỗi trạng thái rỗng trang yêu thích:** bỏ hết sản phẩm yêu thích thì lưới bị ẩn nhưng khối “Chưa có sản phẩm yêu thích” không hiện. Sửa bằng `#favorites-empty` trong `KhachHang/favorites.html` và tính `isEmpty` trong `KhachHang/js/main.js` để ẩn lưới, hiện khối rỗng. | Prompt báo lỗi 2026-10-15; mã sửa đã đọc trực tiếp | **đã khai** — việc lỗi do AI sinh là suy luận từ phạm vi, không có log từng dòng |
+| Chế độ AI trong sản phẩm | **Bộ quy tắc cục bộ, không gọi mô hình.** CraftLink AI và bản tóm tắt brief đều chạy bằng luật JavaScript. `artisan-suggestions.html` không phải AI. Không có API key, không có `fetch` ra ngoài. | `KhachHang/js/ai-advisor.js` ghi ngay đầu tệp: “KHÔNG phải AI tạo sinh và KHÔNG gọi API bên ngoài”; `KhachHang/artisan-suggestions.html` ghi “chưa kết nối mô hình AI tạo sinh” | **đã khai** |
+
+> Không khai AI Personalization, AI Visual Matcher hoặc AI Proposal Evaluator: repo không có mã tương ứng. Nếu giữ các tên này trong `screen-inventory.md`, phải ghi rõ “định hướng, chưa triển khai”.
 
 ### 3.2 SV2 — Thợ thủ công
 
@@ -93,5 +95,5 @@ Cả nhóm phải ghi tên cụ thể mọi công cụ đã dùng (ChatGPT, Gemi
 
 ## 4. Hệ quả cần nói thẳng khi bảo vệ
 
-- Chưa có triển khai công khai nên trên máy chấm, ba tính năng AI chạy ở **chế độ dự phòng rule-based**, và giao diện đã tự khai điều đó bằng dòng "Nguồn:".
+- Chưa có triển khai công khai nên trên máy chấm, ba tác vụ AI gọi qua máy chủ chạy ở **chế độ dự phòng rule-based**, và giao diện đã tự khai điều đó bằng dòng "Nguồn:".
 - Tính năng 6.1 (gợi ý sản phẩm cho người mua) mới có **bộ quy tắc cục bộ** trong `KhachHang/js/ai-advisor.js`; loại tác vụ `product-discovery` ở `api/ai.js` **chưa được nối** vào giao diện nào, nên chưa thể demo đủ 6 bước ở vế này.

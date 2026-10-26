@@ -37,10 +37,10 @@
         và mỗi quyết định kiểm duyệt dựa trên bản quy định đang có hiệu lực.
       </p>
       <ul class="facts">
-        <li><strong>18</strong> màn hình HTML</li>
+        <li><strong>18</strong> màn hình nghiệp vụ</li>
         <li><strong>3</strong> nhóm người dùng</li>
-        <li><strong>3</strong> tính năng AI</li>
-        <li><strong>9</strong> video OBS, mỗi thành viên ba video</li>
+        <li><strong>8</strong> tính năng AI, đủ 3 nhóm</li>
+        <li><strong>6/9</strong> link video OBS đã dán</li>
       </ul>
     </section>
 
@@ -104,6 +104,7 @@
             <ul class="role-screens">
               <li>Đăng nhập khách hàng, nghệ nhân, quản trị</li>
               <li>Đăng ký tài khoản nghệ nhân</li>
+              <li>Khôi phục mật khẩu ba bước (mô phỏng)</li>
             </ul>
             <a class="cta cta--quiet" href="DangNhapVaDangKy/01-dang-nhap/index.html">Mở trang đăng nhập</a>
           </article>
@@ -117,7 +118,7 @@
         <li>Mở thư mục gốc của repo trong VS Code, bật <strong>Live Server</strong>, hoặc chạy <code>python -m http.server 8000</code> rồi mở <code>http://localhost:8000</code>.</li>
         <li>Không mở tệp bằng <code>file://</code>: trình duyệt sẽ chặn việc tải tệp JSON của các phân hệ.</li>
         <li>Dữ liệu mồi nằm ở <code>KiemDuyetVaQuanTri/assets/data/</code> (15–20 bản ghi mỗi bộ). Thay đổi được lưu vào Local Storage của trình duyệt, không ghi ngược vào repo.</li>
-        <li>Ba tính năng AI đọc cấu hình từ biến môi trường máy chủ (<code>AI_API_URL</code>, <code>AI_API_KEY</code>, <code>AI_MODEL</code>). Khi chưa có khóa, giao diện chuyển sang bộ quy tắc cục bộ và ghi rõ nguồn kết quả.</li>
+        <li>Ba tác vụ AI gọi qua máy chủ đọc cấu hình từ biến môi trường (<code>AI_API_URL</code>, <code>AI_API_KEY</code>, <code>AI_MODEL</code>); năm tính năng AI còn lại chạy bằng bộ quy tắc cục bộ. Khi máy chủ chưa có khóa, cả ba tác vụ cũng lùi về bộ quy tắc và giao diện ghi rõ nguồn kết quả.</li>
       </ol>
       <p class="runbook-note">
         Hai lối vào <strong>Người mua</strong> và <strong>Người bán</strong> chỉ mở được sau khi PR #3 và PR #2 được gộp vào nhánh chính;
