@@ -133,24 +133,12 @@ const reports = [
   }
 ];
 
-let restored = false;
-
 try {
   const saved = JSON.parse(localStorage.getItem(KEY));
   if (Array.isArray(saved)) {
     reports.splice(0, reports.length, ...saved);
-    restored = true;
   }
 } catch {}
-
-if (!restored) {
-  const firstReports = reports.slice();
-  for (let n = 2; n <= 5; n++) {
-    firstReports.forEach(report => {
-      reports.push({ ...report, id: report.id + "-" + n });
-    });
-  }
-}
 
 function save() {
   return CraftLinkAPI.save("reports", reports, KEY);
@@ -230,7 +218,7 @@ function render() {
       : left.localeCompare(right, "vi", { numeric: true });
     return order * (sortDirection === "asc" ? 1 : -1);
   });
-  document.querySelectorAll("thead [data-sort]").forEach(button => {
+  document.querySelectorAll("thead button[data-sort]").forEach(button => {
     const active = button.dataset.sort === sortKey;
     button.closest("th").setAttribute("aria-sort", active
       ? (sortDirection === "asc" ? "ascending" : "descending")
