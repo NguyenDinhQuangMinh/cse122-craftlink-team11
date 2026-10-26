@@ -163,8 +163,9 @@ Cấu hình: `AI_API_URL`, `AI_API_KEY`, `AI_MODEL` — chỉ khai ở biến m�
 | :--- | :--- |
 | Bảng kiểm kê 18 màn hình (12 cột) | [`docs/screen-inventory.md`](./docs/screen-inventory.md) |
 | Sitemap & User Flow toàn bộ vai trò | [`docs/user-flow.md`](./docs/user-flow.md) |
-| Board Trello công khai — 5 cột, 18 thẻ | <https://trello.com/b/N2HBpswf> |
+| Board Trello công khai — 5 cột, 27 thẻ (18 màn + 9 việc còn mở), mọi thẻ có hạn hoàn thành | <https://trello.com/b/N2HBpswf> |
 | Bảng công việc 18 thẻ (bản nguồn và cách đọc board) | [`docs/task-board.md`](./docs/task-board.md) |
+| Kiểm toán repo theo từng dòng barem: ĐK1–ĐK5, mục 7.1/7.2/7.3, 8.1, VP-01…VP-07, liên kết chết | [`docs/barem-audit.md`](./docs/barem-audit.md) |
 | Component Guide (màu, chữ, thành phần) | [`docs/component-guide.md`](./docs/component-guide.md) |
 | Đề xuất dự án (P1–P4, O1–O7, thực thể, ma trận trạng thái) | [`docs/project-proposal.md`](./docs/project-proposal.md) |
 | Canva SV1 — Khách hàng | <https://www.canva.com/design/DAHZAR9VxmU/dQQiBQ9-OPRH6Q5x8DdAkw/edit> · bản cũ ghi `DAHWyBVvS6U` — SV1 cần chốt một link |
@@ -236,6 +237,7 @@ Nguyên tắc khai báo: chỉ ghi việc đã làm. Phần nào chưa có thì 
 - Quy định nội dung chưa có lịch sử phiên bản và chưa có bước "xuất bản" riêng; lưu là có hiệu lực ngay.
 - Endpoint `api/ai.js` chưa gắn khóa trên môi trường triển khai, nên bản demo chạy bằng bộ quy tắc cục bộ.
 - Trang `KhachHang/forgot password.html` (SV1 thêm ngày 26-10) **chưa chạy được**: tệp CSS ghi sai tên (`css/forgot passwork.css`) và trang nạp ba tệp `js/common.js`, `js/auth-config.js`, `js/auth-service.js` không tồn tại trong nhánh, nên `window.CLAuth` luôn rỗng. Tên tệp còn chứa dấu cách. Trang nằm ngoài 18 dòng kiểm kê và chưa được liên kết từ trang đăng nhập.
+- Nút "Quên mật khẩu?" trên cả ba trang đăng nhập (`khach-hang.html`, `nghe-nhan.html`, `quan-tri.html`) và liên kết "khôi phục mật khẩu" trong `02-dang-ky/js/main.js` trỏ tới `forgot-password.html` (dấu gạch ngang) — tệp này **không tồn tại** ở bất kỳ nhánh nào; bản thật tên là `KhachHang/forgot password.html` (dấu cách, khác thư mục). Cả bốn chỗ bấm đều rơi vào trang 404, đúng loại lỗi mà mục 7.3 cấm trên bản triển khai công khai. Chi tiết và cách sửa: [`docs/barem-audit.md`](./docs/barem-audit.md) mục 6.1.
 
 **Hướng phát triển**
 

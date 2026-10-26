@@ -43,7 +43,23 @@ Cột "PR" ghi số pull request đang mở thật; cột "Video" ghi tên tệp
 
 ## 3. Board đã dựng — link và cách đọc
 
-**Board công khai:** <https://trello.com/b/N2HBpswf> — tên `CSE122 — CraftLink — Nhóm 11`, tạo ngày 26-10-2026 bằng tài khoản của SV3 vì Hưng chưa kịp dựng. Đã có đủ năm cột theo mục 1 và đúng 18 thẻ theo mục 2: 15 thẻ ở "Chờ review", 3 thẻ ở "Video & bảo vệ", hai cột "Backlog" và "Đang làm" đang trống, "Đã gộp" trống vì chưa PR nào được gộp. Link cũng nằm ở `README.md` mục 10.
+**Board công khai:** <https://trello.com/b/N2HBpswf> — tên `CSE122 — CraftLink — Nhóm 11`, tạo ngày 26-10-2026 bằng tài khoản của SV3 vì Hưng chưa kịp dựng. Đã có đủ năm cột theo mục 1 và **27 thẻ**: 18 thẻ TASK theo mục 2 (15 ở "Chờ review", 3 ở "Video & bảo vệ") cộng **9 thẻ công việc còn mở** (8 ở "Backlog", 1 ở "Đang làm"). Cột "Đã gộp" để trống **có chủ đích**: chưa PR nào được gộp nên chưa thẻ nào được chuyển sang, và bảng dưới đây ghi đúng trạng thái thật. Link cũng nằm ở `README.md` mục 10.
+
+**Hạn hoàn thành (cột mà tiêu chí 7.1 gọi là "hạn hoàn thành") đã gắn cho 27/27 thẻ.** Với 18 thẻ TASK, hạn lấy theo **ngày commit thật đưa tệp HTML lần đầu vào nhánh** — SV3: 13-10-2026, SV1 và SV2: 25-10-2026 — kiểm chứng bằng `git log --diff-filter=A --format=%ad --date=short <nhánh> -- <tệp>`; cả 18 thẻ đều được tick "Đánh dấu hoàn thành" vì mã đã viết xong, phần còn lại nằm ở chỗ khác thẻ đang đứng (chờ gộp, chờ video). 9 thẻ công việc mở có hạn 27-10-2026, tức ngày nộp và bảo vệ, và **không** tick hoàn thành.
+
+Chín thẻ mới, đọc từ mục "Việc còn lại" của `barem-audit.md`:
+
+| Thẻ | Cột | Ai làm |
+|---|---|---|
+| `DEPLOY · Bật GitHub Pages cho bản gộp và quét 404 asset — SV3` | Đang làm | SV3 |
+| `MERGE · Gộp PR #3 → #2 → #1 vào dev, rồi dev → main — Cả nhóm` | Backlog | Cả ba |
+| `REVIEW · Thành viên khác bấm Approve PR #2 và PR #1 — SV1/SV3` | Backlog | SV1, SV3 |
+| `VIDEO · SV2 quay và dán link 3 video OBS (màn 7, 9, 12) — SV2` | Backlog | SV2 |
+| `VIDEO · SV1 đối chiếu STT 4/7/9 với bảng kiểm kê 18 dòng — SV1` | Backlog | SV1 |
+| `FIX · Sửa 4 liên kết forgot-password.html hỏng ở DangNhapVaDangKy — SV2` | Backlog | SV2 |
+| `FIX · Đổi tên forgot password.html và sửa 3 tham chiếu CSS/JS sai — SV1` | Backlog | SV1 |
+| `DOCS · SV1 + SV2 điền khai báo AI vào docs/ai-usage-report.md — SV1/SV2` | Backlog | SV1, SV2 |
+| `DOCS · Chuyển 5 link Canva sang quyền xem công khai — Cả nhóm` | Backlog | Cả ba |
 
 Mỗi thẻ mang mô tả một dòng, đủ bốn liên kết mà tiêu chí 7.1 đòi:
 
