@@ -185,17 +185,19 @@
         </section>
 
         <dialog class="dialog" id="userEditor">
-          <form id="userForm">
+          <form id="userForm" novalidate>
             <header class="dialog-head">
               <h2 id="userDialogTitle">Thêm tài khoản</h2>
               <button class="close" id="userClose" type="button" aria-label="Đóng">×</button>
             </header>
             <input type="hidden" name="originalEmail">
             <label>Họ tên
-              <input name="name" required maxlength="80" autocomplete="name">
+              <input name="name" id="userName" required maxlength="80" autocomplete="name" aria-describedby="userNameError">
+              <small class="field-error" id="userNameError" aria-live="polite"></small>
             </label>
             <label>Email
-              <input name="email" type="email" required maxlength="120" autocomplete="email">
+              <input name="email" id="userEmail" type="email" required maxlength="120" autocomplete="email" aria-describedby="userEmailError">
+              <small class="field-error" id="userEmailError" aria-live="polite"></small>
             </label>
             <label>Vai trò
               <select name="role" required>

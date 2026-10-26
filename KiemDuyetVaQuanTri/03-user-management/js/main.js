@@ -28,6 +28,21 @@ function esc(value) {
   }[character]));
 }
 
+function clearFieldError(input, error) {
+  input.removeAttribute("aria-invalid");
+  error.textContent = "";
+}
+
+function setFieldError(input, error, message) {
+  input.setAttribute("aria-invalid", "true");
+  error.textContent = message;
+}
+
+function clearFormErrors() {
+  clearFieldError(form.elements.name, $("#userNameError"));
+  clearFieldError(form.elements.email, $("#userEmailError"));
+}
+
 function save() {
   return CraftLinkAPI.save("users", users);
 }
@@ -76,6 +91,7 @@ function render() {
 
 function edit(user) {
   form.reset();
+  clearFormErrors();
   form.elements.originalEmail.value = user?.email || "";
   form.elements.name.value = user?.name || "";
   form.elements.email.value = user?.email || "";
@@ -106,14 +122,34 @@ $("#userCancel").addEventListener("click", () => dialog.close());
 dialog.addEventListener("click", event => {
   if (event.target === dialog) dialog.close();
 });
+[["name", "#userNameError"], ["email", "#userEmailError"]].forEach(([field, errorId]) => {
+  form.elements[field].addEventListener("input", () => {
+    clearFieldError(form.elements[field], $(errorId));
+  });
+});
+
 form.addEventListener("submit", async event => {
   event.preventDefault();
-  if (!form.reportValidity()) return;
+  clearFormErrors();
+  const nameInput = form.elements.name;
+  const emailInput = form.elements.email;
+  if (!nameInput.value.trim()) {
+    setFieldError(nameInput, $("#userNameError"), "Vui lòng nhập họ tên.");
+    nameInput.focus();
+    return;
+  }
+  const email = emailInput.value.trim().toLocaleLowerCase("vi");
+  if (!email || !emailInput.checkValidity()) {
+    setFieldError(emailInput, $("#userEmailError"), "Email không hợp lệ.");
+    emailInput.focus();
+    return;
+  }
   const originalEmail = form.elements.originalEmail.value;
-  const email = form.elements.email.value.trim().toLocaleLowerCase("vi");
   const old = users.find(user => user.email === originalEmail);
   if (users.some(user => user.email.toLocaleLowerCase("vi") === email && user !== old)) {
-    return notify("Email này đã được sử dụng.");
+    setFieldError(emailInput, $("#userEmailError"), "Email này đã được sử dụng.");
+    emailInput.focus();
+    return;
   }
 
   const submit = form.querySelector('[type="submit"]');
@@ -147,10 +183,10 @@ form.addEventListener("submit", async event => {
   notify(old ? "Đã cập nhật tài khoản." : "Bạn đã thêm tài khoản thành công.");
 });
 
-$("#search").addEventListener("input", event => {
+$("#search").addEventListener("input", CraftLinkAPI.debounce(event => {
   query = event.target.value;
   render();
-});
+}));
 document.querySelectorAll("[data-role]").forEach(button => {
   button.addEventListener("click", () => {
     role = button.dataset.role;
@@ -161,11 +197,11 @@ document.querySelectorAll("[data-role]").forEach(button => {
     render();
   });
 });
-$("#globalSearch").addEventListener("input", event => {
+$("#globalSearch").addEventListener("input", CraftLinkAPI.debounce(event => {
   query = event.target.value;
   $("#search").value = query;
   render();
-});
+}));
 $("#rows").addEventListener("click", event => {
   if (event.target.closest("[data-reset-filter]")) {
     $("#search").value = "";
