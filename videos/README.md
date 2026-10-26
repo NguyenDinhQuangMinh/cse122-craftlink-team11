@@ -20,14 +20,6 @@ Tên tệp lấy đúng theo cột "OBS Video" của `../docs/screen-inventory.m
 
 ### SV1 — Nguyễn Xuân Hưng (đã có 3 link, chờ khớp số dòng)
 
-| STT kiểm kê | Tên tệp bắt buộc | Link | Trạng thái |
-|---|---|---|---|
-| 1 | `SV1-01-home-explore.mp4` | — | **chưa quay / chưa dán link** |
-| 2 | `SV1-02-product-detail.mp4` | — | **chưa quay / chưa dán link** |
-| 3 | `SV1-03-custom-order-brief.mp4` | — | **chưa quay / chưa dán link** |
-| 4 | `SV1-04-proposal-comparison.mp4` | — | **chưa quay / chưa dán link** |
-| 5 | `SV1-05-checkout-confirmation.mp4` | — | **chưa quay / chưa dán link** |
-| 6 | `SV1-06-customer-dashboard.mp4` | — | **chưa quay / chưa dán link** |
 
 **Ba link SV1 đã dẫn** (nguồn: tệp `video` trên nhánh `feature/sv1-buyer`, ngày 26-10):
 
