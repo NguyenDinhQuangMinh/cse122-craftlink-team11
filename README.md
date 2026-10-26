@@ -232,6 +232,7 @@ Nguyên tắc khai báo: chỉ ghi việc đã làm. Phần nào chưa có thì 
 - Dữ liệu lưu trong `localStorage` của từng trình duyệt: hai người dùng hai máy không thấy dữ liệu của nhau, nên luồng brief → proposal chỉ minh hoạ được trên cùng một máy.
 - Quy định nội dung chưa có lịch sử phiên bản và chưa có bước "xuất bản" riêng; lưu là có hiệu lực ngay.
 - Endpoint `api/ai.js` chưa gắn khóa trên môi trường triển khai, nên bản demo chạy bằng bộ quy tắc cục bộ.
+- Trang `KhachHang/forgot password.html` (SV1 thêm ngày 26-10) **chưa chạy được**: tệp CSS ghi sai tên (`css/forgot passwork.css`) và trang nạp ba tệp `js/common.js`, `js/auth-config.js`, `js/auth-service.js` không tồn tại trong nhánh, nên `window.CLAuth` luôn rỗng. Tên tệp còn chứa dấu cách. Trang nằm ngoài 18 dòng kiểm kê và chưa được liên kết từ trang đăng nhập.
 
 **Hướng phát triển**
 

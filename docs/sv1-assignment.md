@@ -20,7 +20,7 @@
 
 - **Vai trò nghiệp vụ:** Khách hàng (Buyer).
 - **Phạm vi trong repo nhóm:** 9 tệp HTML trong `KhachHang/`, gồm khám phá sản phẩm, tùy biến, giỏ hàng, xác nhận đơn và theo dõi đơn.
-- **Tệp thứ mười (ngoài 18 dòng kiểm kê):** `KhachHang/forgot-password.html` — trang khôi phục mật khẩu thêm ngày 26-10-2026, chưa nối vào liên kết nào từ trang đăng nhập.
+- **Tệp thứ mười (ngoài 18 dòng kiểm kê):** `KhachHang/forgot password.html` — trang khôi phục mật khẩu thêm ngày 26-10-2026. Chưa chạy được: nạp ba script `common.js`, `auth-config.js`, `auth-service.js` không có trong nhánh và href CSS ghi `forgot passwork.css`; chưa nối vào liên kết nào từ trang đăng nhập.
 - **Khung giao diện dùng chung:** header/footer và `KhachHang/css/style.css` được dùng lại trên 9 trang; không tách thành bộ component riêng.
 - **Đăng nhập/đăng ký:** nằm ở `DangNhapVaDangKy/`, do SV1 và SV2 cùng làm; không tính vào 9 màn hình Buyer.
 - **Không backend, không API:** dữ liệu mẫu trong `KhachHang/js/data.js`; giỏ hàng, yêu thích, brief và nháp chỉnh sửa lưu bằng Web Storage.
