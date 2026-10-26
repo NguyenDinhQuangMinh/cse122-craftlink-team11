@@ -87,7 +87,6 @@ Header và footer được viết trực tiếp trong từng trang HTML; không 
 
 Tài liệu nhóm đang ghi SV1 phụ trách **6 màn hình** (`../README.md`, `../docs/team-assignment.md`, `../docs/sv1-assignment.md`, `../docs/screen-inventory.md`), trong khi thư mục này có **9 trang**.
 
-Ngoài chênh lệch số lượng, tên tệp cũng khác: `../docs/screen-inventory.md` ghi 6 màn hình SV1 là `index.html`, `product-detail.html`, `custom-order-brief.html`, `proposal-comparison.html`, `checkout-confirmation.html`, `customer-dashboard.html` với các nhánh `feature/home-explore`…`feature/customer-dashboard` (TASK-01…TASK-06). Thư mục này không có `custom-order-brief.html`, `proposal-comparison.html`, `checkout-confirmation.html` hay `customer-dashboard.html`; thay vào đó là 9 trang khác tên. Bảng dưới đây ghi rõ phần đã có và phần chưa có, không thay đổi tài liệu nhóm.
 
 | Hạng mục theo `docs/sv1-assignment.md` | Trạng thái trong `KhachHang/` |
 |---|---|
@@ -100,4 +99,3 @@ Ngoài chênh lệch số lượng, tên tệp cũng khác: `../docs/screen-inve
 | AI cá nhân hóa theo lịch sử tương tác | Chưa có; hiện là trợ lý tìm kiếm theo từ khóa, không lưu lịch sử |
 | AI gợi ý nghệ nhân | Có chấm điểm theo tiêu chí cục bộ, không phải mô hình AI |
 
-Phần chênh lệch này cần nhóm quyết định: giữ mô tả 6 màn hình trong tài liệu nhóm, hay cập nhật tài liệu nhóm thành 9 màn hình trong một PR riêng. PR này không sửa tài liệu nhóm.
