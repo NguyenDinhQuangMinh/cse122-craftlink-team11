@@ -8,4 +8,6 @@ Quy tắc của thư mục này:
 - Các tệp còn lại tách theo vai trò: bố cục, thành phần, responsive, focus/trạng thái.
 - Trang cá nhân chỉ `@import` hoặc `<link>` tới tệp ở đây, không định nghĩa lại màu.
 
-Trạng thái hiện tại: **chưa có tệp nào**. Hệ thống thiết kế đang nằm ở `../KiemDuyetVaQuanTri/css/shared/` (theme, layout, components, responsive, focus, states) và được sáu trang quản trị nạp qua `style.css` của từng trang. Khi SV1 và SV2 đưa mã nguồn vào repo, nhóm cần quyết định một trong hai hướng: chuyển `css/shared/` lên đây làm nguồn duy nhất, hoặc để SV1/SV2 khai báo `:root` của họ và gộp lại — không để hai bảng màu song song.
+Trạng thái hiện tại: **đã có `style.css`**. Tệp này khai báo toàn bộ token trong `:root` (màu, phông, khoảng cách, bo góc, cỡ chữ, breakpoint) và dựng giao diện cho trang gốc `index.html` — trang landing bốn lối vào vai trò. Hệ thống thiết kế của sáu trang quản trị vẫn nằm ở `../KiemDuyetVaQuanTri/css/shared/` (theme, layout, components, responsive, focus, states) và được nạp qua `style.css` của từng trang.
+
+Hai bảng token này chưa gộp làm một. Hướng xử lý khi gộp nhánh: chuyển `KiemDuyetVaQuanTri/css/shared/theme.css` lên đây thành nguồn duy nhất, sáu trang quản trị `@import` lại, không để hai bộ màu song song. Việc gộp phải làm sau khi PR #2 và PR #3 đã vào nhánh chính, nếu không sẽ xung đột với hai phân hệ kia.
