@@ -114,3 +114,15 @@
 }
 
 .ai-origin { margin-top: 12px !important; padding-top: 10px; border-top: 1px solid #e7ecec; color: #687781 !important; font-size: 11px !important; }
+
+.page-footer {
+  margin-top: 20px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.page-footer p {
+  margin: 0;
+}
