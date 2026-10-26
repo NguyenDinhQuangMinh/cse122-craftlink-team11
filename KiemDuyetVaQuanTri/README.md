@@ -83,7 +83,7 @@ Khi máy chủ chưa cấu hình `AI_API_URL`, `AI_API_KEY`, `AI_MODEL`, `js/ai-
 ## 6. Giới hạn của bản demo
 
 - **Không có backend mặc định:** dữ liệu nằm trong JSON + localStorage; không có đăng nhập thật, không phân quyền phía máy chủ.
-- **Dashboard dùng số liệu minh họa tĩnh:** doanh thu, biểu đồ và nhật ký viết sẵn, chưa nối kho dữ liệu. Năm màn còn lại mới đọc kho dữ liệu chung.
+- **Dashboard chỉ minh họa một phần:** doanh thu, đơn hàng, biểu đồ và nhật ký viết sẵn; hai thẻ *Nghệ nhân đang hoạt động* và *Cảnh báo hệ thống* tính thật từ kho dữ liệu chung (`refreshMetrics`, `01-dashboard/js/main.js:67`).
 - **AI có thể chạy ở chế độ dự phòng:** nếu chưa deploy kèm biến môi trường, kết quả đến từ bộ quy tắc cục bộ và được ghi rõ.
 - **Xóa danh mục/quy định chỉ đổi dữ liệu trình duyệt**, không ảnh hưởng tệp JSON trong repo.
 

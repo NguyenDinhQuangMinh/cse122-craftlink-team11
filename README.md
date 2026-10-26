@@ -214,7 +214,7 @@ Nguyên tắc khai báo: chỉ ghi việc đã làm. Phần nào chưa có thì 
 
 - Chưa triển khai công khai (mục 12), nên ĐK3 chưa đạt.
 - Ba PR của ba phân hệ chưa gộp vào nhánh chính; bản trên nhánh mặc định chưa có mã Khách hàng và Người bán.
-- Bảng điều khiển dùng số liệu minh họa tĩnh (doanh thu, biểu đồ, nhật ký); các màn còn lại mới đọc kho dữ liệu chung.
+- Bảng điều khiển mới nối một phần kho dữ liệu: hai thẻ *Nghệ nhân đang hoạt động* và *Cảnh báo hệ thống* tính thật từ dữ liệu chung; doanh thu, đơn hàng, biểu đồ và nhật ký vẫn là số liệu minh họa viết sẵn.
 - Dữ liệu lưu trong `localStorage` của từng trình duyệt: hai người dùng hai máy không thấy dữ liệu của nhau, nên luồng brief → proposal chỉ minh hoạ được trên cùng một máy.
 - Quy định nội dung chưa có lịch sử phiên bản và chưa có bước "xuất bản" riêng; lưu là có hiệu lực ngay.
 - Endpoint `api/ai.js` chưa gắn khóa trên môi trường triển khai, nên bản demo chạy bằng bộ quy tắc cục bộ.
