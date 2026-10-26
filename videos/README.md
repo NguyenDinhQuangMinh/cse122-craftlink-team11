@@ -43,36 +43,24 @@ Nhánh thực tế: `feature/sv1-buyer` · PR #3. Sáu tệp dưới đây tươ
 
 > **Rủi ro:** số 7 và 9 trong bảng kiểm kê đang thuộc SV2. Nếu hai link này thực chất là video của SV2, dùng cho SV1 sẽ sai minh chứng. Chỉ điền vào bảng chính thức sau khi mở video, xác nhận đúng người quay, đúng màn hình và đúng tên tệp. Nếu 7 và 9 là số thứ tự nội bộ trong 9 trang Buyer thì phải ghi rõ "STT nội bộ" và vẫn cần quay đúng trang của mình để ĐK4 khớp 1:1.
 
-### SV2 — Dương Vũ Quân Minh (đã quay 3 video đăng nhập; 6 dòng Maker chưa có video)
+### SV2 — Dương Vũ Quân Minh (chưa có link)
 
-Kênh YouTube: <https://www.youtube.com/@minhduong3801> · Playlist: <https://www.youtube.com/playlist?list=PLDaEqceEwiuk>
-
-Ba video đã quay là ba trang đăng nhập theo vai trong `DangNhapVaDangKy/01-dang-nhap/` — phần SV2 bàn giao thêm, nằm ngoài 6 dòng kiểm kê 7–12. Tiêu đề trên YouTube đã theo khuôn đặt tên ở cuối tệp.
-
-| Tên tệp | Màn hình | Tệp mã nguồn | Link |
-|---|---|---|---|
-| `SV2-01-dangnhap-khachhang.mp4` | Đăng nhập Khách hàng | `khach-hang.html` + `css/khach-hang.css` + `js/khach-hang.js` | <https://www.youtube.com/watch?v=BY0AAIjTSm8> |
-| `SV2-02-dangnhap-nghenhan.mp4` | Đăng nhập Thợ thủ công / Nghệ nhân | `nghe-nhan.html` + `css/nghe-nhan.css` + `js/nghe-nhan.js` | <https://www.youtube.com/watch?v=2zrLFxVEpiU> |
-| `SV2-03-dangnhap-admin.mp4` | Đăng nhập Quản trị viên & Kiểm duyệt | `quan-tri.html` + `css/quan-tri.css` + `js/quan-tri.js` | <https://www.youtube.com/watch?v=d4kmFKU6ivg> |
-
-Sáu dòng kiểm kê 7–12 (`KhongGianNguoiBan/`) chưa có video riêng:
+Kênh YouTube: <https://www.youtube.com/@minhduong3801> — chưa có link theo từng màn.
 
 | STT kiểm kê | Tên tệp bắt buộc | Link | Trạng thái |
 |---|---|---|---|
-| 7 | `SV2-01-maker-listings.mp4` | — | **chưa quay riêng** |
-| 8 | `SV2-02-maker-edit-listing.mp4` | — | **chưa quay riêng** |
-| 9 | `SV2-03-maker-brief-inbox.mp4` | — | **chưa quay riêng** |
-| 10 | `SV2-04-maker-proposal-editor.mp4` | — | **chưa quay riêng** |
-| 11 | `SV2-05-maker-proposal-preview.mp4` | — | **chưa quay riêng** |
-| 12 | `SV2-06-maker-shop-profile.mp4` | — | **chưa quay riêng** |
-
-> Nếu giảng viên yêu cầu đủ 6 video/người như phản hồi ngày 2026-10-26, SV2 còn thiếu video cho 6 dòng trên; ba video đăng nhập là phần minh chứng cho phân hệ `DangNhapVaDangKy/`.
+| 7 | `SV2-01-maker-listings.mp4` | — | **chưa quay / chưa dán link** |
+| 8 | `SV2-02-maker-edit-listing.mp4` | — | **chưa quay / chưa dán link** |
+| 9 | `SV2-03-maker-brief-inbox.mp4` | — | **chưa quay / chưa dán link** |
+| 10 | `SV2-04-maker-proposal-editor.mp4` | — | **chưa quay / chưa dán link** |
+| 11 | `SV2-05-maker-proposal-preview.mp4` | — | **chưa quay / chưa dán link** |
+| 12 | `SV2-06-maker-shop-profile.mp4` | — | **chưa quay / chưa dán link** |
 
 > **Chưa chốt: 3 hay 6 video cho SV1.** Tệp này từng ghi "Đã chốt: 3 video/người", nhưng phản hồi chấm ngày 2026-10-26 yêu cầu SV1 đủ **6 video**. Trạng thái đúng tại 2026-10-26:
 >
 > - **SV3:** 3 video đã quay, có link và thời lượng.
 > - **SV1:** 0/6 video được xác nhận; 3 link đã dẫn nhưng chưa khớp màn hình.
-> - **SV2:** 3 video đã quay cho ba trang đăng nhập (có link ở trên); 6 dòng kiểm kê 7–12 chưa có video riêng.
+> - **SV2:** chưa có link.
 >
 > Không dùng câu "3 video/người" để biện minh cho SV1 khi chưa có xác nhận bằng văn bản của giảng viên. ĐK4 là điều kiện loại trực tiếp; nếu giảng viên xác nhận lại 3 video là đủ, phải lưu tin nhắn/email đó vào thư mục nộp bài và ghi rõ màn nào không quay riêng.
 
