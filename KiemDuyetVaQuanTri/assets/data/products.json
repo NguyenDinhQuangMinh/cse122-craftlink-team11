@@ -21,7 +21,7 @@
     "description": "Đèn trang trí đan tay từ tre tự nhiên, hoàn thiện bằng dầu thực vật.",
     "status": "pending",
     "note": "",
-    "category": "Đồ da cao cấp"
+    "category": "Mây tre đan"
   },
   {
     "id": 3,
@@ -33,7 +33,7 @@
     "description": "Khay gỗ khắc tay họa tiết lá, mô tả rõ chất liệu và cách bảo quản.",
     "status": "pending",
     "note": "",
-    "category": "Trang sức & Phụ kiện"
+    "category": "Đồ gỗ nghệ thuật"
   },
   {
     "id": 4,
@@ -45,7 +45,7 @@
     "description": "Trang trí tường dệt tay bằng sợi cotton tự nhiên.",
     "status": "pending",
     "note": "",
-    "category": "Đồ gỗ nghệ thuật"
+    "category": "Thêu dệt may mặc"
   },
   {
     "id": 5,
@@ -57,7 +57,7 @@
     "description": "Bộ ấm chén vẽ men lam thủ công, dùng được với nước nóng.",
     "status": "pending",
     "note": "",
-    "category": "Thêu dệt may mặc"
+    "category": "Gốm sứ thủ công"
   },
   {
     "id": 6,
@@ -81,7 +81,7 @@
     "description": "Hộp gỗ chạm khắc hoa văn thủ công.",
     "status": "pending",
     "note": "",
-    "category": "Nến thơm & Hương liệu"
+    "category": "Đồ gỗ nghệ thuật"
   },
   {
     "id": 8,
@@ -93,7 +93,7 @@
     "description": "Rổ mây tre đan tự nhiên, dùng để đựng trái cây.",
     "status": "pending",
     "note": "",
-    "category": "Tranh vẽ thủ công"
+    "category": "Mây tre đan"
   },
   {
     "id": 9,
@@ -105,7 +105,7 @@
     "description": "Vòng cổ làm từ hạt gốm nung thủ công, có thể điều chỉnh độ dài.",
     "status": "pending",
     "note": "",
-    "category": "Đồ tái chế sáng tạo"
+    "category": "Trang sức & Phụ kiện"
   },
   {
     "id": 10,
@@ -129,7 +129,7 @@
     "description": "Nến thơm làm từ sáp thực vật, có hướng dẫn sử dụng an toàn.",
     "status": "pending",
     "note": "",
-    "category": "Đồ trang trí nhà cửa"
+    "category": "Nến thơm & Hương liệu"
   },
   {
     "id": 12,
@@ -141,7 +141,7 @@
     "description": "Tranh màu nước vẽ tay, có thông tin kích thước và chất liệu giấy.",
     "status": "pending",
     "note": "",
-    "category": "Phụ kiện thời trang"
+    "category": "Tranh vẽ thủ công"
   },
   {
     "id": 13,
@@ -153,7 +153,7 @@
     "description": "Khăn cotton thêu tay, ghi rõ kích cỡ và cách giặt.",
     "status": "pending",
     "note": "",
-    "category": "Quà tặng cá nhân hóa"
+    "category": "Thêu dệt may mặc"
   },
   {
     "id": 14,
@@ -165,7 +165,7 @@
     "description": "Chậu đúc thủ công từ xi măng, có lỗ thoát nước.",
     "status": "pending",
     "note": "",
-    "category": "Đồ chơi thủ công"
+    "category": "Đồ trang trí nhà cửa"
   },
   {
     "id": 15,
@@ -189,7 +189,7 @@
     "description": "Túi vải nhuộm màu thực vật, nêu rõ sai khác màu giữa các sản phẩm.",
     "status": "revision",
     "note": "",
-    "category": "Gốm sứ thủ công"
+    "category": "Thêu dệt may mặc"
   },
   {
     "id": 17,
@@ -201,7 +201,7 @@
     "description": "Móc khóa gỗ cá nhân hóa theo tên, có ảnh mẫu và thời gian hoàn thiện.",
     "status": "approved",
     "note": "",
-    "category": "Đồ da cao cấp"
+    "category": "Quà tặng cá nhân hóa"
   },
   {
     "id": 18,
@@ -213,7 +213,7 @@
     "description": "Búp bê may thủ công, mô tả vật liệu và khuyến cáo độ tuổi sử dụng.",
     "status": "revision",
     "note": "",
-    "category": "Trang sức & Phụ kiện"
+    "category": "Đồ chơi thủ công"
   },
   {
     "id": 19,
@@ -225,7 +225,7 @@
     "description": "Đĩa gốm vẽ tay trang trí, nêu rõ chỉ dùng trưng bày.",
     "status": "approved",
     "note": "",
-    "category": "Đồ gỗ nghệ thuật"
+    "category": "Gốm sứ thủ công"
   },
   {
     "id": 20,
@@ -237,6 +237,6 @@
     "description": "Giỏ quà thủ công, liệt kê thành phần và lựa chọn đóng gói.",
     "status": "revision",
     "note": "",
-    "category": "Thêu dệt may mặc"
+    "category": "Quà tặng cá nhân hóa"
   }
 ]

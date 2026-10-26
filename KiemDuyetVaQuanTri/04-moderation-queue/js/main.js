@@ -381,7 +381,7 @@ form.addEventListener("submit", e => {
   const note = form.elements.note.value.trim();
 
   if (!item) return notify("Không tìm thấy sản phẩm cần xử lý.");
-  if (note.length < 5) {
+  if (note.replace(/\s/g, "").length < 5) {
     showNoteError("Phản hồi cần có ít nhất 5 ký tự không tính khoảng trắng.");
     return;
   }

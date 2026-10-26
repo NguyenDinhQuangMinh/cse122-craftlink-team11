@@ -85,7 +85,7 @@
     }
     if (sentence(context.category)) {
       score += 0.08;
-      signals.push("Bài đăng đã gắn danh mục “" + context.category + "” nên có thể đối chiếu đúng bộ quy định.");
+      signals.push("Bài đăng khai danh mục “" + context.category + "”; danh mục do người bán tự chọn nên kiểm duyệt viên cần xác nhận lại.");
     } else {
       score -= 0.08;
       signals.push("Bài đăng chưa gắn danh mục, việc áp quy định đang phải suy đoán.");
