@@ -86,7 +86,7 @@ flowchart TD
 | Quản trị viên ban hành quy định → hàng đợi dùng quy định làm căn cứ | Chính sách nội dung là dữ liệu đầu vào của kiểm duyệt, kể cả đầu vào prompt AI | STT 18 → STT 14 | `04-moderation-queue/js/main.js:158` nạp `guidelines`, `:349` gửi `guidelines` vào ngữ cảnh AI; `js/ai-fallback.js:60` đọc lại |
 | Quản trị viên khóa tài khoản → khách/nghệ nhân mất quyền truy cập | Phân quyền tác động trực tiếp lên hai vai trò kia | STT 17 → STT 1, 7 | `users.json` trường `active`; `03-user-management` đổi cờ này |
 
-Nhãn trạng thái `pending / approved / revision / rejected` là giá trị thật trong mã, không phải ký hiệu tự đặt; xem `KiemDuyetVaQuanTri/04-moderation-queue/js/main.js` (hàm `render`, bảng `statusNames` ở dòng 200). Báo cáo dùng `pending / verifying / handled / dismissed` (`05-report-center/js/main.js:176-178`).
+Nhãn trạng thái `pending / approved / revision / rejected` là giá trị thật trong mã, không phải ký hiệu tự đặt; xem `KiemDuyetVaQuanTri/04-moderation-queue/js/main.js` (hàm `render`, bảng `statusNames` ở dòng 200). Báo cáo dùng `pending / verifying / handled / dismissed` (`05-report-center/js/main.js:162-167`).
 
 ## 4. Phần chưa hoàn thành
 

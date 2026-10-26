@@ -13,6 +13,7 @@ Khác biệt so với một sàn thông thường: **yêu cầu đặt làm là 
 
 Phân tích bài toán đầy đủ (P1–P4, O1–O7, thực thể dữ liệu, ma trận vòng đời trạng thái): [`docs/project-proposal.md`](./docs/project-proposal.md).
 Bối cảnh thị trường dài hơn: [`docs/project-introduction.md`](./docs/project-introduction.md).
+**Báo cáo tổng hợp của cả nhóm nằm trong một tệp duy nhất: [`docs/final-report.md`](./docs/final-report.md)** — mở khi nộp và khi Vấn đáp; mọi số liệu trong đó đo từ `git`, GitHub API và URL công khai, chi tiết phép đo ở [`docs/barem-audit.md`](./docs/barem-audit.md).
 
 **Bảng màu chủ đạo:** Warm Terracotta `#C85A32`, Sage Green `#6A8D73`, Cream `#FDFAF6`, Charcoal `#241F1B`.
 
@@ -161,6 +162,7 @@ Cấu hình: `AI_API_URL`, `AI_API_KEY`, `AI_MODEL` — chỉ khai ở biến m�
 
 | Tài liệu | Đường dẫn |
 | :--- | :--- |
+| **Báo cáo tổng hợp một tệp** — gộp toàn bộ tài liệu của nhóm theo đúng thứ tự chấm của barem, kèm số đo và lệnh tái lập | [`docs/final-report.md`](./docs/final-report.md) |
 | Bảng kiểm kê 18 màn hình (12 cột) | [`docs/screen-inventory.md`](./docs/screen-inventory.md) |
 | Sitemap & User Flow toàn bộ vai trò | [`docs/user-flow.md`](./docs/user-flow.md) |
 | **Bản chạy công khai** (GitHub Pages, nhánh `main`) | <https://nguyendinhquangminh.github.io/cse122-craftlink-team11/> |
