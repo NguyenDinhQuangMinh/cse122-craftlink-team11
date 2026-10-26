@@ -18,12 +18,12 @@ Cột "PR" ghi số pull request đang mở thật; cột "Video" ghi tên tệp
 
 | Task ID | Tên thẻ | Người | Nhánh | PR | Video | Cột hiện tại |
 |---|---|---|---|---|---|---|
-| TASK-01 | Danh sách sản phẩm & sản phẩm yêu thích (STT 1) | SV1 | `feature/home-explore` | #3 | `SV1-01-home-explore.mp4` | Chờ review |
-| TASK-02 | Chi tiết sản phẩm (STT 2) | SV1 | `feature/product-detail` | #3 | `SV1-02-product-detail.mp4` | Chờ review |
-| TASK-03 | Tạo brief tùy biến (STT 3) | SV1 | `feature/custom-order-brief` | #3 | `SV1-03-custom-order-brief.mp4` | Chờ review |
-| TASK-04 | Chọn nghệ nhân (STT 4) | SV1 | `feature/proposal-comparison` | #3 | `SV1-04-proposal-comparison.mp4` | Chờ review |
-| TASK-05 | Giỏ hàng & xác nhận đơn (STT 5) | SV1 | `feature/checkout-confirmation` | #3 | `SV1-05-checkout-confirmation.mp4` | Chờ review |
-| TASK-06 | Đơn hàng & chi tiết đơn (STT 6) | SV1 | `feature/customer-dashboard` | #3 | `SV1-06-customer-dashboard.mp4` | Chờ review |
+| TASK-01 | Danh sách sản phẩm & sản phẩm yêu thích (STT 1) | SV1 | `feature/sv1-buyer` | #3 | `SV1-01-home-explore.mp4` | Chờ review |
+| TASK-02 | Chi tiết sản phẩm (STT 2) | SV1 | `feature/sv1-buyer` | #3 | `SV1-02-product-detail.mp4` | Chờ review |
+| TASK-03 | Tạo brief tùy biến (STT 3) | SV1 | `feature/sv1-buyer` | #3 | `SV1-03-custom-order-brief.mp4` | Chờ review |
+| TASK-04 | Chọn nghệ nhân (STT 4) | SV1 | `feature/sv1-buyer` | #3 | `SV1-04-proposal-comparison.mp4` | Chờ review |
+| TASK-05 | Giỏ hàng & xác nhận đơn (STT 5) | SV1 | `feature/sv1-buyer` | #3 | `SV1-05-checkout-confirmation.mp4` | Chờ review |
+| TASK-06 | Đơn hàng & chi tiết đơn (STT 6) | SV1 | `feature/sv1-buyer` | #3 | `SV1-06-customer-dashboard.mp4` | Chờ review |
 | TASK-07 | Quản lý listing (STT 7) | SV2 | `feature/maker-listings` | #2 | `SV2-01-maker-listings.mp4` | Chờ review |
 | TASK-08 | Tạo & cập nhật listing (STT 8) | SV2 | `feature/maker-edit-listing` | #2 | `SV2-02-maker-edit-listing.mp4` | Chờ review |
 | TASK-09 | Hòm thư brief (STT 9) | SV2 | `feature/maker-brief-inbox` | #2 | `SV2-03-maker-brief-inbox.mp4` | Chờ review |
@@ -37,9 +37,11 @@ Cột "PR" ghi số pull request đang mở thật; cột "Video" ghi tên tệp
 | TASK-17 | Quản lý tài khoản (STT 17) | SV3 | `feature/sv3-admin-screens` | #1 | — (trong phạm vi demo) | Chờ review |
 | TASK-18 | Quy định nội dung (STT 18) | SV3 | `feature/sv3-admin-screens` | #1 | `SV3-06-admin-content-policy.mp4` | Video & bảo vệ |
 
+> **Cập nhật 26-10-2026 (SV1).** Sáu thẻ SV1 dùng chung một nhánh thực tế `feature/sv1-buyer` (PR #3), không phải sáu nhánh riêng. Các tên `feature/home-explore`, `feature/product-detail`, `feature/custom-order-brief`, `feature/proposal-comparison`, `feature/checkout-confirmation`, `feature/customer-dashboard` **không tồn tại** trên remote và đã được thay. SV1 hiện **0/6 video**, nên không thẻ nào được chuyển sang cột "Video & bảo vệ".
+
 ## 3. Dựng board trong 15 phút
 
-**Người phụ trách:** Hưng (SV1) đang dựng board. Tệp này chỉ là bản nguồn để đối chiếu; giảng viên cần mở được đường dẫn board thật, nên khi có link thì dán vào `README.md` mục 10.
+**Người phụ trách:** Hưng (SV1) được giao dựng board nhưng **chưa có link công khai** tại 2026-10-26, nên tiêu chí 7.1 chưa đạt. Tệp này chỉ là bản nguồn để đối chiếu; giảng viên cần mở được đường dẫn board thật, nên khi có link thì dán vào `README.md` mục 10.
 
 1. Tạo board **công khai** trên Trello, đặt tên `CSE122 — CraftLink — Nhóm 11`.
 2. Tạo đúng năm danh sách theo bảng ở mục 1.

@@ -1,93 +1,118 @@
-# PHÂN CÔNG NHIỆM VỤ CHI TIẾT - SV1 (BUYER & GENERAL UI)
+# PHÂN CÔNG NHIỆM VỤ CHI TIẾT — SV1 (BUYER)
 
-> **Dự án:** CraftLink - Sàn thương mại điện tử sản phẩm thủ công nghệ thuật tùy biến  
-> **Học phần:** Phát triển Ứng dụng Web Cơ bản (CSE122) - Nhóm 11  
-> **Sinh viên phụ trách:** SV1 (Khách hàng & Khung giao diện chung)
-
----
-
-## 🎨 BẢN THIẾT KẾ GIAO DIỆN CANVA (UI/UX PROTOTYPE)
-
-👉 **Link thiết kế Canva của SV1:** [Bấm vào đây để xem Prototype Canva SV1](https://www.canva.com/design/DAHZAR9VxmU/dQQiBQ9-OPRH6Q5x8DdAkw/edit)
+> **Dự án:** CraftLink — Sàn thương mại điện tử sản phẩm thủ công tùy biến
+> **Học phần:** Phát triển ứng dụng Web cơ bản (CSE122) — Nhóm 11
+> **Sinh viên phụ trách:** Nguyễn Xuân Hưng — 2551060622
+> **Phạm vi:** 9 tệp HTML trong `KhachHang/` (6 dòng kiểm kê)
+> **Nhánh thực tế:** `feature/sv1-buyer` · **PR:** #3
+> **Cập nhật:** 2026-10-26
 
 ---
 
-## 📋 VAI TRÒ & PHÂN TÍCH TRÁCH NHIỆM PHỤ TRÁCH
+## 🎨 BẢN THIẾT KẾ GIAO DIỆN CANVA
 
-- **Vai trò nghiệp vụ:** Khách hàng (Buyer) và Khung giao diện chung Toàn hệ thống (General Layout).
-- **Phân tích trách nhiệm hệ thống:**
-  - **Xây dựng khung giao diện dùng chung (Common Layout):** Thiết kế và phát triển các thành phần dùng chung cho toàn hệ thống bao gồm Header (Thanh điều hướng, ô tìm kiếm, giỏ hàng, thông báo, menu tài khoản), Footer (Chính sách, liên hệ, mạng xã hội) và các trang hệ thống/báo lỗi (`403.html`, `404.html`).
-  - **Hệ thống xác thực người dùng (Auth Flow):** Xây dựng luồng đăng nhập, đăng ký và quên mật khẩu hỗ trợ phân loại vai trò người dùng (Buyer / Maker).
-  - **Trải nghiệm mua sắm & Tùy biến (Buyer Journey):** Phát triển luồng mua hàng toàn diện từ Trang chủ (Landing Page), Trang xem/tìm kiếm sản phẩm (Marketplace), Chi tiết sản phẩm kèm khung tùy biến tác phẩm theo yêu cầu, Giỏ hàng, Thanh toán đến Quản lý tài khoản cá nhân.
-  - **Tích hợp giải pháp AI:** Ứng dụng mô hình AI gợi ý cá nhân hóa để phân tích sở thích nghệ thuật và lịch sử tương tác, từ đó đề xuất các tác phẩm thủ công phù hợp nhất cho Khách hàng.
+- **Link đang dùng trên nhánh `feature/sv1-buyer`:** <https://www.canva.com/design/DAHZAR9VxmU/dQQiBQ9-OPRH6Q5x8DdAkw/edit>
+- **Chưa chốt:** bản tài liệu trên nhánh `dev` từng ghi link `DAHWyBVvS6U`. Cần nhóm xác nhận đâu là bản đúng — **[CẦN XÁC MINH]**.
 
 ---
 
-## 🖥️ CẤU TRÚC & PHÂN TÍCH CHI TIẾT 6 MÀN HÌNH HTML
+## 📋 VAI TRÒ & PHẠM VI
 
-### 1. index.HTML
--Mục đích : trang chủ/danh mục xem các sản phẩm, tìm kiếm , lọc xắp sếp.
--Thành phần chính : form tìm kiếm #search-input . bộ lọc (danh sách radio, giá range 100k-1000k,phong cách , thời gian hoàn thành) ; sort 4 kiểu ,8 thẻ .product-card mang data-id
-
-### 2. product-detail.html Chi tiết sản phẩm
-- **Mục đích : Xem chi tiết "Cốc gốm lá nâu", chọn số lượng, thêm giỏ, yêu thích
-- **Thành phần giao diện : Gallery 1 ảnh lớn + 5 thumb; stepper 1–99; nút #add-to-cart-btn; nút tim #favorite-btn; panel nghệ nhân + "Báo cáo listing"; 3 đánh giá mẫu
-- **Thao tác CRUD: ✓ thêm món mới vào giỏ, thêm id yêu thích
-✓ đọc giỏ + yêu thích để kiểm tra/đồng bộ
-✓ cộng dồn số lượng nếu trùng, toggle tim
-✓ bỏ yêu thích
-### 3. cart.html Giỏ hàng
-- **Mục đích: Xem giỏ, đổi số lượng, xóa món, tính tổng tiền
-- **Thành phần giao diện:** 
-  - Gallery hình ảnh/video sản phẩm đa góc nhìn.
-  - Thông tin tác giả (Nghệ nhân/Xưởng sản xuất) và giá bán niêm yết.
-  - Bảng chọn tùy biến: Khắc tên/thông điệp, chọn màu men, kích thước, chất liệu.
-  - Nút "Thêm vào giỏ hàng" và "Đặt làm theo yêu cầu".
-- **Thao tác CRUD:** `Read` (Xem chi tiết thông tin và thuộc tính sản phẩm), `Create` (Gửi bản yêu cầu tùy biến riêng).
-
-### 4. `pages/buyer/custom-brief.html` (Trang Giỏ hàng & Yêu cầu riêng)
-- **Mục đích:** Quản lý danh sách sản phẩm chuẩn bị thanh toán và tổng hợp các bản yêu cầu đặt đồ thủ công riêng (Custom Briefs).
-- **Thành phần giao diện:** Bảng danh sách sản phẩm kèm ảnh thu nhỏ, khung hiển thị chi tiết các yêu cầu tùy biến đã chọn, ô chỉnh sửa số lượng, ô nhập mã giảm giá (Voucher) và bảng tính toán tổng chi phí.
-- **Thao tác CRUD:** `Read` (Xem danh sách sản phẩm trong giỏ), `Update` (Sửa số lượng hoặc tùy chọn sản phẩm), `Delete` (Xóa sản phẩm/yêu cầu khỏi giỏ).
-
-### 5. `pages/buyer/orders.html` (Trang Thanh toán & Quản lý đơn hàng)
-- **Mục đích:** Hoàn tất quy trình đặt mua sản phẩm và theo dõi tiến độ xử lý đơn hàng/đơn tùy biến.
-- **Thành phần giao diện:** Form nhập địa chỉ giao hàng, danh sách phương thức thanh toán (COD, Chuyển khoản ngân hàng, Ví điện tử), Bảng tóm tắt đơn hàng và Danh sách lịch sử đơn hàng phân theo trạng thái (Chờ xác nhận, Đang gia công, Đang giao, Hoàn thành).
-- **Thao tác CRUD:** `Create` (Khởi tạo đơn hàng mới), `Read` (Theo dõi danh sách và trạng thái đơn hàng).
-
-### 6. `pages/common/profile.html` (Trang Hồ sơ cá nhân & Cài đặt)
-- **Mục đích:** Quản lý thông tin tài khoản người dùng, địa chỉ mặc định và các thiết lập ưu tiên cá nhân.
-- **Thành phần giao diện:** Form cập nhật thông tin cá nhân (Avatar, Họ tên, SĐT, Email), Bảng quản lý danh sách địa chỉ nhận hàng, Tùy chọn đổi mật khẩu và thiết lập thông báo.
-- **Thao tác CRUD:** `Read` (Hiển thị thông tin cá nhân), `Update` (Cập nhật thông tin hồ sơ/thay đổi mật khẩu).
+- **Vai trò nghiệp vụ:** Khách hàng (Buyer).
+- **Phạm vi trong repo nhóm:** 9 tệp HTML trong `KhachHang/`, gồm khám phá sản phẩm, tùy biến, giỏ hàng, xác nhận đơn và theo dõi đơn.
+- **Khung giao diện dùng chung:** header/footer và `KhachHang/css/style.css` được dùng lại trên 9 trang; không tách thành bộ component riêng.
+- **Đăng nhập/đăng ký:** nằm ở `DangNhapVaDangKy/`, do SV1 và SV2 cùng làm; không tính vào 9 màn hình Buyer.
+- **Không backend, không API:** dữ liệu mẫu trong `KhachHang/js/data.js`; giỏ hàng, yêu thích, brief và nháp chỉnh sửa lưu bằng Web Storage.
 
 ---
 
-## 🤖 TÍNH NĂNG AI TÍCH HỢP (PERSONALIZED AI PRODUCT RECOMMENDER & STYLE MATCHER)
+## 🖥️ CHÍN MÀN HÌNH VÀ ÁNH XẠ 6 DÒNG KIỂM KÊ
 
-- **Nguyên lý hoạt động:**
-  1. **Thu thập hành vi:** AI phân tích các lượt xem sản phẩm, từ khóa tìm kiếm và các lựa chọn phong cách nghệ thuật của Khách hàng.
-  2. **Gợi ý cá nhân hóa:** Mô hình AI lọc các sản phẩm thủ công theo độ tương đồng về chất liệu, tông màu và phong cách thiết kế để tạo ra danh sách gợi ý độc bản cho từng tài khoản.
+Bảng kiểm kê của nhóm có **6 dòng SV1**. Ba tệp `favorites.html`, `cart.html`, `order-details.html` được gộp vào dòng tương ứng, không tạo dòng mới.
 
-- **Kịch bản trải nghiệm trên giao diện (User Scenario):**
-  - Tại trang chủ (`index.html`) hoặc trang chi tiết (`marketplace.html`), giao diện hiển thị một thẻ thông minh: *"Trợ lý AI đề xuất riêng cho bạn"*.
-  - Khi khách hàng nhấn chọn phong cách yêu thích (ví dụ: *"Gốm vuốt tay phong cách Wabi-Sabi"*), AI lập tức lọc ra 4 tác phẩm thủ công tương thích nhất từ các thợ thủ công khác nhau kèm nhãn đánh giá 🟢 *Độ phù hợp AI: 96%*.
+| # | Màn hình | Tệp | Mục đích | Thành phần chính | CRUD | Trạng thái | AI | Task ID |
+|---|---|---|---|---|---|---|---|---|
+| 1 | Trang chính — danh sách sản phẩm | `KhachHang/index.html`<br>`KhachHang/js/main.js` (`initProductList`)<br>`KhachHang/js/ai-advisor.js` | Tìm, lọc, sắp xếp và mở chi tiết sản phẩm; hỏi trợ lý CraftLink AI | Ô tìm kiếm `#search-input`; bộ lọc danh mục/phong cách/thời gian/giá; 4 kiểu sắp xếp; 8 thẻ `.product-card`; panel CraftLink AI | R: đọc 8 sản phẩm mẫu; AI đọc thêm 7 hồ sơ nghệ nhân | Normal; Empty khi bộ lọc không có kết quả; Loading AI 350 ms (mô phỏng); Error khi input < 3 ký tự | Có nhãn AI — **luật từ khóa cục bộ**, không gọi mô hình | TASK-01 |
+| 2 | Chi tiết sản phẩm | `KhachHang/product-detail.html`<br>`KhachHang/js/main.js` (`initProductDetail`, `renderProductDetail`, `initFavoriteButton`, `initProductGallery`) | Xem kỹ sản phẩm trước khi mua hoặc tùy biến | Gallery 1 ảnh lớn + 5 thumb; stepper 1–99; `#add-to-cart-btn`; `#favorite-btn`; panel nghệ nhân; nút báo cáo listing (demo); 3 đánh giá mẫu | R: sản phẩm theo `?id`; C: thêm giỏ; C: bật yêu thích | Normal; fallback + toast khi `?id` không hợp lệ | Không | TASK-02 |
+| 3 | Tạo brief tùy biến | `KhachHang/customize.html`<br>`KhachHang/js/main.js` (`initCustomizePage`, `buildSummary`, `runSummary`) | Gửi yêu cầu tùy biến rõ ràng cho nghệ nhân | Form mô tả, đếm ký tự, ảnh tham khảo; panel kết quả; nút Chấp nhận / Sửa / Từ chối / Tạo lại / Lưu | R: sản phẩm; C/U: brief nháp trong `sessionStorage`; D: bỏ bản tóm tắt | Normal; Loading 600 ms (mô phỏng); Error khi brief rỗng; panel kết quả | Có nhãn AI — **tóm tắt bằng luật cục bộ**, không gọi mô hình | TASK-03 |
+| 4 | Gợi ý nghệ nhân | `KhachHang/artisan-suggestions.html`<br>`KhachHang/js/main.js` (`initArtisanSuggestionsPage`) | Chọn nghệ nhân phù hợp với sản phẩm và brief | Danh sách nghệ nhân kèm lý do khớp; chọn / bỏ qua / tạo lại / quay lại sửa brief | R: 7 hồ sơ nghệ nhân; U: chọn nghệ nhân vào draft | Normal; Empty khi không có hồ sơ khớp; Guidance khi thiếu brief | **Không phải AI** — số tiêu chí khớp, không phải xác suất | TASK-04 |
+| 5 | Giỏ hàng | `KhachHang/cart.html`<br>`KhachHang/js/main.js` (`initCartPage`) | Kiểm tra và chỉnh sản phẩm trước khi mua | Danh sách dòng hàng; tăng/giảm số lượng; xóa; tạm tính; nút sang xác nhận đơn | C: thêm từ trang chi tiết; R: đọc giỏ; U: đổi số lượng; D: xóa | Normal; Empty khi giỏ trống | Không | TASK-05 |
+| 6 | Sản phẩm yêu thích | `KhachHang/favorites.html`<br>`KhachHang/js/main.js` (`initFavoritesPage`) | Lưu và xem lại sản phẩm yêu thích | Lưới sản phẩm; bỏ yêu thích; mở chi tiết hoặc tạo brief; khối `#favorites-empty` | R: danh sách; D: bỏ yêu thích | Normal; Empty khi chưa có sản phẩm | Không | TASK-01 |
+| 7 | Xác nhận đơn | `KhachHang/checkout.html`<br>`KhachHang/js/checkout.js` | Xác nhận đơn tùy biến hoặc đơn từ giỏ hàng | 4 bước: Xem lại → Nhận hàng → Thanh toán & giao hàng → Xác nhận; kiểm tra SĐT/địa chỉ; mã đơn demo | R: draft hoặc giỏ; U: thông tin nhận hàng/thanh toán/giao hàng; C: mã demo; D: xóa draft | Normal; 4 bước; Error thiếu/sai SĐT, địa chỉ, phương thức; Empty thiếu draft/giỏ; Complete | Không | TASK-05 |
+| 8 | Đơn hàng của bạn | `KhachHang/orders.html`<br>`KhachHang/js/main.js` (`initOrdersPage`) | Theo dõi trạng thái đơn | Tab trạng thái; tìm kiếm; lọc thời gian; hủy đơn (chỉ đổi DOM); mở chi tiết | R: 4 đơn mẫu tĩnh; U: hủy đơn trên giao diện; không C/D | Normal; Empty khi không khớp; Confirm trước khi hủy | Không | TASK-06 |
+| 9 | Chi tiết đơn và chỉnh sửa | `KhachHang/order-details.html`<br>`KhachHang/js/main.js` (`initOrderDetailsPage`) | Xem chi tiết đơn và gửi yêu cầu chỉnh sửa | Thông tin đơn mẫu; ô nội dung chỉnh sửa; gửi/lưu nháp; khôi phục nháp | R: đơn tĩnh; C/U: nháp trong `localStorage`; không D | Normal; Error khi nội dung rỗng; khôi phục nháp khi mở lại | Không | TASK-06 |
+
+> **Giới hạn của bản demo:** `orders.html` dùng 4 dòng dữ liệu mẫu tĩnh; checkout không tạo đơn mới và không tự chuyển sang `orders.html`; `order-details.html` không đọc `?id`. Không được mô tả các luồng này là đã nối backend.
 
 ---
 
-## 📑 NHẬT KÝ TIẾN ĐỘ THỰC HIỆN (CHECKLIST WORKFLOW)
+## 🤖 AI TÍCH HỢP — KHAI BÁO TRUNG THỰC
 
-- [x] Hoàn thành thiết kế Prototype 6 màn hình trên Canva
-- [x] Tích hợp liên kết Canva `https://www.canva.com/design/DAHWyBVvS6U/eyYrsvv49jN-26FeiXk-Aw/edit` vào hồ sơ dự án
-- [X] Khởi tạo cấu trúc thư mục `pages/common/` và `pages/buyer/`
-- [X] Dựng khung HTML/CSS dùng chung toàn hệ thống (`navbar.css`, `footer.css`, `style.css`)
-- [X] Cắt file HTML cho 3 màn hình chung (`index.html`, `login.html`, `profile.html`)
-- [X] Cắt file HTML cho 3 màn hình Khách hàng 
-- [ ] Viết mã mô phỏng tính năng AI gợi ý sản phẩm trong `js/ai/`
-- [X] Kiểm tra hiển thị Responsive trên Desktop và Mobile
-- [x] Thiết kế Prototype  màn hình trên Canva
-- [x] Dán liên kết Canva vào tài liệu `docs/sv2-assignment.md` và `docs/team-assignment.md`
-- [X] Tạo khung HTML/CSS cho phân hệ người mua.
-- [X] Hoàn thiện HTML/CSS cho 9 màn hình phụ trách
-- [ ] Viết mã mô phỏng tính năng AI Copywriter (`js/ai/`)
-- [X] Kiểm tra hiển thị Responsive trên các thiết bị
+| Tính năng | Tệp | Có gọi mô hình? | Kết luận |
+|---|---|---|---|
+| CraftLink AI — tư vấn sản phẩm/nghệ nhân | `KhachHang/index.html` + `KhachHang/js/ai-advisor.js` | **Không** | Luật từ khóa cục bộ. Đầu tệp ghi: “Đây KHÔNG phải AI tạo sinh và KHÔNG gọi API bên ngoài.” Điểm khớp là điểm tiêu chí, không phải xác suất. |
+| Bản tóm tắt brief | `KhachHang/customize.html` + `KhachHang/js/main.js` (`buildSummary`, `runSummary`) | **Không** | Luật cục bộ; có đủ UI 6 bước nhưng không phải AI tạo sinh. |
+| Gợi ý nghệ nhân | `KhachHang/artisan-suggestions.html` | **Không** | Trang ghi rõ “bộ lọc tiêu chí cục bộ, chưa kết nối mô hình AI tạo sinh”. Không khai là AI. |
 
+**Ba tuyên bố AI trong bảng kiểm kê cũ chưa có mã tương ứng:** AI Personalization, AI Visual Matcher, AI Proposal Evaluator. Không được khai là đã triển khai; sửa thành “định hướng, chưa triển khai” hoặc bỏ.
+
+Chi tiết prompt, lỗi đã sửa và mức bằng chứng: xem [`ai-usage-report.md`](ai-usage-report.md) mục 3.1.
+
+---
+
+## 📑 NHẬT KÝ TIẾN ĐỘ (CHECKLIST)
+
+- [x] 9 tệp HTML trong `KhachHang/`
+- [x] 9 tệp CSS và 4 tệp JS
+- [x] `docs/screen-inventory.md`, `docs/user-flow.md`, `docs/ai-usage-report.md`, `videos/README.md`
+- [x] Chạy thủ công 9 trang trên desktop — **tự khai**, chưa có biên bản kiểm thử
+- [x] Cross-review PR #1 và PR #2 ngày 2026-10-26
+- [ ] Quay đủ 6 video OBS `SV1-01`…`SV1-06` — hiện **0/6**
+- [ ] Tách lịch sử PR #3 theo từng màn hình, dùng Conventional Commits
+- [ ] Dựng board Trello/Jira công khai và dán link vào `README.md` mục 10
+- [ ] Sửa cột nhánh/tên AI trong `screen-inventory.md` và `task-board.md` (đang chờ PR #1 gộp)
+- [ ] Chốt chuẩn tên `role-function-action.html` ở phạm vi cả nhóm
+- [ ] Bổ sung minh chứng responsive (ảnh hoặc biên bản) nếu giảng viên yêu cầu
+
+---
+
+## 🎥 VIDEO OBS — ÁNH XẠ BẮT BUỘC
+
+| STT | Tệp bắt buộc | Màn hình | Trạng thái | Link |
+|---|---|---|---|---|
+| 1 | `SV1-01-home-explore.mp4` | `index.html` (kèm `favorites.html`) | Chưa quay | — |
+| 2 | `SV1-02-product-detail.mp4` | `product-detail.html` | Chưa quay | — |
+| 3 | `SV1-03-custom-order-brief.mp4` | `customize.html` | Chưa quay | — |
+| 4 | `SV1-04-proposal-comparison.mp4` | `artisan-suggestions.html` | Chưa quay | — |
+| 5 | `SV1-05-checkout-confirmation.mp4` | `cart.html` + `checkout.html` | Chưa quay | — |
+| 6 | `SV1-06-customer-dashboard.mp4` | `orders.html` + `order-details.html` | Chưa quay | — |
+
+Ba link SV1 đã cung cấp trong tệp `video` của nhánh `feature/sv1-buyer` (STT 4, 7, 9) **chưa được điền vào bảng chính thức** vì chưa khớp được với 6 dòng kiểm kê. Xem [`../videos/README.md`](../videos/README.md).
+
+---
+
+## 🔎 MINH CHỨNG TRONG MÃ
+
+| Nội dung | Tệp và hàm |
+|---|---|
+| Danh sách, tìm kiếm, lọc, sắp xếp | `KhachHang/js/main.js` — `initProductList` |
+| Trợ lý CraftLink AI | `KhachHang/js/ai-advisor.js` — `aiRunSearch`, `aiSearchAll` |
+| Chi tiết sản phẩm | `KhachHang/js/main.js` — `initProductDetail`, `renderProductDetail` |
+| Giỏ hàng | `KhachHang/js/main.js` — `initCartPage` |
+| Yêu thích | `KhachHang/js/main.js` — `initFavoritesPage`; `KhachHang/favorites.html` `#favorites-empty` |
+| Tạo brief | `KhachHang/js/main.js` — `initCustomizePage`, `buildSummary`, `runSummary` |
+| Gợi ý nghệ nhân | `KhachHang/js/main.js` — `initArtisanSuggestionsPage` |
+| Xác nhận đơn | `KhachHang/js/checkout.js` — `renderStep`, `handleConfirm` |
+| Đơn hàng | `KhachHang/js/main.js` — `initOrdersPage` |
+| Chi tiết đơn | `KhachHang/js/main.js` — `initOrderDetailsPage` |
+
+---
+
+## ⚠️ VIỆC CẦN NHÓM XÁC NHẬN
+
+1. **6 hay 9 video:** barem 8.1 yêu cầu mỗi màn hình độc lập một video; phản hồi 2026-10-26 yêu cầu SV1 đủ 6 video. Repo có 9 tệp HTML. Cần chốt cách gộp 3 tệp phụ vào 6 video.
+2. **Nhánh thực tế:** cả 6 task SV1 nằm trên `feature/sv1-buyer`, không phải 6 nhánh `feature/home-explore`, `feature/product-detail`… như bảng cũ.
+3. **Tên AI trong inventory:** bỏ hoặc đánh dấu “chưa triển khai” cho AI Personalization, AI Visual Matcher, AI Proposal Evaluator.
+4. **Chuẩn tên tệp:** chuyển sang `role-function-action.html` phải làm đồng bộ cả nhóm trước khi quay video.
+5. **Canva:** chốt giữa `DAHZAR9VxmU` và `DAHWyBVvS6U`.
+6. **Board:** SV1 được giao dựng board nhưng chưa có link; cần tạo và dán vào `README.md` mục 10.

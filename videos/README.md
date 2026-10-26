@@ -18,18 +18,30 @@ Tên tệp lấy đúng theo cột "OBS Video" của `../docs/screen-inventory.m
 | 16 | `SV3-04-admin-category-management.mp4` | <https://youtu.be/imsnvGvIofQ> | 14:24 |
 | 18 | `SV3-06-admin-content-policy.mp4` | <https://youtu.be/3dCK3uHpIcY> | 17:21 |
 
-### SV1 — Nguyễn Xuân Hưng (đã có 3 link, chờ khớp số dòng)
+### SV1 — Nguyễn Xuân Hưng (0/6 xác nhận; 3 link chưa khớp màn hình)
 
+Nhánh thực tế: `feature/sv1-buyer` · PR #3. Sáu tệp dưới đây tương ứng 6 dòng kiểm kê SV1; `favorites.html` gộp vào video 1, `cart.html` vào video 5, `order-details.html` vào video 6.
+
+| STT kiểm kê | Tên tệp bắt buộc | Link | Trạng thái |
+|---|---|---|---|
+| 1 | `SV1-01-home-explore.mp4` | — | **chưa quay / chưa dán link** |
+| 2 | `SV1-02-product-detail.mp4` | — | **chưa quay / chưa dán link** |
+| 3 | `SV1-03-custom-order-brief.mp4` | — | **chưa quay / chưa dán link** |
+| 4 | `SV1-04-proposal-comparison.mp4` | — | **chưa quay / chưa dán link** |
+| 5 | `SV1-05-checkout-confirmation.mp4` | — | **chưa quay / chưa dán link** |
+| 6 | `SV1-06-customer-dashboard.mp4` | — | **chưa quay / chưa dán link** |
+
+> **Vì sao bảng này vẫn để trống:** commit `38d3c9d` (SV3) đã xóa bảng vì chưa có video. ĐK4 lại đòi "danh sách Video OBS tương ứng 1:1 với toàn bộ màn hình độc lập", nên SV1 giữ lại đúng 6 dòng và ghi thật trạng thái "chưa quay" — không dòng nào bị đánh dấu đã quay.
 
 **Ba link SV1 đã dẫn** (nguồn: tệp `video` trên nhánh `feature/sv1-buyer`, ngày 26-10):
 
-| STT SV1 ghi | Link |
-|---|---|
-| 4 | <https://www.youtube.com/watch?v=AW-wuwhA3zc> |
-| 7 | <https://www.youtube.com/watch?v=T6ejhOOqfgk> |
-| 9 | <https://www.youtube.com/watch?v=PaCFXYhuo9U> |
+| STT SV1 ghi | Link | Khả năng ánh xạ |
+|---|---|---|
+| 4 | <https://www.youtube.com/watch?v=AW-wuwhA3zc&t=4s> | Có thể là màn 4 — `artisan-suggestions.html` |
+| 7 | <https://www.youtube.com/watch?v=T6ejhOOqfgk> | STT 7 trong bảng 18 dòng là **SV2**; nếu là STT nội bộ 9 trang Buyer thì có thể là `checkout.html` |
+| 9 | <https://www.youtube.com/watch?v=PaCFXYhuo9U> | STT 9 trong bảng 18 dòng là **SV2**; nếu là STT nội bộ 9 trang Buyer thì có thể là `order-details.html` |
 
-> Số 7 và 9 trong bảng kiểm kê đang thuộc SV2, nên ba link này **chưa điền vào bảng chính thức**. Hưng cần xác nhận: nếu 7 và 9 là số thứ tự nội bộ trong 9 trang Buyer thì ghi rõ "STT nội bộ", còn nếu là dòng kiểm kê thì phải quay đúng trang của mình để ĐK4 khớp 1:1.
+> **Rủi ro:** số 7 và 9 trong bảng kiểm kê đang thuộc SV2. Nếu hai link này thực chất là video của SV2, dùng cho SV1 sẽ sai minh chứng. Chỉ điền vào bảng chính thức sau khi mở video, xác nhận đúng người quay, đúng màn hình và đúng tên tệp. Nếu 7 và 9 là số thứ tự nội bộ trong 9 trang Buyer thì phải ghi rõ "STT nội bộ" và vẫn cần quay đúng trang của mình để ĐK4 khớp 1:1.
 
 ### SV2 — Dương Vũ Quân Minh (chưa có link)
 
@@ -44,9 +56,13 @@ Kênh YouTube: <https://www.youtube.com/@minhduong3801> — chưa có link theo 
 | 11 | `SV2-05-maker-proposal-preview.mp4` | — | **chưa quay / chưa dán link** |
 | 12 | `SV2-06-maker-shop-profile.mp4` | — | **chưa quay / chưa dán link** |
 
-> **Đã chốt: 3 video/người.** Theo xác nhận của nhóm, 3 video cho 6 màn của mỗi người là đủ yêu cầu của giảng viên; các màn không quay riêng được chứng minh ngay trong ba video đó. Vì vậy SV1 và SV2 mỗi bạn **chọn 3 màn chính** trong 6 dòng của mình, quay đủ 8 bước rồi dán link vào đúng 3 dòng tương ứng; 3 dòng còn lại ghi "Không quay riêng — nằm trong phạm vi demo".
+> **Chưa chốt: 3 hay 6 video cho SV1.** Tệp này từng ghi "Đã chốt: 3 video/người", nhưng phản hồi chấm ngày 2026-10-26 yêu cầu SV1 đủ **6 video**. Trạng thái đúng tại 2026-10-26:
 >
-> Vẫn nên lưu lại tin nhắn hoặc email xác nhận của giảng viên vào thư mục nộp bài: ĐK4 là điều kiện loại trực tiếp và người chấm có thể hỏi lại.
+> - **SV3:** 3 video đã quay, có link và thời lượng.
+> - **SV1:** 0/6 video được xác nhận; 3 link đã dẫn nhưng chưa khớp màn hình.
+> - **SV2:** chưa có link.
+>
+> Không dùng câu "3 video/người" để biện minh cho SV1 khi chưa có xác nhận bằng văn bản của giảng viên. ĐK4 là điều kiện loại trực tiếp; nếu giảng viên xác nhận lại 3 video là đủ, phải lưu tin nhắn/email đó vào thư mục nộp bài và ghi rõ màn nào không quay riêng.
 
 ## Tám bước phải có trong từng video
 
