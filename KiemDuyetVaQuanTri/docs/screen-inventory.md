@@ -7,7 +7,7 @@ Phạm vi tài liệu: sáu màn hình do SV3 phụ trách trong CraftLink. Đâ
 | Phần | Vị trí | Trách nhiệm |
 |---|---|---|
 | Màn hình tích hợp | KiemDuyetVaQuanTri/GopTrang.html | Vỏ giao diện chung, đổi trang, trạng thái vai trò và avatar |
-| Điểm vào GitHub Pages | index.html | Mở màn hình tích hợp |
+| Trang chủ repo | index.html | Bốn lối vào (Khách hàng, Người bán, Quản trị, Đăng nhập); lối Quản trị mở GopTrang.html |
 | Mã dùng chung | KiemDuyetVaQuanTri/js/ | Đọc/lưu dữ liệu, điều hướng, gọi AI |
 | CSS dùng chung | KiemDuyetVaQuanTri/css/shared/ | Theme, bố cục, thành phần, responsive, focus và trạng thái |
 | CSS từng trang | KiemDuyetVaQuanTri/0x-.../css/ | Quy tắc riêng của trang; style.css nhập CSS dùng chung và page.css |
@@ -40,7 +40,7 @@ Giữ GopTrang.html làm điểm trình diễn/tích hợp cho sáu trang. Khôn
 
 - 6.1 – Gợi ý sản phẩm cho người mua: API có loại tác vụ product-discovery, nhưng màn hình người mua không nằm trong sáu trang này. Cần người phụ trách giao diện người mua tích hợp nút nhập nhu cầu, kết quả gợi ý, giải thích và lưu/áp dụng.
 - 6.2 – Phân loại rủi ro: trang 4 phân tích nội dung sản phẩm theo các quy định từ trang 6. Trang 5 có thêm ưu tiên báo cáo nhưng không thay cho phần tích hợp 6.1.
-- 6.3 – Copilot nghiệp vụ: trang 6 soạn quy định CraftLink; bản nháp chưa được xuất bản cho đến khi người quản trị xác nhận.
+- 6.3 – Copilot nghiệp vụ: trang 6 soạn quy định CraftLink; bản nháp chỉ được ghi vào dữ liệu khi người quản trị bấm **Chấp nhận và lưu**. Trang không có bước "xuất bản" riêng — lưu là có hiệu lực ngay.
 - Cả ba loại tác vụ dùng cùng API server và cấu hình mô hình. Khóa nằm ở biến môi trường máy chủ, không trong trình duyệt.
 - Khi máy chủ chưa có khóa hoặc trang chạy ở chế độ tĩnh, js/ai-fallback.js phân tích bằng bộ quy tắc trên đúng dữ liệu bản ghi đang mở; giao diện ghi rõ nguồn kết quả. Chi tiết ở docs/ai-usage-report.md.
 
@@ -48,11 +48,12 @@ Giữ GopTrang.html làm điểm trình diễn/tích hợp cho sáu trang. Khôn
 
 Các trường sau chưa thể được xác nhận chỉ bằng mã hiện có; nhóm cần cập nhật thông tin thật trước khi nộp:
 
-- Mã task/Trello, người thực hiện từng task và trạng thái hoàn thành.
-- Tên nhánh, pull request và người review cho từng phần.
-- Link triển khai đang hoạt động và ảnh/clip kiểm tra trên desktop, tablet, mobile.
-- Link video/OBS.
-- Giao diện 6.1 dành cho người mua và kết nối AI thật trên môi trường triển khai.
-- Bảng kiểm kê hợp nhất của nhóm sau khi nhận dữ liệu của SV1, SV2 và SV3.
+- Mã task và nhánh: đã có — sáu dòng `TASK-13`…`TASK-18`, nhánh `feature/sv3-admin-screens`, ghi trong `docs/screen-inventory.md` của nhóm.
+- Danh sách video OBS: đã có khung và 8 bước bắt buộc trong `videos/README.md`; link ba video SV3 điền sau khi quay.
+- Bảng kiểm kê hợp nhất: đã có `docs/screen-inventory.md` đủ 18 dòng với đường dẫn tệp thật.
+- Link triển khai đang hoạt động: chưa có, chưa triển khai.
+- Ảnh/clip kiểm tra trên desktop, tablet, mobile: chưa lưu vào repo.
+- Người review cho từng pull request: chưa có, hiện 0 review.
+- Giao diện 6.1 phía người mua: thuộc SV1, chưa nối vào nút nhập nhu cầu.
 
 Không điền giá trị giả cho những trường này.

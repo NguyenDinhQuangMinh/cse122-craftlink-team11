@@ -61,7 +61,7 @@ Cấu hình server:
 - Chưa cấu hình khóa AI thật trong repo, vì vậy khi mở trên Vercel mà thiếu biến môi trường thì nút AI chạy bằng bộ quy tắc cục bộ, không phải mô hình ngôn ngữ.
 - Dữ liệu thao tác chưa được gửi tới backend cơ sở dữ liệu; localStorage chỉ mô phỏng trạng thái demo.
 - Độ tin cậy do mô hình tự ước lượng hoặc do bộ quy tắc cục bộ tính theo số tín hiệu, không phải xác suất đã được kiểm định.
-- AI hỗ trợ người phụ trách. Quyết định kiểm duyệt, xử lý báo cáo và xuất bản quy định vẫn do con người xác nhận.
+- AI hỗ trợ người phụ trách. Quyết định kiểm duyệt, xử lý báo cáo và thêm/sửa quy định vẫn do con người xác nhận.
 
 ## Kiểm chứng đã thực hiện ngày 25-10-2026
 
