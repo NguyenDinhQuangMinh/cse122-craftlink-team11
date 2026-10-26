@@ -25,7 +25,7 @@ Tất cả tài liệu chi tiết của dự án được quản lý tập trung
 ## 3. 👥 THÀNH VIÊN VÀ PHÂN CÔNG VAI TRÒ
 | STT | Thành viên | Họ và tên | Mã sinh viên | Vai trò phụ trách | Số màn hình | Tích hợp tính năng AI |
 | :---: | :---: | :--- | :---: | :--- | :---: | :--- |
-| Bonus | **SV1+SV2+SV3** | | | Giao diện đăng nhập, đăng ký | **6** | |
-| 1 | **SV1** | Nguyễn Xuân Hưng | 2551060622 | Khách hàng (Buyer) & Giao diện chung | **6** | AI Personalization & Visual Matcher |
+| Bonus | **SV1+SV2** | | | Giao diện đăng nhập, đăng ký | **6** | |
+| 1 | **SV1** | Nguyễn Xuân Hưng | 2551060622 | Khách hàng (Buyer) & Giao diện chung | **9** | AI Personalization & Visual Matcher |
 | 2 | **SV2** | Dương Vũ Quân Minh | 2551060650 | Thợ thủ công / Nghệ nhân (Maker) | **4** | AI Cost & Timeline Advisor + AI Copywriter/SEO cho listing (bộ quy tắc cục bộ) |
 | 3 | **SV3** | Nguyễn Đình Quang Minh | 2551060651 | Kiểm duyệt viên (Mod) & Quản trị viên (Admin) | **6** | AI Content Moderation & Anomaly Detection |
