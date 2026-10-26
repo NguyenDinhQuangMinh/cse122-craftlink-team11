@@ -51,6 +51,7 @@ Việc đã giao cho AI và người thực hiện phải tự kiểm chứng:
 | Dựng sơ đồ User Flow và chụp ảnh mockup từ chính trang đã chạy | Mở sơ đồ cạnh màn hình thật, đối chiếu nhãn trạng thái với mã |
 | Đề xuất điểm sửa mã trực tiếp để quay video OBS | Chạy thử đề xuất trên máy trước khi tin |
 | Rà trạng thái tải của Trung tâm báo cáo và đề xuất lỗi vòng lặp sắp xếp | Mở trang, xác nhận 20 bản ghi hiển thị, thử sắp xếp, lọc, mở chi tiết và chạy AI trước khi nhận kết quả |
+| Dựng hai màn lỗi `404.html`, `403.html` cùng `css/error-pages.css`, `js/error-pages.js` và guard vai trò đầu `KiemDuyetVaQuanTri/js/navigation.js` (27-10-2026) | Mở trang lỗi bằng máy chủ tĩnh trên máy theo đúng quy ước của GitHub Pages; đối chiếu từng dòng chữ với trang 31–32 của mockup Canva; đăng nhập ba vai trò có và không có `cl_session` để xem verdict đổi; đọc Console sau khi chuyển stylesheet/JS sang đường dẫn tuyệt đối để chắc chỉ còn một request 404 thật; đo `scrollWidth − clientWidth` bằng iframe ở 320/375/768/1280 px (lần đo đầu ở 320 px trang lỗi rộng 406 px, lệch 101 px, phải thêm `overflow-wrap` cho ô bảng); chèn thử `<img src=x onerror=alert(1)>` vào đường dẫn và `?need=` để xác nhận không có thẻ nào được tạo |
 | Viết message commit, mô tả Pull Request | Đọc trước khi push; commit chỉ mang tên sinh viên |
 
 Prompt tiêu biểu đã dùng (nguyên văn, rút gọn):
@@ -60,6 +61,7 @@ Prompt tiêu biểu đã dùng (nguyên văn, rút gọn):
 - "Những gì bạn push trong commit có ghi là tài khoản của tôi hay ghi là Bạn đã commit?"
 - "Mockup là gì đấy, tôi chưa làm mockup."
 - "Bạn có thể vào git tạo các thư mục và tên tương ứng với yêu cầu/tiêu chí trong barem không."
+- "Bạn có thể check link canva của nhóm tôi, tôi đã thêm vào 2 trang khi không thể tìm thấy cũng như bị lỗi là 403 và 404. Bạn có thể code rồi thêm vào với phần giao diện cũng như các chức năng tương tự vào trong phần code của tôi."
 
 Giới hạn của phần AI hỗ trợ: AI **không** tự quyết định phạm vi nghiệp vụ, không tự chọn cấu trúc dữ liệu, và không được push code lên GitHub khi sinh viên chưa duyệt kế hoạch. Mọi thay đổi đều được xem diff trước khi commit.
 

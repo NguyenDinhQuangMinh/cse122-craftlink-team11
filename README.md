@@ -24,12 +24,12 @@ Bối cảnh thị trường dài hơn: [`docs/project-introduction.md`](./docs/
 | :---: | :--- | :---: | :--- | :---: | :--- | :--- | :--- |
 | 1 | **SV1** — Nguyễn Xuân Hưng | 2551060622 | Khách hàng (Buyer) | 6 (STT 1–6) | 10 tệp trong `KhachHang/` | AI tư vấn sản phẩm; AI Brief Assistant | `feature/sv1-buyer` |
 | 2 | **SV2** — Dương Vũ Quân Minh | 2551060650 | Thợ thủ công (Maker) | 6 (STT 7–12) | 4 thư mục, 4 tệp `index.html` | AI Copywriter & SEO; AI Brief Summarizer; AI Cost & Timeline Advisor | `feature/sv2-maker-screens` |
-| 3 | **SV3** — Nguyễn Đình Quang Minh | 2551060651 | Kiểm duyệt viên + Quản trị viên | 6 (STT 13–18) | 6 tệp trong `KiemDuyetVaQuanTri/` | AI Content Moderation; AI Report Triage; AI Policy Copilot | `feature/sv3-admin-screens` |
+| 3 | **SV3** — Nguyễn Đình Quang Minh | 2551060651 | Kiểm duyệt viên + Quản trị viên | 6 (STT 13–18) | 6 tệp trong `KiemDuyetVaQuanTri/` + 2 màn lỗi `404.html`, `403.html` ở gốc repo | AI Content Moderation; AI Report Triage; AI Policy Copilot | `feature/sv3-admin-screens` |
 | — | **SV1 + SV2** | — | Đăng nhập / Đăng ký | 2 (ngoài bảng kiểm kê) | 5 tệp trong `DangNhapVaDangKy/` | — | `feature/sv2-maker-screens` (nơi đang chứa mã) |
 
 Cách đếm "Màn" là số dòng trong bảng kiểm kê, không phải số tệp HTML: 6 + 6 + 6 = 18 dòng. SV1 có 10 tệp: chín tệp ứng với sáu dòng (ba dòng gộp hai tệp — `index` + `favorites`, `cart` + `checkout`, `orders` + `order-details`) và một trang khôi phục mật khẩu nằm ngoài bảng kiểm kê. SV2 có bốn tệp vì hai dòng dùng chung một trang (STT 8 nằm trong trang STT 7, STT 11 là khung xem trước của trang STT 10). Hai trang đăng nhập/đăng ký đứng ngoài bảng kiểm kê, có 5 tệp HTML gồm ba biến thể vai trò.
 
-Trang **404 và 403 chưa tồn tại trong repo** và cũng không có trong `docs/screen-inventory.md`, nên bản triển khai sẽ rơi về trang lỗi mặc định của máy chủ khi bấm vào liên kết sai.
+Hai màn tiện ích nằm ngoài 18 dòng kiểm kê, dựng theo trang 31 và 32 trong mockup Canva của nhóm: [`404.html`](./404.html) và [`403.html`](./403.html). `404.html` là quy ước của GitHub Pages — máy chủ tự phục vụ tệp này cho mọi đường dẫn thiếu — còn `403.html` được `KiemDuyetVaQuanTri/js/navigation.js` mở khi `cl_session` mang vai trò không đủ quyền. Dùng chung `css/error-pages.css` và `js/error-pages.js`, năm chức năng thật: chẩn đoán đường dẫn/tài khoản (lấy từ `location.pathname`, `document.referrer` và phiên đăng nhập), chỉ ra **đích thật gần nhất** cho bốn kiểu liên kết sai đã đo ở `docs/barem-audit.md` mục 6.1 (`forgot-password.html`, `video.md`, `docs/ai-usage -report.md`, thư mục `assest/`), ô tìm màn hình đánh không dấu trên danh mục 27 đường dẫn thật của ba phân hệ, nhật ký lỗi 20 bản ghi gần nhất trong Local Storage, và ma trận quyền ba vai trò đọc lại ngay khi phiên đổi ở tab khác. Mọi dữ liệu lấy từ URL chỉ được ghi bằng `textContent`, nên liên kết chứa thẻ HTML không chèn được mã. Trang lỗi **không** sửa hộ liên kết hỏng của phân hệ khác — đích vẫn thiếu trong mã nguồn của họ, chỉ khác là người dùng không bị dồn vào đường cụt. Chi tiết ở ghi chú "Cập nhật 27-10-2026 (hai màn lỗi)" trong `docs/screen-inventory.md`.
 
 Bảng kiểm kê 18 màn hình, đủ 12 cột: [`docs/screen-inventory.md`](./docs/screen-inventory.md).
 Phân công chi tiết: [`docs/sv1-assignment.md`](./docs/sv1-assignment.md), [`docs/sv2-assignment.md`](./docs/sv2-assignment.md), [`docs/sv3-assignment.md`](./docs/sv3-assignment.md).
@@ -163,7 +163,7 @@ Cấu hình: `AI_API_URL`, `AI_API_KEY`, `AI_MODEL` — chỉ khai ở biến m�
 | :--- | :--- |
 | Bảng kiểm kê 18 màn hình (12 cột) | [`docs/screen-inventory.md`](./docs/screen-inventory.md) |
 | Sitemap & User Flow toàn bộ vai trò | [`docs/user-flow.md`](./docs/user-flow.md) |
-| Board Trello công khai — 5 cột, 27 thẻ (18 màn + 9 việc còn mở), mọi thẻ có hạn hoàn thành | <https://trello.com/b/N2HBpswf> |
+| Board Trello công khai — 5 cột, 28 thẻ (18 màn + 10 việc còn lại), mọi thẻ có hạn hoàn thành | <https://trello.com/b/N2HBpswf> |
 | Bảng công việc 18 thẻ (bản nguồn và cách đọc board) | [`docs/task-board.md`](./docs/task-board.md) |
 | Kiểm toán repo theo từng dòng barem: ĐK1–ĐK5, mục 7.1/7.2/7.3, 8.1, VP-01…VP-07, liên kết chết | [`docs/barem-audit.md`](./docs/barem-audit.md) |
 | Component Guide (màu, chữ, thành phần) | [`docs/component-guide.md`](./docs/component-guide.md) |

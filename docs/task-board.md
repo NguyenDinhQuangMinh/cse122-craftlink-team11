@@ -43,14 +43,15 @@ Cột "PR" ghi số pull request đang mở thật; cột "Video" ghi tên tệp
 
 ## 3. Board đã dựng — link và cách đọc
 
-**Board công khai:** <https://trello.com/b/N2HBpswf> — tên `CSE122 — CraftLink — Nhóm 11`, tạo ngày 26-10-2026 bằng tài khoản của SV3 vì Hưng chưa kịp dựng. Đã có đủ năm cột theo mục 1 và **27 thẻ**: 18 thẻ TASK theo mục 2 (15 ở "Chờ review", 3 ở "Video & bảo vệ") cộng **9 thẻ công việc** (8 ở "Backlog", 1 ở "Đang làm") — trong đó thẻ `VIDEO · SV2` đã được tick hoàn thành ngày 26-10 sau khi SV2 dán ba link, nên thực tế còn **8 việc mở**. Cột "Đã gộp" để trống **có chủ đích**: chưa PR nào được gộp nên chưa thẻ nào được chuyển sang, và bảng dưới đây ghi đúng trạng thái thật. Link cũng nằm ở `README.md` mục 10.
+**Board công khai:** <https://trello.com/b/N2HBpswf> — tên `CSE122 — CraftLink — Nhóm 11`, tạo ngày 26-10-2026 bằng tài khoản của SV3 vì Hưng chưa kịp dựng. Đã có đủ năm cột theo mục 1 và **28 thẻ**: 18 thẻ TASK theo mục 2 (15 ở "Chờ review", 3 ở "Video & bảo vệ") cộng **10 thẻ công việc** (8 ở "Backlog", 1 ở "Đang làm", 1 ở "Chờ review") — trong đó thẻ `VIDEO · SV2` đã được tick hoàn thành ngày 26-10 sau khi SV2 dán ba link, nên thực tế còn **8 việc mở**. Cột "Đã gộp" để trống **có chủ đích**: chưa PR nào được gộp nên chưa thẻ nào được chuyển sang, và bảng dưới đây ghi đúng trạng thái thật. Link cũng nằm ở `README.md` mục 10.
 
-**Hạn hoàn thành (cột mà tiêu chí 7.1 gọi là "hạn hoàn thành") đã gắn cho 27/27 thẻ.** Với 18 thẻ TASK, hạn lấy theo **ngày commit thật đưa tệp HTML lần đầu vào nhánh** — SV3: 13-10-2026, SV1 và SV2: 25-10-2026 — kiểm chứng bằng `git log --diff-filter=A --format=%ad --date=short <nhánh> -- <tệp>`; cả 18 thẻ đều được tick "Đánh dấu hoàn thành" vì mã đã viết xong, phần còn lại nằm ở chỗ khác thẻ đang đứng (chờ gộp, chờ video). 9 thẻ công việc mở có hạn 27-10-2026, tức ngày nộp và bảo vệ, và **không** tick hoàn thành.
+**Hạn hoàn thành (cột mà tiêu chí 7.1 gọi là "hạn hoàn thành") đã gắn cho 28/28 thẻ.** Với 18 thẻ TASK, hạn lấy theo **ngày commit thật đưa tệp HTML lần đầu vào nhánh** — SV3: 13-10-2026, SV1 và SV2: 25-10-2026 — kiểm chứng bằng `git log --diff-filter=A --format=%ad --date=short <nhánh> -- <tệp>`; cả 18 thẻ đều được tick "Đánh dấu hoàn thành" vì mã đã viết xong, phần còn lại nằm ở chỗ khác thẻ đang đứng (chờ gộp, chờ video). Tám thẻ công việc còn mở có hạn 27-10-2026, tức ngày nộp và bảo vệ, và **không** tick hoàn thành; hai thẻ công việc đã tick là `VIDEO · SV2` (26-10) và `SCREENS · 404/403` (27-10).
 
-Chín thẻ mới, đọc từ mục "Việc còn lại" của `barem-audit.md`:
+Mười thẻ công việc, đọc từ mục "Việc còn lại" của `barem-audit.md`:
 
 | Thẻ | Cột | Ai làm |
 |---|---|---|
+| `SCREENS · Dựng màn 404 và 403 từ mockup Canva (trang 31–32) — SV3` | Chờ review (đã tick hoàn thành 27-10) | SV3 |
 | `DEPLOY · Bật GitHub Pages cho bản gộp và quét 404 asset — SV3` | Đang làm | SV3 |
 | `MERGE · Gộp PR #3 → #2 → #1 vào dev, rồi dev → main — Cả nhóm` | Backlog | Cả ba |
 | `REVIEW · Thành viên khác bấm Approve PR #2 và PR #1 — SV1/SV3` | Backlog | SV1, SV3 |

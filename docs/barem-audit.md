@@ -57,7 +57,7 @@ Barem đòi 4 ý; kết quả từng ý:
 
 | Hạng mục | Trạng thái | Bằng chứng |
 |---|---|---|
-| Link triển khai chạy thật, không 404 tài nguyên | **CHƯA** | Pages 404; chưa có `homepage` |
+| Link triển khai chạy thật, không 404 tài nguyên | **CHƯA** | Pages 404; chưa có `homepage`. Từ 27-10 repo đã có `404.html` nên đường dẫn sai hiển thị trang chẩn đoán của dự án thay vì trang trắng (mục 6.3) — nhưng **không** biến liên kết hỏng thành liên kết đúng |
 | README đủ 15 mục chuẩn | **Đạt** | `README.md` có `## 1.` → `## 15.` (cộng mục "Giấy phép" = 16 khối `## `) |
 | `docs/ai-usage-report.md` chi tiết | Đạt | Cả ba người đều có khai; thiếu số phiên bản công cụ. Mục 3.2 là bản chuyển từ `KhongGianNguoiBan/docs/ai-usage-report.md`, cần SV2 xác nhận |
 
@@ -110,7 +110,20 @@ Cách sửa gọn cho SV1/SV2 (không cần viết logic mới): hoặc tạo `D
 * `KiemDuyetVaQuanTri/GopTrang.html` — PascalCase có dấu, không kebab-case.
 * SV2/SV3 dùng `NN-ten-man/index.html`, SV1 dùng `ten-man.html`: hai quy ước song song trong cùng một sản phẩm.
 
-### 6.3 Hai nội dung dễ bị hỏi ở Vấn đáp
+### 6.3 Hai màn lỗi 404/403 — đã bổ sung ngày 27-10-2026 (SV3)
+
+Bản trước của tài liệu này ghi "trang 404 và 403 chưa tồn tại trong repo". Hiện đã có `404.html` và `403.html` ở gốc repo, `css/error-pages.css`, `js/error-pages.js`, kèm guard đầu `KiemDuyetVaQuanTri/js/navigation.js` (dòng 1–33). Hai trang dựng lại trang 31–32 của bản thiết kế Canva tổng hợp, nằm **ngoài** 18 dòng kiểm kê và không đánh số thêm dòng (bảng 18 dòng là đơn vị đối chiếu của mục 8.1).
+
+Điều này **không** sửa giúp bảy chỗ liên kết chết ở mục 6.1: liên kết "Quên mật khẩu" vẫn trả về HTTP 404, chỉ khác là người xem thấy một trang có chẩn đoán và gợi ý màn hình thay vì trang trắng của máy chủ. Gạch điểm "liên kết chết" vẫn thuộc SV1/SV2.
+
+Hai hệ quả tích cực đã kiểm chứng bằng trình duyệt trên máy (máy chủ tĩnh nội bộ cổng 8123, mô phỏng đúng quy ước phục vụ `404.html` của GitHub Pages, cả hai cách phục vụ `/` và `/cse122-craftlink-team11/`):
+* Một đoạn script nhỏ ở phần đầu trang tính gốc site rồi chèn `<base>` và tạo stylesheet/JS bằng **đường dẫn tuyệt đối**. Không viết sẵn `<link>`/`<script>` tương đối trong HTML vì trình duyệt dò trước (preload scanner) tải ngay từ byte gốc, trước khi script chạy, nên sẽ sinh ra các request 404 **không có thật** như `/DangNhapVaDangKy/css/style.css`. Đã đo lại sau khi sửa: Network + Console chỉ còn đúng **một** yêu cầu 404, tức đường dẫn thiếu mà người dùng bấm (`/cse122-craftlink-team11/DangNhapVaDangKy/forgot-password.html`). Liên kết `index.html` ở header/footer trỏ đúng gốc repo, neo `#loi-noi-dung` vẫn ở lại trang đang hiển thị.
+* `js/error-pages.js` tự chờ `DOMContentLoaded` vì nó được nạp bằng script tạo động (script động bỏ qua `defer`), nên mở bằng `file://` hay máy chủ đều chạy.
+* Responsive đo bằng iframe cùng nguồn ở 320 / 375 / 768 / 1280 px: hai trang lỗi **không cuộn ngang** ở cả bốn cỡ. Số đo ban đầu ở 320 px là 406 px do ô nhãn của ma trận quyền chứa đường dẫn dài (`/KiemDuyetVaQuanTri/`) đẩy bản tối thiểu của thẻ; đã sửa bằng `overflow-wrap: anywhere` trên ô bảng và `min-width: 0` cho con của `.error-shell`.
+* Chèn `<img src=x onerror=alert(1)>` vào đường dẫn và vào `?need=`/`?screen=`/`?from=` → **không phần tử nào được chèn**, không hộp thoại. Bằng chứng cho VP-02 mở rộng sang hai trang mới.
+* Chuỗi nghiệp vụ đã chạy thật: vai `customer` mở `/KiemDuyetVaQuanTri/04-moderation-queue/` bị `navigation.js` chuyển sang `403.html?need=moderator&screen=…` với verdict "Thiếu quyền"; cùng URL đó với vai `admin` thì mở bình thường; ô tìm kiếm gõ "yeu thich" (không dấu) trả ra `KhachHang/favorites.html`; nút xoá nhật ký làm rỗng `craftlink:error-log`.
+
+### 6.4 Hai nội dung dễ bị hỏi ở Vấn đáp
 
 * Bảng phân công trong README bản hiện tại ghi **số màn theo dòng kiểm kê (6/6/6)**, không phải số tệp HTML (10/4/8). Đã ghi rõ cách đếm ngay dưới bảng để không bị đọc nhầm là khai sai; `KhachHang/forgot password.html` và 5 tệp `DangNhapVaDangKy/` **đứng ngoài bảng kiểm kê 18 dòng**, nên nếu đưa vào demo thì phải bổ sung vào `screen-inventory.md` hoặc nói rõ là màn phụ.
 * **README trên nhánh `main` là bản cũ và là thứ giảng viên thấy đầu tiên** (mặc định của repo là `main`). Bản `main` chỉ có **31 dòng, 3 mục `##`**, còn bản ở nhánh SV3 có **251 dòng, đủ 15 mục**. Bảng phân công trên `main` ghi SV1 **9** màn, SV2 **3** màn, đăng nhập/đăng ký **6** — không khớp 6/6/6 theo dòng kiểm kê — và ghi tên tính năng AI là "AI Personalization & Visual Matcher" cho SV1, trong khi `docs/ai-usage-report.md` mục 3.1 nói rõ **hai tính năng đó chưa được triển khai** (`screen-inventory.md` cũng phải ghi "định hướng, chưa triển khai"). Khai tên AI không có trong mã là nguy cơ trực tiếp cho VP-07 và cho Câu 3 vấn đáp. **Bản đã đối chiếu lại nằm ở `feature/sv3-admin-screens`; nó chỉ lên `main` sau khi trình tự gộp `dev → main` hoàn tất.**

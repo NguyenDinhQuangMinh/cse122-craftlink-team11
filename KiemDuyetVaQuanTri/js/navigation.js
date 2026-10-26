@@ -1,4 +1,37 @@
 (() => {
+  const ROLE_ACCESS = {
+    admin: ["admin"],
+    moderator: ["admin", "moderator"]
+  };
+
+  // Khối 403: nếu trình duyệt đang có phiên của một vai khác (do phân hệ đăng nhập
+  // của SV2 ghi vào mốc cl_session) thì đưa người dùng sang trang 403 của site.
+  // Không có phiên = chế độ demo, sáu màn vẫn mở để người chấm xem tự do.
+  function guardRole() {
+    let session = null;
+    for (const store of [window.localStorage, window.sessionStorage]) {
+      try {
+        const value = store.getItem("cl_session");
+        if (value) session = JSON.parse(value);
+        if (session) break;
+      } catch {
+        session = null;
+      }
+    }
+    if (!session || !session.role) return;
+    const required = document.body.classList.contains("moderator") ? "moderator" : "admin";
+    const allowed = ROLE_ACCESS[required] || ["admin"];
+    if (allowed.includes(session.role)) return;
+    const marker = location.href.indexOf("/KiemDuyetVaQuanTri/");
+    const root = marker > -1 ? location.href.slice(0, marker + 1) : new URL("../../", location.href).href;
+    const target = new URL("403.html", root);
+    target.searchParams.set("need", required);
+    target.searchParams.set("screen", location.pathname);
+    location.replace(target.href);
+  }
+
+  guardRole();
+
   const pages = {
     dashboard: "../01-dashboard/index.html",
     categories: "../02-category-management/index.html",
