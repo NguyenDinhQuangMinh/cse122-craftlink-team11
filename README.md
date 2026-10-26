@@ -29,6 +29,8 @@ Bối cảnh thị trường dài hơn: [`docs/project-introduction.md`](./docs/
 
 Cách đếm "Màn" là số dòng trong bảng kiểm kê, không phải số tệp HTML: 6 + 6 + 6 = 18 dòng. SV1 có 10 tệp: chín tệp ứng với sáu dòng (ba dòng gộp hai tệp — `index` + `favorites`, `cart` + `checkout`, `orders` + `order-details`) và một trang khôi phục mật khẩu nằm ngoài bảng kiểm kê. SV2 có bốn tệp vì hai dòng dùng chung một trang (STT 8 nằm trong trang STT 7, STT 11 là khung xem trước của trang STT 10). Hai trang đăng nhập/đăng ký đứng ngoài bảng kiểm kê, có 5 tệp HTML gồm ba biến thể vai trò.
 
+Trang **404 và 403 chưa tồn tại trong repo** và cũng không có trong `docs/screen-inventory.md`, nên bản triển khai sẽ rơi về trang lỗi mặc định của máy chủ khi bấm vào liên kết sai.
+
 Bảng kiểm kê 18 màn hình, đủ 12 cột: [`docs/screen-inventory.md`](./docs/screen-inventory.md).
 Phân công chi tiết: [`docs/sv1-assignment.md`](./docs/sv1-assignment.md), [`docs/sv2-assignment.md`](./docs/sv2-assignment.md), [`docs/sv3-assignment.md`](./docs/sv3-assignment.md).
 
