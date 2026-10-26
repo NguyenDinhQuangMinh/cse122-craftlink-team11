@@ -124,5 +124,5 @@ Cần có kịch bản kiểm thử được trực tiếp trên giao diện. Í
 - [x] Bật GitHub Pages cho nhánh `main` (thư mục gốc) kèm `.nojekyll` (`3e14704`), đặt `homepage` của repo, và đo bản công khai: 11/11 liên kết landing = 200, bốn lối vào = 200, `/duong-dan-sai` = HTTP 404 đúng trang `404.html` của nhóm (`custom_404: true`).
 - [x] Giữ board Trello khớp repo: 19/29 thẻ ở cột "Đã gộp", mô tả của `MERGE`/`DEPLOY`/`SCREENS` ghi merge hash thật.
 - [ ] Đưa bảng token về một nguồn chung (`css/style.css`) — hiện có sáu bảng `:root`, 0 màu hex chung; đo và lý do để sau khi nộp ghi ở `css/README.md`.
-- [ ] Mở PR kế tiếp thì chờ người khác Approve trước khi Merge — ba PR phân hệ đã gộp nên không còn bổ sung được bằng chứng đó (xem `barem-audit.md` mục 3.2).
+- [ ] **PR #6 (`dev` → `main`) đã mở 02:42 ngày 27-10-2026, đã mời SV1 và SV2 làm reviewer** — sáng 27-10 phải có một người bấm Approve rồi mới Merge; ba PR phân hệ đã gộp nên đây là cửa cuối để bổ sung bằng chứng APPROVED cho mục 7.2 (xem `barem-audit.md` mục 3.2).
 

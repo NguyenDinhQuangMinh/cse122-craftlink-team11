@@ -12,7 +12,7 @@ Tệp này gộp toàn bộ nội dung báo cáo của nhóm vào một chỗ, t
 | Hạng mục | Giá trị thật |
 |---|---|
 | Repository (công khai) | <https://github.com/NguyenDinhQuangMinh/cse122-craftlink-team11> |
-| Nhánh mặc định | `main` = `da3131b` (merge PR #5 từ `dev`) |
+| Nhánh mặc định | `main` = `da3131b` (merge PR #5 từ `dev`); `dev` là nhánh làm việc đã push lên GitHub, **chờ PR #6** gộp về `main` |
 | Nhánh làm việc | `dev`, `feature/sv1-buyer`, `feature/sv2-maker-screens`, `feature/sv3-admin-screens`, `docs/sv1-sync` |
 | Bản deploy | GitHub Pages, *Deploy from a branch* → `main` / thư mục gốc, `status = built`, `custom_404 = true`, kèm `.nojekyll` (`3e14704`) |
 | Bảng công việc | <https://trello.com/b/N2HBpswf> — `permissionLevel = "public"`, 5 cột, 29 thẻ |
@@ -240,13 +240,13 @@ Barem 6.1 đòi tối thiểu ba tính năng; nhóm có **tám**, trong đó **b
 
 ### 5.1 Bảng công việc (7.1 — 0.25đ)
 
-Board **<https://trello.com/b/N2HBpswf>** dựng ngày 26-10-2026, `permissionLevel = "public"` (gọi ẩn danh HTTP 200). **29 thẻ / 5 cột**, trạng thái đo ngày 27-10-2026 sau khi gộp nhánh và deploy:
+Board **<https://trello.com/b/N2HBpswf>** dựng ngày 26-10-2026, `permissionLevel = "public"` (gọi ẩn danh HTTP 200). **29 thẻ / 5 cột**, trạng thái đo ngày 27-10-2026 sau khi mở PR #6:
 
 | Cột | Thẻ | Nội dung |
 |---|---:|---|
-| Backlog | 7 | REVIEW · 2× FIX (liên kết chết) · 2× DOCS (khai AI, quyền Canva) · VIDEO của SV1 · SWITCHER |
+| Backlog | 6 | 2× FIX (liên kết chết) · 2× DOCS (khai AI, quyền Canva) · VIDEO của SV1 · SWITCHER |
 | Đang làm | 0 | Toàn bộ phần SV3 đã gộp xong |
-| Chờ review | 0 | Ba PR phân hệ đã merge |
+| Chờ review | 1 | **REVIEW · chờ Approve PR #6** (`dev` → `main`), chuyển từ Backlog sang ngay sau khi mở PR |
 | Đã gộp | 19 | 15 thẻ TASK + SCREENS + MERGE + DEPLOY + VIDEO·SV2 |
 | Video & bảo vệ | 3 | TASK-14, 16, 18 (SV3 — đã có link video, chờ vòng bảo vệ) |
 
@@ -263,6 +263,7 @@ Board **<https://trello.com/b/N2HBpswf>** dựng ngày 26-10-2026, `permissionLe
 | `feature/sv3-admin-screens` → `dev` (PR #1) | `8eb9f51` | 4 tệp `.md` |
 | `dev` → `main` (PR #5) | `da3131b` | 0 |
 | `.nojekyll` cho Pages | `3e14704` | — |
+| `dev` → `main` (PR #6, **đang chờ Approve**) | chưa có merge commit | 0 — `mergeable_state: clean` |
 
 Toàn bộ 6 lượt xung đột đều ở tệp `.md`, **0 xung đột mã nguồn** — gộp nhánh là quyết định quản trị chứ không phải rủi ro kỹ thuật. Cách xử lý: `README.md`/`team-assignment.md` lấy bản đủ 15 mục rồi nối lại ô của từng người và **sửa hai ô sai sự thật** (rút "AI Brief Summarizer" khỏi ô SV2 vì mã không có; thêm dòng AI-1 cho trợ lý trang đăng nhập); `screen-inventory.md` dệt theo ô, **tên tệp video chưa tồn tại bị bỏ ra** thay vì giữ làm minh chứng ảo; `sv1-assignment.md`/`sv2-assignment.md` giữ nguyên bản của chính người phụ trách.
 
@@ -277,10 +278,11 @@ Toàn bộ 6 lượt xung đột đều ở tệp `.md`, **0 xung đột mã ngu
 | #1 | mã SV3 → `dev` | `minhd2577-droi` **DISMISSED** (2 inline) · `hungxuan0411-cloud` 1 issue comment |
 | #2 | mã SV2 → `dev` | `NguyenDinhQuangMinh` **COMMENTED** (2 inline) · issue comment của SV1 và SV2 |
 | #3 | mã SV1 → `dev` | `NguyenDinhQuangMinh` **COMMENTED** (đã đọc 45 tệp, 2 inline) · `hungxuan0411-cloud` COMMENTED (tự review mình) |
-| #5 | `dev` → `main` | **không có review** (thử `requested_reviewers` qua API trả 404, không mời được) |
+| #5 | `dev` → `main` | **không có review** (gắn `requested_reviewers` lúc PR đã merge thì API trả 404, không mời được) |
+| #6 | `dev` → `main`, mở 02:42 ngày 27-10 | **đang chờ** — PR còn mở nên `requested_reviewers` accepted (HTTP 201): `hungxuan0411-cloud`, `minhd2577-droi` |
 | #4 | `docs/sv1-sync` → `feature/sv3-admin-screens` | vẫn **mở**, 0 review, **sai base**; nội dung đã vào nhánh SV3 ⇒ chỉ cần đóng |
 
-**Repo không có lượt review nào ở trạng thái APPROVED.** Mọi PR phân hệ đều có nhận xét của người khác trước khi gộp, nhưng khi Vấn đáp phải mở đúng trang review từng PR và nói đúng sự thật — tuyệt đối không nói "đã được approve". Cách duy nhất còn lại để bổ sung bằng chứng Approve là **một PR mới (kể cả PR tài liệu) để người khác bấm Approve rồi mới merge**.
+**Repo chưa có lượt review nào ở trạng thái APPROVED.** Mọi PR phân hệ đều có nhận xét của người khác trước khi gộp, nhưng khi Vấn đáp phải mở đúng trang review từng PR và nói đúng sự thật — tuyệt đối không nói "đã được approve". Cửa duy nhất còn lại đã được mở: **PR #6 `dev` → `main`** (02:42 ngày 27-10, `mergeable_state: clean`, đã mời cả SV1 lẫn SV2 làm reviewer). Sáng 27-10 chỉ cần **một người bấm Approve rồi Merge**. Toàn bộ diff của PR #6 nằm trong **13 tệp** (`GET /pulls/6/files`), không vượt ra ngoài những gì bản báo cáo này nói tới: **10 tệp `.md`** (gồm cả tệp bạn đang đọc, `docs/final-report.md`) và **3 tệp thuộc màn do SV3 giữ** — `KiemDuyetVaQuanTri/GopTrang.html` đổi `<aside>` sidebar thành `<header>` cho đủ thẻ ngữ nghĩa, `index.html` sửa khối ghi chú chạy thử sang trạng thái đã deploy, `js/error-pages.js` bỏ tham số `?from=` trên link đăng nhập của trang 403 (trang đăng nhập chưa hỗ trợ chuyển hướng ngược lại) và thêm dòng "Cách quay lại" thẳng thắn. **Không luồng nghiệp vụ nào bị đổi.** Cho tới lúc gộp, mọi con số quy trình trong báo cáo chốt ở `main = da3131b` — kiểm chứng bằng `GET /contents/docs/final-report.md?ref=main` trả **404**, còn `?ref=dev` trả 200: báo cáo chỉ hiện trên `main` và trên bản Pages sau khi PR #6 được gộp.
 
 **Commit trực tiếp trên `main`:** trên đường first-parent có 48 commit không-merge, trong đó **47 chỉ sửa tệp `.md`** (thao tác qua web GitHub) và 1 là `6274151 Initial commit`. **Không có commit nào đưa mã nguồn (HTML/CSS/JS/JSON) thẳng lên `main`** — mã đi đúng chuỗi nhánh tính năng → PR → `dev` → PR #5 → `main`, nên gạch −0.25đ không áp dụng cho sản phẩm. Từ 27-10 mọi thay đổi, kể cả tài liệu, đi qua PR.
 
@@ -332,7 +334,7 @@ Webcam rõ mặt + giọng thật → hiển thị mockup Canva của màn đó 
 
 Demo chung 6 phút theo vòng đời nghiệp vụ: khách tạo brief (STT 3) → nghệ nhân nhận brief và gửi proposal (STT 9–11) → bài đăng vào hàng đợi, AI chấm rủi ro, kiểm duyệt viên duyệt/từ chối (STT 14) → báo cáo vi phạm được phân loại và xử lý (STT 15) → quản trị viên ban hành quy định, khóa danh mục/tài khoản (STT 16–18) → hai màn lỗi 404/403 chứng minh phân quyền. Mỗi sinh viên giải thích **từng dòng mã trong lát cắt dọc của mình** và chịu một **Live Modification 5–10 phút** lấy từ ngân hàng 24 đề. SV3 đã chuẩn bị cho màn 14/16/18; **cả ba chưa tập together** — checklist mục 20 là việc bắt buộc của người, không đo hộ được.
 
-**Sáu tab phải mở sẵn khi vào bàn chấm:** ① bản deploy, ② `index.html` chạy local bằng máy chủ tĩnh (`python -m http.server 8000` → `http://localhost:8000`; **không mở bằng `file://`** vì `fetch()` bị chặn), ③ Canva ở quyền xem công khai, ④ board Trello, ⑤ GitHub (PR #1/#2/#3/#5 + Insights → Networks chứng minh ba người cùng commit), ⑥ `videos/README.md` với 9 link đã mở sẵn — kèm VS Code và Terminal để gõ `git diff` khi được yêu cầu.
+**Sáu tab phải mở sẵn khi vào bàn chấm:** ① bản deploy, ② `index.html` chạy local bằng máy chủ tĩnh (`python -m http.server 8000` → `http://localhost:8000`; **không mở bằng `file://`** vì `fetch()` bị chặn), ③ Canva ở quyền xem công khai, ④ board Trello, ⑤ GitHub (PR #1/#2/#3/#5 + **PR #6 đang chờ Approve** + Insights → Networks chứng minh ba người cùng commit), ⑥ `videos/README.md` với 9 link đã mở sẵn — kèm VS Code và Terminal để gõ `git diff` khi được yêu cầu.
 
 ---
 
@@ -363,7 +365,7 @@ Demo chung 6 phút theo vòng đời nghiệp vụ: khách tạo brief (STT 3) �
 ### 7.3 Checklist 20 mục (mục X.2) — rút gọn
 
 **Đã đo và đạt:** 1 (kiểm kê 18 dòng), 5 (alt/nhãn — còn 6 trang thiếu thẻ bao), 6 (responsive 145 phép đo), 7 (Tab/Esc trên màn SV3), 9 (15–25 bản ghi), 10 (tìm + lọc + sắp), 11 (CRUD sống sau F5), 12 (4 trạng thái), 13 (AI 6 bước), 14 (AI failure), 15 (board công khai), 18 (README 15 mục + khai AI).
-**Một phần / chưa đạt, cần người quyết:** **2** quyền xem Canva · **3** tên tệp theo chuẩn (`forgot password.html`) · **4** **Role Switcher giữa ba phân hệ — 0/29 trang có** · **8** bảng token chung — **11 tệp tự khai hex trong `:root`, 0 màu chung** · **16** một lượt APPROVED thật qua PR mới · **17** ánh xạ video dòng 7–12 · **19** 7 liên kết 404 của SV1/SV2 · **20** tập demo chung.
+**Một phần / chưa đạt, cần người quyết:** **2** quyền xem Canva · **3** tên tệp theo chuẩn (`forgot password.html`) · **4** **Role Switcher giữa ba phân hệ — 0/29 trang có** · **8** bảng token chung — **11 tệp tự khai hex trong `:root`, 0 màu chung** · **16** một lượt APPROVED thật — **PR #6 đã mở và chờ một người bấm Approve** · **17** ánh xạ video dòng 7–12 · **19** 7 liên kết 404 của SV1/SV2 · **20** tập demo chung.
 Bảng đầy đủ từng dòng kèm số đo: `docs/barem-audit.md` mục 9.
 
 ---
@@ -384,7 +386,7 @@ Bảng đầy đủ từng dòng kèm số đo: `docs/barem-audit.md` mục 9.
 
 | Ai | Việc |
 |---|---|
-| **Cả nhóm** | Mở 5 link Canva bằng cửa sổ ẩn danh và đổi sang "Bất kỳ ai có liên kết đều xem được"; vẽ trang Component Guide vào Canva; đóng PR #4; **tập demo 6 phút + ≥3 đề Live Modification**; mở PR mới để có một lượt **Approve** thật |
+| **Cả nhóm** | **Sáng 27-10: một người (SV1 hoặc SV2) bấm Approve PR #6 rồi Merge** để có bằng chứng peer review ở trạng thái APPROVED và để báo cáo này xuất hiện trên `main` + bản Pages; mở 5 link Canva bằng cửa sổ ẩn danh và đổi sang "Bất kỳ ai có liên kết đều xem được"; vẽ trang Component Guide vào Canva; đóng PR #4; **tập demo 6 phút + ≥3 đề Live Modification** |
 | **SV1** | Sửa 3 tham chiếu hỏng ở mục 5.3 và đổi tên `forgot password.html` + `css/forgot passwork.css`; thêm `min-width:0` cho hai trang tràn 320 px; quyết định gộp/xoá `docs/ai-usage -report.md` và `video.md`; xác nhận ánh xạ 3 video "4/7/9"; bổ sung phiên bản công cụ AI; tự sửa `docs/sv1-assignment.md` dòng 23 |
 | **SV2** | Xác nhận mục 3.2 `docs/ai-usage-report.md`; sửa 4 liên kết `forgot-password.html` (3 HTML + `02-dang-ky/js/main.js:199`) và ảnh `forgot-hero.png`; thêm `<header>/<nav>/<main>/<footer>` cho 6 trang và bỏ `<h1>` thứ hai ở `02-dang-ky/index.html`; chốt hướng xử lý video cho dòng 7–12 |
 | **SV3** | Không còn việc trên Git/GitHub; giữ phần kỹ thuật trình bày (mục 6.3) và làm tệp `js/role-switcher.js` dùng chung nếu còn giờ |
@@ -428,7 +430,7 @@ Responsive và quét ngữ nghĩa đo bằng iframe cùng nguồn trên chính U
 |---|---|
 | Bản deploy | <https://nguyendinhquangminh.github.io/cse122-craftlink-team11/> |
 | Repository | <https://github.com/NguyenDinhQuangMinh/cse122-craftlink-team11> |
-| Pull requests | `.../pulls?q=is%3Apr+is%3Aclosed` (#1 `8eb9f51`, #2 `a5a51e6`, #3 `ec74e6b`, #5 `da3131b`) |
+| Pull requests | <https://github.com/NguyenDinhQuangMinh/cse122-craftlink-team11/pull/6> (**đang mở**, `dev` → `main`) · đã gộp: #1 `8eb9f51`, #2 `a5a51e6`, #3 `ec74e6b`, #5 `da3131b` · còn mở nhưng sai base: #4 |
 | Board công việc | <https://trello.com/b/N2HBpswf> |
 | Canva — Khách hàng (SV1) | <https://www.canva.com/design/DAHZAR9VxmU/dQQiBQ9-OPRH6Q5x8DdAkw/edit> (bản cũ `DAHWyBVvS6U` — SV1 cần chốt một link) |
 | Canva — Người bán (SV2) | <https://canva.link/rvxflfz5kgg0rg1> |
