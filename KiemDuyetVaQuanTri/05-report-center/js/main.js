@@ -340,20 +340,21 @@ document.querySelector(".data-table thead").addEventListener("click", event => {
   render();
 });
 ["#search", "#status", "#reason", "#period"].forEach(selector => {
+  const update = () => {
+    page = 1;
+    render();
+  };
   $(selector).addEventListener(
     selector === "#search" ? "input" : "change",
-    () => {
-      page = 1;
-      render();
-    }
+    selector === "#search" ? CraftLinkAPI.debounce(update) : update
   );
 });
 
-wireHeader(value => {
+wireHeader(CraftLinkAPI.debounce(value => {
   query = value;
   $("#search").value = value;
   render();
-});
+}));
 
 $("#rows").addEventListener("click", e => {
   if (e.target.closest("[data-reset-filter]")) {
