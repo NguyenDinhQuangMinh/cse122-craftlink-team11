@@ -25,7 +25,7 @@ Tất cả tài liệu chi tiết của dự án được quản lý tập trung
 ## 3. 👥 THÀNH VIÊN VÀ PHÂN CÔNG VAI TRÒ
 | STT | Thành viên | Họ và tên | Mã sinh viên | Vai trò phụ trách | Số màn hình | Tích hợp tính năng AI |
 | :---: | :---: | :--- | :---: | :--- | :---: | :--- |
-| Bonus | **SV1+SV2+SV3** | | | Giao diện đăng nhập, đăng ký | **6** | |
+| Bonus | **SV1+SV2** | | | Giao diện đăng nhập, đăng ký | **6** | |
 | 1 | **SV1** | Nguyễn Xuân Hưng | 2551060622 | Khách hàng (Buyer) & Giao diện chung | **6** | AI Personalization & Visual Matcher |
 | 2 | **SV2** | Dương Vũ Quân Minh | 2551060650 | Thợ thủ công / Nghệ nhân (Maker) | **3** | AI Copywriter, SEO & Brief Summarizer |
 | 3 | **SV3** | Nguyễn Đình Quang Minh | 2551060651 | Kiểm duyệt viên (Mod) & Quản trị viên (Admin) | **6** | AI Content Moderation, Risk Triage & Policy Copilot |
@@ -82,5 +82,4 @@ Barem gọi tên đích danh một số đường dẫn làm minh chứng. Repo 
 | `docs/project-proposal.md` | Tiêu chí 1 | đã có — tóm tắt, trỏ tới `project-introduction.md` |
 | `docs/ai-usage-report.md` | ĐK5, VP-07 | đã có phần SV3; SV1 và SV2 chưa khai |
 | `videos/` | ĐK4, tiêu chí 8.1, "Tab 6" khi bảo vệ | bảng liên kết, không chứa tệp `.mp4` |
-| `docs/sv3-recording-checklist.md` | Tiêu chí 8.1, 8 bước bắt buộc | đã có — kịch bản 3 video của SV3 |
 | `api/ai.js` | Tiêu chí 6, mục 6.1–6.3 | đã có — bốn loại tác vụ AI |
