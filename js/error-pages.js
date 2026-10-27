@@ -310,7 +310,7 @@
       ["Trang bị chặn", toRepoPath(params.get("screen")) || "(không gửi kèm đường dẫn)"],
       ["Vai trò yêu cầu", ROLE_LABELS[needed]],
       ["Vai trò hiện tại", session ? ROLE_LABELS[session.role] || session.role : ROLE_LABELS.guest],
-      ["Cách quay lại", "Trang đăng nhập chưa tự chuyển hướng về màn bị chặn — sau khi đăng nhập đúng vai, mở lại màn đó từ danh sách gợi ý."],
+      ["Cách quay lại", "Trang đăng nhập đưa bạn về trang chính của đúng vai; sau đó mở lại màn này từ thanh điều hướng."],
       ["Tài khoản", session ? session.email || session.name || "(ẩn danh)" : "—"],
       ["Đăng nhập lúc", session && session.at ? formatTime(new Date(session.at)) : "—"],
       ["Kiểm tra lúc", formatTime(new Date())],

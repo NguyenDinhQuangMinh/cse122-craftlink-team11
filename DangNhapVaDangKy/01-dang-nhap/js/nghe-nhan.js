@@ -388,6 +388,7 @@
 
   const ROLE = "artisan";
   const TRANG_THEO_VAI = { customer: "khach-hang.html", artisan: "nghe-nhan.html", admin: "quan-tri.html" };
+  const TRANG_CHINH = "../../KhongGianNguoiBan/01-listing-management/index.html";
   const MAX_ATTEMPTS = 5;
   const LOCK_MS = 60000;
   const LAST_ID_KEY = "cl_last_identifier_artisan";
@@ -528,7 +529,7 @@
             toast("Bạn đã đăng xuất khỏi CraftLink.", "info");
           },
         },
-        { label: "Tiếp tục", cls: "btn-primary" },
+        { label: "Tiếp tục", cls: "btn-primary", onClick: () => { location.href = TRANG_CHINH; } },
       ],
     });
   });
