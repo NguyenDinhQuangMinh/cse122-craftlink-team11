@@ -13,6 +13,7 @@ Khác biệt so với một sàn thông thường: **yêu cầu đặt làm là 
 
 Phân tích bài toán đầy đủ (P1–P4, O1–O7, thực thể dữ liệu, ma trận vòng đời trạng thái): [`docs/project-proposal.md`](./docs/project-proposal.md).
 Bối cảnh thị trường dài hơn: [`docs/project-introduction.md`](./docs/project-introduction.md).
+**Báo cáo tổng hợp của cả nhóm nằm trong một tệp duy nhất: [`docs/final-report.md`](./docs/final-report.md)** — mở khi nộp và khi Vấn đáp; mọi số liệu trong đó đo từ `git`, GitHub API và URL công khai, chi tiết phép đo ở [`docs/barem-audit.md`](./docs/barem-audit.md).
 
 **Bảng màu chủ đạo:** Warm Terracotta `#C85A32`, Sage Green `#6A8D73`, Cream `#FDFAF6`, Charcoal `#241F1B`.
 
@@ -161,9 +162,11 @@ Cấu hình: `AI_API_URL`, `AI_API_KEY`, `AI_MODEL` — chỉ khai ở biến m�
 
 | Tài liệu | Đường dẫn |
 | :--- | :--- |
+| **Báo cáo tổng hợp một tệp** — gộp toàn bộ tài liệu của nhóm theo đúng thứ tự chấm của barem, kèm số đo và lệnh tái lập | [`docs/final-report.md`](./docs/final-report.md) |
 | Bảng kiểm kê 18 màn hình (12 cột) | [`docs/screen-inventory.md`](./docs/screen-inventory.md) |
 | Sitemap & User Flow toàn bộ vai trò | [`docs/user-flow.md`](./docs/user-flow.md) |
-| Board Trello công khai — 5 cột, 28 thẻ (18 màn + 10 việc còn lại), mọi thẻ có hạn hoàn thành | <https://trello.com/b/N2HBpswf> |
+| **Bản chạy công khai** (GitHub Pages, nhánh `main`) | <https://nguyendinhquangminh.github.io/cse122-craftlink-team11/> |
+| Board Trello công khai — 5 cột, 29 thẻ (18 thẻ TASK + 11 thẻ công việc), mọi thẻ có hạn hoàn thành và mô tả gắn nhánh · PR · video · màn hình. Trạng thái 27-10-2026: **19 thẻ "Đã gộp"**, 6 thẻ Backlog là việc của SV1/SV2 và cả nhóm, 1 thẻ "Chờ review" theo **PR #6**, 3 thẻ "Video & bảo vệ" | <https://trello.com/b/N2HBpswf> |
 | Bảng công việc 18 thẻ (bản nguồn và cách đọc board) | [`docs/task-board.md`](./docs/task-board.md) |
 | Kiểm toán repo theo từng dòng barem: ĐK1–ĐK5, mục 7.1/7.2/7.3, 8.1, VP-01…VP-07, liên kết chết | [`docs/barem-audit.md`](./docs/barem-audit.md) |
 | Component Guide (màu, chữ, thành phần) | [`docs/component-guide.md`](./docs/component-guide.md) |
@@ -175,7 +178,7 @@ Cấu hình: `AI_API_URL`, `AI_API_KEY`, `AI_MODEL` — chỉ khai ở biến m�
 | Bản thiết kế tổng hợp (nhóm) | <https://www.canva.com/design/DAHXD2jg9HU/7Q4trg1HDT246iMdGVyUXw/edit> |
 | Bản render sơ đồ trong slide | `docs/diagrams/user-flow-sv3.svg` và `user-flow-sv3-forest.png` |
 
-> Năm liên kết Canva ở trên hiện đều là **link chỉnh sửa**. Trước khi nộp phải đổi sang quyền "Bất kỳ ai có liên kết đều xem được" và mở thử bằng cửa sổ ẩn danh; checklist mục 2 của barem đòi quyền xem công khai, không phải quyền sửa.
+> Trong năm liên kết Canva ở trên, hai liên kết dài đang ở dạng `/design/…/edit` (quyền sửa), ba liên kết `canva.link/…` là liên kết rút gọn nên không nhìn URL mà biết được quyền xem. Trước khi nộp phải mở cả năm bằng **cửa sổ ẩn danh** và đổi sang quyền "Bất kỳ ai có liên kết đều xem được"; checklist mục 2 của barem đòi quyền xem công khai, không phải quyền sửa.
 
 ---
 
@@ -192,21 +195,24 @@ Cấu hình: `AI_API_URL`, `AI_API_KEY`, `AI_MODEL` — chỉ khai ở biến m�
 
 ## 12. Triển khai
 
-**Trạng thái hiện tại: chưa triển khai công khai.** Chưa có URL sản phẩm chạy thật; mục này sẽ được cập nhật ngay khi có đường dẫn.
-
-Để triển khai, chọn một trong hai hướng:
-
-1. **GitHub Pages** — Settings → Pages → Deploy from branch → chọn nhánh chính, thư mục gốc. Phù hợp vì toàn bộ giao diện là tệp tĩnh. Lưu ý: endpoint `api/ai.js` không chạy trên Pages, nên ba tác vụ AI gọi qua máy chủ sẽ tự lùi về bộ quy tắc cục bộ.
-2. **Vercel** — import repo, đặt biến môi trường `AI_API_URL`, `AI_API_KEY`, `AI_MODEL`. Cách này giữ được cả endpoint AI.
-
-**Thứ tự bắt buộc: gộp đủ ba pull request (#3 → #2 → #1) rồi mới deploy.** Trang landing trỏ tới `KhachHang/`, `KhongGianNguoiBan/` và `DangNhapVaDangKy/` — ba thư mục chỉ xuất hiện sau khi gộp; deploy sớm sẽ tạo ba link 404. Sau khi gộp, xoá đoạn ghi chú "chỉ mở được sau khi PR #3 và PR #2 được gộp" ở `index.html` và điền URL thật vào bảng dưới.
-
-Kiểm tra sau khi triển khai: mở trang landing, bấm lần lượt bốn lối vào, xác nhận không có 404 cho CSS/JS/JSON trong tab Network; sau đó mở thử một màn của mỗi thành viên và chạy một thao tác ghi (thêm/sửa) để chắc `localStorage` hoạt động trên tên miền mới.
+**Trạng thái: đã triển khai công khai trên GitHub Pages, ngày 27-10-2026.**
 
 | Môi trường | URL |
 | :--- | :--- |
-| Công khai | *(chưa có — điền sau khi triển khai)* |
-| Cục bộ | `http://localhost:8000` |
+| Công khai | <https://nguyendinhquangminh.github.io/cse122-craftlink-team11/> |
+| Cục bộ | `http://localhost:8000` (hoặc mở trực tiếp từng tệp HTML) |
+
+Cách đã làm, theo đúng thứ tự: gộp ba pull request của ba phân hệ (`#3` SV1 → `#2` SV2 → `#1` SV3) vào `dev`, mở pull request `dev` → `main` (PR #5) và gộp để **nhánh mặc định có đủ mã nguồn**, rồi Settings → Pages → *Deploy from a branch* → nhánh `main`, thư mục gốc. Tệp `.nojekyll` ở gốc repo tắt bước xử lý Jekyll để Pages phục vụ nguyên văn HTML/CSS/JS; nếu không có tệp đó, Jekyll bỏ qua mọi tệp bắt đầu bằng dấu gạch dưới và có thể biên dịch lại nội dung tĩnh. Thay đổi từ ngày 27-10 đi qua **PR #6** (`dev` → `main`) và phải có thành viên khác bấm Approve trước khi gộp.
+
+Kiểm tra đã chạy trên URL công khai ngày 27-10-2026:
+
+- Trang landing tải đúng bảng màu chủ đạo, **11/11 liên kết trên trang trả về 200**.
+- Bốn lối vào hoạt động: `KhachHang/index.html`, `KhongGianNguoiBan/01-listing-management/index.html`, `KiemDuyetVaQuanTri/01-dashboard/index.html`, `KiemDuyetVaQuanTri/04-moderation-queue/index.html`, `DangNhapVaDangKy/01-dang-nhap/khach-hang.html`.
+- `css/style.css`, `css/error-pages.css`, `js/error-pages.js` đều 200; không có tài nguyên 404 trong trang.
+- Đường dẫn sai (`/duong-dan-sai`) trả **HTTP 404 kèm đúng trang `404.html` của nhóm**, không phải trang 404 mặc định của GitHub (`custom_404: true`).
+- Lưu `cl_session` vai `customer` rồi mở hàng đợi kiểm duyệt → chuyển hướng `403.html?need=moderator&screen=…`; ma trận vai trò hiển thị, không tràn ngang ở 320 px.
+
+Endpoint `api/ai.js` nằm trong repo dưới dạng mô-đun Node. GitHub Pages chỉ phục vụ tệp tĩnh nên yêu cầu `/api/ai.js` trả về chính mã nguồn chứ không chạy hàm; trên bản công khai, ba tác vụ AI của phân hệ quản trị vì thế lùi về bộ quy tắc dự phòng cục bộ và giao diện vẫn in dòng "Nguồn:" đúng thực tế. Muốn gọi mô hình thật phải deploy ở nền tảng có runtime (Vercel/Netlify) và đặt `AI_API_URL`, `AI_API_KEY`, `AI_MODEL` trong biến môi trường — không đưa khóa vào repo.
 
 ---
 
@@ -230,8 +236,8 @@ Nguyên tắc khai báo: chỉ ghi việc đã làm. Phần nào chưa có thì 
 
 **Hạn chế đang biết**
 
-- Chưa triển khai công khai (mục 12), nên ĐK3 chưa đạt.
-- Ba PR của ba phân hệ chưa gộp vào nhánh chính; bản trên nhánh mặc định chưa có mã Khách hàng và Người bán.
+- Bản công khai chạy trên GitHub Pages (tệp tĩnh), nên `api/ai.js` không thực thi ở đó; ba tác vụ AI gọi qua máy chủ hiển thị kết quả của bộ quy tắc dự phòng cục bộ.
+- `docs/sv1-assignment.md` và `docs/sv2-assignment.md` là mô tả của từng thành viên, nhóm chưa rà lần cuối sau khi ba nhánh gộp vào nhau.
 - Bảng điều khiển mới nối một phần kho dữ liệu: hai thẻ *Nghệ nhân đang hoạt động* và *Cảnh báo hệ thống* tính thật từ dữ liệu chung; doanh thu, đơn hàng, biểu đồ và nhật ký vẫn là số liệu minh họa viết sẵn.
 - Dữ liệu lưu trong `localStorage` của từng trình duyệt: hai người dùng hai máy không thấy dữ liệu của nhau, nên luồng brief → proposal chỉ minh hoạ được trên cùng một máy.
 - Quy định nội dung chưa có lịch sử phiên bản và chưa có bước "xuất bản" riêng; lưu là có hiệu lực ngay.

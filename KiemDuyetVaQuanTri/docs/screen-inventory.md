@@ -48,12 +48,12 @@ Giữ GopTrang.html làm điểm trình diễn/tích hợp cho sáu trang. Khôn
 
 Các trường sau chưa thể được xác nhận chỉ bằng mã hiện có; nhóm cần cập nhật thông tin thật trước khi nộp:
 
-- Mã task và nhánh: đã có — sáu dòng `TASK-13`…`TASK-18`, nhánh `feature/sv3-admin-screens`, ghi trong `docs/screen-inventory.md` của nhóm.
-- Danh sách video OBS: đã có khung và 8 bước bắt buộc trong `videos/README.md`; link ba video SV3 điền sau khi quay.
+- Mã task và nhánh: đã có — sáu dòng `TASK-13`…`TASK-18`, nhánh `feature/sv3-admin-screens` (đã gộp vào `dev` bằng merge commit `8eb9f51`, lên `main` qua PR #5 `da3131b`), ghi trong `docs/screen-inventory.md` của nhóm.
+- Danh sách video OBS: **đã đủ ba link của SV3** trong `videos/README.md` (`LAlWYQg43LY`, `imsnvGvIofQ`, `3dCK3uHpIcY`) tương ứng dòng 14/16/18.
 - Bảng kiểm kê hợp nhất: đã có `docs/screen-inventory.md` đủ 18 dòng với đường dẫn tệp thật.
-- Link triển khai đang hoạt động: chưa có, chưa triển khai.
-- Ảnh/clip kiểm tra trên desktop, tablet, mobile: chưa lưu vào repo.
-- Người review cho từng pull request: chưa có, hiện 0 review.
-- Giao diện 6.1 phía người mua: thuộc SV1, chưa nối vào nút nhập nhu cầu.
+- Link triển khai đang hoạt động: **có từ 27-10-2026** — <https://nguyendinhquangminh.github.io/cse122-craftlink-team11/> (GitHub Pages, nhánh `main`, `.nojekyll` ở gốc repo).
+- Ảnh/clip kiểm tra trên desktop, tablet, mobile: **chưa lưu vào repo**; kết quả đo responsive 320/375/768/1280 px chỉ được ghi bằng số trong `docs/barem-audit.md` mục 6.3 và `README.md` mục 12.
+- Người review cho từng pull request: **đã có ý kiến của người khác trước khi gộp** — PR #1 có review `DISMISSED` của `minhd2577-droi` (2 inline) và 1 issue comment của `hungxuan0411-cloud`; **không có review APPROVED nào**, chi tiết ở `docs/barem-audit.md` mục 3.2.
+- Giao diện 6.1 phía người mua: thuộc SV1, chưa nối vào nút nhập nhu cầu (`grep` trong `KiemDuyetVaQuanTri/` không có liên kết nào trỏ sang `KhachHang/`).
 
 Không điền giá trị giả cho những trường này.

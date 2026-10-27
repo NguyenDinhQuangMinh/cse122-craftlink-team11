@@ -300,7 +300,7 @@
     }
     const loginLink = slot("login-link");
     if (loginLink) {
-      loginLink.href = LOGIN_BY_ROLE[needed] + "?from=" + encodeURIComponent(params.get("screen") || "");
+      loginLink.href = LOGIN_BY_ROLE[needed];
       loginLink.textContent = needed === "moderator"
         ? "Đăng nhập vai Quản trị (bản demo chưa có trang đăng nhập riêng cho kiểm duyệt viên)"
         : "Đăng nhập bằng vai " + ROLE_LABELS[needed];
@@ -310,6 +310,7 @@
       ["Trang bị chặn", toRepoPath(params.get("screen")) || "(không gửi kèm đường dẫn)"],
       ["Vai trò yêu cầu", ROLE_LABELS[needed]],
       ["Vai trò hiện tại", session ? ROLE_LABELS[session.role] || session.role : ROLE_LABELS.guest],
+      ["Cách quay lại", "Trang đăng nhập chưa tự chuyển hướng về màn bị chặn — sau khi đăng nhập đúng vai, mở lại màn đó từ danh sách gợi ý."],
       ["Tài khoản", session ? session.email || session.name || "(ẩn danh)" : "—"],
       ["Đăng nhập lúc", session && session.at ? formatTime(new Date(session.at)) : "—"],
       ["Kiểm tra lúc", formatTime(new Date())],
