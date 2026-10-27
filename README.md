@@ -166,7 +166,7 @@ Cấu hình: `AI_API_URL`, `AI_API_KEY`, `AI_MODEL` — chỉ khai ở biến m�
 | Bảng kiểm kê 18 màn hình (12 cột) | [`docs/screen-inventory.md`](./docs/screen-inventory.md) |
 | Sitemap & User Flow toàn bộ vai trò | [`docs/user-flow.md`](./docs/user-flow.md) |
 | **Bản chạy công khai** (GitHub Pages, nhánh `main`) | <https://nguyendinhquangminh.github.io/cse122-craftlink-team11/> |
-| Board Trello công khai — 5 cột, 31 thẻ (18 thẻ TASK + 13 thẻ công việc), mọi thẻ có hạn hoàn thành và mô tả gắn nhánh · PR · video · màn hình. Trạng thái 27-10-2026: **20 thẻ "Đã gộp"** (kèm `REVIEW` sau khi PR #6 được Approve rồi Merge), **3 thẻ "Chờ review"** (SWITCHER · NAV · REVIEW của PR #13/#12), 5 thẻ Backlog là việc của SV1/SV2 và cả nhóm, 3 thẻ "Video & bảo vệ", **25/31 thẻ đã tick** | <https://trello.com/b/N2HBpswf> |
+| Board Trello công khai — 5 cột, 31 thẻ (18 thẻ TASK + 13 thẻ công việc), mọi thẻ có hạn hoàn thành và mô tả gắn nhánh · PR · video · màn hình. Trạng thái 27-10-2026 (sau khi gộp PR #13 và #12): **23 thẻ "Đã gộp"**, **0 thẻ "Chờ review"**, 5 thẻ Backlog là việc của SV1/SV2 và cả nhóm, 3 thẻ "Video & bảo vệ", **28/31 thẻ đã tick** | <https://trello.com/b/N2HBpswf> |
 | Bảng công việc 18 thẻ (bản nguồn và cách đọc board) | [`docs/task-board.md`](./docs/task-board.md) |
 | Kiểm toán repo theo từng dòng barem: ĐK1–ĐK5, mục 7.1/7.2/7.3, 8.1, VP-01…VP-07, liên kết chết | [`docs/barem-audit.md`](./docs/barem-audit.md) |
 | Component Guide (màu, chữ, thành phần) | [`docs/component-guide.md`](./docs/component-guide.md) |
