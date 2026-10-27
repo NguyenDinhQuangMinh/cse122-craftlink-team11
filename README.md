@@ -166,7 +166,7 @@ Cấu hình: `AI_API_URL`, `AI_API_KEY`, `AI_MODEL` — chỉ khai ở biến m�
 | Bảng kiểm kê 18 màn hình (12 cột) | [`docs/screen-inventory.md`](./docs/screen-inventory.md) |
 | Sitemap & User Flow toàn bộ vai trò | [`docs/user-flow.md`](./docs/user-flow.md) |
 | **Bản chạy công khai** (GitHub Pages, nhánh `main`) | <https://nguyendinhquangminh.github.io/cse122-craftlink-team11/> |
-| Board Trello công khai — 5 cột, 29 thẻ (18 thẻ TASK + 11 thẻ công việc), mọi thẻ có hạn hoàn thành và mô tả gắn nhánh · PR · video · màn hình. Trạng thái 27-10-2026: **19 thẻ "Đã gộp"**, 6 thẻ Backlog là việc của SV1/SV2 và cả nhóm, 1 thẻ "Chờ review" theo **PR #6**, 3 thẻ "Video & bảo vệ" | <https://trello.com/b/N2HBpswf> |
+| Board Trello công khai — 5 cột, 29 thẻ (18 thẻ TASK + 11 thẻ công việc), mọi thẻ có hạn hoàn thành và mô tả gắn nhánh · PR · video · màn hình. Trạng thái 27-10-2026: **20 thẻ "Đã gộp"** (kèm `REVIEW` sau khi PR #6 được Approve rồi Merge), 6 thẻ Backlog là việc của SV1/SV2 và cả nhóm, 3 thẻ "Video & bảo vệ", **23/29 thẻ đã tick** | <https://trello.com/b/N2HBpswf> |
 | Bảng công việc 18 thẻ (bản nguồn và cách đọc board) | [`docs/task-board.md`](./docs/task-board.md) |
 | Kiểm toán repo theo từng dòng barem: ĐK1–ĐK5, mục 7.1/7.2/7.3, 8.1, VP-01…VP-07, liên kết chết | [`docs/barem-audit.md`](./docs/barem-audit.md) |
 | Component Guide (màu, chữ, thành phần) | [`docs/component-guide.md`](./docs/component-guide.md) |
@@ -202,7 +202,7 @@ Cấu hình: `AI_API_URL`, `AI_API_KEY`, `AI_MODEL` — chỉ khai ở biến m�
 | Công khai | <https://nguyendinhquangminh.github.io/cse122-craftlink-team11/> |
 | Cục bộ | `http://localhost:8000` (hoặc mở trực tiếp từng tệp HTML) |
 
-Cách đã làm, theo đúng thứ tự: gộp ba pull request của ba phân hệ (`#3` SV1 → `#2` SV2 → `#1` SV3) vào `dev`, mở pull request `dev` → `main` (PR #5) và gộp để **nhánh mặc định có đủ mã nguồn**, rồi Settings → Pages → *Deploy from a branch* → nhánh `main`, thư mục gốc. Tệp `.nojekyll` ở gốc repo tắt bước xử lý Jekyll để Pages phục vụ nguyên văn HTML/CSS/JS; nếu không có tệp đó, Jekyll bỏ qua mọi tệp bắt đầu bằng dấu gạch dưới và có thể biên dịch lại nội dung tĩnh. Thay đổi từ ngày 27-10 đi qua **PR #6** (`dev` → `main`) và phải có thành viên khác bấm Approve trước khi gộp.
+Cách đã làm, theo đúng thứ tự: gộp ba pull request của ba phân hệ (`#3` SV1 → `#2` SV2 → `#1` SV3) vào `dev`, mở pull request `dev` → `main` (PR #5) và gộp để **nhánh mặc định có đủ mã nguồn**, rồi Settings → Pages → *Deploy from a branch* → nhánh `main`, thư mục gốc. Tệp `.nojekyll` ở gốc repo tắt bước xử lý Jekyll để Pages phục vụ nguyên văn HTML/CSS/JS; nếu không có tệp đó, Jekyll bỏ qua mọi tệp bắt đầu bằng dấu gạch dưới và có thể biên dịch lại nội dung tĩnh. Thay đổi từ ngày 27-10 đi qua **PR #6** (`dev` → `main`): `hungxuan0411-cloud` **Approve lúc 09:37 rồi Merge lúc 10:01**, nên `origin/main` = `3eb8e53` và bản công khai đã phục vụ báo cáo tổng hợp.
 
 Kiểm tra đã chạy trên URL công khai ngày 27-10-2026:
 

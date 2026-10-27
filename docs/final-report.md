@@ -12,11 +12,11 @@ Tệp này gộp toàn bộ nội dung báo cáo của nhóm vào một chỗ, t
 | Hạng mục | Giá trị thật |
 |---|---|
 | Repository (công khai) | <https://github.com/NguyenDinhQuangMinh/cse122-craftlink-team11> |
-| Nhánh mặc định | `main` = `da3131b` (merge PR #5 từ `dev`); `dev` là nhánh làm việc đã push lên GitHub, **chờ PR #6** gộp về `main` |
+| Nhánh mặc định | `main` luôn bằng đầu `dev` sau mỗi lượt gộp; mốc gần nhất **PR #6 → `3eb8e53`** (10:01 ngày 27-10, người bấm merge `hungxuan0411-cloud`, sau lượt Approve của chính bạn này). `dev` = `3a08685` là nhánh làm việc |
 | Nhánh làm việc | `dev`, `feature/sv1-buyer`, `feature/sv2-maker-screens`, `feature/sv3-admin-screens`, `docs/sv1-sync` |
 | Bản deploy | GitHub Pages, *Deploy from a branch* → `main` / thư mục gốc, `status = built`, `custom_404 = true`, kèm `.nojekyll` (`3e14704`) |
 | Bảng công việc | <https://trello.com/b/N2HBpswf> — `permissionLevel = "public"`, 5 cột, 29 thẻ |
-| Lịch sử | **176 commit** trên `main` (167 không-merge + 9 merge), hoạt động ở **11 ngày thuộc 3 tuần** |
+| Lịch sử | **184 commit** trên `main` (174 không-merge + 10 merge), hoạt động ở **11 ngày thuộc 3 tuần** |
 | Sản phẩm | **29 tệp HTML**, **8 tính năng AI**, **5 bộ dữ liệu JSON** (15–20 bản ghi) |
 | Video | **9 link YouTube** (3 sinh viên × 3 video), tệp gốc `.mp4` nằm trên máy từng người |
 
@@ -240,17 +240,17 @@ Barem 6.1 đòi tối thiểu ba tính năng; nhóm có **tám**, trong đó **b
 
 ### 5.1 Bảng công việc (7.1 — 0.25đ)
 
-Board **<https://trello.com/b/N2HBpswf>** dựng ngày 26-10-2026, `permissionLevel = "public"` (gọi ẩn danh HTTP 200). **29 thẻ / 5 cột**, trạng thái đo ngày 27-10-2026 sau khi mở PR #6:
+Board **<https://trello.com/b/N2HBpswf>** dựng ngày 26-10-2026, `permissionLevel = "public"` (gọi ẩn danh HTTP 200). **29 thẻ / 5 cột**, trạng thái đo ngày 27-10-2026 sau khi PR #6 được người khác Approve rồi gộp:
 
 | Cột | Thẻ | Nội dung |
 |---|---:|---|
 | Backlog | 6 | 2× FIX (liên kết chết) · 2× DOCS (khai AI, quyền Canva) · VIDEO của SV1 · SWITCHER |
 | Đang làm | 0 | Toàn bộ phần SV3 đã gộp xong |
-| Chờ review | 1 | **REVIEW · chờ Approve PR #6** (`dev` → `main`), chuyển từ Backlog sang ngay sau khi mở PR |
-| Đã gộp | 19 | 15 thẻ TASK + SCREENS + MERGE + DEPLOY + VIDEO·SV2 |
+| Chờ review | 0 | Trống — thẻ **REVIEW** đã chuyển sang "Đã gộp" sau khi PR #6 được Approve (09:37) rồi Merge (10:01 ngày 27-10) |
+| Đã gộp | 20 | 15 thẻ TASK + SCREENS + MERGE + DEPLOY + VIDEO·SV2 + **REVIEW** (mô tả thẻ ghi `3eb8e53`) |
 | Video & bảo vệ | 3 | TASK-14, 16, 18 (SV3 — đã có link video, chờ vòng bảo vệ) |
 
-**29/29 thẻ có hạn hoàn thành và mô tả** gắn `Nhánh · PR · Video · Màn hình` (+ `AI:` với màn có tính năng AI); **22/29** tick "Đánh dấu hoàn thành". Hạn của 18 thẻ TASK lấy theo **ngày commit thật đưa tệp HTML lần đầu vào nhánh** (SV3: 13-10; SV1/SV2: 25-10, kiểm chứng bằng `git log --diff-filter=A`); thẻ quy trình hạn 27-10. Thẻ MERGE/DEPLOY/SCREENS mang merge hash thật nên mở ngược được trên GitHub.
+**29/29 thẻ có hạn hoàn thành và mô tả** gắn `Nhánh · PR · Video · Màn hình` (+ `AI:` với màn có tính năng AI); **23/29** tick "Đánh dấu hoàn thành". Hạn của 18 thẻ TASK lấy theo **ngày commit thật đưa tệp HTML lần đầu vào nhánh** (SV3: 13-10; SV1/SV2: 25-10, kiểm chứng bằng `git log --diff-filter=A`); thẻ quy trình hạn 27-10. Thẻ MERGE/DEPLOY/SCREENS mang merge hash thật nên mở ngược được trên GitHub.
 
 ### 5.2 Nhánh, commit, PR (7.2 — 0.45đ)
 
@@ -263,13 +263,13 @@ Board **<https://trello.com/b/N2HBpswf>** dựng ngày 26-10-2026, `permissionLe
 | `feature/sv3-admin-screens` → `dev` (PR #1) | `8eb9f51` | 4 tệp `.md` |
 | `dev` → `main` (PR #5) | `da3131b` | 0 |
 | `.nojekyll` cho Pages | `3e14704` | — |
-| `dev` → `main` (PR #6, **đang chờ Approve**) | chưa có merge commit | 0 — `mergeable_state: clean` |
+| `dev` → `main` (PR #6, **APPROVED 09:37 rồi Merge 10:01 ngày 27-10**) | `3eb8e53` | 0 |
 
 Toàn bộ 6 lượt xung đột đều ở tệp `.md`, **0 xung đột mã nguồn** — gộp nhánh là quyết định quản trị chứ không phải rủi ro kỹ thuật. Cách xử lý: `README.md`/`team-assignment.md` lấy bản đủ 15 mục rồi nối lại ô của từng người và **sửa hai ô sai sự thật** (rút "AI Brief Summarizer" khỏi ô SV2 vì mã không có; thêm dòng AI-1 cho trợ lý trang đăng nhập); `screen-inventory.md` dệt theo ô, **tên tệp video chưa tồn tại bị bỏ ra** thay vì giữ làm minh chứng ảo; `sv1-assignment.md`/`sv2-assignment.md` giữ nguyên bản của chính người phụ trách.
 
-**Commit:** 176 commit trên `main` (167 không-merge + 9 merge). **59/167 = 35%** đúng Conventional Commits — theo người: SV3 **49/100**, SV2 **10/44**, SV1 **0/23**. Phần lớn commit lệch chuẩn là thông điệp tự sinh của trình soạn thảo web GitHub (`Update README.md`…). Từ 25-10 các commit mã nguồn đã theo chuẩn (`docs(admin):`, `fix(queue):`, `feat(error-pages):`, `style(pages):`).
+**Commit:** 184 commit trên `main` (174 không-merge + 10 merge). **66/174 = 38%** đúng Conventional Commits — theo người: SV3 **56/107**, SV2 **10/44**, SV1 **0/23**. Phần lớn commit lệch chuẩn là thông điệp tự sinh của trình soạn thảo web GitHub (`Update README.md`…). Từ 25-10 các commit mã nguồn đã theo chuẩn (`docs(admin):`, `fix(queue):`, `feat(error-pages):`, `style(pages):`).
 
-**Phân bố theo ngày** (gồm cả merge commit): 3/10: 16 · 4/10: 11 · 6/10: 2 · 10/10: 1 · 11/10: 2 · 12/10: 3 · 13/10: 8 · 24/10: 4 · 25/10: 37 · 26/10: 84 · 27/10: 8 → hoạt động ở **ba tuần khác nhau**, không rơi vào gạch −0.45đ ("toàn bộ code trong 1–2 commit đêm cuối"); khoảng trống 14→23/10 không có commit nào, và đồ thị sẽ dốc ở ba ngày cuối — nhóm nói trước điều này thay vì chờ người chấm phát hiện.
+**Phân bố theo ngày** (gồm cả merge commit): 3/10: 16 · 4/10: 11 · 6/10: 2 · 10/10: 1 · 11/10: 2 · 12/10: 3 · 13/10: 8 · 24/10: 4 · 25/10: 37 · 26/10: 84 · 27/10: 16 → hoạt động ở **ba tuần khác nhau**, không rơi vào gạch −0.45đ ("toàn bộ code trong 1–2 commit đêm cuối"); khoảng trống 14→23/10 không có commit nào, và đồ thị sẽ dốc ở ba ngày cuối — nhóm nói trước điều này thay vì chờ người chấm phát hiện.
 
 **Peer review — trạng thái thật, đọc bằng `GET /pulls/N/reviews`:**
 
@@ -279,10 +279,10 @@ Toàn bộ 6 lượt xung đột đều ở tệp `.md`, **0 xung đột mã ngu
 | #2 | mã SV2 → `dev` | `NguyenDinhQuangMinh` **COMMENTED** (2 inline) · issue comment của SV1 và SV2 |
 | #3 | mã SV1 → `dev` | `NguyenDinhQuangMinh` **COMMENTED** (đã đọc 45 tệp, 2 inline) · `hungxuan0411-cloud` COMMENTED (tự review mình) |
 | #5 | `dev` → `main` | **không có review** (gắn `requested_reviewers` lúc PR đã merge thì API trả 404, không mời được) |
-| #6 | `dev` → `main`, mở 02:42 ngày 27-10 | **đang chờ** — PR còn mở nên `requested_reviewers` accepted (HTTP 201): `hungxuan0411-cloud`, `minhd2577-droi` |
+| #6 | `dev` → `main`, mở 02:42, **APPROVED 09:37, Merge 10:01 ngày 27-10** | **`hungxuan0411-cloud` — APPROVED** (0 inline comment, 0 issue comment — lượt APPROVED duy nhất của thành viên khác trong repo); `minhd2577-droi` được mời lúc PR còn mở (HTTP 201) nhưng không gửi review. Cùng bạn này bấm Merge ⇒ `3eb8e53` |
 | #4 | `docs/sv1-sync` → `feature/sv3-admin-screens` | vẫn **mở**, 0 review, **sai base**; nội dung đã vào nhánh SV3 ⇒ chỉ cần đóng |
 
-**Repo chưa có lượt review nào ở trạng thái APPROVED.** Mọi PR phân hệ đều có nhận xét của người khác trước khi gộp, nhưng khi Vấn đáp phải mở đúng trang review từng PR và nói đúng sự thật — tuyệt đối không nói "đã được approve". Cửa duy nhất còn lại đã được mở: **PR #6 `dev` → `main`** (02:42 ngày 27-10, `mergeable_state: clean`, đã mời cả SV1 lẫn SV2 làm reviewer). Sáng 27-10 chỉ cần **một người bấm Approve rồi Merge**. Toàn bộ diff của PR #6 nằm trong **13 tệp** (`GET /pulls/6/files`), không vượt ra ngoài những gì bản báo cáo này nói tới: **10 tệp `.md`** (gồm cả tệp bạn đang đọc, `docs/final-report.md`) và **3 tệp thuộc màn do SV3 giữ** — `KiemDuyetVaQuanTri/GopTrang.html` đổi `<aside>` sidebar thành `<header>` cho đủ thẻ ngữ nghĩa, `index.html` sửa khối ghi chú chạy thử sang trạng thái đã deploy, `js/error-pages.js` bỏ tham số `?from=` trên link đăng nhập của trang 403 (trang đăng nhập chưa hỗ trợ chuyển hướng ngược lại) và thêm dòng "Cách quay lại" thẳng thắn. **Không luồng nghiệp vụ nào bị đổi.** Cho tới lúc gộp, mọi con số quy trình trong báo cáo chốt ở `main = da3131b` — kiểm chứng bằng `GET /contents/docs/final-report.md?ref=main` trả **404**, còn `?ref=dev` trả 200: báo cáo chỉ hiện trên `main` và trên bản Pages sau khi PR #6 được gộp.
+**Repo đã có một lượt review APPROVED của thành viên khác trước khi merge.** Từ 10:01 ngày 27-10-2026, `GET /pulls/6/reviews` trả về `hungxuan0411-cloud` với `state = "APPROVED"`, `submitted_at = 2026-10-27T02:37:02Z` (09:37 giờ VN); chính tài khoản đó bấm Merge 24 phút sau (10:01), sinh merge commit `3eb8e53` đưa `dev` về `main`. Phát ngôn khi Vấn đáp phải đúng từng mức: **PR #6 là APPROVED; PR #1/#2/#3 chỉ có nhận xét (COMMENTED/DISMISSED) chứ không có approve; PR #5 gộp `dev` → `main` lượt đầu tiên không có review nào** (xin gắn `requested_reviewers` lúc PR đã merge thì API trả 404, không mời được ai — không bịa bằng chứng cho PR này). Không nói chung chung "mọi PR đều được approve". Toàn bộ diff của PR #6 đã đo bằng `GET /pulls/6/files`: **13 tệp, +688/−127, 0 file mới ngoài `docs/final-report.md`** — **10 tệp `.md`** (`docs/final-report.md` +441, `docs/barem-audit.md` +159/−56, `docs/task-board.md` +37/−36, `README.md` +20/−14, `KiemDuyetVaQuanTri/docs/screen-inventory.md` +6/−6, `docs/screen-inventory.md` +4/−4, `docs/project-proposal.md` +4/−3, `docs/sv3-assignment.md` +6/−1, `css/README.md` +3/−1, `docs/user-flow.md` +1/−1) và **3 tệp mã thuộc màn do SV3 giữ**: `KiemDuyetVaQuanTri/GopTrang.html` +2/−2 (`<aside class="sidebar">` thành `<header class="sidebar">` và thẻ đóng, để đủ thẻ ngữ nghĩa), `index.html` +3/−2 (khối ghi chú "Chạy thử" báo trạng thái đã deploy thay vì "chưa nằm trên nhánh mặc định"), `js/error-pages.js` +2/−1 (rút `?from=` khỏi link tới màn đăng nhập vì trang đó không đọc tham số, thêm dòng "Cách quay lại"). **Không luồng nghiệp vụ nào bị đổi.** Sau khi gộp, `GET /contents/docs/final-report.md?ref=main` trả **200** và bản Pages `https://nguyendinhquangminh.github.io/cse122-craftlink-team11/docs/final-report.md` trả **200 (44 322 byte)** — báo cáo hợp nhất đã công khai, không còn là tệp chỉ có trên nhánh làm việc.
 
 **Commit trực tiếp trên `main`:** trên đường first-parent có 48 commit không-merge, trong đó **47 chỉ sửa tệp `.md`** (thao tác qua web GitHub) và 1 là `6274151 Initial commit`. **Không có commit nào đưa mã nguồn (HTML/CSS/JS/JSON) thẳng lên `main`** — mã đi đúng chuỗi nhánh tính năng → PR → `dev` → PR #5 → `main`, nên gạch −0.25đ không áp dụng cho sản phẩm. Từ 27-10 mọi thay đổi, kể cả tài liệu, đi qua PR.
 
@@ -334,7 +334,7 @@ Webcam rõ mặt + giọng thật → hiển thị mockup Canva của màn đó 
 
 Demo chung 6 phút theo vòng đời nghiệp vụ: khách tạo brief (STT 3) → nghệ nhân nhận brief và gửi proposal (STT 9–11) → bài đăng vào hàng đợi, AI chấm rủi ro, kiểm duyệt viên duyệt/từ chối (STT 14) → báo cáo vi phạm được phân loại và xử lý (STT 15) → quản trị viên ban hành quy định, khóa danh mục/tài khoản (STT 16–18) → hai màn lỗi 404/403 chứng minh phân quyền. Mỗi sinh viên giải thích **từng dòng mã trong lát cắt dọc của mình** và chịu một **Live Modification 5–10 phút** lấy từ ngân hàng 24 đề. SV3 đã chuẩn bị cho màn 14/16/18; **cả ba chưa tập together** — checklist mục 20 là việc bắt buộc của người, không đo hộ được.
 
-**Sáu tab phải mở sẵn khi vào bàn chấm:** ① bản deploy, ② `index.html` chạy local bằng máy chủ tĩnh (`python -m http.server 8000` → `http://localhost:8000`; **không mở bằng `file://`** vì `fetch()` bị chặn), ③ Canva ở quyền xem công khai, ④ board Trello, ⑤ GitHub (PR #1/#2/#3/#5 + **PR #6 đang chờ Approve** + Insights → Networks chứng minh ba người cùng commit), ⑥ `videos/README.md` với 9 link đã mở sẵn — kèm VS Code và Terminal để gõ `git diff` khi được yêu cầu.
+**Sáu tab phải mở sẵn khi vào bàn chấm:** ① bản deploy, ② `index.html` chạy local bằng máy chủ tĩnh (`python -m http.server 8000` → `http://localhost:8000`; **không mở bằng `file://`** vì `fetch()` bị chặn), ③ Canva ở quyền xem công khai, ④ board Trello, ⑤ GitHub: trang review **PR #6** để chỉ đúng lượt APPROVED của `hungxuan0411-cloud` (09:37 → Merge 10:01) rồi PR #1/#2/#3/#5 và Insights → Networks chứng minh ba người cùng commit, ⑥ `videos/README.md` với 9 link đã mở sẵn — kèm VS Code và Terminal để gõ `git diff` khi được yêu cầu.
 
 ---
 
@@ -345,7 +345,7 @@ Demo chung 6 phút theo vòng đời nghiệp vụ: khách tạo brief (STT 3) �
 | ĐK | Yêu cầu | Bằng chứng | Trạng thái |
 |---|---|---|---|
 | ĐK1 | Kiểm kê màn hình + User Flow + Figma/Canva | `screen-inventory.md` 18 dòng × 12 cột, `user-flow.md`, `component-guide.md`, 5 link Canva | **Đạt về tài liệu**; 5 link Canva **chưa mở quyền xem công khai** |
-| ĐK2 | Repo công khai, `main`/`dev`/`feature/*`, commit và PR từ 3 người | `private = false`; commit không-merge SV3 100 · SV2 44 · SV1 23; PR #1/#2/#3 merged | **Đạt**; thiếu `fix/*` (không bắt buộc), PR #4 cần đóng |
+| ĐK2 | Repo công khai, `main`/`dev`/`feature/*`, commit và PR từ 3 người | `private = false`; commit không-merge SV3 107 · SV2 44 · SV1 23; PR #1/#2/#3/#5/#6 merged | **Đạt**; thiếu `fix/*` (không bắt buộc), PR #4 cần đóng |
 | ĐK3 | Triển khai công khai + hướng dẫn chạy cục bộ | URL Pages `status = built`, `custom_404 = true`, `.nojekyll`; README mục 6 và 12 | **Đạt** |
 | ĐK4 | Video OBS 1:1 với màn hình độc lập, có webcam + giọng | 9/9 link đã dán, tên tệp đúng chuẩn `SVx-XX-screen-name.mp4` | **Đạt về số lượng, lệch về ánh xạ** (6 dòng Maker) |
 | ĐK5 | `docs/ai-usage-report.md` khai trung thực | SV3 mục 1–2, SV1 mục 3.1, SV2 mục 3.2 (chuyển từ báo cáo phân hệ) | **Đạt**, còn thiếu số phiên bản công cụ |
@@ -360,12 +360,13 @@ Demo chung 6 phút theo vòng đời nghiệp vụ: khách tạo brief (STT 3) �
 | VP-07 Khai AI không trung thực | −1.00 | **Rủi ro thấp** — cả ba đều có khai; hai khoảng trống đã tự nêu ở mục 4.4 |
 | VP-03 Kiểm kê trước code | −1.00 | **Không vi phạm** — `screen-inventory.md` vào repo 4/10, màn thật bắt đầu 13/10 |
 | VP-04 Sao chép trang | −1.00 | **Không vi phạm** — ba phân hệ có cấu trúc/CSS/JS riêng |
-| VP-05 Commit dồn một đêm | −1.00 | **Không vi phạm** — 176 commit / 9 merge, trải ở ba tuần |
+| VP-05 Commit dồn một đêm | −1.00 | **Không vi phạm** — 184 commit (174 không-merge + 10 merge), trải ở ba tuần |
 
 ### 7.3 Checklist 20 mục (mục X.2) — rút gọn
 
 **Đã đo và đạt:** 1 (kiểm kê 18 dòng), 5 (alt/nhãn — còn 6 trang thiếu thẻ bao), 6 (responsive 145 phép đo), 7 (Tab/Esc trên màn SV3), 9 (15–25 bản ghi), 10 (tìm + lọc + sắp), 11 (CRUD sống sau F5), 12 (4 trạng thái), 13 (AI 6 bước), 14 (AI failure), 15 (board công khai), 18 (README 15 mục + khai AI).
-**Một phần / chưa đạt, cần người quyết:** **2** quyền xem Canva · **3** tên tệp theo chuẩn (`forgot password.html`) · **4** **Role Switcher giữa ba phân hệ — 0/29 trang có** · **8** bảng token chung — **11 tệp tự khai hex trong `:root`, 0 màu chung** · **16** một lượt APPROVED thật — **PR #6 đã mở và chờ một người bấm Approve** · **17** ánh xạ video dòng 7–12 · **19** 7 liên kết 404 của SV1/SV2 · **20** tập demo chung.
+**Đã đạt sau lượt gộp 27-10:** **16** peer review — **PR #6 có lượt APPROVED của `hungxuan0411-cloud` lúc 09:37 trước khi Merge lúc 10:01**, báo cáo này đã lên `main` và bản Pages.
+**Một phần / chưa đạt, cần người quyết:** **2** quyền xem Canva · **3** tên tệp theo chuẩn (`forgot password.html`) · **4** **Role Switcher giữa ba phân hệ — 0/29 trang có** · **8** bảng token chung — **11 tệp tự khai hex trong `:root`, 0 màu chung** · **17** ánh xạ video dòng 7–12 · **19** 7 liên kết 404 của SV1/SV2 · **20** tập demo chung.
 Bảng đầy đủ từng dòng kèm số đo: `docs/barem-audit.md` mục 9.
 
 ---
@@ -386,7 +387,7 @@ Bảng đầy đủ từng dòng kèm số đo: `docs/barem-audit.md` mục 9.
 
 | Ai | Việc |
 |---|---|
-| **Cả nhóm** | **Sáng 27-10: một người (SV1 hoặc SV2) bấm Approve PR #6 rồi Merge** để có bằng chứng peer review ở trạng thái APPROVED và để báo cáo này xuất hiện trên `main` + bản Pages; mở 5 link Canva bằng cửa sổ ẩn danh và đổi sang "Bất kỳ ai có liên kết đều xem được"; vẽ trang Component Guide vào Canva; đóng PR #4; **tập demo 6 phút + ≥3 đề Live Modification** |
+| **Cả nhóm** | **Đã xong sáng 27-10:** `hungxuan0411-cloud` Approve PR #6 lúc 09:37 rồi Merge lúc 10:01 → `origin/main` = `3eb8e53`, báo cáo này đã lên `main` và bản Pages. **Còn lại:** mở 5 link Canva bằng cửa sổ ẩn danh và đổi sang "Bất kỳ ai có liên kết đều xem được"; vẽ trang Component Guide vào Canva; đóng PR #4; **tập demo 6 phút + ≥3 đề Live Modification** |
 | **SV1** | Sửa 3 tham chiếu hỏng ở mục 5.3 và đổi tên `forgot password.html` + `css/forgot passwork.css`; thêm `min-width:0` cho hai trang tràn 320 px; quyết định gộp/xoá `docs/ai-usage -report.md` và `video.md`; xác nhận ánh xạ 3 video "4/7/9"; bổ sung phiên bản công cụ AI; tự sửa `docs/sv1-assignment.md` dòng 23 |
 | **SV2** | Xác nhận mục 3.2 `docs/ai-usage-report.md`; sửa 4 liên kết `forgot-password.html` (3 HTML + `02-dang-ky/js/main.js:199`) và ảnh `forgot-hero.png`; thêm `<header>/<nav>/<main>/<footer>` cho 6 trang và bỏ `<h1>` thứ hai ở `02-dang-ky/index.html`; chốt hướng xử lý video cho dòng 7–12 |
 | **SV3** | Không còn việc trên Git/GitHub; giữ phần kỹ thuật trình bày (mục 6.3) và làm tệp `js/role-switcher.js` dùng chung nếu còn giờ |
@@ -397,10 +398,10 @@ Bảng đầy đủ từng dòng kèm số đo: `docs/barem-audit.md` mục 9.
 
 ```bash
 # Lịch sử và chuẩn commit
-git log --oneline origin/main | wc -l                    # 176
-git log --no-merges --format=%s origin/main | wc -l      # 167 commit không-merge
+git log --oneline origin/main | wc -l                    # 184
+git log --no-merges --format=%s origin/main | wc -l      # 174 commit không-merge
 git log --no-merges --format=%s origin/main \
-  | grep -cE '^(feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert)(\(.+\))?!?: '   # 59 = 35%
+  | grep -cE '^(feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert)(\(.+\))?!?: '   # 66 = 38%
 
 # Commit trực tiếp trên main: liệt kê tệp KHÔNG phải .md trên đường first-parent
 git log --first-parent --no-merges --format=%H origin/main | while read h; do
@@ -430,7 +431,7 @@ Responsive và quét ngữ nghĩa đo bằng iframe cùng nguồn trên chính U
 |---|---|
 | Bản deploy | <https://nguyendinhquangminh.github.io/cse122-craftlink-team11/> |
 | Repository | <https://github.com/NguyenDinhQuangMinh/cse122-craftlink-team11> |
-| Pull requests | <https://github.com/NguyenDinhQuangMinh/cse122-craftlink-team11/pull/6> (**đang mở**, `dev` → `main`) · đã gộp: #1 `8eb9f51`, #2 `a5a51e6`, #3 `ec74e6b`, #5 `da3131b` · còn mở nhưng sai base: #4 |
+| Pull requests | <https://github.com/NguyenDinhQuangMinh/cse122-craftlink-team11/pull/6> (**đã gộp 27-10 lúc 10:01 sau lượt APPROVED 09:37**, `dev` → `main`, `3eb8e53`) · đã gộp trước đó: #1 `8eb9f51`, #2 `a5a51e6`, #3 `ec74e6b`, #5 `da3131b` · còn mở nhưng sai base: #4 |
 | Board công việc | <https://trello.com/b/N2HBpswf> |
 | Canva — Khách hàng (SV1) | <https://www.canva.com/design/DAHZAR9VxmU/dQQiBQ9-OPRH6Q5x8DdAkw/edit> (bản cũ `DAHWyBVvS6U` — SV1 cần chốt một link) |
 | Canva — Người bán (SV2) | <https://canva.link/rvxflfz5kgg0rg1> |

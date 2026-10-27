@@ -53,7 +53,7 @@ Các trường sau chưa thể được xác nhận chỉ bằng mã hiện có;
 - Bảng kiểm kê hợp nhất: đã có `docs/screen-inventory.md` đủ 18 dòng với đường dẫn tệp thật.
 - Link triển khai đang hoạt động: **có từ 27-10-2026** — <https://nguyendinhquangminh.github.io/cse122-craftlink-team11/> (GitHub Pages, nhánh `main`, `.nojekyll` ở gốc repo).
 - Ảnh/clip kiểm tra trên desktop, tablet, mobile: **chưa lưu vào repo**; kết quả đo responsive 320/375/768/1280 px chỉ được ghi bằng số trong `docs/barem-audit.md` mục 6.3 và `README.md` mục 12.
-- Người review cho từng pull request: **đã có ý kiến của người khác trước khi gộp** — PR #1 có review `DISMISSED` của `minhd2577-droi` (2 inline) và 1 issue comment của `hungxuan0411-cloud`; **không có review APPROVED nào**, chi tiết ở `docs/barem-audit.md` mục 3.2.
+- Người review cho từng pull request: **đã có ý kiến của người khác trước khi gộp** — PR #1 có review `DISMISSED` của `minhd2577-droi` (2 inline) và 1 issue comment của `hungxuan0411-cloud`; **lượt review APPROVED thật đầu tiên là PR #6** — `hungxuan0411-cloud` duyệt lúc 09:37 rồi tự Merge lúc 10:01 ngày 27-10 (`3eb8e53`), chi tiết ở `docs/barem-audit.md` mục 3.2.
 - Giao diện 6.1 phía người mua: thuộc SV1, chưa nối vào nút nhập nhu cầu (`grep` trong `KiemDuyetVaQuanTri/` không có liên kết nào trỏ sang `KhachHang/`).
 
 Không điền giá trị giả cho những trường này.
