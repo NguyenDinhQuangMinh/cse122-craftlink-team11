@@ -104,6 +104,27 @@
     </main>
 
     <script>
+      (() => {
+        let session = null;
+        for (const store of [window.localStorage, window.sessionStorage]) {
+          try {
+            const value = store.getItem("cl_session");
+            if (value) session = JSON.parse(value);
+            if (session) break;
+          } catch {
+            session = null;
+          }
+        }
+        if (!session || !session.role) return;
+        if (session.role === "admin") return;
+        const marker = location.href.indexOf("/KiemDuyetVaQuanTri/");
+        const root = marker > -1 ? location.href.slice(0, marker + 1) : new URL("../", location.href).href;
+        const target = new URL("403.html", root);
+        target.searchParams.set("need", "admin");
+        target.searchParams.set("screen", location.pathname);
+        location.replace(target.href);
+      })();
+
       const pages = {
         dashboard: "01-dashboard",
         categories: "02-category-management",

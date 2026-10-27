@@ -246,7 +246,7 @@ button {
 }
 
 .forgot-main {
-  --hero: url("../img/forgot-hero.png");
+  --hero: url("../img/hero-login.png");
 }
 
 .auth-main::before {
