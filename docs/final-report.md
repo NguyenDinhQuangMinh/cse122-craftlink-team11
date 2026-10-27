@@ -5,6 +5,8 @@
 
 Tệp này gộp toàn bộ nội dung báo cáo của nhóm vào một chỗ, theo đúng thứ tự chấm của *Barem Chấm Điểm & Quy Chế Vấn Đáp BTL* (45 trang). Mỗi con số dưới đây **đo từ `git`, GitHub REST API, HTTP thật trên URL công khai hoặc từ trình duyệt**, không phải ước lượng; lệnh để tái lập ở Phụ lục A. Chi tiết từng phép đo và đường dẫn tệp: `docs/barem-audit.md`.
 
+> **Cập nhật 27-10-2026 sau hotfix `960a548`.** PR #6 đã được `hungxuan0411-cloud` **APPROVED** lúc 02:37 UTC (09:37 VN) và gộp vào `main` lúc 03:01 UTC (10:01 VN) với merge commit `3eb8e53`. Ngay sau đó nhóm sửa một loạt lỗi trong commit **`960a548`** (12 tệp, +62/−20): chuyển hướng sau đăng nhập cho cả ba vai, sửa trang quên mật khẩu thành bản demo chạy được, sửa toàn bộ đường dẫn ảnh/CSS hỏng, thêm guard vai trò cho `GopTrang.html` và cập nhật câu chữ trang 403. Commit này được **push thẳng lên `main`, không qua PR** — khác quy trình các PR trước; đây là ngoại lệ có chủ đích của nhóm trong phiên sửa lỗi, ghi lại để không khai sai khi Vấn đáp. Các mục 3.3, 5.2, 7.3 và 8 dưới đây đã cập nhật theo trạng thái mới; số đo 176 commit là mốc trước PR #6, còn HEAD `960a548` có **185 commit** (GitHub REST API, 27-10-2026).
+
 ---
 
 ## 0. Thông tin định danh
@@ -12,11 +14,11 @@ Tệp này gộp toàn bộ nội dung báo cáo của nhóm vào một chỗ, t
 | Hạng mục | Giá trị thật |
 |---|---|
 | Repository (công khai) | <https://github.com/NguyenDinhQuangMinh/cse122-craftlink-team11> |
-| Nhánh mặc định | `main` = `da3131b` (merge PR #5 từ `dev`); `dev` là nhánh làm việc đã push lên GitHub, **chờ PR #6** gộp về `main` |
+| Nhánh mặc định | `main = 960a548` (hotfix sau merge PR #6 = `3eb8e53`); `dev` đã gộp vào `main` qua PR #6 nhưng hiện **chậm hơn `main` 3 commit** (thiếu hotfix) — cần fast-forward trước khi làm tiếp |
 | Nhánh làm việc | `dev`, `feature/sv1-buyer`, `feature/sv2-maker-screens`, `feature/sv3-admin-screens`, `docs/sv1-sync` |
 | Bản deploy | GitHub Pages, *Deploy from a branch* → `main` / thư mục gốc, `status = built`, `custom_404 = true`, kèm `.nojekyll` (`3e14704`) |
 | Bảng công việc | <https://trello.com/b/N2HBpswf> — `permissionLevel = "public"`, 5 cột, 29 thẻ |
-| Lịch sử | **176 commit** trên `main` (167 không-merge + 9 merge), hoạt động ở **11 ngày thuộc 3 tuần** |
+| Lịch sử | **185 commit** trên `main` tại `960a548` (176 là mốc trước PR #6), hoạt động ở **11 ngày thuộc 3 tuần** |
 | Sản phẩm | **29 tệp HTML**, **8 tính năng AI**, **5 bộ dữ liệu JSON** (15–20 bản ghi) |
 | Video | **9 link YouTube** (3 sinh viên × 3 video), tệp gốc `.mp4` nằm trên máy từng người |
 
@@ -184,7 +186,7 @@ Hai trang còn lỗi đều thuộc SV1 và chỉ hỏng ở một cỡ. *Ghi ch
 
 | Kiểm tra | Kết quả |
 |---|---|
-| Quét mẫu dò khóa (`sk-`, `AIza`, `ghp_`, `AKIA`, `Bearer …`) trên **198 tệp được Git theo dõi** | **0 khớp**. `.env.example` chỉ khai tên biến, giá trị rỗng; khóa thật ở biến môi trường máy chủ |
+| Quét mẫu dò khóa (`sk-`, `AIza`, `ghp_`, `AKIA`, `Bearer …`) trên **200 tệp được Git theo dõi** | **0 khớp**. `.env.example` chỉ khai tên biến, giá trị rỗng; khóa thật ở biến môi trường máy chủ |
 | XSS: nhập `<img src=x onerror=alert(1)>` | **Không có lỗi.** 7 chỗ `innerHTML` của SV3 đi qua `esc()`; SV1/SV2 dùng `escapeHtml`; hai trang lỗi ghi mọi dữ liệu lấy từ URL bằng `textContent` |
 | Tệp nặng / rác repo | 0 tệp `.mp4` được theo dõi; 0 chuỗi chữ giả trong `*.html`, `*.js`, `*.json` |
 
@@ -244,9 +246,9 @@ Board **<https://trello.com/b/N2HBpswf>** dựng ngày 26-10-2026, `permissionLe
 
 | Cột | Thẻ | Nội dung |
 |---|---:|---|
-| Backlog | 6 | 2× FIX (liên kết chết) · 2× DOCS (khai AI, quyền Canva) · VIDEO của SV1 · SWITCHER |
+| Backlog | 6 | 2× FIX (liên kết chết — phần của SV1 đã xong trong `960a548`, thẻ chưa chuyển) · 2× DOCS (khai AI, quyền Canva) · VIDEO của SV1 · SWITCHER |
 | Đang làm | 0 | Toàn bộ phần SV3 đã gộp xong |
-| Chờ review | 1 | **REVIEW · chờ Approve PR #6** (`dev` → `main`), chuyển từ Backlog sang ngay sau khi mở PR |
+| Chờ review | 1 | **REVIEW** — PR #6 đo tại thời điểm này đang chờ; sau đó đã được Approve và gộp (`3eb8e53`), thẻ Trello cần được chuyển sang "Đã gộp" |
 | Đã gộp | 19 | 15 thẻ TASK + SCREENS + MERGE + DEPLOY + VIDEO·SV2 |
 | Video & bảo vệ | 3 | TASK-14, 16, 18 (SV3 — đã có link video, chờ vòng bảo vệ) |
 
@@ -263,13 +265,14 @@ Board **<https://trello.com/b/N2HBpswf>** dựng ngày 26-10-2026, `permissionLe
 | `feature/sv3-admin-screens` → `dev` (PR #1) | `8eb9f51` | 4 tệp `.md` |
 | `dev` → `main` (PR #5) | `da3131b` | 0 |
 | `.nojekyll` cho Pages | `3e14704` | — |
-| `dev` → `main` (PR #6, **đang chờ Approve**) | chưa có merge commit | 0 — `mergeable_state: clean` |
+| `dev` → `main` (PR #6) | `3eb8e53` | 0 |
+| Hotfix sau gộp — sửa redirect, trang quên mật khẩu, ảnh/CSS, guard `GopTrang` | `960a548` (push thẳng `main`, không qua PR) | — |
 
 Toàn bộ 6 lượt xung đột đều ở tệp `.md`, **0 xung đột mã nguồn** — gộp nhánh là quyết định quản trị chứ không phải rủi ro kỹ thuật. Cách xử lý: `README.md`/`team-assignment.md` lấy bản đủ 15 mục rồi nối lại ô của từng người và **sửa hai ô sai sự thật** (rút "AI Brief Summarizer" khỏi ô SV2 vì mã không có; thêm dòng AI-1 cho trợ lý trang đăng nhập); `screen-inventory.md` dệt theo ô, **tên tệp video chưa tồn tại bị bỏ ra** thay vì giữ làm minh chứng ảo; `sv1-assignment.md`/`sv2-assignment.md` giữ nguyên bản của chính người phụ trách.
 
-**Commit:** 176 commit trên `main` (167 không-merge + 9 merge). **59/167 = 35%** đúng Conventional Commits — theo người: SV3 **49/100**, SV2 **10/44**, SV1 **0/23**. Phần lớn commit lệch chuẩn là thông điệp tự sinh của trình soạn thảo web GitHub (`Update README.md`…). Từ 25-10 các commit mã nguồn đã theo chuẩn (`docs(admin):`, `fix(queue):`, `feat(error-pages):`, `style(pages):`).
+**Commit:** 185 commit trên `main` tại `960a548` (175 không-merge + 10 merge). **66/175 = 38%** đúng Conventional Commits — theo người: SV3 **56/107**, SV2 **10/44**, SV1 **0/24**. Phần lớn commit lệch chuẩn là thông điệp tự sinh của trình soạn thảo web GitHub (`Update README.md`…) và các commit tài liệu của SV1/SV2. Từ 25-10 các commit mã nguồn đã theo chuẩn (`docs(admin):`, `fix(queue):`, `feat(error-pages):`, `style(pages):`); riêng hotfix `960a548` viết theo câu lệnh thường, **không** theo Conventional Commits — khai đúng như vậy thay vì sửa lịch sử đã push.
 
-**Phân bố theo ngày** (gồm cả merge commit): 3/10: 16 · 4/10: 11 · 6/10: 2 · 10/10: 1 · 11/10: 2 · 12/10: 3 · 13/10: 8 · 24/10: 4 · 25/10: 37 · 26/10: 84 · 27/10: 8 → hoạt động ở **ba tuần khác nhau**, không rơi vào gạch −0.45đ ("toàn bộ code trong 1–2 commit đêm cuối"); khoảng trống 14→23/10 không có commit nào, và đồ thị sẽ dốc ở ba ngày cuối — nhóm nói trước điều này thay vì chờ người chấm phát hiện.
+**Phân bố theo ngày** (ngày tác giả commit, gồm cả merge commit — số đo bằng `GET /commits?sha=main`): 3/10: 16 · 4/10: 11 · 6/10: 2 · 10/10: 1 · 11/10: 2 · 12/10: 3 · 13/10: 8 · 24/10: 13 · 25/10: 36 · 26/10: 91 · 27/10: 2 → hoạt động ở **ba tuần khác nhau**, không rơi vào gạch −0.45đ ("toàn bộ code trong 1–2 commit đêm cuối"); khoảng trống 14→23/10 không có commit nào, và đồ thị sẽ dốc ở ba ngày cuối — nhóm nói trước điều này thay vì chờ người chấm phát hiện.
 
 **Peer review — trạng thái thật, đọc bằng `GET /pulls/N/reviews`:**
 
@@ -279,12 +282,14 @@ Toàn bộ 6 lượt xung đột đều ở tệp `.md`, **0 xung đột mã ngu
 | #2 | mã SV2 → `dev` | `NguyenDinhQuangMinh` **COMMENTED** (2 inline) · issue comment của SV1 và SV2 |
 | #3 | mã SV1 → `dev` | `NguyenDinhQuangMinh` **COMMENTED** (đã đọc 45 tệp, 2 inline) · `hungxuan0411-cloud` COMMENTED (tự review mình) |
 | #5 | `dev` → `main` | **không có review** (gắn `requested_reviewers` lúc PR đã merge thì API trả 404, không mời được) |
-| #6 | `dev` → `main`, mở 02:42 ngày 27-10 | **đang chờ** — PR còn mở nên `requested_reviewers` accepted (HTTP 201): `hungxuan0411-cloud`, `minhd2577-droi` |
+| #6 | `dev` → `main`, mở 02:42 ngày 27-10 | **APPROVED** bởi `hungxuan0411-cloud` lúc 02:37 UTC (09:37 VN); gộp lúc 03:01 UTC (10:01 VN), merge commit `3eb8e53` |
 | #4 | `docs/sv1-sync` → `feature/sv3-admin-screens` | vẫn **mở**, 0 review, **sai base**; nội dung đã vào nhánh SV3 ⇒ chỉ cần đóng |
 
-**Repo chưa có lượt review nào ở trạng thái APPROVED.** Mọi PR phân hệ đều có nhận xét của người khác trước khi gộp, nhưng khi Vấn đáp phải mở đúng trang review từng PR và nói đúng sự thật — tuyệt đối không nói "đã được approve". Cửa duy nhất còn lại đã được mở: **PR #6 `dev` → `main`** (02:42 ngày 27-10, `mergeable_state: clean`, đã mời cả SV1 lẫn SV2 làm reviewer). Sáng 27-10 chỉ cần **một người bấm Approve rồi Merge**. Toàn bộ diff của PR #6 nằm trong **13 tệp** (`GET /pulls/6/files`), không vượt ra ngoài những gì bản báo cáo này nói tới: **10 tệp `.md`** (gồm cả tệp bạn đang đọc, `docs/final-report.md`) và **3 tệp thuộc màn do SV3 giữ** — `KiemDuyetVaQuanTri/GopTrang.html` đổi `<aside>` sidebar thành `<header>` cho đủ thẻ ngữ nghĩa, `index.html` sửa khối ghi chú chạy thử sang trạng thái đã deploy, `js/error-pages.js` bỏ tham số `?from=` trên link đăng nhập của trang 403 (trang đăng nhập chưa hỗ trợ chuyển hướng ngược lại) và thêm dòng "Cách quay lại" thẳng thắn. **Không luồng nghiệp vụ nào bị đổi.** Cho tới lúc gộp, mọi con số quy trình trong báo cáo chốt ở `main = da3131b` — kiểm chứng bằng `GET /contents/docs/final-report.md?ref=main` trả **404**, còn `?ref=dev` trả 200: báo cáo chỉ hiện trên `main` và trên bản Pages sau khi PR #6 được gộp.
+**Repo đã có lượt review APPROVED đầu tiên.** PR #6 được `hungxuan0411-cloud` **APPROVED** lúc 02:37 UTC (09:37 VN) và gộp lúc 03:01 UTC (10:01 VN), merge commit `3eb8e53`. Ba PR phân hệ trước đó chỉ có nhận xét COMMENTED (PR #1 có một review DISMISSED), nên khi Vấn đáp vẫn phải mở đúng trang review từng PR và nói đúng: #1/#2/#3 không có APPROVED, #5 không có review, **#6 mới có APPROVED**. PR #4 vẫn mở, sai base, 0 review — cần đóng. Diff của PR #6 nằm trong **13 tệp** (`GET /pulls/6/files`): 10 tệp `.md` và 3 tệp thuộc SV3 (`GopTrang.html`, `index.html`, `js/error-pages.js`); không luồng nghiệp vụ nào bị đổi.
 
-**Commit trực tiếp trên `main`:** trên đường first-parent có 48 commit không-merge, trong đó **47 chỉ sửa tệp `.md`** (thao tác qua web GitHub) và 1 là `6274151 Initial commit`. **Không có commit nào đưa mã nguồn (HTML/CSS/JS/JSON) thẳng lên `main`** — mã đi đúng chuỗi nhánh tính năng → PR → `dev` → PR #5 → `main`, nên gạch −0.25đ không áp dụng cho sản phẩm. Từ 27-10 mọi thay đổi, kể cả tài liệu, đi qua PR.
+**Hotfix sau gộp.** Ngay sau PR #6, nhóm push thẳng lên `main` commit **`960a548`** (12 tệp, +62/−20, **không qua PR**): chuyển hướng sau đăng nhập cho cả ba vai; 3 trang đăng nhập trỏ về trang quên mật khẩu chạy được; trang quên mật khẩu bỏ 3 script chết, sửa href CSS, dùng ảnh `hero-login.png` và ghi rõ là demo không gửi email; sửa 3 đường dẫn ảnh hero trong CSS; thêm guard vai trò cho `GopTrang.html`; cập nhật câu "Cách quay lại" trên trang 403. Đã kiểm trên localhost và bản Pages ngày 27-10: ba vai chuyển đúng trang, phiên `customer` mở `GopTrang` bị đẩy sang 403, AI dự phòng vẫn chạy, **29/29 trang HTML trả 200**. Việc push thẳng là ngoại lệ quy trình, đã ghi ở đầu báo cáo. Hệ quả cần biết: **`dev` đang chậm hơn `main` 3 commit** (`GET /compare/dev...main` → `ahead_by: 3`) — phải fast-forward `dev` lên `main` trước khi ai làm tiếp trên `dev`.
+
+**Commit trực tiếp trên `main`:** mốc trước 27-10, đường first-parent có 48 commit không-merge, trong đó **47 chỉ sửa tệp `.md`** và 1 là `6274151 Initial commit`; **không có mã nguồn nào push thẳng**. Ngày 27-10, sau khi PR #6 gộp, nhóm push thẳng hotfix **`960a548`** (12 tệp) — đây là **commit mã nguồn đầu tiên đi thẳng lên `main`**, một ngoại lệ có chủ đích; không giấu. Về nguyên tắc, gạch −0.25đ "đẩy code trực tiếp lên main không qua nhánh/PR" **có thể áp dụng cho lần này**; các thay đổi tiếp theo nên đi PR để không lặp lại.
 
 ### 5.3 Triển khai và README (7.3 — 0.30đ)
 
@@ -294,17 +299,18 @@ Toàn bộ 6 lượt xung đột đều ở tệp `.md`, **0 xung đột mã ngu
 - Bốn lối vào chạy được: `KhachHang/index.html`, `KhongGianNguoiBan/01-listing-management/index.html`, `KiemDuyetVaQuanTri/01-dashboard/index.html`, `KiemDuyetVaQuanTri/04-moderation-queue/index.html`, `DangNhapVaDangKy/01-dang-nhap/khach-hang.html`.
 - Đường dẫn sai (`/duong-dan-sai`) trả **HTTP 404 kèm đúng `404.html` của nhóm**, không phải trang mặc định của GitHub (`custom_404: true`).
 - Lưu `cl_session` vai `customer` rồi mở hàng đợi kiểm duyệt → chuyển hướng `403.html?need=moderator&screen=…`; ma trận quyền hiển thị, không tràn ngang ở 320 px.
-- Quét **112 tham chiếu cục bộ duy nhất** bằng HTTP thật: **105 trả 200, 7 trả 404**.
+- Quét lại **sau hotfix `960a548`** trên bản Pages ngày 27-10-2026: **29/29 trang HTML trả 200**, **0 tham chiếu HTML/CSS trỏ tệp không tồn tại**. Trong 7 đích 404 đo trước hotfix, **6 đã sửa, 1 còn**.
 
-| Đích 404 trên Pages | Ai nạp | Loại |
-|---|---|---|
-| `DangNhapVaDangKy/01-dang-nhap/forgot-password.html` | 3 trang cổng đăng nhập (SV2) | liên kết chết |
-| `KhachHang/css/forgot passwork.css` | `KhachHang/forgot password.html` (SV1) | CSS 404 |
-| `KhachHang/js/auth-config.js`, `…/auth-service.js` | cùng trang (SV1) | JS 404 |
-| `DangNhapVaDangKy/assets/img/forgot-hero.png` | `DangNhapVaDangKy/assets/css/style.css` (SV2) | ảnh 404 |
-| `KhachHang/assest/img/img of forgot password.png`, `KhachHang/img/hero-login.png` | `KhachHang/css/forgot password.css` (SV1) | ảnh 404 |
+| Đích 404 đo trước hotfix | Ai nạp | Loại | Trạng thái sau `960a548` |
+|---|---|---|---|
+| `DangNhapVaDangKy/01-dang-nhap/forgot-password.html` | 3 trang cổng đăng nhập (SV2) | liên kết chết | **Đã sửa** — trỏ `../../KhachHang/forgot%20password.html` (3 tệp HTML) |
+| cùng đích trên, từ `DangNhapVaDangKy/02-dang-ky/js/main.js:199` | trang đăng ký (SV2) | liên kết chết | **Còn** — mã của SV2, chưa sửa |
+| `KhachHang/css/forgot passwork.css` | `KhachHang/forgot password.html` (SV1) | CSS 404 | **Đã sửa** — href đúng `css/forgot password.css`, tệp có thật |
+| `KhachHang/js/auth-config.js`, `…/auth-service.js` | cùng trang (SV1) | JS 404 | **Đã sửa** — bỏ 3 thẻ script trỏ tệp không tồn tại, thay bằng script demo nội tuyến |
+| `DangNhapVaDangKy/assets/img/forgot-hero.png` | `DangNhapVaDangKy/assets/css/style.css` (SV2) | ảnh 404 | **Đã sửa** — `--hero` trỏ `../img/hero-login.png`, ảnh có thật |
+| `KhachHang/assest/img/img of forgot password.png`, `KhachHang/img/hero-login.png` | `KhachHang/css/forgot password.css` (SV1) | ảnh 404 | **Đã sửa** — cả 3 `url()` trỏ `../assets/images/hero-login.png`; ảnh 3,5 MB đã thêm vào repo |
 
-**0 lỗi thuộc màn của SV3.** Bốn dòng là tài nguyên thật (CSS/JS/ảnh) — đúng câu chế tài "link deploy bị lỗi 404 tài nguyên, −0.15đ" của 7.3 và đúng điều checklist mục 19 cấm; ba thư mục liên quan đều là mã của SV1/SV2 nên người ngoài không sửa thay được. `README.md` đủ **15 mục** chuẩn.
+**Còn đúng một liên kết chết** — `DangNhapVaDangKy/02-dang-ky/js/main.js:199` vẫn trỏ `forgot-password.html`; đây là mã của SV2 nên người ngoài không sửa thay. Sáu lỗi tài nguyên thật (CSS/JS/ảnh) đã hết: đó đúng là câu chế tài "link deploy bị lỗi 404 tài nguyên, −0.15đ" của 7.3 và điều checklist mục 19 cấm, nên việc sửa là bắt buộc chứ không phải làm đẹp. `README.md` đủ **15 mục** chuẩn.
 
 `api/ai.js` nằm trong repo dưới dạng mô-đun Node; GitHub Pages chỉ phục vụ tệp tĩnh nên yêu cầu `/api/ai.js` trả về chính mã nguồn chứ không chạy hàm — trên bản công khai, ba tác vụ AI lùi về bộ quy tắc dự phòng và giao diện vẫn in đúng dòng "Nguồn:". Muốn gọi mô hình thật phải deploy ở nền tảng có runtime và đặt `AI_API_URL`, `AI_API_KEY`, `AI_MODEL` trong biến môi trường.
 
@@ -334,7 +340,7 @@ Webcam rõ mặt + giọng thật → hiển thị mockup Canva của màn đó 
 
 Demo chung 6 phút theo vòng đời nghiệp vụ: khách tạo brief (STT 3) → nghệ nhân nhận brief và gửi proposal (STT 9–11) → bài đăng vào hàng đợi, AI chấm rủi ro, kiểm duyệt viên duyệt/từ chối (STT 14) → báo cáo vi phạm được phân loại và xử lý (STT 15) → quản trị viên ban hành quy định, khóa danh mục/tài khoản (STT 16–18) → hai màn lỗi 404/403 chứng minh phân quyền. Mỗi sinh viên giải thích **từng dòng mã trong lát cắt dọc của mình** và chịu một **Live Modification 5–10 phút** lấy từ ngân hàng 24 đề. SV3 đã chuẩn bị cho màn 14/16/18; **cả ba chưa tập together** — checklist mục 20 là việc bắt buộc của người, không đo hộ được.
 
-**Sáu tab phải mở sẵn khi vào bàn chấm:** ① bản deploy, ② `index.html` chạy local bằng máy chủ tĩnh (`python -m http.server 8000` → `http://localhost:8000`; **không mở bằng `file://`** vì `fetch()` bị chặn), ③ Canva ở quyền xem công khai, ④ board Trello, ⑤ GitHub (PR #1/#2/#3/#5 + **PR #6 đang chờ Approve** + Insights → Networks chứng minh ba người cùng commit), ⑥ `videos/README.md` với 9 link đã mở sẵn — kèm VS Code và Terminal để gõ `git diff` khi được yêu cầu.
+**Sáu tab phải mở sẵn khi vào bàn chấm:** ① bản deploy, ② `index.html` chạy local bằng máy chủ tĩnh (`python -m http.server 8000` → `http://localhost:8000`; **không mở bằng `file://`** vì `fetch()` bị chặn), ③ Canva ở quyền xem công khai, ④ board Trello, ⑤ GitHub (PR #1/#2/#3/#5/**#6 đã Approve và gộp `3eb8e53`** + Insights → Networks chứng minh ba người cùng commit), ⑥ `videos/README.md` với 9 link đã mở sẵn — kèm VS Code và Terminal để gõ `git diff` khi được yêu cầu.
 
 ---
 
@@ -354,18 +360,18 @@ Demo chung 6 phút theo vòng đời nghiệp vụ: khách tạo brief (STT 3) �
 
 | Mã | Mức | Kết quả quét |
 |---|---|---|
-| VP-01 Lộ API key | −1.50 | **Sạch** — 0 khớp trên 198 tệp được theo dõi |
+| VP-01 Lộ API key | −1.50 | **Sạch** — 0 khớp trên 200 tệp được theo dõi |
 | VP-02 XSS | −1.00 | **Không có lỗi** — mọi `innerHTML` đi qua `esc()`/`escapeHtml` |
 | VP-06 Dữ liệu chữ giả | −0.50 | **Sạch trên sản phẩm** — 0 khớp; chuỗi chữ giả chỉ còn trong 2 tệp tài liệu khi trích lại chính barem |
 | VP-07 Khai AI không trung thực | −1.00 | **Rủi ro thấp** — cả ba đều có khai; hai khoảng trống đã tự nêu ở mục 4.4 |
 | VP-03 Kiểm kê trước code | −1.00 | **Không vi phạm** — `screen-inventory.md` vào repo 4/10, màn thật bắt đầu 13/10 |
 | VP-04 Sao chép trang | −1.00 | **Không vi phạm** — ba phân hệ có cấu trúc/CSS/JS riêng |
-| VP-05 Commit dồn một đêm | −1.00 | **Không vi phạm** — 176 commit / 9 merge, trải ở ba tuần |
+| VP-05 Commit dồn một đêm | −1.00 | **Không vi phạm** — 185 commit / 10 merge, trải ở ba tuần |
 
 ### 7.3 Checklist 20 mục (mục X.2) — rút gọn
 
-**Đã đo và đạt:** 1 (kiểm kê 18 dòng), 5 (alt/nhãn — còn 6 trang thiếu thẻ bao), 6 (responsive 145 phép đo), 7 (Tab/Esc trên màn SV3), 9 (15–25 bản ghi), 10 (tìm + lọc + sắp), 11 (CRUD sống sau F5), 12 (4 trạng thái), 13 (AI 6 bước), 14 (AI failure), 15 (board công khai), 18 (README 15 mục + khai AI).
-**Một phần / chưa đạt, cần người quyết:** **2** quyền xem Canva · **3** tên tệp theo chuẩn (`forgot password.html`) · **4** **Role Switcher giữa ba phân hệ — 0/29 trang có** · **8** bảng token chung — **11 tệp tự khai hex trong `:root`, 0 màu chung** · **16** một lượt APPROVED thật — **PR #6 đã mở và chờ một người bấm Approve** · **17** ánh xạ video dòng 7–12 · **19** 7 liên kết 404 của SV1/SV2 · **20** tập demo chung.
+**Đã đo và đạt:** 1 (kiểm kê 18 dòng), 5 (alt/nhãn — còn 6 trang thiếu thẻ bao), 6 (responsive 145 phép đo), 7 (Tab/Esc trên màn SV3), 9 (15–25 bản ghi), 10 (tìm + lọc + sắp), 11 (CRUD sống sau F5), 12 (4 trạng thái), 13 (AI 6 bước), 14 (AI failure), 15 (board công khai), **16** (một lượt APPROVED thật — PR #6 được `hungxuan0411-cloud` Approve rồi gộp), 18 (README 15 mục + khai AI).
+**Một phần / chưa đạt, cần người quyết:** **2** quyền xem Canva · **3** tên tệp theo chuẩn (`forgot password.html`, `docs/ai-usage -report.md`) · **4** **Role Switcher giữa ba phân hệ — 0/29 trang có** · **8** bảng token chung — **11 tệp tự khai hex trong `:root`, 0 màu chung** · **17** ánh xạ video dòng 7–12 · **19** còn **1** liên kết chết (`02-dang-ky/js/main.js:199`); 6/7 đích 404 tài nguyên đã sửa · **20** tập demo chung.
 Bảng đầy đủ từng dòng kèm số đo: `docs/barem-audit.md` mục 9.
 
 ---
@@ -379,40 +385,41 @@ Bảng đầy đủ từng dòng kèm số đo: `docs/barem-audit.md` mục 9.
 4. Dữ liệu ở `localStorage` từng trình duyệt: hai người hai máy không thấy dữ liệu của nhau, luồng brief → proposal chỉ minh hoạ được trên cùng một máy.
 5. Quy định nội dung **chưa có lịch sử phiên bản** và chưa có bước *Xuất bản*; chuỗi "`-v4`" trong mã chỉ là hậu tố khóa Local Storage.
 6. Bảng điều khiển mới nối một phần kho dữ liệu: hai thẻ *Nghệ nhân đang hoạt động* và *Cảnh báo hệ thống* tính thật, doanh thu/đơn hàng/biểu đồ/nhật ký là số liệu minh họa viết sẵn.
-7. `KhachHang/forgot password.html` **chưa chạy được**: nạp `js/auth-config.js` và `js/auth-service.js` — hai tệp không tồn tại ở bất kỳ nhánh nào — nên script dừng ở dòng 2 với chữ "Không tải được thành phần xác thực"; href CSS cũng sai tên (`css/forgot passwork.css`).
+7. `KhachHang/forgot password.html` **đã chạy được từ hotfix `960a548`** nhưng **chỉ là bản demo**: ba thẻ script trỏ `js/auth-config.js` và `js/auth-service.js` (hai tệp không tồn tại ở bất kỳ nhánh nào) đã bị bỏ, thay bằng script nội tuyến chỉ kiểm tra định dạng email và hiển thị ghi chú "không gửi email"; href CSS đã đúng (`css/forgot password.css`) và ba `url()` ảnh đã trỏ ảnh có thật. Trang **không** gửi mail, **không** đặt lại mật khẩu — nói thẳng khi bảo vệ.
 8. Cây `main` còn **hai tệp khai báo AI song song**: `docs/ai-usage-report.md` (17 074 B) và `docs/ai-usage -report.md` (9 952 B, tên có dấu cách) — **nội dung khác nhau**, phải gộp chữ rồi mới xoá; `video.md` ở gốc (1 048 B, bảng "STT 4/7/9") trùng `videos/README.md`.
 
 **Việc còn lại — không ai làm thay được:**
 
 | Ai | Việc |
 |---|---|
-| **Cả nhóm** | **Sáng 27-10: một người (SV1 hoặc SV2) bấm Approve PR #6 rồi Merge** để có bằng chứng peer review ở trạng thái APPROVED và để báo cáo này xuất hiện trên `main` + bản Pages; mở 5 link Canva bằng cửa sổ ẩn danh và đổi sang "Bất kỳ ai có liên kết đều xem được"; vẽ trang Component Guide vào Canva; đóng PR #4; **tập demo 6 phút + ≥3 đề Live Modification** |
-| **SV1** | Sửa 3 tham chiếu hỏng ở mục 5.3 và đổi tên `forgot password.html` + `css/forgot passwork.css`; thêm `min-width:0` cho hai trang tràn 320 px; quyết định gộp/xoá `docs/ai-usage -report.md` và `video.md`; xác nhận ánh xạ 3 video "4/7/9"; bổ sung phiên bản công cụ AI; tự sửa `docs/sv1-assignment.md` dòng 23 |
-| **SV2** | Xác nhận mục 3.2 `docs/ai-usage-report.md`; sửa 4 liên kết `forgot-password.html` (3 HTML + `02-dang-ky/js/main.js:199`) và ảnh `forgot-hero.png`; thêm `<header>/<nav>/<main>/<footer>` cho 6 trang và bỏ `<h1>` thứ hai ở `02-dang-ky/index.html`; chốt hướng xử lý video cho dòng 7–12 |
-| **SV3** | Không còn việc trên Git/GitHub; giữ phần kỹ thuật trình bày (mục 6.3) và làm tệp `js/role-switcher.js` dùng chung nếu còn giờ |
+| **Cả nhóm** | Chuyển thẻ **REVIEW** trên Trello sang "Đã gộp" (PR #6 đã Approve + gộp `3eb8e53`); **fast-forward `dev` lên `main`** (đang chậm 3 commit); mở 5 link Canva bằng cửa sổ ẩn danh và đổi sang "Bất kỳ ai có liên kết đều xem được"; vẽ trang Component Guide vào Canva; đóng PR #4; **tập demo 6 phút + ≥3 đề Live Modification**; từ nay mọi thay đổi (kể cả tài liệu) đi qua PR |
+| **SV1** | Đổi tên `forgot password.html` + `css/forgot password.css` theo `role-function-action`; thêm `min-width:0` cho hai trang tràn 320 px; quyết định gộp/xoá `docs/ai-usage -report.md` và `video.md`; xác nhận ánh xạ 3 video "4/7/9"; bổ sung phiên bản công cụ AI; tự sửa `docs/sv1-assignment.md` dòng 23 |
+| **SV2** | Sửa nốt **1 liên kết chết** `DangNhapVaDangKy/02-dang-ky/js/main.js:199` (trỏ `forgot-password.html`); xác nhận mục 3.2 `docs/ai-usage-report.md`; thêm `<header>/<nav>/<main>/<footer>` cho 6 trang và bỏ `<h1>` thứ hai ở `02-dang-ky/index.html`; chốt hướng xử lý video cho dòng 7–12 |
+| **SV3** | Hotfix `960a548` đã xong (redirect 3 vai, trang quên mật khẩu, ảnh/CSS, guard `GopTrang`); còn giữ phần kỹ thuật trình bày (mục 6.3) và làm tệp `js/role-switcher.js` dùng chung nếu còn giờ |
 
 ---
 
 ## Phụ lục A — Lệnh tái lập số liệu
 
 ```bash
-# Lịch sử và chuẩn commit
-git log --oneline origin/main | wc -l                    # 176
-git log --no-merges --format=%s origin/main | wc -l      # 167 commit không-merge
+# Lịch sử và chuẩn commit (tại main = 960a548)
+git log --oneline origin/main | wc -l                    # 185
+git log --no-merges --format=%s origin/main | wc -l      # 175 commit không-merge
 git log --no-merges --format=%s origin/main \
-  | grep -cE '^(feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert)(\(.+\))?!?: '   # 59 = 35%
+  | grep -cE '^(feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert)(\(.+\))?!?: '   # 66 = 38%
 
-# Commit trực tiếp trên main: liệt kê tệp KHÔNG phải .md trên đường first-parent
+# Commit trực tiếp trên main TRƯỚC 27-10: liệt kê tệp KHÔNG phải .md trên đường first-parent
 git log --first-parent --no-merges --format=%H origin/main | while read h; do
   git show --name-only --format= "$h" | grep -v '\.md$' | sed "s|^|$h  |"
-done   # chỉ 2 dòng, cả 2 thuộc `6274151 Initial commit` (.gitignore, LICENSE) ⇒ không có mã nguồn nào push thẳng
+done   # chỉ 2 dòng, cả 2 thuộc `6274151 Initial commit` (.gitignore, LICENSE) ⇒ trước 27-10 không có mã nguồn nào push thẳng.
+       # Ngoại lệ 27-10: `960a548` (hotfix 12 tệp) push thẳng main — đã khai ở mục 5.2.
 
 # Đường dẫn vào kiểm kê
 git log --diff-filter=A --format=%ad --date=short <nhánh> -- <tệp HTML>
 
 # Cấu trúc và tài nguyên
 git ls-files '*.html' | wc -l                            # 29
-git ls-files | wc -l                                     # 198
+git ls-files | wc -l                                     # 200
 git grep -nIE "sk-|AIza|ghp_|AKIA|Bearer [A-Za-z0-9]"    # 0 khớp
 
 # Repo / Pages / Trello (không cần token)
@@ -430,7 +437,7 @@ Responsive và quét ngữ nghĩa đo bằng iframe cùng nguồn trên chính U
 |---|---|
 | Bản deploy | <https://nguyendinhquangminh.github.io/cse122-craftlink-team11/> |
 | Repository | <https://github.com/NguyenDinhQuangMinh/cse122-craftlink-team11> |
-| Pull requests | <https://github.com/NguyenDinhQuangMinh/cse122-craftlink-team11/pull/6> (**đang mở**, `dev` → `main`) · đã gộp: #1 `8eb9f51`, #2 `a5a51e6`, #3 `ec74e6b`, #5 `da3131b` · còn mở nhưng sai base: #4 |
+| Pull requests | <https://github.com/NguyenDinhQuangMinh/cse122-craftlink-team11/pull/7> (tài liệu — chính là PR đưa bản báo cáo này lên `main`, `docs/audit-update-27-10` → `main`) · #6 **đã gộp** `3eb8e53` (`dev` → `main`) · đã gộp: #1 `8eb9f51`, #2 `a5a51e6`, #3 `ec74e6b`, #5 `da3131b` · còn mở nhưng sai base: #4 |
 | Board công việc | <https://trello.com/b/N2HBpswf> |
 | Canva — Khách hàng (SV1) | <https://www.canva.com/design/DAHZAR9VxmU/dQQiBQ9-OPRH6Q5x8DdAkw/edit> (bản cũ `DAHWyBVvS6U` — SV1 cần chốt một link) |
 | Canva — Người bán (SV2) | <https://canva.link/rvxflfz5kgg0rg1> |
