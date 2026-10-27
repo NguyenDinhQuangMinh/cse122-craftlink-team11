@@ -380,7 +380,7 @@ Bảng đầy đủ từng dòng kèm số đo: `docs/barem-audit.md` mục 9.
 ## 8. Hạn chế trung thực và việc còn lại của từng người
 
 **Hạn chế của sản phẩm (tự khai, không che):**
-1. Không có **bộ chuyển vai trò** giữa ba phân hệ: vào `KhachHang/*` rồi thì không có liên kết nào sang `KhongGianNguoiBan/*` hay `KiemDuyetVaQuanTri/*`; demo liên vai phải quay về trang chủ hoặc gõ URL.
+1. Không có **bộ chuyển vai trò** giữa ba phân hệ: vào `KhachHang/*` rồi thì không có liên kết trực tiếp sang `KhongGianNguoiBan/*` hay `KiemDuyetVaQuanTri/*` — muốn đổi vai phải qua trang chủ. Từ 27-10-2026 mỗi phân hệ đã có link "← Trang chủ CraftLink" ngay trong khung điều hướng (commit `ca1909c` cho 7 trang quản trị, `59438c6` cho 20 tệp của Khách hàng, Người bán và Đăng nhập/Đăng ký; vào `main` qua PR #12), trừ `KhachHang/forgot password.html`.
 2. **11 tệp CSS tự khai màu hex trong `:root`** (6 bảng token theo phân hệ), **0 màu hex chung** — mở song song một màn Khách hàng và một màn Quản trị thì hai trang không cùng bảng màu.
 3. `api/ai.js` **không chạy trên GitHub Pages**, nên ba tác vụ AI trên bản công khai dùng bộ quy tắc dự phòng.
 4. Dữ liệu ở `localStorage` từng trình duyệt: hai người hai máy không thấy dữ liệu của nhau, luồng brief → proposal chỉ minh hoạ được trên cùng một máy.
