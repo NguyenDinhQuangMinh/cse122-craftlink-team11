@@ -89,6 +89,19 @@ button:disabled {
   background:var(--terra);
   color:#ffffff;
 }
+.home-link {
+  display:block;
+  margin:12px 0 0;
+  padding:12px 14px 6px;
+  border-top:1px solid #34445b;
+  color:#d7e0ed;
+  font-size:12px;
+  font-weight:600;
+  text-decoration:none;
+}
+.home-link:hover {
+  color:#ffffff;
+}
 .side-note {
   margin-top:auto;
   border-top:1px solid #34445b;

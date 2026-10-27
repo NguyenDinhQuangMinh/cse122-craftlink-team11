@@ -74,6 +74,24 @@
 .sidebar-label.nav-section-label {
   padding-top: 20px;
 }
+.back-home {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 12px;
+  padding: 10px 12px;
+  border-top: 1px solid rgba(255,255,255,.12);
+  border-radius: 0 0 10px 10px;
+  color: #96a0aa;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.back-home:hover,
+.back-home:focus-visible {
+  background: rgba(255,255,255,.07);
+  color: #fff;
+}
 .side-user {
   gap: 10px;
   padding: 9px 3px 3px;

@@ -20,6 +20,7 @@
       <li><a href="nghe-nhan.html">Thợ thủ công / Nghệ nhân</a></li>
       <li><a href="quan-tri.html">Quản trị viên &amp; Kiểm duyệt</a></li>
     </ul>
+    <p style="margin-top:24px"><a href="../../index.html" style="color:#bf623c">← Về trang chủ CraftLink</a></p>
     <script>
       const p = new URLSearchParams(location.search);
       const trang = { customer: "khach-hang.html", artisan: "nghe-nhan.html", admin: "quan-tri.html" }[p.get("role")];
@@ -29,5 +30,6 @@
         location.replace(trang + (duoi ? "?" + duoi : ""));
       }
     </script>
+      <script src="../../js/role-switcher.js" defer></script>
   </body>
 </html>

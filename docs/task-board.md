@@ -43,25 +43,27 @@ Cột "PR" ghi số pull request thật — **cả ba PR #1/#2/#3 đã gộp và
 
 ## 3. Board đã dựng — link và cách đọc
 
-**Board công khai:** <https://trello.com/b/N2HBpswf> — tên `CSE122 — CraftLink — Nhóm 11`, tạo ngày 26-10-2026 bằng tài khoản của SV3 vì Hưng chưa kịp dựng. Đã có đủ năm cột theo mục 1 và **29 thẻ**: 18 thẻ TASK theo mục 2 cộng **11 thẻ công việc**. **Đo lại ngày 27-10-2026 từ `trello.com/b/N2HBpswf.json` sau khi mở PR #6: Backlog 6 · Đang làm 0 · Chờ review 1 · Đã gộp 19 · Video & bảo vệ 3.** Bốn thẻ công việc đã sang "Đã gộp" kèm merge hash trong mô tả: `MERGE`, `DEPLOY`, `SCREENS`, `VIDEO · SV2`; 15 thẻ TASK đi theo ba PR phân hệ. Thẻ thứ 29 `SWITCHER` thêm vào sáng 27-10 khi rà checklist mục 4 của barem (xem `barem-audit.md` mục 9).
+**Board công khai:** <https://trello.com/b/N2HBpswf> — tên `CSE122 — CraftLink — Nhóm 11`, tạo ngày 26-10-2026 bằng tài khoản của SV3 vì Hưng chưa kịp dựng. Đã có đủ năm cột theo mục 1 và **31 thẻ**: 18 thẻ TASK theo mục 2 cộng **13 thẻ công việc**. **Đo lại lần cuối ngày 27-10-2026 (chiều) từ `trello.com/b/N2HBpswf.json`: Backlog 5 · Đang làm 0 · Chờ review 3 · Đã gộp 20 · Video & bảo vệ 3.** Năm thẻ công việc đã sang "Đã gộp" kèm merge hash trong mô tả: `MERGE`, `DEPLOY`, `SCREENS`, `VIDEO · SV2`, `REVIEW` (mô tả ghi `3eb8e53`); 15 thẻ TASK đi theo ba PR phân hệ. Thẻ thứ 29 `SWITCHER` thêm vào sáng 27-10 khi rà checklist mục 4 của barem, **đã dựng xong và chuyển sang "Chờ review"** cùng ngày (mô tả ghi `c18ab0a`, 28/29 trang). **Hai thẻ thứ 30 và 31 thêm chiều 27-10** khi mở PR #13 và PR #12: `NAV` và `REVIEW · Approve PR #13 và PR #12`, cả hai ở cột "Chờ review" vì PR chưa được approve và chưa merge.
 
-**Hạn hoàn thành (cột mà tiêu chí 7.1 gọi là "hạn hoàn thành") đã gắn cho 29/29 thẻ.** Với 18 thẻ TASK, hạn lấy theo **ngày commit thật đưa tệp HTML lần đầu vào nhánh** — SV3: 13-10-2026, SV1 và SV2: 25-10-2026 — kiểm chứng bằng `git log --diff-filter=A --format=%ad --date=short <nhánh> -- <tệp>`; cả 18 thẻ đều được tick "Đánh dấu hoàn thành" vì mã đã viết xong và đã vào `main`, phần còn lại nằm ở video và khai báo AI. Mười một thẻ công việc có hạn 27-10-2026 (ngày nộp và bảo vệ); **bốn thẻ đã tick** là `VIDEO · SV2` (26-10), `SCREENS`, `MERGE`, `DEPLOY` (27-10); **sáu thẻ Backlog còn mở và không tick** — đó đúng là việc của SV1/SV2 và của cả nhóm ở `barem-audit.md` mục 8; thẻ thứ bảy (REVIEW) đã chuyển sang "Chờ review" vì PR #6 đã mở. Tổng thẻ được tick: **22/29**.
+**Hạn hoàn thành (cột mà tiêu chí 7.1 gọi là "hạn hoàn thành") đã gắn cho 31/31 thẻ.** Với 18 thẻ TASK, hạn lấy theo **ngày commit thật đưa tệp HTML lần đầu vào nhánh** — SV3: 13-10-2026, SV1 và SV2: 25-10-2026 — kiểm chứng bằng `git log --diff-filter=A --format=%ad --date=short <nhánh> -- <tệp>`; cả 18 thẻ đều được tick "Đánh dấu hoàn thành" vì mã đã viết xong và đã vào `main`, phần còn lại nằm ở video và khai báo AI. Mười ba thẻ công việc có hạn 27-10-2026 (ngày nộp và bảo vệ); **năm thẻ đã tick** là `VIDEO · SV2` (26-10), `SCREENS`, `MERGE`, `DEPLOY`, `REVIEW` (27-10); **năm thẻ Backlog và ba thẻ "Chờ review" còn mở và không tick** — đó đúng là việc của SV1/SV2, của cả nhóm, và ba thẻ chờ approve ở `barem-audit.md` mục 8. Tổng thẻ được tick: **25/31**.
 
-Mười một thẻ công việc, đọc từ mục "Việc còn lại" của `barem-audit.md`:
+Mười ba thẻ công việc, đọc từ mục "Việc còn lại" của `barem-audit.md`:
 
 | Thẻ | Cột (27-10) | Ai làm |
 |---|---|---|
 | `SCREENS · Dựng màn 404 và 403 từ mockup Canva (trang 31–32) — SV3` | Đã gộp (tick 27-10; mô tả ghi `2ce1f23` → `8eb9f51` → `da3131b`) | SV3 |
 | `DEPLOY · Bật GitHub Pages cho bản gộp và quét 404 asset — SV3` | Đã gộp (tick 27-10; mô tả ghi URL công khai + số đo) | SV3 |
 | `MERGE · Gộp PR #3 → #2 → #1 vào dev, rồi dev → main — Cả nhóm` | Đã gộp (tick 27-10; mô tả ghi `ec74e6b`, `a5a51e6`, `8eb9f51`, `da3131b`) | Cả ba |
-| `REVIEW · Thành viên khác bấm Approve PR #2 và PR #1 — SV1/SV3` | **Chờ review** — ba PR phân hệ đã merge nên không còn cửa Approve cho chúng; **PR #6 (`dev` → `main`) đã mở 02:42 ngày 27-10, đã mời `hungxuan0411-cloud` + `minhd2577-droi`**, mô tả thẻ ghi liên kết PR. Repo vẫn chưa có review APPROVED nào cho tới khi một người bấm — xem `barem-audit.md` mục 3.2 | SV1, SV2, SV3 |
+| `REVIEW · Thành viên khác bấm Approve PR #2 và PR #1 — SV1/SV3` | Đã gộp (tick 27-10; mô tả ghi **PR #6 APPROVED 09:37 → Merge 10:01 → `3eb8e53`**) — bằng chứng peer review thật của nhóm; `#1`/`#2` là PR đã merge từ trước nên chỉ còn bình luận, không có cửa Approve nữa | SV1, SV2, SV3 |
 | `VIDEO · SV2 đã dán 3 link video OBS (ba trang đăng nhập) — SV2` | Đã gộp (tick 26-10) | SV2 |
 | `VIDEO · SV1 đối chiếu STT 4/7/9 với bảng kiểm kê 18 dòng — SV1` | Backlog | SV1 |
-| `FIX · Sửa 4 liên kết forgot-password.html hỏng ở DangNhapVaDangKy — SV2` | Backlog | SV2 |
-| `FIX · Đổi tên forgot password.html và sửa 3 tham chiếu CSS/JS sai — SV1` | Backlog | SV1 |
+| `FIX · Sửa 4 liên kết forgot-password.html hỏng ở DangNhapVaDangKy — SV2` | Backlog (mô tả cập nhật 27-10: **3/4 đã sửa trong `960a548`**, còn `02-dang-ky/js/main.js:199`) | SV2 |
+| `FIX · Đổi tên forgot password.html và sửa 3 tham chiếu CSS/JS sai — SV1` | Backlog (mô tả cập nhật 27-10: phần CSS/JS **đã sửa trong `960a548`**, chỉ còn việc đổi tên tệp) | SV1 |
 | `DOCS · SV1 + SV2 điền khai báo AI vào docs/ai-usage-report.md — SV1/SV2` | Backlog (còn mở: SV2 xác nhận mục 3.2, cả ba chưa ghi phiên bản công cụ, SV1 xử lý tệp trùng `docs/ai-usage -report.md`) | SV1, SV2 |
 | `DOCS · Chuyển 5 link Canva sang quyền xem công khai — Cả nhóm` | Backlog | Cả ba |
-| `SWITCHER · Dựng bộ chuyển vai trò giữa ba phân hệ (checklist mục 4) — SV3/Cả nhóm` | Backlog (thêm sáng 27-10; mô tả ghi phép đo **0/29 trang có role-switcher** và hướng làm một tệp `js/role-switcher.js` dùng chung) | SV3 + SV1 + SV2 |
+| `SWITCHER · Dựng bộ chuyển vai trò giữa ba phân hệ (checklist mục 4) — SV3/Cả nhóm` | Chờ review (dựng xong chiều 27-10: `js/role-switcher.js`, gắn vào 28/29 trang, commit `c18ab0a`; mô tả thẻ ghi phép đo CDP 1280/320 px — 0 trang cuộn ngang) | SV3 (còn SV1 thêm 1 dòng vào `forgot password.html`) |
+| `NAV · Thêm link "← Trang chủ CraftLink" ở 4 phân hệ (PR #13 → dev, PR #12 → main)` | Chờ review (thêm chiều 27-10; mô tả ghi `ca1909c` và `59438c6`, đường dẫn hai PR, thứ tự merge #13 trước rồi #12) | SV3 |
+| `REVIEW · Approve PR #13 và PR #12 (cả hai đang 0 review) — SV1/SV2` | Chờ review (thêm chiều 27-10; đo bằng API: 0 review, 0 bình luận, `requested_reviewers` rỗng; cả hai PR `mergeable_state = clean`) | SV1, SV2 |
 
 Mỗi thẻ mang mô tả một dòng, đủ bốn liên kết mà tiêu chí 7.1 đòi:
 
@@ -71,12 +73,12 @@ Nhánh: feature/sv3-admin-screens · PR: #1 · Video: SV3-02-admin-moderation-qu
 
 Ba việc còn lại trên board:
 
-1. ~~Khi một PR được gộp, kéo các thẻ tương ứng sang cột "Đã gộp" rồi ghi thêm commit hash vào mô tả.~~ **Đã làm ngày 27-10-2026** cho 19 thẻ; mô tả của `MERGE`/`DEPLOY`/`SCREENS` mang merge hash thật.
+1. ~~Khi một PR được gộp, kéo các thẻ tương ứng sang cột "Đã gộp" rồi ghi thêm commit hash vào mô tả.~~ **Đã làm ngày 27-10-2026** cho 20 thẻ; mô tả của `MERGE`/`DEPLOY`/`SCREENS`/`REVIEW` mang merge hash thật (thẻ `REVIEW` ghi `3eb8e53` của PR #6).
 2. Khi SV1 hoặc SV2 có thêm link video, sửa phần "Video:" trong mô tả thẻ và kéo thẻ sang "Video & bảo vệ".
 3. Nhãn theo người (`SV1`, `SV2`, `SV3`) chưa gắn; tên thẻ đã có hậu tố `— SVx` nên vẫn lọc được bằng ô tìm kiếm của board, dán `is:label` sau khi gắn nhãn thì mới có danh sách theo màu.
 
 ## 4. Trạng thái cột "Đã gộp" và "Video & bảo vệ" (27-10-2026)
 
-Board khớp với repo: **PR #3, #2, #1 đã gộp vào `dev`** (`ec74e6b`, `a5a51e6`, `8eb9f51`) và **`dev` đã về `main` qua PR #5** (`da3131b`), GitHub Pages đang phục vụ bản gộp. 19 thẻ nằm ở cột "Đã gộp", 3 thẻ TASK của SV3 (14/16/18) nằm ở "Video & bảo vệ" vì phần việc còn lại của chúng là quay vòng bảo vệ, không phải code. Lớp thay đổi mới nhất (báo cáo tổng hợp + các sửa số liệu) đang nằm trên `dev` và chờ **PR #6** gộp về `main`, nên thẻ REVIEW tương ứng đứng ở cột "Chờ review".
+Board khớp với repo: **PR #3, #2, #1 đã gộp vào `dev`** (`ec74e6b`, `a5a51e6`, `8eb9f51`) và **`dev` đã về `main` qua PR #5** (`da3131b`), rồi **PR #6 (`dev` → `main`) được `hungxuan0411-cloud` Approve lúc 09:37 và Merge lúc 10:01 ngày 27-10 → `origin/main` = `3eb8e53`**, GitHub Pages đang phục vụ bản gộp mới nhất (báo cáo `docs/final-report.md` trả 200 trên Pages). 20 thẻ nằm ở cột "Đã gộp", 3 thẻ TASK của SV3 (14/16/18) nằm ở "Video & bảo vệ" vì phần việc còn lại của chúng là quay vòng bảo vệ, không phải code. **Chiều 27-10 cột "Chờ review" có 3 thẻ**: **SWITCHER** (đã dựng xong, `c18ab0a`) cùng **PR #13** (`dev` ← `feature/site-home-link`, head `c18ab0a`, 2 commit, 31 tệp) và **PR #12** (`main` ← `dev`, bám đầu `dev` nên head trôi theo từng commit tài liệu), cả hai `mergeable_state = clean` và **0 review** — thẻ chỉ được kéo sang "Đã gộp" sau khi có người Approve và merge thật.
 
-PR #4 (`docs/sv1-sync` → `feature/sv3-admin-screens`) **không nằm trong trình tự này**: đích của nó là nhánh của SV3 chứ không phải `dev`, nên nếu gộp sẽ đẩy toàn bộ mã SV3 đi vòng. Nội dung cần giữ của PR #4 (khai báo AI mục 3.1 và `sv1-assignment.md`) đã được đưa thẳng vào nhánh `feature/sv3-admin-screens`; phần còn lại trùng với bản đã sửa ở đây. **PR #4 vẫn mở — việc còn lại chỉ là bấm Close, không cần merge.**
+PR #4 (`docs/sv1-sync` → `feature/sv3-admin-screens`) **không nằm trong trình tự này**: đích của nó là nhánh của SV3 chứ không phải `dev`, nên nếu gộp sẽ đẩy toàn bộ mã SV3 đi vòng. Nội dung cần giữ của PR #4 (khai báo AI mục 3.1 và `sv1-assignment.md`) đã được đưa thẳng vào nhánh `feature/sv3-admin-screens`; phần còn lại trùng với bản đã sửa ở đây. **PR #4 đã được đóng lúc 03:34:32Z ngày 27-10 và không merge** (đo bằng API: `state: closed`, `merged: false`).

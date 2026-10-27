@@ -103,6 +103,24 @@ body {
 .nav button.active .nav-icon {
   color: #fff;
 }
+.back-home {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 12px;
+  padding: 10px 12px;
+  border-top: 1px solid #ffffff1f;
+  border-radius: 0 0 9px 9px;
+  color: #96a0aa;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.back-home:hover,
+.back-home:focus-visible {
+  background: #ffffff12;
+  color: #fff;
+}
 .section-label {
   padding-top: 18px;
 }

@@ -166,7 +166,7 @@ Cấu hình: `AI_API_URL`, `AI_API_KEY`, `AI_MODEL` — chỉ khai ở biến m�
 | Bảng kiểm kê 18 màn hình (12 cột) | [`docs/screen-inventory.md`](./docs/screen-inventory.md) |
 | Sitemap & User Flow toàn bộ vai trò | [`docs/user-flow.md`](./docs/user-flow.md) |
 | **Bản chạy công khai** (GitHub Pages, nhánh `main`) | <https://nguyendinhquangminh.github.io/cse122-craftlink-team11/> |
-| Board Trello công khai — 5 cột, 29 thẻ (18 thẻ TASK + 11 thẻ công việc), mọi thẻ có hạn hoàn thành và mô tả gắn nhánh · PR · video · màn hình. Trạng thái 27-10-2026: **19 thẻ "Đã gộp"**, 6 thẻ Backlog là việc của SV1/SV2 và cả nhóm, 1 thẻ "Chờ review" theo **PR #6**, 3 thẻ "Video & bảo vệ" | <https://trello.com/b/N2HBpswf> |
+| Board Trello công khai — 5 cột, 31 thẻ (18 thẻ TASK + 13 thẻ công việc), mọi thẻ có hạn hoàn thành và mô tả gắn nhánh · PR · video · màn hình. Trạng thái 27-10-2026: **20 thẻ "Đã gộp"** (kèm `REVIEW` sau khi PR #6 được Approve rồi Merge), **3 thẻ "Chờ review"** (SWITCHER · NAV · REVIEW của PR #13/#12), 5 thẻ Backlog là việc của SV1/SV2 và cả nhóm, 3 thẻ "Video & bảo vệ", **25/31 thẻ đã tick** | <https://trello.com/b/N2HBpswf> |
 | Bảng công việc 18 thẻ (bản nguồn và cách đọc board) | [`docs/task-board.md`](./docs/task-board.md) |
 | Kiểm toán repo theo từng dòng barem: ĐK1–ĐK5, mục 7.1/7.2/7.3, 8.1, VP-01…VP-07, liên kết chết | [`docs/barem-audit.md`](./docs/barem-audit.md) |
 | Component Guide (màu, chữ, thành phần) | [`docs/component-guide.md`](./docs/component-guide.md) |
@@ -202,7 +202,7 @@ Cấu hình: `AI_API_URL`, `AI_API_KEY`, `AI_MODEL` — chỉ khai ở biến m�
 | Công khai | <https://nguyendinhquangminh.github.io/cse122-craftlink-team11/> |
 | Cục bộ | `http://localhost:8000` (hoặc mở trực tiếp từng tệp HTML) |
 
-Cách đã làm, theo đúng thứ tự: gộp ba pull request của ba phân hệ (`#3` SV1 → `#2` SV2 → `#1` SV3) vào `dev`, mở pull request `dev` → `main` (PR #5) và gộp để **nhánh mặc định có đủ mã nguồn**, rồi Settings → Pages → *Deploy from a branch* → nhánh `main`, thư mục gốc. Tệp `.nojekyll` ở gốc repo tắt bước xử lý Jekyll để Pages phục vụ nguyên văn HTML/CSS/JS; nếu không có tệp đó, Jekyll bỏ qua mọi tệp bắt đầu bằng dấu gạch dưới và có thể biên dịch lại nội dung tĩnh. Thay đổi từ ngày 27-10 đi qua **PR #6** (`dev` → `main`) và phải có thành viên khác bấm Approve trước khi gộp.
+Cách đã làm, theo đúng thứ tự: gộp ba pull request của ba phân hệ (`#3` SV1 → `#2` SV2 → `#1` SV3) vào `dev`, mở pull request `dev` → `main` (PR #5) và gộp để **nhánh mặc định có đủ mã nguồn**, rồi Settings → Pages → *Deploy from a branch* → nhánh `main`, thư mục gốc. Tệp `.nojekyll` ở gốc repo tắt bước xử lý Jekyll để Pages phục vụ nguyên văn HTML/CSS/JS; nếu không có tệp đó, Jekyll bỏ qua mọi tệp bắt đầu bằng dấu gạch dưới và có thể biên dịch lại nội dung tĩnh. Thay đổi từ ngày 27-10 đi qua **PR #6** (`dev` → `main`): `hungxuan0411-cloud` **Approve lúc 09:37 rồi Merge lúc 10:01**, nên `origin/main` = `3eb8e53` và bản công khai đã phục vụ báo cáo tổng hợp.
 
 Kiểm tra đã chạy trên URL công khai ngày 27-10-2026:
 
@@ -211,6 +211,7 @@ Kiểm tra đã chạy trên URL công khai ngày 27-10-2026:
 - `css/style.css`, `css/error-pages.css`, `js/error-pages.js` đều 200; không có tài nguyên 404 trong trang.
 - Đường dẫn sai (`/duong-dan-sai`) trả **HTTP 404 kèm đúng trang `404.html` của nhóm**, không phải trang 404 mặc định của GitHub (`custom_404: true`).
 - Lưu `cl_session` vai `customer` rồi mở hàng đợi kiểm duyệt → chuyển hướng `403.html?need=moderator&screen=…`; ma trận vai trò hiển thị, không tràn ngang ở 320 px.
+- **Quét lại sau hotfix `960a548`:** **29/29 trang HTML trả 200**, **6/7 đích 404 đo trước đó đã hết** (3 liên kết `forgot-password.html` ở trang đăng nhập, CSS + 2 script chết của trang quên mật khẩu, 3 `url()` ảnh, ảnh `forgot-hero.png`); còn **1 liên kết chết trong JS của SV2** (`02-dang-ky/js/main.js:199`).
 
 Endpoint `api/ai.js` nằm trong repo dưới dạng mô-đun Node. GitHub Pages chỉ phục vụ tệp tĩnh nên yêu cầu `/api/ai.js` trả về chính mã nguồn chứ không chạy hàm; trên bản công khai, ba tác vụ AI của phân hệ quản trị vì thế lùi về bộ quy tắc dự phòng cục bộ và giao diện vẫn in dòng "Nguồn:" đúng thực tế. Muốn gọi mô hình thật phải deploy ở nền tảng có runtime (Vercel/Netlify) và đặt `AI_API_URL`, `AI_API_KEY`, `AI_MODEL` trong biến môi trường — không đưa khóa vào repo.
 
@@ -237,13 +238,13 @@ Nguyên tắc khai báo: chỉ ghi việc đã làm. Phần nào chưa có thì 
 **Hạn chế đang biết**
 
 - Bản công khai chạy trên GitHub Pages (tệp tĩnh), nên `api/ai.js` không thực thi ở đó; ba tác vụ AI gọi qua máy chủ hiển thị kết quả của bộ quy tắc dự phòng cục bộ.
-- `docs/sv1-assignment.md` và `docs/sv2-assignment.md` là mô tả của từng thành viên, nhóm chưa rà lần cuối sau khi ba nhánh gộp vào nhau.
+- `docs/sv1-assignment.md` đã được SV1 rà lại theo mã nguồn thật ngày 27-10 (PR #11); `docs/sv2-assignment.md` vẫn là bản của SV2, nhóm chưa rà lần cuối sau khi ba nhánh gộp vào nhau.
 - Bảng điều khiển mới nối một phần kho dữ liệu: hai thẻ *Nghệ nhân đang hoạt động* và *Cảnh báo hệ thống* tính thật từ dữ liệu chung; doanh thu, đơn hàng, biểu đồ và nhật ký vẫn là số liệu minh họa viết sẵn.
 - Dữ liệu lưu trong `localStorage` của từng trình duyệt: hai người dùng hai máy không thấy dữ liệu của nhau, nên luồng brief → proposal chỉ minh hoạ được trên cùng một máy.
 - Quy định nội dung chưa có lịch sử phiên bản và chưa có bước "xuất bản" riêng; lưu là có hiệu lực ngay.
 - Endpoint `api/ai.js` chưa gắn khóa trên môi trường triển khai, nên bản demo chạy bằng bộ quy tắc cục bộ.
-- Trang `KhachHang/forgot password.html` (SV1 thêm ngày 26-10) **chưa chạy được**: trang nạp `js/auth-config.js` và `js/auth-service.js` — hai tệp này **không tồn tại ở bất kỳ nhánh nào** — nên `window.CLAuth` không bao giờ được định nghĩa và `js/forgot password.js` dừng ngay ở dòng 2 với dòng chữ "Không tải được thành phần xác thực" (`js/common.js` và `js/forgot password.js` thì có thật). Tệp CSS mà trang trỏ tới cũng ghi sai tên (`css/forgot passwork.css`, thiếu dấu cách và sai chính tả), nên trang không có định dạng. Tên tệp HTML còn chứa dấu cách. Trang nằm ngoài 18 dòng kiểm kê và chưa được liên kết từ trang đăng nhập.
-- Nút "Quên mật khẩu?" trên cả ba trang đăng nhập (`khach-hang.html`, `nghe-nhan.html`, `quan-tri.html`) và liên kết "khôi phục mật khẩu" trong `02-dang-ky/js/main.js` trỏ tới `forgot-password.html` (dấu gạch ngang) — tệp này **không tồn tại** ở bất kỳ nhánh nào; bản thật tên là `KhachHang/forgot password.html` (dấu cách, khác thư mục). Cả bốn chỗ bấm đều rơi vào trang 404, đúng loại lỗi mà mục 7.3 cấm trên bản triển khai công khai. Chi tiết và cách sửa: [`docs/barem-audit.md`](./docs/barem-audit.md) mục 6.1.
+- Trang `KhachHang/forgot password.html` (SV1 thêm ngày 26-10) **đã chạy được từ hotfix `960a548`** nhưng **chỉ là bản demo**: ba thẻ script trỏ `js/auth-config.js` và `js/auth-service.js` (hai tệp không tồn tại ở bất kỳ nhánh nào) đã bị bỏ và thay bằng script nội tuyến chỉ kiểm tra định dạng email, hiển thị ghi chú "không gửi email"; href CSS đã đúng (`css/forgot password.css`) và ba `url()` ảnh đã trỏ ảnh có thật (`hero-login.png`). Trang **không** gửi mail và **không** đặt lại mật khẩu. Tên tệp HTML vẫn chứa dấu cách — chờ SV1 đổi tên theo chuẩn.
+- Nút "Quên mật khẩu?" trên cả ba trang đăng nhập (`khach-hang.html`, `nghe-nhan.html`, `quan-tri.html`) đã được sửa trong hotfix `960a548` và nay trỏ đúng `KhachHang/forgot%20password.html`. **Còn đúng một chỗ hỏng**: liên kết "khôi phục mật khẩu" trong `DangNhapVaDangKy/02-dang-ky/js/main.js:199` vẫn trỏ `forgot-password.html` (tệp không tồn tại) — mã của SV2, chờ chính SV2 sửa. Chi tiết và cách sửa: [`docs/barem-audit.md`](./docs/barem-audit.md) mục 6.1.
 
 **Hướng phát triển**
 
