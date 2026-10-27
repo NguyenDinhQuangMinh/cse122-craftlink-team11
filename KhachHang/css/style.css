@@ -671,6 +671,11 @@ textarea:focus {
   text-align: center;
 }
 
+.footer-bottom a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 
 /* ==========================================================================
    Thành phần dùng chung cho các trang người mua
