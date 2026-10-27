@@ -214,9 +214,8 @@ Chuỗi merge giữ nguyên lịch sử (merge commit, không squash):
 | Tệp `.nojekyll` để Pages phục vụ tệp tĩnh nguyên văn | `3e14704` | — |
 | `dev` → `main` (PR #6) — APPROVED bởi `hungxuan0411-cloud`, gộp 03:01:07Z | `3eb8e53` | 0 |
 | Hotfix sau gộp — redirect 3 vai, trang quên mật khẩu, ảnh/CSS, guard `GopTrang`, câu chữ 403 | `960a548` (**push thẳng `main`, không qua PR**) | — |
-| Tài liệu kiểm toán cập nhật (PR #7, `docs/audit-update-27-10` → `main`) | `c4516eb` | 0 |
-| Tài liệu kiểm toán cập nhật (PR #8, `docs/final-state` → `main`) | `f4ffac8` | 0 |
-| Đồng bộ `dev` bằng fast-forward lên đúng `main` (`git push origin <main>:refs/heads/dev`) — lặp lại sau mỗi lần gộp tài liệu | theo `main` (không tạo commit mới) | 0 |
+| Tài liệu kiểm toán (từ PR #7 trở đi, mỗi lần cập nhật một PR `docs/*` riêng) | `c4516eb` (PR #7), `f4ffac8` (PR #8); các PR sau tương tự, hash xem `git log -1 --merges origin/main` | 0 (chỉ tệp `.md`) |
+| Đồng bộ `dev` sau mỗi lần gộp (`git push origin <main>:refs/heads/dev`) | theo `main` (không tạo commit mới) | 0 |
 
 **Cách xử lý xung đột** (đây là chỗ người chấm hay hỏi "ai quyết định, dựa trên gì"):
 
@@ -275,4 +274,4 @@ Barem bắt **cả ba ngồi cùng nhau tick đủ 20 mục trong 24 giờ trư�
 
 **Ba mục chưa đạt cần quyết định ngay hôm nay:** 2 (quyền xem Canva — một người bấm), 4 (Role Switcher), 19 (còn **1 liên kết chết** trong JS của SV2). Mục 17 và 20 là việc bắt buộc của thành viên, không ai làm thay. Mục 16 **đã đạt**: PR #6 có APPROVED thật và đã gộp (`3eb8e53`).
 
-**Sáu tab phải mở sẵn khi vào bàn chấm** (quy chế yêu cầu mở nhanh, không kịp giải thích): ① bản deploy <https://nguyendinhquangminh.github.io/cse122-craftlink-team11/>, ② `index.html` chạy local (máy chủ tĩnh, **không mở bằng `file://`** vì `fetch()` bị chặn), ③ Canva quyền xem công khai, ④ board Trello, ⑤ GitHub (PR #1/#2/#3/#5/#6/#7 đã merged, **#6 có APPROVED**, #4 đã đóng) + Insights → Networks để chứng minh ba người cùng commit), ⑥ thư mục `videos/` với 9 link đã mở sẵn, kèm VS Code ở đầu nhánh `main` và Terminal để gõ `git diff` khi được yêu cầu.
+**Sáu tab phải mở sẵn khi vào bàn chấm** (quy chế yêu cầu mở nhanh, không kịp giải thích): ① bản deploy <https://nguyendinhquangminh.github.io/cse122-craftlink-team11/>, ② `index.html` chạy local (máy chủ tĩnh, **không mở bằng `file://`** vì `fetch()` bị chặn), ③ Canva quyền xem công khai, ④ board Trello, ⑤ GitHub (PR #1/#2/#3/#5/#6 đã merged, **#6 có APPROVED**, các PR tài liệu từ #7 trở đi đã gộp, #4 đã đóng) + Insights → Networks để chứng minh ba người cùng commit), ⑥ thư mục `videos/` với 9 link đã mở sẵn, kèm VS Code ở đầu nhánh `main` và Terminal để gõ `git diff` khi được yêu cầu.
