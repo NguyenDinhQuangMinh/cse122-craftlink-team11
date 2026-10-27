@@ -437,7 +437,7 @@ Responsive và quét ngữ nghĩa đo bằng iframe cùng nguồn trên chính U
 |---|---|
 | Bản deploy | <https://nguyendinhquangminh.github.io/cse122-craftlink-team11/> |
 | Repository | <https://github.com/NguyenDinhQuangMinh/cse122-craftlink-team11> |
-| Pull requests | <https://github.com/NguyenDinhQuangMinh/cse122-craftlink-team11/pull/7> (tài liệu, **đang mở** — chính là PR cập nhật báo cáo này) · #6 **đã gộp** `3eb8e53` (`dev` → `main`) · đã gộp: #1 `8eb9f51`, #2 `a5a51e6`, #3 `ec74e6b`, #5 `da3131b` · còn mở nhưng sai base: #4 |
+| Pull requests | <https://github.com/NguyenDinhQuangMinh/cse122-craftlink-team11/pull/7> (tài liệu — chính là PR đưa bản báo cáo này lên `main`, `docs/audit-update-27-10` → `main`) · #6 **đã gộp** `3eb8e53` (`dev` → `main`) · đã gộp: #1 `8eb9f51`, #2 `a5a51e6`, #3 `ec74e6b`, #5 `da3131b` · còn mở nhưng sai base: #4 |
 | Board công việc | <https://trello.com/b/N2HBpswf> |
 | Canva — Khách hàng (SV1) | <https://www.canva.com/design/DAHZAR9VxmU/dQQiBQ9-OPRH6Q5x8DdAkw/edit> (bản cũ `DAHWyBVvS6U` — SV1 cần chốt một link) |
 | Canva — Người bán (SV2) | <https://canva.link/rvxflfz5kgg0rg1> |
