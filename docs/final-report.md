@@ -17,7 +17,7 @@ Tệp này gộp toàn bộ nội dung báo cáo của nhóm vào một chỗ, t
 | Nhánh mặc định | `main` = `dev` — nhóm fast-forward `dev` lên đúng `main` sau **mỗi** lần gộp tài liệu, nên hash của hai nhánh luôn trùng và tăng dần; mốc đo chính: `c4516eb` (sau PR #7), `f4ffac8` (sau PR #8); trước đó `main` = `960a548`, hotfix sau merge PR #6 `3eb8e53`. Hash hiện hành: `git ls-remote origin refs/heads/main refs/heads/dev` |
 | Nhánh làm việc | `dev`, `feature/sv1-buyer`, `feature/sv2-maker-screens`, `feature/sv3-admin-screens`, `docs/sv1-sync` |
 | Bản deploy | GitHub Pages, *Deploy from a branch* → `main` / thư mục gốc, `status = built`, `custom_404 = true`, kèm `.nojekyll` (`3e14704`) |
-| Bảng công việc | <https://trello.com/b/N2HBpswf> — `permissionLevel = "public"`, 5 cột, 29 thẻ |
+| Bảng công việc | <https://trello.com/b/N2HBpswf> — `permissionLevel = "public"`, 5 cột, 31 thẻ |
 | Lịch sử | **197 commit** tại mốc `7c17fa3` (182 không-merge + 15 merge); mốc trước: 189 tại `c4516eb`, 185 tại `960a548`, 176 trước PR #6. Hoạt động ở **11 ngày thuộc 3 tuần**; mỗi PR tài liệu cộng thêm commit + 1 merge, nên con số hiện hành luôn kiểm bằng `git rev-list --count origin/main` |
 | Sản phẩm | **29 tệp HTML**, **8 tính năng AI**, **5 bộ dữ liệu JSON** (15–20 bản ghi) |
 | Video | **9 link YouTube** (3 sinh viên × 3 video), tệp gốc `.mp4` nằm trên máy từng người |
@@ -242,17 +242,17 @@ Barem 6.1 đòi tối thiểu ba tính năng; nhóm có **tám**, trong đó **b
 
 ### 5.1 Bảng công việc (7.1 — 0.25đ)
 
-Board **<https://trello.com/b/N2HBpswf>** dựng ngày 26-10-2026, `permissionLevel = "public"` (gọi ẩn danh HTTP 200). **29 thẻ / 5 cột**, trạng thái đo lại từ `trello.com/b/N2HBpswf.json` ngày 27-10-2026 sau khi PR #6 được Approve rồi gộp:
+Board **<https://trello.com/b/N2HBpswf>** dựng ngày 26-10-2026, `permissionLevel = "public"` (gọi ẩn danh HTTP 200). **31 thẻ / 5 cột**, trạng thái đo lại từ `trello.com/b/N2HBpswf.json` ngày 27-10-2026 (chiều, sau khi mở PR #13 và PR #12):
 
 | Cột | Thẻ | Nội dung |
 |---|---:|---|
-| Backlog | 6 | 2× FIX (liên kết chết — phần của SV1 đã xong trong `960a548`, thẻ chưa chuyển) · 2× DOCS (khai AI, quyền Canva) · VIDEO của SV1 · SWITCHER |
+| Backlog | 5 | 2× FIX (liên kết chết — phần của SV1 đã xong trong `960a548`, thẻ chưa chuyển) · 2× DOCS (khai AI, quyền Canva) · VIDEO của SV1 |
 | Đang làm | 0 | Toàn bộ phần SV3 đã gộp xong |
-| Chờ review | 0 | Trống — thẻ **REVIEW** đã sang "Đã gộp" sau lượt Approve 09:37 rồi Merge 10:01 (`3eb8e53`) |
+| Chờ review | 3 | **SWITCHER** (đã dựng, `c18ab0a`) · **NAV** (PR #13/#12) · **REVIEW** (chờ approve #13 và #12) |
 | Đã gộp | 20 | 15 thẻ TASK + SCREENS + MERGE + DEPLOY + VIDEO·SV2 + **REVIEW** (mô tả thẻ ghi `3eb8e53`) |
 | Video & bảo vệ | 3 | TASK-14, 16, 18 (SV3 — đã có link video, chờ vòng bảo vệ) |
 
-**29/29 thẻ có hạn hoàn thành và mô tả** gắn `Nhánh · PR · Video · Màn hình` (+ `AI:` với màn có tính năng AI); **23/29** tick "Đánh dấu hoàn thành". Hạn của 18 thẻ TASK lấy theo **ngày commit thật đưa tệp HTML lần đầu vào nhánh** (SV3: 13-10; SV1/SV2: 25-10, kiểm chứng bằng `git log --diff-filter=A`); thẻ quy trình hạn 27-10. Thẻ MERGE/DEPLOY/SCREENS/REVIEW mang merge hash thật nên mở ngược được trên GitHub.
+**31/31 thẻ có hạn hoàn thành và mô tả** gắn `Nhánh · PR · Video · Màn hình` (+ `AI:` với màn có tính năng AI); **25/31** tick "Đánh dấu hoàn thành". Hạn của 18 thẻ TASK lấy theo **ngày commit thật đưa tệp HTML lần đầu vào nhánh** (SV3: 13-10; SV1/SV2: 25-10, kiểm chứng bằng `git log --diff-filter=A`); thẻ quy trình hạn 27-10. Thẻ MERGE/DEPLOY/SCREENS/REVIEW mang merge hash thật nên mở ngược được trên GitHub.
 
 ### 5.2 Nhánh, commit, PR (7.2 — 0.45đ)
 
@@ -371,8 +371,8 @@ Demo chung 6 phút theo vòng đời nghiệp vụ: khách tạo brief (STT 3) �
 
 ### 7.3 Checklist 20 mục (mục X.2) — rút gọn
 
-**Đã đo và đạt:** 1 (kiểm kê 18 dòng), 5 (alt/nhãn — còn 6 trang thiếu thẻ bao), 6 (responsive 145 phép đo), 7 (Tab/Esc trên màn SV3), 9 (15–25 bản ghi), 10 (tìm + lọc + sắp), 11 (CRUD sống sau F5), 12 (4 trạng thái), 13 (AI 6 bước), 14 (AI failure), 15 (board công khai), **16** (một lượt APPROVED thật — PR #6 được `hungxuan0411-cloud` Approve rồi gộp), 18 (README 15 mục + khai AI).
-**Một phần / chưa đạt, cần người quyết:** **2** quyền xem Canva · **3** tên tệp theo chuẩn (`forgot password.html`, `docs/ai-usage -report.md`) · **4** **Role Switcher giữa ba phân hệ — 0/29 trang có** · **8** bảng token chung — **11 tệp tự khai hex trong `:root`, 0 màu chung** · **17** ánh xạ video dòng 7–12 · **19** còn **1** liên kết chết (`02-dang-ky/js/main.js:199`); 6/7 đích 404 tài nguyên đã sửa · **20** tập demo chung.
+**Đã đo và đạt:** 1 (kiểm kê 18 dòng), **4** (bộ chuyển vai trò — 28/29 trang, `js/role-switcher.js`), 5 (alt/nhãn — còn 6 trang thiếu thẻ bao), 6 (responsive 145 phép đo), 7 (Tab/Esc trên màn SV3), 9 (15–25 bản ghi), 10 (tìm + lọc + sắp), 11 (CRUD sống sau F5), 12 (4 trạng thái), 13 (AI 6 bước), 14 (AI failure), 15 (board công khai), **16** (một lượt APPROVED thật — PR #6 được `hungxuan0411-cloud` Approve rồi gộp), 18 (README 15 mục + khai AI).
+**Một phần / chưa đạt, cần người quyết:** **2** quyền xem Canva · **3** tên tệp theo chuẩn (`forgot password.html`, `docs/ai-usage -report.md`) · **8** bảng token chung — **11 tệp tự khai hex trong `:root`, 0 màu chung** · **17** ánh xạ video dòng 7–12 · **19** còn **1** liên kết chết (`02-dang-ky/js/main.js:199`); 6/7 đích 404 tài nguyên đã sửa · **20** tập demo chung.
 Bảng đầy đủ từng dòng kèm số đo: `docs/barem-audit.md` mục 9.
 
 ---
@@ -380,7 +380,7 @@ Bảng đầy đủ từng dòng kèm số đo: `docs/barem-audit.md` mục 9.
 ## 8. Hạn chế trung thực và việc còn lại của từng người
 
 **Hạn chế của sản phẩm (tự khai, không che):**
-1. Không có **bộ chuyển vai trò** giữa ba phân hệ: vào `KhachHang/*` rồi thì không có liên kết trực tiếp sang `KhongGianNguoiBan/*` hay `KiemDuyetVaQuanTri/*` — muốn đổi vai phải qua trang chủ. Từ 27-10-2026 mỗi phân hệ đã có link "← Trang chủ CraftLink" ngay trong khung điều hướng (commit `ca1909c` cho 7 trang quản trị, `59438c6` cho 20 tệp của Khách hàng, Người bán và Đăng nhập/Đăng ký; vào `main` qua PR #12), trừ `KhachHang/forgot password.html`.
+1. **Bộ chuyển vai trò là nút nổi dùng chung, không nằm trong thanh điều hướng của từng phân hệ**: `js/role-switcher.js` (146 dòng) được gắn vào 28/29 trang bằng đúng một dòng `<script defer>`; bấm vào nút thì hiện ba lối đi (Khách hàng, Người bán, Quản trị và kiểm duyệt) cùng lối "← Về trang chủ CraftLink", vai đang đứng được đánh dấu `aria-current="page"`. Trang còn thiếu là `KhachHang/forgot password.html` — màn của SV1, nhóm giữ nguyên tắc không sửa màn của nhau; thêm một dòng là đủ. Trước đó, từ 27-10-2026 mỗi phân hệ cũng đã có link "← Trang chủ CraftLink" ngay trong khung điều hướng (`ca1909c` cho 7 trang quản trị, `59438c6` cho 20 tệp của Khách hàng, Người bán và Đăng nhập/Đăng ký). Cả hai phần nằm trong PR #13 → `dev` và PR #12 → `main`.
 2. **11 tệp CSS tự khai màu hex trong `:root`** (6 bảng token theo phân hệ), **0 màu hex chung** — mở song song một màn Khách hàng và một màn Quản trị thì hai trang không cùng bảng màu.
 3. `api/ai.js` **không chạy trên GitHub Pages**, nên ba tác vụ AI trên bản công khai dùng bộ quy tắc dự phòng.
 4. Dữ liệu ở `localStorage` từng trình duyệt: hai người hai máy không thấy dữ liệu của nhau, luồng brief → proposal chỉ minh hoạ được trên cùng một máy.
@@ -393,10 +393,10 @@ Bảng đầy đủ từng dòng kèm số đo: `docs/barem-audit.md` mục 9.
 
 | Ai | Việc |
 |---|---|
-| **Cả nhóm** | Mở 5 link Canva bằng cửa sổ ẩn danh và đổi sang "Bất kỳ ai có liên kết đều xem được"; vẽ trang Component Guide vào Canva; **tập demo 6 phút + ≥3 đề Live Modification**; từ nay mọi thay đổi (kể cả tài liệu) đi qua PR. (Thẻ **REVIEW** đã sang "Đã gộp" sau PR #6; PR #4 đã đóng; `dev` được fast-forward lên đúng `main` sau mỗi lần gộp, hai nhánh trùng nhau.) |
+| **Cả nhóm** | Mở 5 link Canva bằng cửa sổ ẩn danh và đổi sang "Bất kỳ ai có liên kết đều xem được"; vẽ trang Component Guide vào Canva; **tập demo 6 phút + ≥3 đề Live Modification**; approve **PR #13** rồi **PR #12** (theo đúng thứ tự) để hai phần giao diện vào `main`. (Thẻ **REVIEW** đã sang "Đã gộp" sau PR #6; PR #4 đã đóng; `dev` được fast-forward lên đúng `main` sau mỗi lần gộp, hai nhánh trùng nhau.) |
 | **SV1** | Đổi tên `forgot password.html` + `css/forgot password.css` theo `role-function-action`; thêm `min-width:0` cho hai trang tràn 320 px; quyết định gộp/xoá `docs/ai-usage -report.md` và `video.md`; xác nhận ánh xạ 3 video "4/7/9"; bổ sung phiên bản công cụ AI. (`docs/sv1-assignment.md` đã được sửa lại ngày 27-10: bỏ các mục không có thật như `pages/common/`, `navbar.css`, `login.html`, `profile.html`, "AI Personalization"; số tệp nay ghi đúng 10) |
 | **SV2** | Sửa nốt **1 liên kết chết** `DangNhapVaDangKy/02-dang-ky/js/main.js:199` (trỏ `forgot-password.html`); xác nhận mục 3.2 `docs/ai-usage-report.md`; thêm `<header>/<nav>/<main>/<footer>` cho 6 trang và bỏ `<h1>` thứ hai ở `02-dang-ky/index.html`; chốt hướng xử lý video cho dòng 7–12 |
-| **SV3** | Hotfix `960a548` đã xong (redirect 3 vai, trang quên mật khẩu, ảnh/CSS, guard `GopTrang`); còn giữ phần kỹ thuật trình bày (mục 6.3) và làm tệp `js/role-switcher.js` dùng chung nếu còn giờ |
+| **SV3** | Hotfix `960a548` đã xong (redirect 3 vai, trang quên mật khẩu, ảnh/CSS, guard `GopTrang`); link về trang chủ và **bộ chuyển vai trò** (`js/role-switcher.js`, 28/29 trang) đã nằm trong PR #13 → `dev` và PR #12 → `main`, chỉ chờ thành viên khác approve; còn giữ phần kỹ thuật trình bày (mục 6.3) |
 
 ---
 

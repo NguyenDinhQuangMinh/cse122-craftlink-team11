@@ -114,6 +114,6 @@ AI không tự duyệt, tự xóa hay tự khóa tài khoản: mọi kết quả
 ## 8. Việc còn mở
 
 - **Đã triển khai công khai ngày 27-10-2026**: <https://nguyendinhquangminh.github.io/cse122-craftlink-team11/> (GitHub Pages, nhánh `main`, thư mục gốc, kèm `.nojekyll`). Chi tiết và số đo kiểm tra: mục "Triển khai" của `../README.md`.
-- Board công việc đã dựng và để chế độ công khai: <https://trello.com/b/N2HBpswf> — năm cột, **29 thẻ** (18 thẻ mang đúng mã `TASK-01…18` + 11 thẻ công việc), mỗi thẻ ghi nhánh · PR · video · màn hình trong mô tả (bản nguồn và cách đọc: `task-board.md`). Sau khi gộp nhánh và gộp PR #6, **20 thẻ ở cột "Đã gộp"** (23/29 thẻ được tick), 6 thẻ còn ở Backlog đều là việc của SV1/SV2 hoặc của cả nhóm.
+- Board công việc đã dựng và để chế độ công khai: <https://trello.com/b/N2HBpswf> — năm cột, **31 thẻ** (18 thẻ mang đúng mã `TASK-01…18` + 13 thẻ công việc), mỗi thẻ ghi nhánh · PR · video · màn hình trong mô tả (bản nguồn và cách đọc: `task-board.md`). Sau khi gộp nhánh và gộp PR #6, **20 thẻ ở cột "Đã gộp"** (25/31 thẻ được tick), 5 thẻ còn ở Backlog đều là việc của SV1/SV2 hoặc của cả nhóm.
 - `api/ai.js` đã có endpoint nhưng chưa gắn biến môi trường trên nền tảng triển khai, nên bản demo công khai chạy bằng bộ quy tắc cục bộ (GitHub Pages chỉ phục vụ tệp tĩnh).
 - Bảng token thiết kế **chưa dùng chung cho cả ba phân hệ** — 12 tệp CSS có khối `:root`, trong đó **11 tệp tự khai màu hex** (gom thành 6 bảng token theo phân hệ), **0 màu hex chung**. Hướng xử lý và lý do chưa sửa: `css/README.md`.
